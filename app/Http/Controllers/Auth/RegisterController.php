@@ -83,6 +83,8 @@ class RegisterController extends Controller
         
         $user->save();
 
+        
+
         $professionnel = new professionnel();
       
         $professionnel->entreprise = $data['entreprise'];
