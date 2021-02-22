@@ -25,3 +25,6 @@ Route::get('/register-pro', function () {
     return view('register-pro');
 });
 
+Route::get('/register-particulier', function () {
+    return view('register-particulier');
+});

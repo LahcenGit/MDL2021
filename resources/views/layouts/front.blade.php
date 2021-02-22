@@ -76,8 +76,9 @@
 										<p>
 											En créant un compte, vous pourrez faire vos achats plus rapidement, être au courant du statut d'une commande ...
 										</p>
-										<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Particulier</button></a>
-										<button class="btn btn-default btn-pro" style="background-color: #65C5D5;">Professionnel</button>
+										<a href="{{asset('/register-particulier')}}"><button class="btn btn-default btn-yellow">Particulier</button></a>
+										<a href="{{asset('/register-pro')}}">
+										<button class="btn btn-default btn-pro" style="background-color: #65C5D5;">Professionnel</button></a>
 									</div>
 								</div>
 								@else

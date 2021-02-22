@@ -60,6 +60,9 @@ class RegisterController extends Controller
             'RC' => ['required', 'string', 'max:255'],
             'wilaya' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
+            'codePostal' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'fax' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -83,7 +86,7 @@ class RegisterController extends Controller
         
         $user->save();
 
-        
+        if(RC!=null){
 
         $professionnel = new professionnel();
       
@@ -96,6 +99,17 @@ class RegisterController extends Controller
         $professionnel->RC = $data['RC'];
         $professionnel->NIF = $data['NIF'];
         $user->professionnel()->save($professionnel);
+
+}
+       else{
+        $particulier = new particulier();
+        $particulier->adresse = $data['adresse'];
+        $particulier->wilaya = $data['wilaya'];
+        $particulierl->commune = $data['commune'];
+        $particulier->codePostal = $data['codePostal'];
+        $particulier->phone = $data['phone'];
+        $user->particulier()->save($particulier);
+    }
 
         return $user;
 
