@@ -26138,6 +26138,59 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
   border: 0 !important;
   margin-left: 10px; }
 
+.svg-icons-ov {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+  margin-bottom: 10px; }
+  .svg-icons-ov .svg-icons-prev {
+    margin-right: 15px; }
+    .svg-icons-ov .svg-icons-prev svg {
+      width: 40px;
+      height: 40px; }
+      .svg-icons-ov .svg-icons-prev svg g [fill] {
+        fill: #3a7afe; }
+  .svg-icons-ov .svg-icon-popup {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+    opacity: 0; }
+    .svg-icons-ov .svg-icon-popup .btn {
+      padding: 8px 10px;
+      background: #3a7afe;
+      margin: 0 5px;
+      color: #fff;
+      font-size: 14px !important;
+      display: inline-block; }
+  .svg-icons-ov:hover .svg-icon-popup {
+    opacity: 1; }
+
+.svg-area .row {
+  margin: 0; }
+.svg-area .col-md-2 {
+  padding: 0; }
+.svg-area .card-header {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding-bottom: 10px; }
+  .svg-area .card-header:first-child {
+    margin-top: 0; }
+
 .error-page .error-text {
   font-size: 150px;
   line-height: 1; }
