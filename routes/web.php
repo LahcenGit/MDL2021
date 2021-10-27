@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VendeurController;
+use App\Http\Controllers\AchatController;
+use App\Http\Controllers\MilkchecController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +19,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login-milkcheck', function () {
+    return view('auth/login-milkcheck');
+});
 
+Route::resource('milkcheck/vendeurs', VendeurController::class);
+Route::resource('milkcheck/achats', AchatController::class);
+Route::resource('milkcheck', MilkchecController::class);
+Route::get('/show-achat/{id}', [App\Http\Controllers\AchatController::class, 'showAchat']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/register-pro', function () {
-    return view('register-pro');
+    return view('professionel/register-pro');
 });
 
 Route::get('/register-particulier', function () {
-    return view('register-particulier');
+    return view('particulier/register-particulier');
 });

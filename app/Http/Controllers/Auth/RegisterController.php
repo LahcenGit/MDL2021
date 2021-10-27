@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\professionnel;
+use App\Models\Particulier;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,9 +52,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'nom' => ['required', 'string', 'max:255'],
-            'prenom' => ['required', 'string', 'max:255'],
+         return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            /*'prenom' => ['required', 'string', 'max:255'],
             'entreprise' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
             'NIF' => ['required', 'string', 'max:255'],
@@ -63,11 +64,15 @@ class RegisterController extends Controller
             'codePostal' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'fax' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            */
+            
+            'email' => ['required', 'string', 'email', 'max:255','unique:users'],
+            
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
-
+    
+}
+      
     /**
      * Create a new user instance after a valid registration.
      *
@@ -76,15 +81,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-      
-
-        $user = new User;
-        $user->nom = $data['nom'];
-        $user->prenom = $data['prenom'];
-        $user->email = $data['email'];
-        $user->password = Hash::make($data['password']);
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
         
-        $user->save();
+      /*
 
         if(RC!=null){
 
@@ -102,16 +105,16 @@ class RegisterController extends Controller
 
 }
        else{
-        $particulier = new particulier();
+        $particulier = new Particulier();
         $particulier->adresse = $data['adresse'];
         $particulier->wilaya = $data['wilaya'];
-        $particulierl->commune = $data['commune'];
+        $particulier->commune = $data['commune'];
         $particulier->codePostal = $data['codePostal'];
         $particulier->phone = $data['phone'];
         $user->particulier()->save($particulier);
     }
 
         return $user;
-
+*/
     }
 }
