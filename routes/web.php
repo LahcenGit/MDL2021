@@ -28,3 +28,15 @@ Route::get('/register-pro', function () {
 Route::get('/register-particulier', function () {
     return view('register-particulier');
 });
+
+Route::get('/produit', function () {
+    return view('produit');
+});
+
+Route::get('home-dashboard', function () {
+    return view('home-dashboard');
+});
+
+use App\Http\Controllers\PhotoCommentController;
+
+Route::resource('photos.comments', PhotoCommentController::class);

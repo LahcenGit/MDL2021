@@ -23,6 +23,16 @@
     
     <form class="form-horizontal checkout" method="POST" action="{{ route('register') }}">
         @csrf
+
+                   @if (count($errors) > 0)
+                        <div class="error">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
         <div class="row">
             <div  class="col-md-6">
                 <div id="title-bg">
@@ -48,17 +58,7 @@
                 </div>
                 
                 
-                 <div class="form-group">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Téléphone">
-                        @error('phone')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-
-                </div>
+                 
 
                 <div class="form-group">
                     <div class="col-sm-12">
@@ -106,6 +106,31 @@
                         @enderror
                     
                     </div>
+
+                    
+                    
+                </div>
+               
+                <div class="form-group dob">
+                   
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control @error('code_postal') is-invalid @enderror" name="code_postal" placeholder="Code Postal">
+                            @error('code_postal')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Téléphone">
+                            @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                    
                     
                 </div>
                
@@ -140,7 +165,9 @@
                     <div class="col-sm-6">
                         <input type="password" class="form-control" name="password_confirmation" placeholder="Confirmer le mot de passe">
                     </div>
+                    <input type="hidden"  name="check" value="customer">
                 </div>
+                 
                 <button type="submit" class="btn btn-default btn-red">S'inscrire</button>
             </div>
 

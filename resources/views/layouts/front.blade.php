@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.carousel.css') }}" />
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.transitions.css') }}" />
 	
+	<link rel="stylesheet" type="text/css" href="js/product/jquery.fancybox.css?v=2.1.5" media="screen" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,34 +83,97 @@
 									</div>
 								</div>
 								@else
-								<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
-								<div class="regwrap">
-									<div class="row d-flex align-items-center">
-										<div class="col-md-6 regform">
-											<div id="title-widget-bg">
-												<div class="title-widget">Détails</div>
+								 @if (Auth::user()->type == 1 )
+									<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
+									<div class="regwrap">
+										<div class="row d-flex align-items-center">
+											<div class="col-md-6 regform">
+												<div id="title-widget-bg">
+													<div class="title-widget">Détails</div>
+												</div>
+												<p > Compte : professionel </p>
+												<p style="margin-top : -7px;"> Entreprise : Maison du lait  </p>
+												<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
+												onclick="event.preventDefault();
+															document.getElementById('logout-form').submit();"> Se déconncter </a>
+															<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+																@csrf
+															</form>
 											</div>
-											<p > Compte : professionel </p>
-											<p style="margin-top : -7px;"> Entreprise : Maison du lait  </p>
-											<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
-											onclick="event.preventDefault();
-														  document.getElementById('logout-form').submit();"> Se déconncter </a>
-														  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-															@csrf
-														</form>
-										</div>
-										<div class="col-md-6">
-											<div id="title-widget-bg">
-												<div class="title-widget">Outils</div>
+											<div class="col-md-6">
+												<div id="title-widget-bg">
+													<div class="title-widget">Outils</div>
+												</div>
+												<p>
+													Pour gérer et suivre vos commande, merci d'accéder a votre espace client...
+												</p>
+												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Espace client</button></a>
+												
 											</div>
-											<p>
-												Pour gérer et suivre vos commande, merci d'accéder a votre espace client...
-											</p>
-											<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Espace client</button></a>
-											
 										</div>
-									</div>
 
+								 @endif
+								 @if (Auth::user()->type == 2 )
+									<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
+									<div class="regwrap">
+										<div class="row d-flex align-items-center">
+											<div class="col-md-6 regform">
+												<div id="title-widget-bg">
+													<div class="title-widget">Détails</div>
+												</div>
+												<p > Compte : particulier </p>
+											
+												<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
+												onclick="event.preventDefault();
+															document.getElementById('logout-form').submit();"> Se déconncter </a>
+															<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+																@csrf
+															</form>
+											</div>
+											<div class="col-md-6">
+												<div id="title-widget-bg">
+													<div class="title-widget">Outils</div>
+												</div>
+												<p>
+													Pour gérer et suivre vos commande, merci d'accéder a votre espace client...
+												</p>
+												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Espace client</button></a>
+												
+											</div>
+										</div>
+
+								 @endif
+								 @if (Auth::user()->type == 0 )
+									<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
+									<div class="regwrap">
+										<div class="row d-flex align-items-center">
+											<div class="col-md-6 regform">
+												<div id="title-widget-bg">
+													<div class="title-widget">Détails</div>
+												</div>
+												<p > Compte : Admin </p>
+											
+												<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
+												onclick="event.preventDefault();
+															document.getElementById('logout-form').submit();"> Se déconncter </a>
+															<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+																@csrf
+															</form>
+											</div>
+											<div class="col-md-6">
+												<div id="title-widget-bg">
+													<div class="title-widget">Outils</div>
+												</div>
+												<p>
+													Pour gérer le site, merci d'accéder au dashboard...
+												</p>
+												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Dashboard</button></a>
+												
+											</div>
+										</div>
+
+								 @endif
+								
 								@endguest
 							</div>
 							<div class="srch-wrap">

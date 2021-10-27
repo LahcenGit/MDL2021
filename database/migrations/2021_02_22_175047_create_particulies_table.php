@@ -20,10 +20,12 @@ class CreateParticuliesTable extends Migration
             $table->string('phone');
             $table->string('wilaya');
             $table->string('commune')->nullable();
-            $table->string('codePostal');
+            $table->string('code_postal');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::rename('particulies', 'particuliers');
     }
 
     /**

@@ -23,6 +23,16 @@
     
     <form class="form-horizontal checkout" method="POST" action="{{ route('register') }}">
         @csrf
+
+             @if (count($errors) > 0)
+                <div class="error">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         <div class="row">
             <div  class="col-md-6">
                 <div id="title-bg">
@@ -172,6 +182,8 @@
                     <div class="col-sm-6">
                         <input type="password" class="form-control" name="password_confirmation" placeholder="Confirmer le mot de passe">
                     </div>
+
+                    <input type="hidden"  name="check" value="pro">
                 </div>
                 <button type="submit" class="btn btn-default btn-red">S'inscrire</button>
             </div>

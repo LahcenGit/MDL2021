@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Particulier;
 use App\Models\professionnel;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -51,21 +52,44 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'nom' => ['required', 'string', 'max:255'],
-            'prenom' => ['required', 'string', 'max:255'],
-            'entreprise' => ['required', 'string', 'max:255'],
-            'adresse' => ['required', 'string', 'max:255'],
-            'NIF' => ['required', 'string', 'max:255'],
-            'RC' => ['required', 'string', 'max:255'],
-            'wilaya' => ['required', 'string', 'max:255'],
-            'commune' => ['required', 'string', 'max:255'],
-            'codePostal' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:255'],
-            'fax' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+
+        if($data['check'] == "pro"){
+
+            return Validator::make($data, [
+                'nom' => ['required', 'string', 'max:255'],
+                'prenom' => ['required', 'string', 'max:255'],
+                'entreprise' => ['required', 'string', 'max:255'],
+                'adresse' => ['required', 'string', 'max:255'],
+                'NIF' => ['required', 'string', 'max:255'],
+                'RC' => ['required', 'string', 'max:255'],
+                'wilaya' => ['required', 'string', 'max:255'],
+                'commune' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'string', 'max:255'],
+                'fax' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+
+        }
+
+        else {
+
+            return Validator::make($data, [
+                'nom' => ['required', 'string', 'max:255'],
+                'prenom' => ['required', 'string', 'max:255'],
+                'adresse' => ['required', 'string', 'max:255'],
+                'wilaya' => ['required', 'string', 'max:255'],
+                'commune' => ['required', 'string', 'max:255'],
+                'code_postal' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+
+
+        }
+
+
     }
 
     /**
@@ -78,15 +102,16 @@ class RegisterController extends Controller
     {
       
 
+        if($data['check'] == "pro"){
+
         $user = new User;
+
+        $user->type = 1;
         $user->nom = $data['nom'];
         $user->prenom = $data['prenom'];
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
-        
         $user->save();
-
-        if(RC!=null){
 
         $professionnel = new professionnel();
       
@@ -98,20 +123,35 @@ class RegisterController extends Controller
         $professionnel->commune = $data['commune'];
         $professionnel->RC = $data['RC'];
         $professionnel->NIF = $data['NIF'];
+     
+       
         $user->professionnel()->save($professionnel);
 
-}
-       else{
-        $particulier = new particulier();
+        }
+
+        else{
+        
+        $user = new User;
+
+        $user->type = 2;
+        $user->nom = $data['nom'];
+        $user->prenom = $data['prenom'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->save();
+
+
+        $particulier = new Particulier();
         $particulier->adresse = $data['adresse'];
         $particulier->wilaya = $data['wilaya'];
-        $particulierl->commune = $data['commune'];
-        $particulier->codePostal = $data['codePostal'];
+        $particulier->commune = $data['commune'];
+        $particulier->code_postal = $data['code_postal'];
         $particulier->phone = $data['phone'];
+        
         $user->particulier()->save($particulier);
-    }
+
+        }
 
         return $user;
-
-    }
+}
 }
