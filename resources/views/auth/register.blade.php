@@ -8,6 +8,20 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    
+    @if (count($errors) > 0)
+    <div class="alert alert-danger" role="alert">
+       Svp ! Corrigez les erreurs suivantes : 
+       <div class="mb-2"></div>
+    <div class="error">
+        <ul class="ml-2">
+            @foreach ($errors->all() as $error)
+                <li style="font-weight:100; ">- {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    </div>
+    @endif
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
