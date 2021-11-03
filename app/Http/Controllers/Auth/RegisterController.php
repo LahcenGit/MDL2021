@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\Particulier;
 use App\Models\professionnel;
 use App\Models\Particulier;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -153,6 +152,7 @@ class RegisterController extends Controller
 
         }
 
-        return $user;
+       return $user;
+       
 }
 }
