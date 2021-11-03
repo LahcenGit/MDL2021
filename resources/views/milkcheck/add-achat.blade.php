@@ -89,6 +89,15 @@
                                    @enderror
                                 </div>
                                 <div class="col-md-1">
+                                    <label class="form-label">P:</label>
+                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteP') is-invalid @enderror" value="{{old('qteP')}}" name="qteP" placeholder="0" />
+                                    @error('qteP')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
+                                </div>
+                                <div class="col-md-1">
                                     <label class="form-label">D:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteD') is-invalid @enderror" value="{{old('qteD')}}" id="inputD" name="qteD" placeholder="0" />
                                     @error('qteD')
@@ -115,15 +124,7 @@
                                     </span>
                                    @enderror
                                 </div>
-                                <div class="col-md-1">
-                                    <label class="form-label">P:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteP') is-invalid @enderror" value="{{old('qteP')}}" name="qteP" placeholder="0" />
-                                    @error('qteP')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                   @enderror
-                                </div>
+                       
                                 <div class="col-md-1">
                                     <label class="form-label">W:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteW') is-invalid @enderror" value="{{old('qteW')}}" name="qteW" placeholder="0" />
