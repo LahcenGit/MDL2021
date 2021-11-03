@@ -15,14 +15,14 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Ajouter Vndeur</h6>
+                    <h6 class="card-title">Ajouter Vendeur</h6>
                     <p class="text-muted mb-3">Veuillez remplir tous les champs s'il vous plait!</p>
                     <form class="forms-sample" method="POST" action="{{url('/milkcheck/vendeurs')}}" enctype="multipart/form-data">
                         @csrf 
                        
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label class="form-label">Name:</label>
+                                <label class="form-label">Nom complet:</label>
                                 <input class="form-control mb-4 mb-md-0  input-default @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" placeholder="Mohamed Abdullah" />
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label class="form-label">email:</label>
+                                <label class="form-label">Email:</label>
                                 <input class="form-control mb-4 mb-md-0  input-default @error('email') is-invalid @enderror" name="email" value="{{old('email')}}" placeholder="Mohamed@gmail.com" />
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label class="form-label">N° d'agrement:</label>
+                                <label class="form-label">N° d'agrément:</label>
                                 <input class="form-control mb-4 mb-md-0 input-default @error('n_agrement') is-invalid @enderror" name="numero" value="{{old('numero')}}" placeholder="13681"/>
                                 @error('n_agrement')
                                 <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
                             </div>
                             
                         </div>
-                        <button class="btn btn-primary" type="submit">Ajouter</button>
+                        <button class="btn btn-primary" type="submit">Ajouter Le vendeur</button>
                     </form>
                 </div>
             </div>

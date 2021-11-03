@@ -21,7 +21,7 @@ class VendeurController extends Controller
            
             'email' => 'required',
             'name' => 'required',
-            'n_agrement' => 'required',
+            'numero' => 'required',
             'date' => 'required',
             
         ]);

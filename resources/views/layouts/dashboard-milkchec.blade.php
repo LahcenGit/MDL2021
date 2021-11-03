@@ -54,7 +54,7 @@ License: For each use you must have a valid license purchased only from above li
 		<nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-          Noble<span>UI</span>
+          MDL<span>Check</span>
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>
@@ -65,22 +65,13 @@ License: For each use you must have a valid license purchased only from above li
       <div class="sidebar-body">
         <ul class="nav">
           <li class="nav-item nav-category">Main Menu</li>
-         
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-              <i class="link-icon" data-feather="mail"></i>
+            <a href="{{url('milkcheck')}}" class="nav-link">
+              <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Statistiques</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="emails">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{url('milkcheck')}}" class="nav-link">Vue d'ensemble</a>
-                </li>
-               
-              </ul>
-            </div>
           </li>
+
           
           <li class="nav-item nav-category">Components</li>
           <li class="nav-item">
@@ -101,6 +92,7 @@ License: For each use you must have a valid license purchased only from above li
               </ul>
             </div>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
               <i class="link-icon" data-feather="anchor"></i>
@@ -194,9 +186,7 @@ License: For each use you must have a valid license purchased only from above li
 					</form>
 					<ul class="navbar-nav">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
-							</a>
+						
 							<div class="dropdown-menu" aria-labelledby="languageDropdown">
                 <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
                 <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
@@ -513,7 +503,7 @@ var options = {
     data: [25,26,27,28,29,30,31,32,33]
   }],
   title: {
-          text: 'F',
+          text: 'Fat (g/L)',
           align: 'left'
         },
   xaxis: {
@@ -537,7 +527,7 @@ chart.render();
    
        
     title: {
-          text: 'D',
+          text: 'Densité (degré dornic)',
           align: 'left'
         },
         grid: {
@@ -565,7 +555,7 @@ chart.render();
         data: [2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3]
       }],
       title: {
-          text: 'P',
+          text: 'Protéine (g/l)',
           align: 'left'
         },
       xaxis: {

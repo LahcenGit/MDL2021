@@ -55,17 +55,17 @@ License: For each use you must have a valid license purchased only from above li
                         @csrf
 				<div class="row">
                 <div class="col-md-4 pe-md-0">
-                  <div class="auth-side-wrapper">
+                  <div class="auth-side-wrapper" style="background-image: url({{asset('/assets/images/milk.jpg')}}">
 
                   </div>
                 </div>
                 <div class="col-md-8 ps-md-0">
                   <div class="auth-form-wrapper px-4 py-5">
-                    <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
-                    <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
+                    <a href="#" class="noble-ui-logo d-block mb-2">MDL<span>Check</span></a>
+                    <h5 class="text-muted fw-normal mb-4">Beinvenue ! merci de se connecter</h5>
                     <form class="forms-sample">
                       <div class="mb-3">
-                        <label for="userEmail" class="form-label">Email address</label>
+                        <label for="userEmail" class="form-label">Email</label>
                         <input type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="userEmail" placeholder="Email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -74,7 +74,7 @@ License: For each use you must have a valid license purchased only from above li
                      @enderror
                     </div>
                       <div class="mb-3">
-                        <label for="userPassword" class="form-label">Password</label>
+                        <label for="userPassword" class="form-label">Mots de passe</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="userPassword" autocomplete="current-password" placeholder="Password">
                         @error('password')
                                     <span class="invalid-feedback" role="alert">
