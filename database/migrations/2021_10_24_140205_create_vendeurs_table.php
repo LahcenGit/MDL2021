@@ -21,6 +21,7 @@ class CreateVendeursTable extends Migration
             $table->string('n_agrement');
             $table->string('date');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +33,9 @@ class CreateVendeursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendeurs');
+        
+        Schema::table('vendeurs', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

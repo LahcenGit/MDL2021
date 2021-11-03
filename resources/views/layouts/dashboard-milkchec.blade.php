@@ -120,7 +120,7 @@ License: For each use you must have a valid license purchased only from above li
             <div class="collapse" id="forms">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/forms/basic-elements.html" class="nav-link">Profil</a>
+                  <a href="{{url('milkcheck/profil')}}" class="nav-link">Profil</a>
                 </li>
                
               </ul>

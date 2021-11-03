@@ -35,10 +35,13 @@
             <td>{{$vendeur->date}}</td>
             
             <td>
+              <form action="{{url('milkcheck/vendeurs/'.$vendeur->id)}}" method="post">
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
                 <div class="d-flex">
-                  <a href="#" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
+                  <a href="{{url('milkcheck/vendeurs/'.$vendeur->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
                   
-                  <a href="#" class="btn btn-danger shadow btn-xs sharp "><i class="mdi mdi-delete "></i></a>
+                  <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
                 </div>	
             </td>
           </tr>

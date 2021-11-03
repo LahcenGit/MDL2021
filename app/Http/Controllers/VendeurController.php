@@ -41,4 +41,24 @@ class VendeurController extends Controller
         $vendeur->save();
         return redirect('milkcheck/vendeurs');
     }
+        public function edit($id){
+            $vendeur = Vendeur::find($id);
+            return view('milkcheck.edit-vendeur',compact('vendeur'));            
+        }
+        public function update(Request $request,$id){
+            $vendeur = Vendeur::find($id);
+            $vendeur->name = $request->name;
+            $vendeur->email = $request->email;
+            $vendeur->n_agrement = $request->numero;
+            $vendeur->date = $request->date;
+            $vendeur->save();
+               return redirect('milkcheck/vendeurs');
+        }
+
+        public function destroy($id){
+            $vendeur = Vendeur::find($id);
+            $vendeur->delete();
+            return redirect('milkcheck/vendeurs')->with('success','Vendeur supprimé :)');
+        }
+    
 }

@@ -19,6 +19,7 @@ class CreateAchatsTable extends Migration
             $table->integer('qte');
             $table->string('destination');
             $table->foreign('vendeur_id')->references('id')->on('vendeurs')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -30,6 +31,8 @@ class CreateAchatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('achats');
+        Schema::table('achats', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

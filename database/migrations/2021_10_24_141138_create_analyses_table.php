@@ -26,6 +26,7 @@ class CreateAnalysesTable extends Migration
             $table->float('t');
             $table->float('fp');
             $table->foreign('achat_id')->references('id')->on('achats')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -37,6 +38,9 @@ class CreateAnalysesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('analyses');
+        
+        Schema::table('analyses', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

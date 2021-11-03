@@ -52,7 +52,13 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
+        if($data['check'] == "milkcheck"){
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        }
         if($data['check'] == "pro"){
 
             return Validator::make($data, [
@@ -100,6 +106,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if($data['check'] == "milkcheck"){
+            $user = new User;
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = Hash::make($data['password']);
+            $user->save();
+        }
       
 
         if($data['check'] == "pro"){
@@ -107,8 +120,8 @@ class RegisterController extends Controller
         $user = new User;
 
         $user->type = 1;
-        $user->nom = $data['nom'];
-        $user->prenom = $data['prenom'];
+        $user->name = $data['name'];
+        
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->save();
@@ -134,8 +147,8 @@ class RegisterController extends Controller
         $user = new User;
 
         $user->type = 2;
-        $user->nom = $data['nom'];
-        $user->prenom = $data['prenom'];
+        $user->name = $data['name'];
+        
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->save();
