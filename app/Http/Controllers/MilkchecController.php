@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Achat;
+use App\Models\Analyse;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,16 @@ class MilkchecController extends Controller
                          ->limit(5)
                          ->get();
 
+       
+                        
         
         return view('milkcheck.milkcheck',compact('lait','fromage','achat','randement','achats'));
+    }
+
+    public function dataf(){
+     
+        $fs = Analyse::whereMonth('created_at', Carbon::now()->month)
+                        ->get();
+        return $fs;
     }
 }

@@ -493,15 +493,42 @@ $(".show-achat").click(function() {
 });
 
 </script>
+
+
+
 <script>
+  var i ;
+  var fs ;
+  let  dataf = [];
+
+  
+  
+   $.ajax({
+				url: '/data-f' ,
+				type: "GET",
+        async:false,
+				success: function (results) {
+          $.each(results, function(key,result) {
+             dataf.push(result.f); 
+             
+					});
+				}
+		});
+
+
 var options = {
   chart: {
     type: 'line'
   },
   series: [{
     name: 'Desktops',
-    data: [25,26,27,28,29,30,31,32,33]
-  }],
+    data:[
+     
+    for(var j=0; j<i ;j++)
+      dataf[j]+','; 
+    
+    ]
+    }],
   title: {
           text: 'Fat (g/L)',
           align: 'left'
@@ -515,6 +542,8 @@ var chart = new ApexCharts(document.querySelector("#chart"), options);
 
 chart.render();
 </script>
+
+
 <script>
   var options = {
     chart: {
@@ -567,5 +596,7 @@ chart.render();
     
     chart.render();
     </script>
+
+  
 </body>
 </html>    

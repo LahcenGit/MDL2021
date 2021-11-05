@@ -28,6 +28,7 @@ Route::resource('milkcheck/vendeurs', VendeurController::class);
 Route::resource('milkcheck/achats', AchatController::class);
 Route::resource('milkcheck/profil', ProfilmilkcheckController::class);
 Route::resource('milkcheck', MilkchecController::class);
+Route::get('data-f', [App\Http\Controllers\MilkchecController::class, 'dataf']);
 Route::get('/show-achat/{id}', [App\Http\Controllers\AchatController::class, 'showAchat']);
 Auth::routes();
 
