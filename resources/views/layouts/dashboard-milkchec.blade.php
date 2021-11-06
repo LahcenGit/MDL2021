@@ -499,48 +499,47 @@ $(".show-achat").click(function() {
 <script>
   var i ;
   var fs ;
-  let  dataf = [];
+  let  dataf ;
+  let  datad ;
 
   
   
-   $.ajax({
+  $.ajax({
 				url: '/data-f' ,
 				type: "GET",
         async:false,
 				success: function (results) {
-          $.each(results, function(key,result) {
-             dataf.push(result.f); 
-             
-					});
+          dataf = results.fats ;
+          datad = results.days ;
+       
 				}
 		});
 
-
+ 
+ 
+     
 var options = {
   chart: {
     type: 'line'
   },
   series: [{
-    name: 'Desktops',
-    data:[
-     
-    for(var j=0; j<i ;j++)
-      dataf[j]+','; 
-    
-    ]
+    name: 'fats',
+    data: dataf
     }],
   title: {
           text: 'Fat (g/L)',
           align: 'left'
         },
   xaxis: {
-    categories: [18,19,20,21,22,23,24, 25,26]
+    categories: datad
   }
 }
 
 var chart = new ApexCharts(document.querySelector("#chart"), options);
 
 chart.render();
+
+
 </script>
 
 

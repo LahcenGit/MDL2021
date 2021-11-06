@@ -36,9 +36,46 @@ class MilkchecController extends Controller
     }
 
     public function dataf(){
+        $i = 0;
+        $results = [];
+        $tab = [];
      
-        $fs = Analyse::whereMonth('created_at', Carbon::now()->month)
+        $analyses = Analyse::whereMonth('created_at', Carbon::now()->month)
+                        ->groupBy(function($item)
+                        {
+                        return $item->created_at->format('d-M-y');
+                        })
+                        ->select('f')
                         ->get();
-        return $fs;
+
+        $anal = Analyse::latest()->get()
+
+        ->select('f')
+        ->select('created_at')
+                        ->groupBy(function($item)
+                        {
+                        return $item->created_at->format('d-M-y');
+                        });
+                        
+
+                dd( $anal);
+
+                      
+        foreach($analyses as $analyse){
+            $tab1[$i] = $analyse->f ;
+            $tab2[$i] = $analyse->created_at->format('d') ;
+            $i++;
+
+        }
+
+        $results = [
+            'fats' => $tab1,
+            'days' => $tab2,
+        ];
+        
+
+
+
+        return $results;
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendeurController;
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\MilkchecController;
+use App\Http\Controllers\PrinterController;
 use App\Http\Controllers\ProfilmilkcheckController;
 
 /*
@@ -28,6 +29,8 @@ Route::resource('milkcheck/vendeurs', VendeurController::class);
 Route::resource('milkcheck/achats', AchatController::class);
 Route::resource('milkcheck/profil', ProfilmilkcheckController::class);
 Route::resource('milkcheck', MilkchecController::class);
+Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achats']);
+Route::get('print-vendeur', [App\Http\Controllers\PrinterController::class, 'vendeurs']);
 Route::get('data-f', [App\Http\Controllers\MilkchecController::class, 'dataf']);
 Route::get('/show-achat/{id}', [App\Http\Controllers\AchatController::class, 'showAchat']);
 Auth::routes();
