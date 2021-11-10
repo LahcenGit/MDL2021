@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Professionnel extends Model
+class Image extends Model
 {
     use HasFactory;
-
-    public function user()
+    public function produit()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Produit::class);
     }
 }

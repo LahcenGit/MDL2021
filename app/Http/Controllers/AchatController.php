@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class AchatController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $achats = Achat::with('vendeur')->get();
         return view('milkcheck.achats',compact('achats'));        

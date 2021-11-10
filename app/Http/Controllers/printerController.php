@@ -9,6 +9,10 @@ use Carbon\Carbon;
 class printerController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function achats(){
 
         $achats = Achat::with('vendeur')
@@ -16,7 +20,7 @@ class printerController extends Controller
         ->get();
         $countachat = Achat::whereMonth('created_at', Carbon::now()->month)
                         ->count();
-        $date =  Carbon::now()->month()->format('M');         
+        $date =  Carbon::now()->month()->format('m');         
         return view('milkcheck.print-achat',compact('achats','countachat','date'));
     }
 

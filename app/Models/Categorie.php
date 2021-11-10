@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Categorie extends Model
 {
     use HasFactory;
+
+    public function categories()
+    {
+        return $this->hasMany(Categorie::class, 'parent_id');
+    }
+
+    // This is method where we implement recursive relationship
+    public function childCategories()
+    {
+        return $this->hasMany(Categorie::class, 'parent_id')->with('categories');
+    }
 }

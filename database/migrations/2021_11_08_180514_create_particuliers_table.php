@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParticuliesTable extends Migration
+class CreateParticuliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateParticuliesTable extends Migration
      */
     public function up()
     {
-        Schema::create('particulies', function (Blueprint $table) {
+        Schema::create('particuliers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->string('adresse');
@@ -24,8 +24,6 @@ class CreateParticuliesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
-
-        Schema::rename('particulies', 'particuliers');
     }
 
     /**
@@ -35,6 +33,6 @@ class CreateParticuliesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('particulies');
+        Schema::dropIfExists('particuliers');
     }
 }

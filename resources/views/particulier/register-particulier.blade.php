@@ -39,22 +39,15 @@
                     <div class="title">Détails personnels</div>
                 </div>
                 <div class="form-group dob">
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control  @error('nom') is-invalid @enderror" id="name"  name="nom" placeholder="Nom">
-                        @error('nom')
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name"  name="name" placeholder="Nom">
+                        @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control @error('prenom') is-invalid @enderror" id="prenom" name="prenom" placeholder="Prénom">
-                        @error('prenom')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
+                    
                 </div>
                 
                 

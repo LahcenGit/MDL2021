@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class VendeurController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $vendeurs = Vendeur::all();
         return view('milkcheck.vendeurs',compact('vendeurs'));

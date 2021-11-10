@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\professionnel;
+use App\Models\Professionnel;
 use App\Models\Particulier;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -81,8 +81,7 @@ class RegisterController extends Controller
         else {
 
             return Validator::make($data, [
-                'nom' => ['required', 'string', 'max:255'],
-                'prenom' => ['required', 'string', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
                 'adresse' => ['required', 'string', 'max:255'],
                 'wilaya' => ['required', 'string', 'max:255'],
                 'commune' => ['required', 'string', 'max:255'],
@@ -119,14 +118,14 @@ class RegisterController extends Controller
 
         $user = new User;
 
-        $user->type = 1;
+        $user->type = 'professionnel';
         $user->name = $data['name'];
         
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->save();
 
-        $professionnel = new professionnel();
+        $professionnel = new Professionnel();
       
         $professionnel->entreprise = $data['entreprise'];
         $professionnel->adresse = $data['adresse'];
@@ -146,7 +145,7 @@ class RegisterController extends Controller
         
         $user = new User;
 
-        $user->type = 2;
+        $user->type = 'particulier';
         $user->name = $data['name'];
         
         $user->email = $data['email'];

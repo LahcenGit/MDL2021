@@ -8,7 +8,7 @@
             <li class="breadcrumb-item active" aria-current="page">Vendeurs</li>
         </ol>
     </nav>
-
+    @include('flash-message')
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
 <div class="card">

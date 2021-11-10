@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendeurController;
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\MilkchecController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\PrinterController;
 use App\Http\Controllers\ProfilmilkcheckController;
 
@@ -25,10 +28,17 @@ Route::get('/login-milkcheck', function () {
     return view('auth/login-milkcheck');
 });
 
+Route::get('/dashboard-admin', function () {
+    return view('admin.dashboard-admin');
+});
+
 Route::resource('milkcheck/vendeurs', VendeurController::class);
 Route::resource('milkcheck/achats', AchatController::class);
 Route::resource('milkcheck/profil', ProfilmilkcheckController::class);
 Route::resource('milkcheck', MilkchecController::class);
+Route::resource('dashboard-admin/particuliers', AdminController::class);
+Route::resource('dashboard-admin/categories', CategorieController::class);
+Route::resource('dashboard-admin/produits', ProduitController::class);
 Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achats']);
 Route::get('print-vendeur', [App\Http\Controllers\PrinterController::class, 'vendeurs']);
 Route::get('data-f', [App\Http\Controllers\MilkchecController::class, 'dataf']);
@@ -42,7 +52,7 @@ Route::get('/register-pro', function () {
 });
 
 Route::get('/register-particulier', function () {
-    return view('register-particulier');
+    return view('particulier.register-particulier');
 });
 
 Route::get('/produit', function () {
