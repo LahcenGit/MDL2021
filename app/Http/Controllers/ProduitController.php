@@ -24,15 +24,17 @@ class ProduitController extends Controller
     }
 
     public function store(Request $request){
-        $hasFile = $request->hasFile('photo');
-      
+        $hasFileP = $request->hasFile('photo');
+        $hasFile = $request->hasFile('imageFile');
   
-        if($hasFile){
+        /*if($hasFileP){
           $path =  $request->file('photo');
           $name = $path->store('produitPhoto');
           $lien = Storage::url($name);
 
-        }
+        }*/
+        $lien = [];
+        
         $produit = new Produit();
         $produit->designation = $request->designation;
         $produit->prix = $request->prix;
@@ -40,10 +42,19 @@ class ProduitController extends Controller
         $produit->categorie_id = $request->categorie;
         
         $produit->save();
+        if($hasFile){
+            foreach($request->file('imageFile') as $file){
+            $path =  $file;
+            $name = $path->store('produitPhoto');
+            $lien = Storage::url($name); 
 
-        $media = new Image;
-        $media->lien = $lien;
-        $produit->images()->save($media);
+            $fileModal = new Image();
+            $fileModal->lien = $lien;
+            
+            $produit->images()->save($fileModal);
+            }
+
+        }
         return redirect('dashboard-admin/produits');
     }
 }

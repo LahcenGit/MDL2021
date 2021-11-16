@@ -1,4 +1,20 @@
 @extends('layouts.dashboard-admin')
+
+<style>
+    .container {
+        max-width: 500px;
+    }
+    dl, ol, ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .imgPreview img {
+        padding: 8px;
+        max-width: 100px;
+    } 
+</style>
+
 @section('content')
 <div class="page-content">
 
@@ -119,6 +135,27 @@
                      </div>
                 </div>
             </div>
+
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Image principale</h4>
+                       
+                        <div class="user-image mb-3 text-center">
+                            <div class="imgPreview"> </div>
+                        </div>
+
+                        <div class="custom-file">
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class=" mdi mdi-cloud-upload"></i> Ajouter l'image
+                            </label>
+                            <input type="file" name="imageFile[]" class="custom-file-input" id="images" multiple="multiple">
+                            
+                        </div>
+                  
+                     </div>
+                </div>
+            </div>
             <div class="col-xl-12 col-lg-12">
              <div class="card">
                    
@@ -130,3 +167,31 @@
 </div>
 </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+    $(function() {
+    // Multiple images preview with JavaScript
+    var multiImgPreview = function(input, imgPreviewPlaceholder) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $('#images').on('change', function() {
+        multiImgPreview(this, 'div.imgPreview');
+    });
+    });    
+</script>

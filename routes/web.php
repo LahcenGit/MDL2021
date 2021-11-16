@@ -32,6 +32,10 @@ Route::get('/dashboard-admin', function () {
     return view('admin.dashboard-admin');
 });
 
+Route::get('/register-eleveur', function () {
+    return view('eleveur');
+});
+
 Route::resource('milkcheck/vendeurs', VendeurController::class);
 Route::resource('milkcheck/achats', AchatController::class);
 Route::resource('milkcheck/profil', ProfilmilkcheckController::class);
