@@ -42,6 +42,7 @@ License: For each use you must have a valid license purchased only from above li
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{asset('/assets/images/favicon.png')}}" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 	<div class="main-wrapper">
@@ -51,9 +52,9 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="row w-100 mx-0 auth-page">
 				<div class="col-md-12 col-xl-6 mx-auto">
 				<div class="card">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{url('register-eleveur')}}">
                         @csrf
-				<div class="row">
+				            <div class="row">
                     <div class="col-md-4 pe-md-0">
                         <div class="auth-side-wrapper" style="background-image: url({{asset('/assets/images/milk.jpg')}}">
       
@@ -68,11 +69,21 @@ License: For each use you must have a valid license purchased only from above li
                       <div class="row mb-3">
                       <div class="col-md-6">
                         <label for="exampleInputUsername1" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="Username" placeholder="Nom">
+                        <input type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value = "{{old('nom')}}"id="exampleInputUsername1" autocomplete="Username" placeholder="Nom">
+                        @error('nom')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                       @enderror
                       </div>
                       <div class="col-md-6">
                         <label for="userEmail" class="form-label">Prenom</label>
-                        <input type="text" class="form-control"  placeholder="Prenom">
+                        <input type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{old('prenom')}}"  placeholder="Prenom">
+                        @error('prenom')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                       @enderror
                       </div>
                         </div>
 
@@ -82,8 +93,8 @@ License: For each use you must have a valid license purchased only from above li
 								<select class="form-select" name="type"  class="form-control input-default  @error('type') is-invalid @enderror" id="exampleFormControlSelect1">
                                     <option value="0">select</option>
                                   
-                                        <option  value="e"  >Eleveur</option>
-                                        <option  value="c"  >Collecteur</option>
+                                        <option  value="e" @if (old('type') == "e" ) selected @endif  >Eleveur</option>
+                                        <option  value="c" @if (old('type') == "c" ) selected @endif  >Collecteur</option>
                                 @error('type')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -96,12 +107,12 @@ License: For each use you must have a valid license purchased only from above li
 
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <label for="exampleFormControlSelect1" class="form-label">Wilaya</label>
-								<select class="form-select" name="wilaya"  class="form-control input-default  @error('wilaya') is-invalid @enderror" id="exampleFormControlSelect1">
-                                    <option value="0">select</option>
-                                  
-                                        <option  value=""  ></option>
-                                  
+                            <label for="exampleFormControlSelect1" class="form-label">Wilaya</label>
+								         <select class="form-select select-wialaya" name="wilaya"  class="form-control input-default   @error('wilaya') is-invalid @enderror" >
+                                    
+                                   @foreach($wilayas as $wilaya)
+                                   <option  value="{{$wilaya->wilaya_name_ascii}}" @if (old('wilaya') == $wilaya->wilaya_name_ascii) selected @endif    >{{$wilaya->wilaya_name_ascii}}</option>
+                                    @endforeach
                                 @error('wilaya')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -112,10 +123,10 @@ License: For each use you must have a valid license purchased only from above li
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Commune</label>
-								<select class="form-select" name="commune"  class="form-control input-default  @error('commune') is-invalid @enderror" id="exampleFormControlSelect1">
+								                <select class="form-select" name="commune" id="select-commune" class="form-control input-default  @error('commune') is-invalid @enderror" >
                                     <option value="0">select</option>
                                   
-                                        <option  value=""  ></option>
+                                    <option  value=""  ></option>
                                   
                                 @error('commune')
                                 <span class="invalid-feedback" role="alert">
@@ -132,13 +143,13 @@ License: For each use you must have a valid license purchased only from above li
                                 Connaissez vous MDL ?
                               </label>
                             <div class="form-check form-check-inline">
-                            <input type="checkbox" name="check" class="form-check-input" id="checkInline">
+                            <input type="checkbox" value="oui" name="check" class="form-check-input" id="checkInline">
                                 <label class="form-check-label" for="checkInline">
                                   Oui
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                           <input type="checkbox" name="check" class="form-check-input" id="checkInlineChecked" >
+                           <input type="checkbox" value="non" name="check" class="form-check-input" id="checkInlineChecked" >
                                 <label class="form-check-label" for="checkInlineChecked">
                                    Non
                                 </label>
@@ -147,7 +158,8 @@ License: For each use you must have a valid license purchased only from above li
                           
                         </div>
                       
-                     
+                      
+                        
                         <button class="btn btn-primary" type="submit">Connecter</button>
                     </form>
                   </div>
@@ -176,5 +188,26 @@ License: For each use you must have a valid license purchased only from above li
 	<!-- Custom js for this page -->
 	<!-- End custom js for this page -->
 
+  <script>
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+	        });
+          
+		$(".select-wilaya").change(function() {
+      
+			var name = $(this).val();
+      alert(name);
+			$.ajax({
+				url: '/get-commune/' + name,
+				type: "GET",
+				success: function (res) {
+					$('#select-commune').val(res);
+				}
+			});
+			
+		});
+  </script>
 </body>
 </html>

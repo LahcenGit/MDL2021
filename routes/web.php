@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\PrinterController;
+use App\Http\Controllers\EleveurController;
 use App\Http\Controllers\ProfilmilkcheckController;
 
 /*
@@ -32,14 +33,13 @@ Route::get('/dashboard-admin', function () {
     return view('admin.dashboard-admin');
 });
 
-Route::get('/register-eleveur', function () {
-    return view('eleveur');
-});
+
 
 Route::resource('milkcheck/vendeurs', VendeurController::class);
 Route::resource('milkcheck/achats', AchatController::class);
 Route::resource('milkcheck/profil', ProfilmilkcheckController::class);
 Route::resource('milkcheck', MilkchecController::class);
+Route::resource('register-eleveur', EleveurController::class);
 Route::resource('dashboard-admin/particuliers', AdminController::class);
 Route::resource('dashboard-admin/categories', CategorieController::class);
 Route::resource('dashboard-admin/produits', ProduitController::class);
@@ -47,6 +47,7 @@ Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achat
 Route::get('print-vendeur', [App\Http\Controllers\PrinterController::class, 'vendeurs']);
 Route::get('data-f', [App\Http\Controllers\MilkchecController::class, 'dataf']);
 Route::get('/show-achat/{id}', [App\Http\Controllers\AchatController::class, 'showAchat']);
+Route::get('/get-commune/{name}', [App\Http\Controllers\AchatController::class, 'selectCommune']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
