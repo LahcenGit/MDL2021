@@ -33,6 +33,10 @@ Route::get('/dashboard-admin', function () {
     return view('admin.dashboard-admin');
 });
 
+Route::get('/badge', function () {
+    return view('badge');
+});
+
 
 
 Route::resource('milkcheck/vendeurs', VendeurController::class);
@@ -47,7 +51,7 @@ Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achat
 Route::get('print-vendeur', [App\Http\Controllers\PrinterController::class, 'vendeurs']);
 Route::get('data-f', [App\Http\Controllers\MilkchecController::class, 'dataf']);
 Route::get('/show-achat/{id}', [App\Http\Controllers\AchatController::class, 'showAchat']);
-Route::get('/get-commune/{name}', [App\Http\Controllers\AchatController::class, 'selectCommune']);
+Route::get('/get-commune/{name}', [App\Http\Controllers\EleveurController::class, 'selectCommune']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -59,6 +63,7 @@ Route::get('/register-pro', function () {
 Route::get('/register-particulier', function () {
     return view('particulier.register-particulier');
 });
+
 
 Route::get('/produit', function () {
     return view('produit');

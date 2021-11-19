@@ -11,8 +11,8 @@ use Illuminate\Http\Request;
 class EleveurController extends Controller
 {
     //
-    public function create(){
-        $wilayas = Citie::distinct('wilaya_name_ascii')->get();
+    public function index(){
+        $wilayas = Citie::distinct()->get('wilaya_name_ascii');
        
         return view('eleveur',compact('wilayas'));
     }
@@ -36,6 +36,13 @@ class EleveurController extends Controller
         $eleveur->commune = $request->commune;
         $eleveur->check = $request->check;
         $eleveur->save();
+
+
+        $nom =  $eleveur->nom;
+        $prenom =  $eleveur->prenom;
+        $wilaya =  $eleveur->wilaya;
+        $type =  $eleveur->type;
+        return view('badge',compact('nom','prenom','wilaya','type')); 
 
     }
 
