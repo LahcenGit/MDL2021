@@ -12,7 +12,7 @@ class EleveurController extends Controller
 {
     //
     public function index(){
-        $wilayas = Citie::distinct()->get('wilaya_name_ascii');
+        $wilayas = Citie::distinct()->get('wilaya_name');
        
         return view('eleveur',compact('wilayas'));
     }
@@ -42,12 +42,13 @@ class EleveurController extends Controller
         $prenom =  $eleveur->prenom;
         $wilaya =  $eleveur->wilaya;
         $type =  $eleveur->type;
-        return view('badge',compact('nom','prenom','wilaya','type')); 
+        return view('badge',compact('nom','prenom','wilaya','type'))
+        ->with('success','تم التسجيل بنجاح ! سعداء بالالتقاء بكم جميعًا، يرجى الاحتفاظ بالشارة الظاهرة في الأسفل ');; 
 
     }
 
     public function selectCommune($name){
-        $communes = Citie::where('wilaya_name_ascii',$name)->get();
+        $communes = Citie::where('wilaya_name',$name)->get();
         return $communes;
     }
 }

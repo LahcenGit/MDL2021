@@ -8,40 +8,28 @@ Portfolio: https://themeforest.net/user/nobleui/portfolio
 Contact: nobleui123@gmail.com
 License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
 -->
-<html lang="en">
+<html lang="ar "dir="rtl">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="NobleUI">
-	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+ 
+	<title>ملتقى يوم الحليب</title>
 
-	<title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
 
-  <!-- Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <!-- End fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
-	<!-- core:css -->
-	<link rel="stylesheet" href="{{asset('assets/vendors/core/core.css')}}">
-	<!-- endinject -->
+	
 
-	<!-- Plugin css for this page -->
-	<!-- End plugin css for this page -->
 
-	<!-- inject:css -->
-	<link rel="stylesheet" href="{{asset('/assets/fonts/feather-font/css/iconfont.css')}}">
-	<link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
-	<!-- endinject -->
 
-  <!-- Layout styles -->  
-	<link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
-  <!-- End layout styles -->
+  
 
-  <link rel="shortcut icon" href="{{asset('/assets/images/favicon.png')}}" />
+  <link rel="shortcut icon" href="{{asset('/assets/images/faviconmdl.png')}}" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
@@ -58,7 +46,11 @@ License: For each use you must have a valid license purchased only from above li
     font-size: 13px;
     padding: 0;
    
+
   }
+ 
+
+  
 </style>
 <body>
 	<div class="main-wrapper">
@@ -67,7 +59,7 @@ License: For each use you must have a valid license purchased only from above li
 
 				
 				<div class="card col-md-8">
-            <form method="POST" action="{{url('register-eleveur')}}">
+            <form method="POST" action="{{url('journeedulait')}}">
                 @csrf
                
                 <div class="col-md-12 ps-md-0">
@@ -77,40 +69,42 @@ License: For each use you must have a valid license purchased only from above li
                       <img src="{{asset('mdltheme/logo.jpg')}}" alt="">
                     </div>
                     
-                    <h5 class="text-muted fw-normal">Bienvenue sur la page d'enregistrement de <span class="title"> La journnée du lait</span></h5>
-                    <h5 class=" badge fw-normal mb-3 ">Vous pouvez dès à présent avoir votre badge </h5>
+                    <h5 class="text-muted fw-normal">مرحبا بكم في صفحة التسجيل الخاصة  <span class="title"> بملتقى يوم الحليب</span> يوم 30 نوفمبر بفندق رونيسانس تلمسان</h5>
+                    <h5 class=" badge fw-normal mb-3 "> عند اتمام التسجيل ستظهر لكم شارة الدخول الخاصة بكم! يرجى الاحتفاظ بها  </h5>
                     <form class="forms-sample">
                       <div class="row">
-                      <div class="col-md-6 mb-3">
-                        <label for="exampleInputUsername1" class="form-label">Nom* :</label>
-                        <input type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value = "{{old('nom')}}" placeholder="Nom" required>
-                        @error('nom')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                       @enderror
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="userEmail" class="form-label">Prenom* :</label>
-                        <input type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{old('prenom')}}"  placeholder="Prenom" required>
+                        <div class="col-md-6 mb-3">
+                          <label for="userEmail" class="form-label">الإسم* :</label>
+                        <input type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{old('prenom')}}"  placeholder="الأسم" required>
                         @error('prenom')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                        @enderror
                       </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="exampleInputUsername1" class="form-label">اللّقب* :</label>
+                        <input type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value = "{{old('nom')}}" placeholder="اللّقب" required>
+                        @error('nom')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                       @enderror
+                      </div>
+                     
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-12">
-                             <label for="exampleFormControlSelect1" class="form-label">Vous êtes* :</label>
+                             <label for="exampleFormControlSelect1" class="form-label">هل أنتم* :</label>
 					                        <select class="form-select" name="type"  class="form-control input-default  @error('type') is-invalid @enderror" id="exampleFormControlSelect1" required>
                                    
                                   
-                                    <option  value="eleveur" @if (old('type') == "eleveur" ) selected @endif  >Eleveur</option>
-                                    <option  value="collecteur" @if (old('type') == "collecteur" ) selected @endif  >Collecteur</option>
-                                    <option  value="veterinaire" @if (old('type') == "veterinaire" ) selected @endif  >Vétérinaire</option>
-                                    <option  value="autre" @if (old('type') == "autre" ) selected @endif  >Autre</option>
+                                    <option  value="مربي" @if (old('type') == "مربي" ) selected @endif  >مربي</option>
+                                    <option  value="فلاح" @if (old('type') == "فلاح" ) selected @endif  >فلاح</option>
+                                    <option  value="جامع الحليب" @if (old('type') == "جامع الحليب" ) selected @endif>جامع الحليب</option>
+                                    <option  value="بيطري" @if (old('type') == "بيطري" ) selected @endif  >بيطري</option>
+                                    <option  value="مشارك" @if (old('type') == "مشارك" ) selected @endif  >مشارك </option>
                                 @error('type')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -123,10 +117,10 @@ License: For each use you must have a valid license purchased only from above li
 
                         <div class="row ">
                             <div class="col-md-6 mb-3">
-                            <label for="exampleFormControlSelect1" class="form-label">Wilaya* :</label>
+                            <label for="exampleFormControlSelect1" class="form-label">الولاية* :</label>
 								             <select class="form-select select-wilaya" name="wilaya"  class="form-control input-default   @error('wilaya') is-invalid @enderror" required >
                                    @foreach($wilayas as $wilaya)
-                                   <option  value="{{$wilaya->wilaya_name_ascii}}" @if (old('wilaya') == $wilaya->wilaya_name_ascii) selected @endif    >{{$wilaya->wilaya_name_ascii}}</option>
+                                   <option  value="{{$wilaya->wilaya_name}}" @if (old('wilaya') == $wilaya->wilaya_name) selected @endif    >{{$wilaya->wilaya_name}}</option>
                                     @endforeach
                                 @error('wilaya')
                                 <span class="invalid-feedback" role="alert">
@@ -137,7 +131,7 @@ License: For each use you must have a valid license purchased only from above li
                                
                             </div>
                             <div class="col-md-6  mb-3">
-                                <label for="exampleFormControlSelect1" class="form-label">Commune* :</label>
+                                <label for="exampleFormControlSelect1" class="form-label">البلدية* :</label>
 								                <select class="form-select" name="commune" id="select-commune" class="form-control input-default " required >
                          
                                 </select>
@@ -147,19 +141,19 @@ License: For each use you must have a valid license purchased only from above li
                         </div>
                         <div class="mb-4">
                             <label class="form-check-label" for="authCheck">
-                                Connaissez vous la maison du lait ?
+                                هل تعرفون مسبقا دار الحليب؟
                               </label>
                               <div class="row mt-3" style="margin-left:1px !important; ">
                                 <div class="form-check col-2">
-                                  <input class="form-check-input" type="radio" name="check" value="oui" id="flexRadioDefault1" checked>
+                                  <input class="form-check-input" type="radio" name="check" value="نعم" id="flexRadioDefault1" checked>
                                   <label class="form-check-label" for="flexRadioDefault1">
-                                  Oui
+                                  نعم
                                   </label>
                                 </div>
                                 <div class="form-check col-2">
-                                  <input class="form-check-input" type="radio" name="check" value="non" id="flexRadioDefault2" >
+                                  <input class="form-check-input" type="radio" name="check" value="لا" id="flexRadioDefault2" >
                                   <label class="form-check-label" for="flexRadioDefault2">
-                                    Non
+                                    لا
                                   </label>
                                 </div>
                               </div>
@@ -167,7 +161,7 @@ License: For each use you must have a valid license purchased only from above li
                       
                       
                         <div class="d-flex align-items-center justify-content-center">
-                          <button class="btn btn-primary" type="submit">Inscrire et obtenir votre badge</button>
+                          <button class="btn btn-primary" type="submit">سجل وأحصل على شارة الدخول </button>
                         </div>
                       
                        
@@ -183,6 +177,7 @@ License: For each use you must have a valid license purchased only from above li
 		</div>
 	</div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<!-- core:js -->
 	<script src="{{asset('/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
@@ -213,18 +208,20 @@ License: For each use you must have a valid license purchased only from above li
 			$.ajax({
 				url: '/get-commune/' + name,
 				type: "GET",
+
 				success: function (res) {
           
         
 					$.each(res, function(i, res) {
 
-            data = data + '<option value="'+ res.commune_name_ascii+ '">'+ res.commune_name_ascii + '</option>';
+            data = data + '<option value="'+ res.commune_name+ '">'+ res.commune_name + '</option>';
             
 					});
 
           $('#select-commune').html(data);
 				}
 			});
+
 
      
 			

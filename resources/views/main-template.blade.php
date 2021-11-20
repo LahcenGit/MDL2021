@@ -32,70 +32,26 @@ License: For each use you must have a valid license purchased only from above li
 
 <style>
 
-.img{
-	position: absolute;
-	height: 100%;
-	width: 100%;
-}
-.type{
-	color: #ffff;
-	z-index: 100;
-  	position: absolute;
-	top: 430px;
-	text-transform: capitalize;
-	font-family: 'Cairo', sans-serif;
-}
-.name{
-	color: rgb(114, 114, 114);
-	z-index: 100;
-  	position: absolute;
-	top: 289px;
-	right: 146px;
-	font-family: 'Cairo', sans-serif;
-}
-.last{
-	color: rgb(114, 114, 114);
-	z-index: 100;
-  	position: absolute;
-	top: 317px;
-	right: 146px;
-	font-family: 'Cairo', sans-serif;
-}
-.wilaya{
-	color: rgb(114, 114, 114);
-	z-index: 100;
-  	position: absolute;
-	top: 345px;
-	right: 146px;
-	font-family: 'Cairo', sans-serif;
-}
 
-.alert-success {
-    color: #3A7024 !important;
-    background-color: #BFE2B0 !important;
-    border-color: #6CBCBFE2B050 !important;
-}
+
+
+
+
 
 
 </style>
 <body>
 	<div class="main-wrapper">
-		<div class="alert alert-success" role="alert">
-			تم التسجيل بنجاح ! سعداء بالالتقاء بكم جميعًا، يرجى الاحتفاظ بالشارة الظاهرة في الأسفل 
-		</div>
+		
 		<div class="page-wrapper full-page">
 			<div class="page-content d-flex align-items-center justify-content-center">
 
 				
 				
-				<div class="card" style="height: 519px ; width : 400px;">
-                    <img src="{{asset('mdltheme/Badge.jpg')}}"  class="img" alt="">
-					<h4 class="name ">{{$prenom}}</h4>
-					<h4 class="last ">{{$nom}}</h4>
-					<h4 class="wilaya ">{{$wilaya}}</h4>
-					<div class="d-flex align-items-center justify-content-center">
-						<h3 class="type ">{{$type}}</h3>
-					</div>
+				<div class="card" style="height: 686px ; width : 600px;">
+                    <img src="{{asset('mdltheme/main.jpg')}}"  class="img" alt="">
+					
+					
 					
 				</div>
 

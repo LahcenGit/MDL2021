@@ -23,7 +23,7 @@ use App\Http\Controllers\ProfilmilkcheckController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main-template');
 });
 Route::get('/login-milkcheck', function () {
     return view('auth/login-milkcheck');
@@ -43,7 +43,7 @@ Route::resource('milkcheck/vendeurs', VendeurController::class);
 Route::resource('milkcheck/achats', AchatController::class);
 Route::resource('milkcheck/profil', ProfilmilkcheckController::class);
 Route::resource('milkcheck', MilkchecController::class);
-Route::resource('register-eleveur', EleveurController::class);
+Route::resource('journeedulait', EleveurController::class);
 Route::resource('dashboard-admin/particuliers', AdminController::class);
 Route::resource('dashboard-admin/categories', CategorieController::class);
 Route::resource('dashboard-admin/produits', ProduitController::class);
@@ -59,6 +59,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/register-pro', function () {
     return view('professionel/register-pro');
 });
+
+
 
 Route::get('/register-particulier', function () {
     return view('particulier.register-particulier');
