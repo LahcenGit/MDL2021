@@ -18,6 +18,8 @@ class CreateEleveursTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('type');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->string('wilaya');
             $table->string('commune');
             $table->string('check');
