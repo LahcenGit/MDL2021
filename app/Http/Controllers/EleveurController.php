@@ -32,6 +32,8 @@ class EleveurController extends Controller
         $eleveur->nom = $request->nom;
         $eleveur->prenom = $request->prenom;
         $eleveur->type = $request->type;
+        $eleveur->phone = $request->phone;
+        $eleveur->email = $request->email;
         $eleveur->wilaya = $request->wilaya;
         $eleveur->commune = $request->commune;
         $eleveur->check = $request->check;

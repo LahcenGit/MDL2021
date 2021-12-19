@@ -45,8 +45,15 @@ License: For each use you must have a valid license purchased only from above li
     color: #2157A5;
     font-size: 13px;
     padding: 0;
+
    
 
+  }
+  .alert{
+    color: red;
+    font-size: 15px;
+    padding: 0;
+    font-weight: 800;
   }
  
 
@@ -70,7 +77,8 @@ License: For each use you must have a valid license purchased only from above li
                     </div>
                     
                     <h5 class="text-muted fw-normal">مرحبا بكم في صفحة التسجيل الخاصة  <span class="title"> بملتقى يوم الحليب</span> يوم 30 نوفمبر بفندق رونيسانس تلمسان</h5>
-                    <h5 class=" badge fw-normal mb-3 "> عند اتمام التسجيل ستظهر لكم شارة الدخول الخاصة بكم! يرجى الاحتفاظ بها  </h5>
+                    <p class=" badge "> عند اتمام التسجيل ستظهر لكم شارة الدخول الخاصة بكم! يرجى الاحتفاظ بها  </p> <br>
+                    <p class="alert"> كتدابير وقائية خاصة بجائحة كورونا سيكون الدخول متاح فقط للمهنيين مربي،فلاح،بيطري...شكرا لتفمكم   </p>
                     <form class="forms-sample">
                       <div class="row">
                         <div class="col-md-6 mb-3">
@@ -104,7 +112,6 @@ License: For each use you must have a valid license purchased only from above li
                                     <option  value="فلاح" @if (old('type') == "فلاح" ) selected @endif  >فلاح</option>
                                     <option  value="جامع الحليب" @if (old('type') == "جامع الحليب" ) selected @endif>جامع الحليب</option>
                                     <option  value="بيطري" @if (old('type') == "بيطري" ) selected @endif  >بيطري</option>
-                                    <option  value="مشارك" @if (old('type') == "مشارك" ) selected @endif  >مشارك </option>
                                 @error('type')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -137,8 +144,25 @@ License: For each use you must have a valid license purchased only from above li
                                 </select>
                                
                             </div>
+
+
+
                             
                         </div>
+
+                        <div class="row">
+                          <div class="col-md-6 mb-3">
+                            <label for="userEmail" class="form-label">رقم الهاتف* :</label>
+                          <input type="text" class="form-control" value="{{old('phone')}}" name="phone" placeholder="رقم الهاتف" required>
+                         
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label for="exampleInputUsername1" class="form-label">الايميل :</label>
+                          <input type="text" class="form-control" name="email" placeholder="الايميل" >
+                         
+                        </div>
+
+
                         <div class="mb-4">
                             <label class="form-check-label" for="authCheck">
                                 هل تعرفون مسبقا دار الحليب؟
