@@ -51,4 +51,22 @@ class EleveurController extends Controller
         $communes = Citie::where('wilaya_name',$name)->get();
         return $communes;
     }
+
+    public function statistique(){
+        $total = Eleveur::count();
+        $eleveur = Eleveur:: where('type','مربي')->count();
+        $agriculteur = Eleveur:: where('type','فلاح')->count();
+        $collecteur = Eleveur::where('type','جامع الحليب')->count(); 
+        $veterinaire = Eleveur::where('type','بيطري')->count();
+        $autre = Eleveur::where('type','مشارك')->count();
+        $eleveurs = Eleveur::all();
+
+        $wilayas= Eleveur::
+                           groupBy('wilaya')
+                           ->selectRaw('wilaya')
+                           ->selectRaw('count(*) as total')
+                           ->get();
+       
+        return view('statistique',compact('total','eleveur','collecteur','veterinaire','autre','eleveurs','agriculteur','wilayas'));
+      }
 }

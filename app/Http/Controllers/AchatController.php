@@ -101,4 +101,10 @@ class AchatController extends Controller
         
         return view('milkcheck.modal-achat',compact('analyse','achat'));
     }
+
+    public function getDate($id){
+    $vendeur = Vendeur::find($id);
+    $date = $vendeur->date;
+    return $date;
+    }
 }

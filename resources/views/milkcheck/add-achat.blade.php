@@ -1,4 +1,6 @@
 @extends('layouts.dashboard-milkchec')
+
+
 @section('content')
 <div class="page-content">
 
@@ -35,7 +37,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Vendeur</label>
-								<select class="form-select" name="vendeur"  class="form-control input-default  @error('vendeur') is-invalid @enderror" id="exampleFormControlSelect1">
+								<select class="form-select select-vendeur" name="vendeur"  class="form-control input-default  @error('vendeur') is-invalid @enderror" id="exampleFormControlSelect1">
                                     <option value="0">select</option>
                                     @foreach ($vendeurs as $vendeur)
                                         <option  value="{{$vendeur->id}}" @if (old('vendeur') == $vendeur->id ) selected @endif > {{ $vendeur->name}}</option>
@@ -45,10 +47,14 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                @enderror
-                                </select>
+                               </select>
                                
                             </div>
+                            <div class="col-md-3">
+                            <label class="form-label">Date:</label>
+                            <input id="agrement" class="form-control mb-4 mb-md-0 input-default "/>
                             
+                            </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-2">
@@ -172,3 +178,65 @@
     </div>
 </div>
 @endsection
+@push('select-vendeur-scripts')
+    
+<script>
+	$.ajaxSetup({
+	headers: {
+		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	}
+	});
+
+	$( ".select-vendeur" ).change(function() {
+         	
+
+        $( "#agrement" ).removeClass( "is-invalid" );
+        $( "#agrement" ).removeClass( "is-valid" );
+
+        var id = $(this).val();
+        var d = new Date();
+        var data ='';
+        //alert(id);
+        $.ajax({
+			url: '/get-date/' + id,
+			type: "GET",
+
+			success: function (res) {
+                $( "#agrement" ).val(res);
+	          
+				if(res < d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()){
+                    $( "#agrement" ).addClass( "is-invalid" );
+                }
+                else{
+                    $( "#agrement" ).addClass( "is-valid" );
+                }
+
+			}
+		});
+});
+
+</script> 
+
+
+@endpush
+@push('input-scripts')
+    
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+    
+
+
+  $('inputF').on('change', function(){
+    var v = parseInt(this.value, 100);
+    $(this).css('border-color', function(){
+        var v = parseInt(this.value,100);
+        return isNaN(v) ? '#000' : v < 28 ? '#f00' : v == 28 ? '#0f0' : '#f90';
+    });
+}).change();
+</script>
+@endpush

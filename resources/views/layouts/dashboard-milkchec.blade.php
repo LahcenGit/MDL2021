@@ -112,6 +112,22 @@ License: For each use you must have a valid license purchased only from above li
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Agrements</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="emails">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/agrements')}}" class="nav-link">Agrements</a>
+                </li>
+               
+                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#forms" role="button" aria-expanded="false" aria-controls="forms">
               <i class="link-icon" data-feather="inbox"></i>
               <span class="link-title">Setting</span>
@@ -448,28 +464,8 @@ License: For each use you must have a valid license purchased only from above li
   <script src="{{asset('/assets/js/datepicker.js')}}"></script>
 	<!-- End custom js for this page -->
   
-  
-  <script>
-	    $.ajaxSetup({
-			headers: {
-				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			}
-	});
-    	
-    
-    $('#inputF').on('keypress', function(){
-      var v = this.val();
-    $(this).css('border', function(){
-        if (v > 28) {
-            return '2px solid green';
-        }
-        else 
-          
-            return '2px solid red';
-        
-    });
-}).keypress();
-    </script>
+  @stack('select-vendeur-scripts')
+  @stack('input-scripts')
 
 <script>
   $.ajaxSetup({
