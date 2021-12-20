@@ -36,7 +36,7 @@ class EleveurController extends Controller
         $eleveur->email = $request->email;
         $eleveur->wilaya = $request->wilaya;
         $eleveur->commune = $request->commune;
-        $eleveur->check = $request->check;
+        $eleveur->check = '0';
         $eleveur->save();
 
 
@@ -48,6 +48,61 @@ class EleveurController extends Controller
         ->with('success','تم التسجيل بنجاح ! سعداء بالالتقاء بكم جميعًا، يرجى الاحتفاظ بالشارة الظاهرة في الأسفل ');; 
 
     }
+    
+    public function statistique(){
+        $total = Eleveur::count();
+        $eleveur = Eleveur:: where('type','مربي')->count();
+        $agriculteur = Eleveur:: where('type','فلاح')->count();
+        $collecteur = Eleveur::where('type','جامع الحليب')->count(); 
+        $veterinaire = Eleveur::where('type','بيطري')->count();
+        $autre = Eleveur::where('type','مشارك')->count();
+        $eleveurs = Eleveur::all()->reverse();
+
+        $wilayas= Eleveur::
+                           groupBy('wilaya')
+                           ->selectRaw('wilaya')
+                           ->selectRaw('count(*) as total')
+                           ->get();
+       
+        return view('statistique',compact('total','eleveur','collecteur','veterinaire','autre','eleveurs','agriculteur','wilayas'));
+      }
+
+    public function statistiqueConfirm(){
+ 
+        $eleveurs = Eleveur::all()->reverse();
+        $nbrc = Eleveur::where('check','1')->count();
+        $nbrr = Eleveur::where('check','2')->count();
+        $nbra = Eleveur::where('check','3')->count();
+
+        return view('statistique-confirmation',compact('eleveurs','nbrc','nbrr','nbra'));
+      }
+
+
+    public function confirm($id,$type){
+
+        $eleveur = Eleveur::find($id);
+        if($type == '1'){
+            $eleveur->check = '1';
+            $eleveur->save();
+        }
+   
+        if($type == '2'){
+            $eleveur->check = '2';
+            $eleveur->save();
+        }
+   
+        if($type == '3'){
+            $eleveur->check = '3';
+            $eleveur->save();
+        }
+
+
+        
+   
+ 
+
+        return redirect()->back();
+      }
 
     public function selectCommune($name){
         $communes = Citie::where('wilaya_name',$name)->get();

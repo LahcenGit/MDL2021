@@ -13,11 +13,17 @@ License: For each use you must have a valid license purchased only from above li
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< Updated upstream
   <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="NobleUI">
 	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+=======
+
+
+	<title>Statistique journnée du lait</title>
+>>>>>>> Stashed changes
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -242,6 +248,10 @@ License: For each use you must have a valid license purchased only from above li
                                                   <th>Prenom</th>
                                                   <th>Wilaya</th>
                                                   <th>Type</th>
+<<<<<<< Updated upstream
+=======
+                                                  <th>Date</th>
+>>>>>>> Stashed changes
                                                   
                                                 </tr>
                                               </thead>
@@ -253,6 +263,10 @@ License: For each use you must have a valid license purchased only from above li
                                                   <td>{{$elev->prenom}}</td>
                                                   <td>{{$elev->wilaya}}</td>
                                                   <td>{{$elev->type}}</td>
+<<<<<<< Updated upstream
+=======
+                                                  <td>{{$elev->created_at}}</td>
+>>>>>>> Stashed changes
                                                 
                                                 </tr>
                                                @endforeach
