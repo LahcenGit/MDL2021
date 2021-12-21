@@ -10,7 +10,7 @@ class AgrementController extends Controller
 {
     //
     public function index(){
-        $vendeurs = Vendeur::where('date','<',Carbon::today())->get();
+        $vendeurs = Vendeur::all();
        
         return view('milkcheck.agrements',compact('vendeurs'));
     }

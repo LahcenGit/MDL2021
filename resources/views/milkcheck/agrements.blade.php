@@ -20,10 +20,10 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Validation</th>
             <th>Email</th>
             <th>N°d'agrement</th>
-            <th>Date d'éxpédition</th>
-            <th>Validation</th>
+            <th>Date d'expiration</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -31,10 +31,20 @@
             @foreach($vendeurs as $vendeur)
           <tr>
             <td>{{$vendeur->name}}</td>
+              @if ($vendeur->check() > 15 )
+              <td><span class="badge bg-success">Valide</span></td>
+              @endif
+              @if ($vendeur->check() < 0 )
+              <td><span class="badge bg-danger">Expiré</span></td>
+              @endif
+              @if ($vendeur->check() < 15 &&  $vendeur->check()>0)
+              <td><span class="badge bg-warning">Reste {{$vendeur->check()}} jours </span></td>
+              @endif
+            
             <td>{{$vendeur->email}}</td>
             <td>{{$vendeur->n_agrement}}</td>
             <td>{{$vendeur->date}}</td>
-            <td>Expiré</td>
+            
             
             <td>
               <form action="{{url('milkcheck/vendeurs/'.$vendeur->id)}}" method="post">

@@ -50,16 +50,7 @@ Route::resource('journeedulait', EleveurController::class);
 Route::resource('dashboard-admin/particuliers', AdminController::class);
 Route::resource('dashboard-admin/categories', CategorieController::class);
 Route::resource('dashboard-admin/produits', ProduitController::class);
-<<<<<<< Updated upstream
 Route::get('statistique', [App\Http\Controllers\EleveurController::class, 'statistique']);
-=======
-
-Route::get('statistique', [App\Http\Controllers\EleveurController::class, 'statistique']);
-Route::get('statistique-confirmation', [App\Http\Controllers\EleveurController::class, 'statistiqueConfirm']);
-Route::get('confirm/{id}/{type}', [App\Http\Controllers\EleveurController::class, 'confirm']);
-
-
->>>>>>> Stashed changes
 Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achats']);
 Route::get('print-vendeur', [App\Http\Controllers\PrinterController::class, 'vendeurs']);
 Route::get('data-f', [App\Http\Controllers\MilkchecController::class, 'dataf']);
