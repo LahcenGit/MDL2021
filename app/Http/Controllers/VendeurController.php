@@ -23,10 +23,12 @@ class VendeurController extends Controller
     public function store(Request $request){
         $request->validate([
            
-            'email' => 'required',
+            
             'name' => 'required',
             'numero' => 'required',
-            'date' => 'required',
+            'date_expedition' => 'required',
+            'date_expiration' => 'required',
+            
             
         ]);
 
@@ -40,21 +42,29 @@ class VendeurController extends Controller
         $vendeur->user_id = $user->id;
         $vendeur->name = $request->name;
         $vendeur->email = $request->email;
+        $vendeur->telephone = $request->telephone;
         $vendeur->n_agrement = $request->numero;
-        $vendeur->date = $request->date;
+        $vendeur->date_expedition = $request->date_expedition;
+        $vendeur->date_expiration = $request->date_expiration;
         $vendeur->save();
         return redirect('milkcheck/vendeurs');
     }
+
+
         public function edit($id){
             $vendeur = Vendeur::find($id);
             return view('milkcheck.edit-vendeur',compact('vendeur'));            
         }
+
+
         public function update(Request $request,$id){
             $vendeur = Vendeur::find($id);
             $vendeur->name = $request->name;
+            $vendeur->telephone = $request->telephone;
             $vendeur->email = $request->email;
             $vendeur->n_agrement = $request->numero;
-            $vendeur->date = $request->date;
+            $vendeur->date_expedition = $request->date_expedition;
+            $vendeur->date_expiration = $request->date_expiration;
             $vendeur->save();
                return redirect('milkcheck/vendeurs');
         }

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-milkchec')
+@extends('layouts.milkcheck')
 @section('content')
 <div class="page-content">
 
@@ -35,10 +35,19 @@
                             
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label class="form-label">Email:</label>
                                 <input class="form-control mb-4 mb-md-0  input-default @error('email') is-invalid @enderror" name="email" value="{{$vendeur->email}}" placeholder="Mohamed@gmail.com" />
                                 @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                               @enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">N° De Télephone:</label>
+                                <input class="form-control mb-4 mb-md-0  input-default @error('telephone') is-invalid @enderror " name="telephone" value="{{$vendeur->telephone}}" />
+                                @error('telephone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -59,10 +68,20 @@
                             
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label class="form-label">Date d'éxpédition:</label>
-                                <input class="form-control mb-4 mb-md-0 input-default @error('date') is-invalid @enderror" name="date" type="date" value="{{$vendeur->date}}" data-inputmask="'alias': 'currency'"/>
-                                @error('date')
+                                <input class="form-control mb-4 mb-md-0 input-default @error('date_expedition') is-invalid @enderror" name="date_expedition" type="date" value="{{$vendeur->date_expedition}}" data-inputmask="'alias': 'currency'"/>
+                                @error('date_expedition')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                               @enderror
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">Date d'éxpiration:</label>
+                                <input class="form-control mb-4 mb-md-0 input-default @error('date_expiration') is-invalid @enderror" name="date_expiration" type="date" value="{{$vendeur->date_expiration}}" data-inputmask="'alias': 'currency'"/>
+                                @error('date_expiration')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -17,9 +17,11 @@ class CreateVendeursTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->nullable();
+            $table->string('telephone')->nullable();
             $table->string('n_agrement');
-            $table->string('date');
+            $table->string('date_expedition');
+            $table->string('date_expiration');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

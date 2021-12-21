@@ -104,7 +104,7 @@ class AchatController extends Controller
 
     public function getDate($id){
     $vendeur = Vendeur::find($id);
-    $date = $vendeur->date;
+    $date = $vendeur->date_expiration;
     return $date;
     }
 }
