@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vendeur;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class VendeurController extends Controller
 {
@@ -21,23 +22,21 @@ class VendeurController extends Controller
         return view('milkcheck.add-vendeur');
     }
     public function store(Request $request){
+
         $request->validate([
-           
-            
             'name' => 'required',
             'numero' => 'required',
             'date_expedition' => 'required',
             'date_expiration' => 'required',
-            
-            
         ]);
+        
 
         $user = new User();
-        $user->email = 'NULL';
-        $user->password ='NULL';
-        $user->name = 'NULL';
-       
+        $user->email = null;
+        $user->password = null;
+        $user->name = $request->name;
         $user->save();
+
         $vendeur = new Vendeur();
         $vendeur->user_id = $user->id;
         $vendeur->name = $request->name;
@@ -47,6 +46,8 @@ class VendeurController extends Controller
         $vendeur->date_expedition = $request->date_expedition;
         $vendeur->date_expiration = $request->date_expiration;
         $vendeur->save();
+
+
         return redirect('milkcheck/vendeurs');
     }
 
