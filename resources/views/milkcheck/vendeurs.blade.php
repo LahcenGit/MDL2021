@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-milkchec')
+@extends('layouts.milkcheck')
 @section('content')
 <div class="page-content">
 
@@ -20,9 +20,11 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>N° De Telephone</th>
             <th>Email</th>
             <th>N°d'agrement</th>
             <th>Date d'éxpédition</th>
+            <th>Date d'éxpiration</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -30,10 +32,11 @@
             @foreach($vendeurs as $vendeur)
           <tr>
             <td>{{$vendeur->name}}</td>
+            <td>{{$vendeur->telephone}}</td>
             <td>{{$vendeur->email}}</td>
             <td>{{$vendeur->n_agrement}}</td>
-            <td>{{$vendeur->date}}</td>
-            
+            <td>{{$vendeur->date_expedition}}</td>
+            <td>{{$vendeur->date_expiration}}</td>
             <td>
               <form action="{{url('milkcheck/vendeurs/'.$vendeur->id)}}" method="post">
                 {{csrf_field()}}

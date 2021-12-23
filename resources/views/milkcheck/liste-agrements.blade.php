@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-milkchec')
+@extends('layouts.milkcheck')
 @section('content')
 <div class="page-content">
 
@@ -21,8 +21,10 @@
           <tr>
             <th>Name</th>
             <th>Validation</th>
+            <th>N° De Telephone</th>
             <th>Email</th>
             <th>N°d'agrement</th>
+            <th>Date d'expedition</th>
             <th>Date d'expiration</th>
             <th>Action</th>
           </tr>
@@ -40,11 +42,11 @@
               @if ($vendeur->check() < 15 &&  $vendeur->check()>0)
               <td><span class="badge bg-warning">Reste {{$vendeur->check()}} jours </span></td>
               @endif
-            
+            <td>{{$vendeur->telephone}}</td> 
             <td>{{$vendeur->email}}</td>
             <td>{{$vendeur->n_agrement}}</td>
-            <td>{{$vendeur->date}}</td>
-            
+            <td>{{$vendeur->date_expedition}}</td>
+            <td>{{$vendeur->date_expiration}}</td>
             
             <td>
               <form action="{{url('milkcheck/vendeurs/'.$vendeur->id)}}" method="post">

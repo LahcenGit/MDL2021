@@ -12,6 +12,6 @@ class AgrementController extends Controller
     public function index(){
         $vendeurs = Vendeur::all();
        
-        return view('milkcheck.agrements',compact('vendeurs'));
+        return view('milkcheck.liste-agrements',compact('vendeurs'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-milkchec')
+@extends('layouts.milkcheck')
 @section('content')
 
 <div class="page-content">

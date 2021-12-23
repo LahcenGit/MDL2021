@@ -12,7 +12,7 @@ class Achat extends Model
     use SoftDeletes;
     public function vendeur()
     {
-        return $this->belongsTo(Vendeur::class,'vendeur_id');
+        return $this->belongsTo(Vendeur::class,'vendeur_id')->withTrashed();
     }
 
     public function analyse()

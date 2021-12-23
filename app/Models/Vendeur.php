@@ -14,7 +14,7 @@ class Vendeur extends Model
 
 
     public function check(){
-        $date  = $this->date;
+        $date  = $this->date_expiration;
         $result = Carbon::today()->diffInDays($date, false);
         return $result;
   
