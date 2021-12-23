@@ -64,23 +64,24 @@ License: For each use you must have a valid license purchased only from above li
       </div>
       <div class="sidebar-body">
         <ul class="nav">
-          <li class="nav-item nav-category">Main Menu</li>
+
+          <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="{{url('milkcheck')}}" class="nav-link">
+            <a href="{{url('/milkcheck')}}" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Statistiques</span>
+              <span class="link-title">Dashboard</span>
             </a>
           </li>
-
           
           <li class="nav-item nav-category">Components</li>
+
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-              <i class="link-icon" data-feather="feather"></i>
+            <a class="nav-link"  data-bs-toggle="collapse" href="#vendeurs" role="button" aria-expanded="false" aria-controls="vendeurs">
+              <i class="link-icon" data-feather="pie-chart"></i>
               <span class="link-title">Vendeurs</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="uiComponents">
+            <div class="collapse" id="vendeurs">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="{{url('milkcheck/vendeurs/create')}}" class="nav-link">Ajouter</a>
@@ -88,18 +89,18 @@ License: For each use you must have a valid license purchased only from above li
                 <li class="nav-item">
                   <a href="{{url('milkcheck/vendeurs')}}" class="nav-link">Tous</a>
                 </li>
-              
               </ul>
             </div>
           </li>
 
+
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
+            <a class="nav-link" data-bs-toggle="collapse" href="#achats" role="button" aria-expanded="false" aria-controls="achats">
               <i class="link-icon" data-feather="anchor"></i>
               <span class="link-title">Achats</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="advancedUI">
+            <div class="collapse" id="achats">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="{{url('milkcheck/achats/create')}}" class="nav-link">Ajouter</a>
@@ -107,17 +108,16 @@ License: For each use you must have a valid license purchased only from above li
                 <li class="nav-item">
                     <a href="{{url('milkcheck/achats')}}" class="nav-link">Tous</a>
                   </li>
-               
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link" data-bs-toggle="collapse" href="#agrements" role="button" aria-expanded="false" aria-controls="agrements">
               <i class="link-icon" data-feather="mail"></i>
               <span class="link-title">Agrements</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="emails">
+            <div class="collapse" id="agrements">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="{{url('milkcheck/agrements')}}" class="nav-link">Agrements</a>
@@ -128,12 +128,12 @@ License: For each use you must have a valid license purchased only from above li
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#forms" role="button" aria-expanded="false" aria-controls="forms">
+            <a class="nav-link" data-bs-toggle="collapse" href="#setting" role="button" aria-expanded="false" aria-controls="setting">
               <i class="link-icon" data-feather="inbox"></i>
               <span class="link-title">Setting</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="forms">
+            <div class="collapse" id="setting">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="{{url('milkcheck/profil')}}" class="nav-link">Profil</a>
@@ -433,13 +433,14 @@ License: For each use you must have a valid license purchased only from above li
 		</div>
 	</div>
 
+  
+
 	<!-- core:js -->
 	<script src="{{asset('/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
 
 	<!-- Plugin js for this page -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="{{asset('/assets/vendors/core/core.js')}}"></script>
   <script src="{{asset('/assets/vendors/datatables.net/jquery.dataTables.js')}}"></script>
   <script src="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
   <script src="{{asset('/assets/js/data-table.js')}}"></script>
