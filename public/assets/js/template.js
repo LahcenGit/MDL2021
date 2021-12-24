@@ -98,7 +98,7 @@
 
 
     //Add active class to nav-link based on url dynamically
-    function addActiveClass(element) {
+   /* function addActiveClass(element) {
         if (current === "") {
           //for root url
           if (element.attr('href').indexOf("index.html") !== -1) {
@@ -132,7 +132,7 @@
     $('.horizontal-menu .nav li a').each(function() {
       var $this = $(this);
       addActiveClass($this);
-    })
+    })*/
 
 
     //  open sidebar-folded when hover

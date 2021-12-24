@@ -75,19 +75,19 @@ License: For each use you must have a valid license purchased only from above li
           
           <li class="nav-item nav-category">Components</li>
 
-          <li class="nav-item">
-            <a class="nav-link"  data-bs-toggle="collapse" href="#vendeurs" role="button" aria-expanded="false" aria-controls="vendeurs">
+          <li class="nav-item  {{ active_class(['milkcheck/vendeurs/*']) }}">
+            <a class="nav-link"  data-bs-toggle="collapse" href="#vendeurs" role="button" aria-expanded="{{ is_active_route(['milkcheck/vendeurs/*']) }}" aria-controls="vendeurs">
               <i class="link-icon" data-feather="pie-chart"></i>
               <span class="link-title">Vendeurs</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="vendeurs">
+            <div class="collapse {{ show_class(['milkcheck/vendeurs/*']) }} " id="vendeurs">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/vendeurs/create')}}" class="nav-link">Ajouter</a>
+                  <a href="{{url('milkcheck/vendeurs/create')}}" class="nav-link {{ active_class(['milkcheck/vendeurs/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/vendeurs')}}" class="nav-link">Tous</a>
+                  <a href="{{url('milkcheck/vendeurs')}}" class="nav-link {{ active_class(['milkcheck/vendeurs']) }}">Tous</a>
                 </li>
               </ul>
             </div>
@@ -95,18 +95,18 @@ License: For each use you must have a valid license purchased only from above li
 
 
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#achats" role="button" aria-expanded="false" aria-controls="achats">
+            <a class="nav-link" data-bs-toggle="collapse" href="#achats" role="button" aria-expanded="{{ is_active_route(['milkcheck/achats/*','milkcheck/achats']) }}" aria-controls="achats">
               <i class="link-icon" data-feather="anchor"></i>
               <span class="link-title">Achats</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="achats">
+            <div class="collapse {{ show_class(['milkcheck/achats/*','milkcheck/achats']) }}" id="achats">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/achats/create')}}" class="nav-link">Ajouter</a>
+                  <a href="{{url('milkcheck/achats/create')}}" class="nav-link {{ active_class(['milkcheck/achats/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('milkcheck/achats')}}" class="nav-link">Tous</a>
+                    <a href="{{url('milkcheck/achats')}}" class="nav-link {{ active_class(['milkcheck/achats']) }}">Tous</a>
                   </li>
               </ul>
             </div>
