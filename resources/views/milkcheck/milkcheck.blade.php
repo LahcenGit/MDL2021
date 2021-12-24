@@ -132,9 +132,9 @@
       <div class="col-4 col-xl-4 grid-margin stretch-card">
         <div class="card overflow-hidden">
           <div class="card-body">
-            
-           
-            <div id="chart" ></div>
+            <div>
+              <canvas id="myChart"></canvas>
+            </div>
           </div>
         </div>
       </div>

@@ -66,22 +66,22 @@ License: For each use you must have a valid license purchased only from above li
         <ul class="nav">
 
           <li class="nav-item nav-category">Main</li>
-          <li class="nav-item">
-            <a href="{{url('/milkcheck')}}" class="nav-link">
+          <li class="nav-item {{ active_class(['milkcheck']) }}">
+            <a href="{{url('/milkcheck')}}" class="nav-link {{ active_class(['milkcheck']) }}">
               <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
+              <span class="link-title">Vue d'enssemble</span>
             </a>
           </li>
           
           <li class="nav-item nav-category">Components</li>
 
-          <li class="nav-item  {{ active_class(['milkcheck/vendeurs/*']) }}">
-            <a class="nav-link"  data-bs-toggle="collapse" href="#vendeurs" role="button" aria-expanded="{{ is_active_route(['milkcheck/vendeurs/*']) }}" aria-controls="vendeurs">
+          <li class="nav-item  {{ active_class(['milkcheck/vendeurs/*','milkcheck/vendeurs']) }}">
+            <a class="nav-link"  data-bs-toggle="collapse" href="#vendeurs" role="button" aria-expanded="{{ is_active_route(['milkcheck/vendeurs/*','milkcheck/vendeurs']) }}" aria-controls="vendeurs">
               <i class="link-icon" data-feather="pie-chart"></i>
               <span class="link-title">Vendeurs</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse {{ show_class(['milkcheck/vendeurs/*']) }} " id="vendeurs">
+            <div class="collapse {{ show_class(['milkcheck/vendeurs/*','milkcheck/vendeurs']) }} " id="vendeurs">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="{{url('milkcheck/vendeurs/create')}}" class="nav-link {{ active_class(['milkcheck/vendeurs/create']) }}">Ajouter</a>
@@ -94,7 +94,7 @@ License: For each use you must have a valid license purchased only from above li
           </li>
 
 
-          <li class="nav-item">
+          <li class="nav-item {{ active_class(['milkcheck/achats/*','milkcheck/achats']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#achats" role="button" aria-expanded="{{ is_active_route(['milkcheck/achats/*','milkcheck/achats']) }}" aria-controls="achats">
               <i class="link-icon" data-feather="anchor"></i>
               <span class="link-title">Achats</span>
@@ -111,36 +111,30 @@ License: For each use you must have a valid license purchased only from above li
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#agrements" role="button" aria-expanded="false" aria-controls="agrements">
+          <li class="nav-item {{ active_class(['milkcheck/agrements/*','milkcheck/agrements']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#agrements" role="button" aria-expanded="{{ is_active_route(['milkcheck/agrements/*','milkcheck/agrements']) }}" aria-controls="agrements">
               <i class="link-icon" data-feather="mail"></i>
               <span class="link-title">Agrements</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="agrements">
+            <div class="collapse {{ show_class(['milkcheck/agrements/*','milkcheck/agrements']) }}" id="agrements">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/agrements')}}" class="nav-link">Agrements</a>
+                  <a href="{{url('milkcheck/agrements')}}" class="nav-link {{ active_class(['milkcheck/agrements']) }}">Agrements</a>
                 </li>
                
                 
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#setting" role="button" aria-expanded="false" aria-controls="setting">
-              <i class="link-icon" data-feather="inbox"></i>
-              <span class="link-title">Setting</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
+
+
+          <li class="nav-item nav-category">Setting</li>
+          <li class="nav-item {{ active_class(['milkcheck/profil']) }}">
+            <a href="{{url('/milkcheck/profil')}}" class="nav-link {{ active_class(['milkcheck/profil']) }}">
+              <i class="link-icon" data-feather="box"></i>
+              <span class="link-title">Profile</span>
             </a>
-            <div class="collapse" id="setting">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{url('milkcheck/profil')}}" class="nav-link">Profil</a>
-                </li>
-               
-              </ul>
-            </div>
           </li>
           
         </ul>
@@ -455,6 +449,49 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="{{asset('/assets/vendors/feather-icons/feather.min.js')}}"></script>
 	<script src="{{asset('/assets/js/template.js')}}"></script>
 	<!-- endinject -->
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<script>
+		$.ajax({
+				url: '/data-f' ,
+				type: "GET",
+        async:false,
+				success: function (results) {
+          dataf = results.fats ;
+          datad = results.days ;
+       
+				}
+		});
+					const labels = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			];
+			const data = {
+			labels: labels,
+			datasets: [{
+				label: 'My First dataset',
+				backgroundColor: 'rgb(255, 99, 132)',
+				borderColor: 'rgb(255, 99, 132)',
+				data: [0, 10, 5, 2, 20, 30, 45],
+			}]
+			};
+
+			const config = {
+			type: 'line',
+			data,
+			options: {}
+			};
+		
+		var myChart = new Chart(
+		  document.getElementById('myChart'),
+		  config
+		);
+	</script>
 
 	<!-- Custom js for this page -->
   <script src="{{asset('/assets/js/dashboard-light.js')}}"></script>

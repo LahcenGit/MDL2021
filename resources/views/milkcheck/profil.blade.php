@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-milkchec')
+@extends('layouts.milkcheck')
 
 <style>
 
