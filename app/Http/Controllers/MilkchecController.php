@@ -66,4 +66,37 @@ class MilkchecController extends Controller
 
 
     }
+
+    public function datad(){
+
+       
+
+        $analyses = Analyse::
+                    whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SATURDAY),Carbon::now()->endOfWeek(Carbon::THURSDAY)])
+                    ->selectRaw(DB::raw('DATE_FORMAT(created_at, "%d") as date'))
+                    ->groupBy('date')
+                    ->selectRaw('avg(d) as densite')
+                    ->get();
+
+
+        return $analyses;
+
+
+    }
+    public function datap(){
+
+       
+
+        $analyses = Analyse::
+                    whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SATURDAY),Carbon::now()->endOfWeek(Carbon::THURSDAY)])
+                    ->selectRaw(DB::raw('DATE_FORMAT(created_at, "%d") as date'))
+                    ->groupBy('date')
+                    ->selectRaw('avg(p) as p')
+                    ->get();
+
+
+        return $analyses;
+
+
+    }
 }

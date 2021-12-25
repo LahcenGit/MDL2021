@@ -54,6 +54,8 @@ Route::get('statistique', [App\Http\Controllers\EleveurController::class, 'stati
 Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achats']);
 Route::get('print-vendeur', [App\Http\Controllers\PrinterController::class, 'vendeurs']);
 Route::get('data-f', [App\Http\Controllers\MilkchecController::class, 'dataf']);
+Route::get('data-d', [App\Http\Controllers\MilkchecController::class, 'datad']);
+Route::get('data-p', [App\Http\Controllers\MilkchecController::class, 'datap']);
 Route::get('/show-achat/{id}', [App\Http\Controllers\AchatController::class, 'showAchat']);
 Route::get('/get-date/{id}', [App\Http\Controllers\AchatController::class, 'getDate']);
 Route::get('/get-commune/{name}', [App\Http\Controllers\EleveurController::class, 'selectCommune']);

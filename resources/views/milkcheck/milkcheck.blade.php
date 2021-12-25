@@ -143,7 +143,9 @@
           <div class="card-body">
             
            
-            <div id="chart2" ></div>
+            <div>
+              <canvas id="myChart2"></canvas>
+            </div>
           </div>
         </div>
       </div>
@@ -152,7 +154,9 @@
           <div class="card-body">
             
            
-            <div id="chart3" ></div>
+            <div>
+              <canvas id="myChart3"></canvas>
+            </div>
           </div>
         </div>
       </div>
@@ -282,3 +286,178 @@
 
 </div>
 @endsection
+
+@push('dataf-scripts')
+<script>
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  var date = [];
+  var fat = [];
+
+  $.ajax({
+      url: '/data-f' ,
+      type: "GET",
+      async: false,
+      success: function (result) {
+        $.each(result, function(i, item) {
+            date[i] = item.date ;
+            fat[i] = item.fat ;
+        });
+
+
+              const data = {
+              labels: date,
+              datasets: [{
+                label: 'Fat moyenne',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: fat,
+              }]
+              };
+
+              const config = {
+              type: 'line',
+              data,
+              options: {}
+              };
+            
+            var myChart = new Chart(
+              document.getElementById('myChart'),
+              config
+            );
+     
+      }
+  });
+
+</script>
+@endpush
+
+@push('datad-scripts')
+<script>
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  var date = [];
+  var d = [];
+
+  $.ajax({
+      url: '/data-d' ,
+      type: "GET",
+      async: false,
+      success: function (result) {
+        $.each(result, function(i, item) {
+            date[i] = item.date ;
+            d[i] = item.densite ;
+        });
+
+
+              const data = {
+              labels: date,
+              datasets: [{
+                label: 'Densité (degré dornic)',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: d,
+              }]
+              };
+
+              const config = {
+              type: 'line',
+              data,
+              options: {}
+              };
+            
+            var myChart = new Chart(
+              document.getElementById('myChart2'),
+              config
+            );
+     
+      }
+  });
+
+</script>
+@endpush
+
+@push('datap-scripts')
+<script>
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  var date = [];
+  var p = [];
+
+  $.ajax({
+      url: '/data-p' ,
+      type: "GET",
+      async: false,
+      success: function (result) {
+        $.each(result, function(i, item) {
+            date[i] = item.date ;
+            p[i] = item.p ;
+        });
+
+
+              const data = {
+              labels: date,
+              datasets: [{
+                label: 'Protéine (g/l)',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: p,
+           }]
+              };
+
+              const config = {
+              type: 'line',
+              data,
+              options: {}
+              };
+            
+            var myChart = new Chart(
+              document.getElementById('myChart3'),
+              config
+            );
+     
+      }
+  });
+
+</script>
+@endpush
+
+@push('modal-achat-scripts')
+<script>
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(".show-achat").click(function() {
+  
+  var id = $(this).data('id');
+ 
+  $.ajax({
+    url: '/show-achat/' + id,
+    type: "GET",
+    success: function (res) {
+      $('#modal-achat').html(res);
+      $("#exampleModal").modal('show');
+    }
+  });
+  
+});
+
+</script>  
+@endpush
