@@ -41,9 +41,28 @@ class MilkchecController extends Controller
                          ->get();
 
        
-                        
+        $topVendeurs = Achat::whereMonth('achats.created_at', Carbon::now()->month)
+                           ->join('analyses','analyses.achat_id', '=', 'achats.id')
+                           ->selectRaw('vendeur_id')
+                           ->groupBy('vendeur_id')
+                           ->selectRaw('avg(d) as densite')
+                           ->selectRaw('avg(f) as fat')
+                           ->selectRaw('avg(p) as p')
+                           ->selectRaw('sum(qte) as qte')
+                           ->orderBy('densite','desc')
+                           ->limit(5)
+                           ->get();
+
+        $topVendeursQtes = Achat::whereMonth('achats.created_at', Carbon::now()->month)
+                              ->selectRaw('vendeur_id')
+                              ->groupBy('vendeur_id')
+                              ->selectRaw('sum(qte) as qte')
+                              ->orderBy('qte','desc')
+                              ->limit(5)
+                              ->get();
+                   
         
-        return view('milkcheck.milkcheck',compact('lait','fromage','achat','randement','achats'));
+        return view('milkcheck.milkcheck',compact('lait','fromage','achat','randement','achats','topVendeurs','topVendeursQtes'));
     }
 
 

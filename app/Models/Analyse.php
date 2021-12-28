@@ -12,6 +12,6 @@ class Analyse extends Model
 
     public function achat()
     {
-        return $this->belongsTo(Achat::class);
+        return $this->belongsTo(Achat::class,'achat_id');
     }
 }

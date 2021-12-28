@@ -1,33 +1,6 @@
 @extends('layouts.milkcheck')
 
-<style>
 
-    .image-preview{
-      
-      border : 1px solid #29324C !important;
-      margin: 10px 10px 10px 0px;
-      display : flex; 
-      align-items: center;
-      justify-content: center;
-      overflow:hidden;
-      border-radius:100px;
-        width:150px;
-        height:150px;
-       
-        
-    }
-    
-    .image-preview-image{
-    
-     width: 100%; 
-     height: 100%;
-     border-radius:50px;
-     
-     border-radius:50px;
-  
-       
-    }
-    </style>
 @section('content')
 
 <div class="page-content">
@@ -41,7 +14,7 @@
 
         
 
-        <div class="container-fluid col-md-6 pt-5 "  id="app">
+        <div class="container-fluid col-md-8 pt-5 "  id="app">
       
           
             <!-- general form elements -->
@@ -57,23 +30,6 @@
                 <div class="card-body" id="hiddens">
 
 
-                  <div class="d-flex justify-content-center ">
-                  <div class="form-group ">
-                    <div class="mb-3">
-                    <div class="image-preview " id="slider">
-                        @if ($user->image)
-                        <img src="{{Storage::url($user->image)}}"
-                        class="thumb-lg img-circle" alt="img"></a>
-                    @else
-                     <img id="blah" src="https://www.chanelrenovation.fr/wp-content/uploads/2019/08/neutre.jpg" class="image-preview-image"lt="profile">
-                     @endif
-                    </div>
-                      
-                        <input   id="imgInp" type="file"  name="image"   class="file-upload-default">
-
-                    </div>
-                  </div>
-                    </div>
 
                   <div class="col-md-12">
                       <div class="mb-3">

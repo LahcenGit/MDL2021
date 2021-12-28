@@ -19,16 +19,7 @@ class ProfilmilkcheckController extends Controller
         
         $user->name = $request['name'];
         $user->email = $request['email'];
-        if($request['password']){
-            $user->password = Hash::make($request['password']);
-        }
-        $hasFile = $request->hasFile('image');
-
-        if($hasFile){
-            $path = $request->image->store('images');
-            $user->image= $path;
-           
-        }
+        
            
         $user->save();
         return redirect('milkcheck');

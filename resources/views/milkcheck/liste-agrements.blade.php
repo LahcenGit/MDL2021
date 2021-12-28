@@ -36,7 +36,7 @@
               @if ($vendeur->check() > 15 )
               <td><span class="badge bg-success">Valide</span></td>
               @endif
-              @if ($vendeur->check() < 0 )
+              @if ($vendeur->check() <= 0 )
               <td><span class="badge bg-danger">Expiré</span></td>
               @endif
               @if ($vendeur->check() < 15 &&  $vendeur->check()>0)

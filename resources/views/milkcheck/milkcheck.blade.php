@@ -166,13 +166,14 @@
      <!-- row -->
 
     <div class="row">
-      <div class="col-lg-5 col-xl-4 grid-margin grid-margin-xl-0 stretch-card">
+      <div class="col-lg-8 col-xl-6 grid-margin grid-margin-xl-0 stretch-card">
         <div class="card">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-baseline mb-2">
-              <h6 class="card-title mb-0">Top Vendeur</h6>
+              <h6 class="card-title mb-0">Top Vendeur Qualité</h6>
               
             </div>
+            @foreach($topVendeurs as $topVendeur)
             <div class="d-flex flex-column">
               <a href="javascript:;" class="d-flex align-items-center border-bottom pb-3">
                 <div class="me-3">
@@ -180,64 +181,49 @@
                 </div>
                 <div class="w-100">
                   <div class="d-flex justify-content-between">
-                    <h6 class="text-body mb-2">Mohamed Abdellah</h6>
-                    <p class="text-muted tx-12">300 L</p>
+                    <h6 class="text-body mb-2">{{$topVendeur->vendeur->name}}</h6>
+                    <p class="text-muted tx-12">{{$topVendeur->qte}} L</p>
                   </div>
-                  <p class="text-muted tx-13">F=45, D=1500, P=3.5</p>
+                  <p class="text-muted tx-13">F={{$topVendeur->fat}}, D={{$topVendeur->densite}}, P={{$topVendeur->p}}</p>
                 </div>
               </a>
-              <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
-                <div class="me-3">
-                  <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                </div>
-                <div class="w-100">
-                  <div class="d-flex justify-content-between">
-                    <h6 class="text-body mb-2">Hamza Bounouar</h6>
-                    <p class="text-muted tx-12">200L</p>
-                  </div>
-                  <p class="text-muted tx-13">F=35, D=1300, P=3.2</p>
-                </div>
-              </a>
-              <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
-                <div class="me-3">
-                  <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                </div>
-                <div class="w-100">
-                  <div class="d-flex justify-content-between">
-                    <h6 class="text-body mb-2">Moncef Benammar</h6>
-                    <p class="text-muted tx-12">150L</p>
-                  </div>
-                  <p class="text-muted tx-13">F=32, D=1200, P=3.1</p>
-                </div>
-              </a>
-              <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
-                <div class="me-3">
-                  <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                </div>
-                <div class="w-100">
-                  <div class="d-flex justify-content-between">
-                    <h6 class="text-body mb-2">Houari Mahfoud</h6>
-                    <p class="text-muted tx-12">100 L</p>
-                  </div>
-                  <p class="text-muted tx-13">F=30, D=1050, P=3</p>
-                </div>
-              </a>
-              <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
-                <div class="me-3">
-                  <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                </div>
-                <div class="w-100">
-                  <div class="d-flex justify-content-between">
-                    <h6 class="text-body mb-2">Lahcene Benmouloud</h6>
-                    <p class="text-muted tx-12">90L</p>
-                  </div>
-                  <p class="text-muted tx-13">F=29, D=1030, P=2.9</p>
-                </div>
-              </a>
+            
             </div>
+            @endforeach
           </div>
         </div>
       </div>
+
+      <div class="col-lg-8 col-xl-6 grid-margin grid-margin-xl-0 stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline mb-2">
+              <h6 class="card-title mb-0">Top Vendeur Quantité</h6>
+              
+            </div>
+            @foreach($topVendeursQtes as $topVendeur)
+            <div class="d-flex flex-column">
+              <a href="javascript:;" class="d-flex align-items-center border-bottom pb-3">
+                <div class="me-3">
+                  <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
+                </div>
+                <div class="w-100">
+                  <div class="d-flex justify-content-between">
+                    <h6 class="text-body mb-2">{{$topVendeur->vendeur->name}}</h6>
+                    <p class="text-muted tx-12">{{$topVendeur->qte}} L</p>
+                  </div>
+                 
+                </div>
+              </a>
+            
+            </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+      
+    </div> <!-- row -->
+    <div class="row">
       <div class="col-md-8 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
@@ -273,13 +259,13 @@
             <div>
               <div class="row">
               <p>voir plus</p>
-              <a href="{{url('milkchec/achats')}}"  ><i class="mdi mdi-arrow-right "></i></a>
+              <a href="{{url('milkcheck/achats')}}"  ><i class="mdi mdi-arrow-right "></i></a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div> <!-- row -->
+    </div>
 
 </div>
 <div id="modal-achat">
