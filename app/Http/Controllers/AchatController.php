@@ -15,11 +15,15 @@ class AchatController extends Controller
         $this->middleware('auth');
     }
     public function index(){
+        $this->authorize("achat.viewAny");
         $achats = Achat::with('vendeur')->get();
+       
         return view('milkcheck.achats',compact('achats'));        
     }
     public function create(){
+        $this->authorize("achat.create");
         $vendeurs = Vendeur::all();
+        
         return view('milkcheck.add-achat',compact('vendeurs'));
     }
     public function store(Request $request){
@@ -63,12 +67,14 @@ class AchatController extends Controller
     }
     public function edit($id){
         $achat = Achat::find($id);
+        $this->authorize("achat.update",$achat);
         $vendeurs = Vendeur::all();
         $analyse = Analyse::where('achat_id',$id)->first();
         return view ('milkcheck.edit-achat',compact('achat','analyse','vendeurs'));
     }
     public function update(Request $request, $id){
         $achat = Achat::find($id);
+        $this->authorize("achat.update",$achat);
         $achat->vendeur_id = $request->vendeur;
         $achat->qte = $request->qte;
         $achat->destination = $request->destination;
@@ -91,6 +97,7 @@ class AchatController extends Controller
 
     public function destroy($id){
         $achat = Achat::find($id);
+        $this->authorize("achat.delete",$achat);
         $achat->delete();
         return redirect('milkcheck/achats')->with('success','Achat supprimé :)');
     }

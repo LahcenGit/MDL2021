@@ -39,13 +39,14 @@ Route::get('/badge', function () {
 });
 
 
-
+Route::get('/milkcheck',[App\Http\Controllers\MilkchecController::class, 'index'])->name('milkcheck')
+                                                             ->middleware('can:milkcheck.index');
 
 Route::resource('milkcheck/vendeurs', VendeurController::class);
 Route::resource('milkcheck/agrements', AgrementController::class);
 Route::resource('milkcheck/achats', AchatController::class);
 Route::resource('milkcheck/profil', ProfilmilkcheckController::class);
-Route::resource('milkcheck', MilkchecController::class);
+
 Route::resource('journeedulait', EleveurController::class);
 Route::resource('dashboard-admin/particuliers', AdminController::class);
 Route::resource('dashboard-admin/categories', CategorieController::class);

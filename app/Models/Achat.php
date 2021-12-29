@@ -20,8 +20,9 @@ class Achat extends Model
         return $this->belongsTo(Vendeur::class,'vendeur_id')->withTrashed();
     }
 
+
     public function analyse()
     {
-        return $this->hasOne(Analyse::class);
+        return $this->hasOne(Analyse::class,'achat_id');
     }
 }

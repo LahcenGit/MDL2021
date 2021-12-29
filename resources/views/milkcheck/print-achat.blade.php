@@ -30,6 +30,15 @@
           <th >Quantité</th>
         
           <th>Destination</th>
+          <th>F</th>
+          <th>D</th>
+          <th>C</th>
+          <th>S</th>
+          <th>P</th>
+          <th>W</th>
+          <th>L</th>
+          <th>T</th>
+          <th>FP</th>
           <th>Date</th>
         </tr>
       </thead>
@@ -41,7 +50,16 @@
                
                 <td>{{$achat->qte}}</td>
                 <td>{{$achat->destination}}</td>
-                <td>{{$achat->created_at}}</td>
+                <td>{{$achat->analyse->f}}</td>
+                <td>{{$achat->analyse->d}}</td>
+                <td>{{$achat->analyse->c}}</td>
+                <td>{{$achat->analyse->s}}</td>
+                <td>{{$achat->analyse->p}}</td>
+                <td>{{$achat->analyse->w}}</td>
+                <td>{{$achat->analyse->l}}</td>
+                <td>{{$achat->analyse->t}}</td>
+                <td>{{$achat->analyse->fp}}</td>
+                <td>{{$achat->created_at->format('d-m-Y')}}</td>
               
          </tr>
         @endforeach

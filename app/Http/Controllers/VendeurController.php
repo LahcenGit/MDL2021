@@ -16,9 +16,11 @@ class VendeurController extends Controller
     }
     public function index(){
         $vendeurs = Vendeur::all();
+        $this->authorize("vendeur.viewAny");
         return view('milkcheck.vendeurs',compact('vendeurs'));
     }
     public function create(){
+        $this->authorize("vendeur.create");
         return view('milkcheck.add-vendeur');
     }
     public function store(Request $request){
@@ -54,12 +56,14 @@ class VendeurController extends Controller
 
         public function edit($id){
             $vendeur = Vendeur::find($id);
+            $this->authorize("vendeur.update",$vendeur);
             return view('milkcheck.edit-vendeur',compact('vendeur'));            
         }
 
 
         public function update(Request $request,$id){
             $vendeur = Vendeur::find($id);
+            $this->authorize("vendeur.update",$vendeur);
             $vendeur->name = $request->name;
             $vendeur->telephone = $request->telephone;
             $vendeur->email = $request->email;
@@ -72,6 +76,7 @@ class VendeurController extends Controller
 
         public function destroy($id){
             $vendeur = Vendeur::find($id);
+            $this->authorize("vendeur.delete",$vendeur);
             $vendeur->delete();
             return redirect('milkcheck/vendeurs')->with('success','Vendeur supprimé :)');
         }

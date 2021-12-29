@@ -15,12 +15,12 @@ class printerController extends Controller
     }
     public function achats(){
 
-        $achats = Achat::with('vendeur')
+        $achats = Achat::with('vendeur','analyse')
         ->whereMonth('created_at', Carbon::now()->month)
         ->get();
         $countachat = Achat::whereMonth('created_at', Carbon::now()->month)
                         ->count();
-        $date =  Carbon::now()->month()->format('m');         
+        $date =  Carbon::now()->month()->format('M');         
         return view('milkcheck.print-achat',compact('achats','countachat','date'));
     }
 

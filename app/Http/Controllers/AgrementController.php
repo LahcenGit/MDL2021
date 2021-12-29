@@ -10,6 +10,7 @@ class AgrementController extends Controller
 {
     //
     public function index(){
+        $this->authorize("agrement.viewAny");
         $vendeurs = Vendeur::all();
        
         return view('milkcheck.liste-agrements',compact('vendeurs'));

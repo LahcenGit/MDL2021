@@ -22,6 +22,7 @@
             <th>#</th>
             <th>Vendeur</th>
             <th>destination</th>
+            <th>Qte</th>
             <th>Date</th>
             <th>Action</th>
           </tr>
@@ -32,6 +33,7 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$achat->vendeur->name}}</td>
             <td>{{$achat->destination}}</td>
+            <td>{{$achat->qte}} L</td>
             <td>{{$achat->created_at}}</td>
             
             <td>
@@ -60,3 +62,28 @@
 
 </div>
 @endsection
+
+@push('modal-achat-scripts')
+<script>
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(".show-achat").click(function() {
+  
+  var id = $(this).data('id');
+ 
+  $.ajax({
+    url: '/show-achat/' + id,
+    type: "GET",
+    success: function (res) {
+      $('#modal-achat').html(res);
+      $("#exampleModal").modal('show');
+    }
+  });
+  
+});
+
+</script>  
+@endpush
