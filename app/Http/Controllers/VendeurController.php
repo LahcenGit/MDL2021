@@ -27,7 +27,7 @@ class VendeurController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'numero' => 'required',
+            'telephone' => 'required',
             'date_expedition' => 'required',
             'date_expiration' => 'required',
         ]);

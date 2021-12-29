@@ -36,7 +36,7 @@
                        
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="exampleFormControlSelect1" class="form-label">Vendeur</label>
+                                <label for="exampleFormControlSelect1" class="form-label">Vendeur *</label>
 								<select class="form-select select-vendeur" name="vendeur"  class="form-control input-default  @error('vendeur') is-invalid @enderror" id="exampleFormControlSelect1">
                                     <option value="0">select</option>
                                     @foreach ($vendeurs as $vendeur)
@@ -58,7 +58,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-2">
-                                <label class="form-label">Quantité:</label>
+                                <label class="form-label">Quantité *:</label>
                                 <input class="form-control mb-4 mb-md-0 input-default @error('qte') is-invalid @enderror"type="number" name="qte" value="{{old('qte')}}" placeholder="0" />
                                 @error('qte')
                                 <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="exampleFormControlSelect1" class="form-label">Déstination</label>
+                                <label for="exampleFormControlSelect1" class="form-label">Déstination *</label>
 								<select class="form-select" name="destination" class="form-control input-default @error('destination') is-invalid @enderror" id="exampleFormControlSelect1">
                                     <option value="0">select</option>
                                     <option value="fromage" @if (old('destination') == "fromage") selected @endif>Frommage</option>
@@ -86,7 +86,7 @@
                         </div>
                             <div class="row mb-3">
                                 <div class="col-md-1">
-                                    <label class="form-label">F:</label>
+                                    <label class="form-label">F *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteF') is-invalid @enderror" value="{{old('qteF')}}" id="inputF" name="qteF" placeholder="0" />
                                     @error('qteF')
                                     <span class="invalid-feedback" role="alert">
@@ -96,7 +96,7 @@
                                 </div>
                                 
                                 <div class="col-md-1">
-                                    <label class="form-label">D:</label>
+                                    <label class="form-label">D *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteD') is-invalid @enderror" value="{{old('qteD')}}" id="inputD" name="qteD" placeholder="0" />
                                     @error('qteD')
                                     <span class="invalid-feedback" role="alert">
@@ -105,7 +105,7 @@
                                    @enderror
                                 </div>
                                 <div class="col-md-1">
-                                    <label class="form-label">C:</label>
+                                    <label class="form-label">C *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteC') is-invalid @enderror" value="{{old('qteC')}}" name="qteC" placeholder="0" />
                                     @error('qteC')
                                     <span class="invalid-feedback" role="alert">
@@ -114,7 +114,7 @@
                                    @enderror
                                 </div>
                                 <div class="col-md-1">
-                                    <label class="form-label">S:</label>
+                                    <label class="form-label">S *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteS') is-invalid @enderror" value="{{old('qteS')}}" name="qteS" placeholder="0" />
                                     @error('qteS')
                                     <span class="invalid-feedback" role="alert">
@@ -123,7 +123,7 @@
                                    @enderror
                                 </div>
                                 <div class="col-md-1">
-                                    <label class="form-label">P:</label>
+                                    <label class="form-label">P *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteP') is-invalid @enderror" value="{{old('qteP')}}" name="qteP" placeholder="0" />
                                     @error('qteP')
                                     <span class="invalid-feedback" role="alert">
@@ -133,7 +133,7 @@
                                 </div>
                        
                                 <div class="col-md-1">
-                                    <label class="form-label">W:</label>
+                                    <label class="form-label">W *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteW') is-invalid @enderror" value="{{old('qteW')}}" name="qteW" placeholder="0" />
                                     @error('qteW')
                                     <span class="invalid-feedback" role="alert">
@@ -142,7 +142,7 @@
                                    @enderror
                                 </div>
                                 <div class="col-md-1">
-                                    <label class="form-label">L:</label>
+                                    <label class="form-label">L *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteL') is-invalid @enderror" value="{{old('qteL')}}" name="qteL" placeholder="0" />
                                     @error('qteL')
                                     <span class="invalid-feedback" role="alert">
@@ -151,7 +151,7 @@
                                    @enderror
                                 </div>
                                 <div class="col-md-1">
-                                    <label class="form-label">T:</label>
+                                    <label class="form-label">T *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteT') is-invalid @enderror"value="{{old('qteT')}}" name="qteT" placeholder="0" />
                                     @error('qteT')
                                     <span class="invalid-feedback" role="alert">
@@ -160,7 +160,7 @@
                                    @enderror
                                 </div>
                                 <div class="col-md-1">
-                                    <label class="form-label">FP:</label>
+                                    <label class="form-label">FP *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteFP') is-invalid @enderror" value="{{old('qteFP')}}" name="qteFP" placeholder="0" />
                                     @error('qteFP')
                                     <span class="invalid-feedback" role="alert">
