@@ -90,14 +90,14 @@ Route::middleware('milkcheckAuth')->group(function () {
 Route::resource('journeedulait', EleveurController::class);
 
 //admin routes
-Route::resource('dashboard-admin/categories', CategorieController::class);
-Route::resource('dashboard-admin/produits', ProduitController::class);
-Route::resource('dashboard-admin/orders', AdminOrderController::class);
-Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderdetail']);
-Route::get('dashboard-admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve']);
-Route::get('dashboard-admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel']);
+Route::resource('dashboard-admin/categories', CategorieController::class)->middleware('can:admin');
+Route::resource('dashboard-admin/produits', ProduitController::class)->middleware('can:admin');
+Route::resource('dashboard-admin/orders', AdminOrderController::class)->middleware('can:admin');
+Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderdetail'])->middleware('can:admin');
+Route::get('dashboard-admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
+Route::get('dashboard-admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel'])->middleware('can:admin');
 
-Route::resource('dashboard-admin', AdminController::class);
+Route::resource('dashboard-admin', AdminController::class)->middleware('can:admin');
 
 
 

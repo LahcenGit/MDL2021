@@ -32,6 +32,10 @@ class AuthServiceProvider extends ServiceProvider
             return Auth::user()->type == 'milkcheck';
            });
 
+        Gate::define('admin',function(){
+            return Auth::user()->type == 'admin';
+           });
+
         //
     }
 }
