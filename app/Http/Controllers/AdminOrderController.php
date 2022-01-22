@@ -177,4 +177,22 @@ class AdminOrderController extends Controller
         return view('orders.order-detail',compact('order'));
 
     }
+
+
+    public function orderApprouve($id){
+
+        $order = Order::find($id);
+        $order->statut = 2 ; 
+        $order->save();
+        return redirect('/dashboard-admin/orders');
+
+    }
+    public function orderCancel($id){
+
+        $order = Order::find($id);
+        $order->statut = 3 ; 
+        $order->save();
+        return redirect('/dashboard-admin/orders');
+
+    }
 }
