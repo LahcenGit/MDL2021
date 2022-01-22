@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AdminOrderController extends Controller
 {
     public function index(){
-        $orders = Order::all();
+        $orders = Order::all()->reverse();
         return view('admin.orders',compact('orders'));
     }
 

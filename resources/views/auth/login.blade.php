@@ -84,7 +84,7 @@ License: For each use you must have a valid license purchased only from above li
                      
                       <div>
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Login') }}
+                            {{ __('Se connecter') }}
                         </button>
                        
                       </div>
