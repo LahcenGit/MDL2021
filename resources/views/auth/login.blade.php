@@ -15,7 +15,7 @@ License: For each use you must have a valid license purchased only from above li
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
 
-	<title>Milkchek - Contrôle laitier et analyse du lait </title>
+	<title>La maison du lait </title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,8 +60,8 @@ License: For each use you must have a valid license purchased only from above li
                 </div>
                 <div class="col-md-8 ps-md-0">
                   <div class="auth-form-wrapper px-4 py-5">
-                    <a href="#" class="noble-ui-logo d-block mb-2">MDL<span>Check</span></a>
-                    <h5 class="text-muted fw-normal mb-4">Beinvenue ! merci de se connecter</h5>
+                    <a href="#" class="noble-ui-logo d-block mb-2">MDL<span>ADMIN</span></a>
+                    <h5 class="text-muted fw-normal mb-4">Bienvenue ! merci de se connecter</h5>
                     <form class="forms-sample">
                       <div class="mb-3">
                         <label for="userEmail" class="form-label">Email</label>
@@ -73,7 +73,7 @@ License: For each use you must have a valid license purchased only from above li
                      @enderror
                     </div>
                       <div class="mb-3">
-                        <label for="userPassword" class="form-label">Mots de passe</label>
+                        <label for="userPassword" class="form-label">Mot de passe</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="userPassword" autocomplete="current-password" placeholder="Password">
                         @error('password')
                                     <span class="invalid-feedback" role="alert">
