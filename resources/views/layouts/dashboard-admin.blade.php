@@ -73,7 +73,7 @@
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('dashboard-admin/particuliers')}}" class="nav-link">Clients</a>
+                  <a href="#" class="nav-link">Clients</a>
                 </li>
                
                 

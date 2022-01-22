@@ -16,7 +16,7 @@ class AdminController extends Controller
         $order = Order::count();
         $pendingorder= Order::where('statut',1)->count();
         $gain = Order::selectRaw('sum(total) as total')->first();
-        $orders = Order::all();
+        $orders = Order::limit(10)->get()->reverse();
        
         return view('admin.dashboard-admin',compact('order','pendingorder','gain','orders'));
        
