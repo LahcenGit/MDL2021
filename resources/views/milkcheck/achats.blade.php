@@ -20,9 +20,10 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Vendeur</th>
+            <th>Colecteur</th>
             <th>destination</th>
             <th>Qte</th>
+            <th>Prix</th>
             <th>Date</th>
             <th>Action</th>
           </tr>
@@ -31,9 +32,10 @@
             @foreach($achats as $achat)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$achat->vendeur->name}}</td>
+            <td>{{$achat->collector->name}}</td>
             <td>{{$achat->destination}}</td>
-            <td>{{$achat->qte}} L</td>
+            <td><b> {{$achat->qte}} L </b></td>
+            <td> <b class="text-primary"> {{$achat->price}} Da </b></td>
             <td>{{$achat->created_at}}</td>
             
             <td>
@@ -41,9 +43,9 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="{{url('milkcheck/achats/'.$achat->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
-                    <a href="#" data-id="{{$achat->id}}" class="btn btn-success shadow btn-xs sharp mr-1 show-achat" ><i class="mdi mdi-border-color"></i></a>
-                    <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
+                    <a href="{{url('milkcheck/achats/'.$achat->id.'/edit')}}" class="btn btn-secondary" style="margin-right: 3px;"><i class="mdi mdi-border-color"></i></a>
+                    <a href="#" data-id="{{$achat->id}}" class="btn  btn-primary  show-achat" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
+                    <button class="btn btn-danger" onclick="return confirm('Vous voulez vraiment supprimer?')" style="margin-right: 3px;"><i class="mdi mdi-delete "></i></button>
                 </div>
               </form>	
             </td>

@@ -49,27 +49,11 @@ class EleveurController extends Controller
 
     }
     
-    public function statistique(){
-        $total = Eleveur::count();
-        $eleveur = Eleveur:: where('type','مربي')->count();
-        $agriculteur = Eleveur:: where('type','فلاح')->count();
-        $collecteur = Eleveur::where('type','جامع الحليب')->count(); 
-        $veterinaire = Eleveur::where('type','بيطري')->count();
-        $autre = Eleveur::where('type','مشارك')->count();
-        $eleveurs = Eleveur::all()->reverse();
 
-        $wilayas= Eleveur::
-                           groupBy('wilaya')
-                           ->selectRaw('wilaya')
-                           ->selectRaw('count(*) as total')
-                           ->get();
-       
-        return view('statistique',compact('total','eleveur','collecteur','veterinaire','autre','eleveurs','agriculteur','wilayas'));
-      }
 
     public function statistiqueConfirm(){
  
-        $eleveurs = Eleveur::all()->reverse();
+        $eleveurs = Eleveur::where('type','!=','مشارك')->where('type','!=','بيطري')->where('phone','!=','0')->get();
         $nbrc = Eleveur::where('check','1')->count();
         $nbrr = Eleveur::where('check','2')->count();
         $nbra = Eleveur::where('check','3')->count();

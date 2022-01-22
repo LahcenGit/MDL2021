@@ -15,10 +15,12 @@ class CreateAchatsTable extends Migration
     {
         Schema::create('achats', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vendeur_id')->unsigned();
+            $table->unsignedBigInteger('collector_id')->unsigned();
             $table->integer('qte');
+            $table->integer('price');
+            $table->integer('total');
             $table->string('destination');
-            $table->foreign('vendeur_id')->references('id')->on('vendeurs')->onDelete('cascade');
+            $table->foreign('collector_id')->references('id')->on('collectors')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

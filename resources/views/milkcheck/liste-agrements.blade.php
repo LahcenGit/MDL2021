@@ -5,7 +5,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Tables</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Vendeurs</li>
+            <li class="breadcrumb-item active" aria-current="page">agréments</li>
         </ol>
     </nav>
     @include('flash-message')
@@ -13,7 +13,7 @@
         <div class="col-md-12 grid-margin stretch-card">
 <div class="card">
   <div class="card-body">
-    <h6 class="card-title">La table des vendeurs</h6>
+    <h6 class="card-title">La table des agréments</h6>
     <p class="text-muted mb-3">Vous trouvez ici  tous les vendeurs.</p>
     <div class="table-responsive">
       <table id="dataTableExample" class="table">
@@ -53,9 +53,7 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                  <a href="{{url('milkcheck/vendeurs/'.$vendeur->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
-                  
-                  <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
+                  <a href="{{url('milkcheck/vendeurs/'.$vendeur->id.'/edit')}}" class="btn btn-secondary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
                 </div>	
             </td>
           </tr>

@@ -1,6 +1,12 @@
 @extends('layouts.milkcheck')
 @section('content')
 
+<style>
+  .text-zahra{
+    color: #6FB53E;
+  }
+</style>
+
 <div class="page-content">
 
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
@@ -26,7 +32,7 @@
     <div class="row">
       <div class="col-12 col-xl-12 stretch-card">
         <div class="row flex-grow-1">
-          <div class="col-md-3 grid-margin stretch-card">
+          <div class="col-md-3 col-6 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
@@ -41,9 +47,8 @@
                     <h3 class="mb-2">{{$lait->q}}L</h3>
                     @endif
                     <div class="d-flex align-items-baseline">
-                      <p class="text-success">
-                        <span>+3.3%</span>
-                        <i data-feather="arrow-up" class="icon-sm mb-1"></i>
+                      <p class="text-zahra">
+                        <span>Mois actuel</span>
                       </p>
                     </div>
                   </div>
@@ -52,7 +57,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 grid-margin stretch-card">
+          <div class="col-md-3 col-6 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
@@ -67,9 +72,8 @@
                     <h3 class="mb-2">{{$fromage->qt}}L</h3>
                     @endif
                     <div class="d-flex align-items-baseline">
-                      <p class="text-danger">
-                        <span>-2.8%</span>
-                        <i data-feather="arrow-down" class="icon-sm mb-1"></i>
+                      <p class="text-zahra">
+                        <span>Mois actuel</span>
                       </p>
                     </div>
                   </div>
@@ -79,7 +83,7 @@
             </div>
           </div>
           
-          <div class="col-md-3 grid-margin stretch-card">
+          <div class="col-md-3 col-6 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
@@ -87,12 +91,11 @@
                   
                 </div>
                 <div class="row">
-                  <div class="col-6 col-md-12 col-xl-5">
+                  <div class="col-6 col-xs-12 col-xl-5">
                     <h3 class="mb-2">{{$achat}}</h3>
                     <div class="d-flex align-items-baseline">
-                      <p class="text-success">
-                        <span>+2.8%</span>
-                        <i data-feather="arrow-up" class="icon-sm mb-1"></i>
+                      <p class="text-zahra">
+                        <span>Mois actuel</span>
                       </p>
                     </div>
                   </div>
@@ -102,7 +105,7 @@
             </div>
           </div>
 
-          <div class="col-md-3 grid-margin stretch-card">
+          <div class="col-md-3 col-6 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
@@ -113,9 +116,8 @@
                   <div class="col-6 col-md-12 col-xl-5">
                     <h3 class="mb-2">{{$randement}}Kg</h3>
                     <div class="d-flex align-items-baseline">
-                      <p class="text-success">
-                        <span>+2.8%</span>
-                        <i data-feather="arrow-up" class="icon-sm mb-1"></i>
+                      <p class="text-zahra">
+                        <span>Mois actuel</span>
                       </p>
                     </div>
                   </div>
@@ -129,7 +131,7 @@
     </div> <!-- row -->
 
     <div class="row">
-      <div class="col-4 col-xl-4 grid-margin stretch-card">
+      <div class="col-lg-4 grid-margin stretch-card">
         <div class="card overflow-hidden">
           <div class="card-body">
             <div>
@@ -138,7 +140,8 @@
           </div>
         </div>
       </div>
-      <div class="col-4 col-xl-4 grid-margin stretch-card">
+
+      <div class="col-lg-4  grid-margin stretch-card">
         <div class="card overflow-hidden">
           <div class="card-body">
             
@@ -149,7 +152,8 @@
           </div>
         </div>
       </div>
-      <div class="col-4 col-xl-4 grid-margin stretch-card">
+
+      <div class="col-lg-4  grid-margin stretch-card">
         <div class="card overflow-hidden">
           <div class="card-body">
             
@@ -168,63 +172,59 @@
     <div class="row">
       <div class="col-lg-8 col-xl-6 grid-margin grid-margin-xl-0 stretch-card">
         <div class="card">
+          <div class="card-header">
+            <h6 class="card-title mb-0">Top eleveur Qualité</h6>
+          </div>
           <div class="card-body">
-            <div class="d-flex justify-content-between align-items-baseline mb-2">
-              <h6 class="card-title mb-0">Top Vendeur Qualité</h6>
-              
-            </div>
-            @foreach($topVendeurs as $topVendeur)
-            <div class="d-flex flex-column">
-              <a href="javascript:;" class="d-flex align-items-center border-bottom pb-3">
-                <div class="me-3">
-                  <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                </div>
-                <div class="w-100">
-                  <div class="d-flex justify-content-between">
-                    <h6 class="text-body mb-2">{{$topVendeur->vendeur->name}}</h6>
-                    <p class="text-muted tx-12">{{$topVendeur->qte}} L</p>
-                  </div>
-                  <p class="text-muted tx-13">F={{$topVendeur->fat}}, D={{$topVendeur->densite}}, P={{$topVendeur->p}}</p>
-                </div>
-              </a>
+
+            <table class="table table-striped">
+              <tbody>
+                @foreach($top_breeders as $top_breeder)
+                <tr>
+                  <th scope="row">{{$loop->iteration}}</th>
+                  <td><h6 class="text-body mb-2">{{$top_breeder->breeder->name}}</h6>
+                     <p class="text-muted tx-13">F={{$top_breeder->fat}}, D={{$top_breeder->densite}}, P={{$top_breeder->p}}</p>
+                  </td>
+                  <td><p class="text-muted tx-12">{{$top_breeder->qte}} L</p></td>
+                </tr>
+                @endforeach
+             
+              </tbody>
+            </table>
+         
             
-            </div>
-            @endforeach
           </div>
         </div>
       </div>
 
       <div class="col-lg-8 col-xl-6 grid-margin grid-margin-xl-0 stretch-card">
         <div class="card">
+          <div class="card-header">
+            <h6 class="card-title mb-0">Top eleveur Quantité</h6>
+          </div>
           <div class="card-body">
-            <div class="d-flex justify-content-between align-items-baseline mb-2">
-              <h6 class="card-title mb-0">Top Vendeur Quantité</h6>
-              
-            </div>
-            @foreach($topVendeursQtes as $topVendeur)
-            <div class="d-flex flex-column">
-              <a href="javascript:;" class="d-flex align-items-center border-bottom pb-3">
-                <div class="me-3">
-                  <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                </div>
-                <div class="w-100">
-                  <div class="d-flex justify-content-between">
-                    <h6 class="text-body mb-2">{{$topVendeur->vendeur->name}}</h6>
-                    <p class="text-muted tx-12">{{$topVendeur->qte}} L</p>
-                  </div>
-                 
-                </div>
-              </a>
-            
-            </div>
-            @endforeach
+            <table class="table table-striped">
+              <tbody>
+                @foreach($top_qte_breeders as $top_qte_breeder)
+                <tr>
+                  <th scope="row">{{$loop->iteration}}</th>
+                  <td><h6 class="text-body mb-2">{{$top_qte_breeder->breeder->name}}</h6></td>
+                  <td><p class="text-muted tx-12">{{$top_qte_breeder->qte}} L</p></td>
+                </tr>
+                @endforeach
+             
+              </tbody>
+            </table>
+    
           </div>
         </div>
       </div>
       
     </div> <!-- row -->
-    <div class="row">
-      <div class="col-md-8 grid-margin stretch-card">
+
+
+    {{--<div class="row">
+      <div class="col-md-12 mt-3 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
             <h6 class="card-title">La table des achats</h6>
@@ -234,7 +234,7 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Vendeur</th>
+                      <th>eleveur</th>
                       <th>destination</th>
                       <th>Date</th>
                       <th>Action</th>
@@ -244,7 +244,7 @@
                     @foreach($achats as $achat)
                   <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$achat->vendeur->name}}</td>
+                    <td>{{$achat->eleveur->name}}</td>
                     <td>{{$achat->destination}}</td>
                     <td>{{$achat->created_at}}</td>
                     <td>
@@ -265,7 +265,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>--}}
 
 </div>
 <div id="modal-achat">

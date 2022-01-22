@@ -13,11 +13,8 @@ License: For each use you must have a valid license purchased only from above li
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="NobleUI">
-	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-	<title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+	<title>Milkchek - Contrôle laitier et analyse du lait </title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +22,7 @@ License: For each use you must have a valid license purchased only from above li
   <link rel="stylesheet" href="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
+  <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
   <!-- End fonts -->
 
 	<!-- core:css -->
@@ -38,13 +36,15 @@ License: For each use you must have a valid license purchased only from above li
 	<!-- inject:css -->
 	<link rel="stylesheet" href="{{asset('/assets/fonts/feather-font/css/iconfont.css')}}">
 	<link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
+
+	<link rel="stylesheet" href="{{asset('/assets/vendors/select2/select2.min.css')}}">
 	<!-- endinject -->
 
   <!-- Layout styles -->  
 	<link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
   <!-- End layout styles -->
 
-  <link rel="shortcut icon" href="{{asset('/assets/images/favicon.png')}}" />
+  <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
@@ -53,7 +53,7 @@ License: For each use you must have a valid license purchased only from above li
 		<!-- partial:partials/_sidebar.html -->
 		<nav class="sidebar">
       <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
+        <a href="{{url('/milkcheck')}}" class="sidebar-brand">
           MDL<span>Check</span>
         </a>
         <div class="sidebar-toggler not-active">
@@ -75,19 +75,38 @@ License: For each use you must have a valid license purchased only from above li
           
           <li class="nav-item nav-category">Components</li>
 
-          <li class="nav-item  {{ active_class(['milkcheck/vendeurs/*','milkcheck/vendeurs']) }}">
-            <a class="nav-link"  data-bs-toggle="collapse" href="#vendeurs" role="button" aria-expanded="{{ is_active_route(['milkcheck/vendeurs/*','milkcheck/vendeurs']) }}" aria-controls="vendeurs">
+          <li class="nav-item  {{ active_class(['milkcheck/collectors/*','milkcheck/collectors']) }}">
+            <a class="nav-link"  data-bs-toggle="collapse" href="#collecteurs" role="button" aria-expanded="{{ is_active_route(['milkcheck/collectors/*','milkcheck/collectors']) }}" aria-controls="collecteurs">
               <i class="link-icon" data-feather="pie-chart"></i>
-              <span class="link-title">Vendeurs</span>
+              <span class="link-title">Collecteurs</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse {{ show_class(['milkcheck/vendeurs/*','milkcheck/vendeurs']) }} " id="vendeurs">
+            <div class="collapse {{ show_class(['milkcheck/collectors/*','milkcheck/collectors']) }} " id="collecteurs">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/vendeurs/create')}}" class="nav-link {{ active_class(['milkcheck/vendeurs/create']) }}">Ajouter</a>
+                  <a href="{{url('milkcheck/collectors/create')}}" class="nav-link {{ active_class(['milkcheck/collectors/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/vendeurs')}}" class="nav-link {{ active_class(['milkcheck/vendeurs']) }}">Tous</a>
+                  <a href="{{url('milkcheck/collectors')}}" class="nav-link {{ active_class(['milkcheck/collectors']) }}">Liste vendeurs</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item  {{ active_class(['milkcheck/breeders/*','milkcheck/breeders']) }}">
+            <a class="nav-link"  data-bs-toggle="collapse" href="#eleveurs" role="button" aria-expanded="{{ is_active_route(['milkcheck/breeders/*','milkcheck/breeders']) }}" aria-controls="eleveurs">
+              <i class="link-icon" data-feather="pie-chart"></i>
+              <span class="link-title">Eleveurs</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse {{ show_class(['milkcheck/breeders/*','milkcheck/breeders']) }} " id="eleveurs">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/breeders/create')}}" class="nav-link {{ active_class(['milkcheck/breeders/create']) }}">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/breeders')}}" class="nav-link {{ active_class(['milkcheck/breeders']) }}">Liste vendeurs</a>
                 </li>
               </ul>
             </div>
@@ -106,7 +125,7 @@ License: For each use you must have a valid license purchased only from above li
                   <a href="{{url('milkcheck/achats/create')}}" class="nav-link {{ active_class(['milkcheck/achats/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('milkcheck/achats')}}" class="nav-link {{ active_class(['milkcheck/achats']) }}">Tous</a>
+                    <a href="{{url('milkcheck/achats')}}" class="nav-link {{ active_class(['milkcheck/achats']) }}">Liste achats</a>
                   </li>
               </ul>
             </div>
@@ -117,10 +136,13 @@ License: For each use you must have a valid license purchased only from above li
               <span class="link-title">Agrements</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse {{ show_class(['milkcheck/agrements/*','milkcheck/agrements']) }}" id="agrements">
+            <div class="collapse {{ show_class(['milkcheck/accords/*','milkcheck/accords']) }}" id="agrements">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/agrements')}}" class="nav-link {{ active_class(['milkcheck/agrements']) }}">Agrements</a>
+                  <a href="{{url('milkcheck/accords/collectors')}}" class="nav-link {{ active_class(['milkcheck/accords/collectors']) }}">Collecteurs</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/accords/breeders')}}" class="nav-link {{ active_class(['milkcheck/accords/breeders']) }}">Eleveurs</a>
                 </li>
                
                 
@@ -140,38 +162,7 @@ License: For each use you must have a valid license purchased only from above li
         </ul>
       </div>
     </nav>
-    <nav class="settings-sidebar">
-      <div class="sidebar-body">
-        <a href="#" class="settings-sidebar-toggler">
-          <i data-feather="settings"></i>
-        </a>
-        <h6 class="text-muted mb-2">Sidebar:</h6>
-        <div class="mb-3 pb-3 border-bottom">
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight" value="sidebar-light" checked>
-            <label class="form-check-label" for="sidebarLight">
-              Light
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark" value="sidebar-dark">
-            <label class="form-check-label" for="sidebarDark">
-              Dark
-            </label>
-          </div>
-        </div>
-        <div class="theme-wrapper">
-          <h6 class="text-muted mb-2">Light Theme:</h6>
-          <a class="theme-item active" href="../demo1/dashboard.html">
-            <img src="{{asset('/assets/images/screenshots/light.jpg')}}" alt="light theme">
-          </a>
-          <h6 class="text-muted mb-2">Dark Theme:</h6>
-          <a class="theme-item" href="../demo2/dashboard.html">
-            <img src="{{asset('/assets/images/screenshots/dark.jpg')}}" alt="light theme">
-          </a>
-        </div>
-      </div>
-    </nav>
+    
 		<!-- partial -->
 	
 		<div class="page-wrapper">
@@ -205,106 +196,9 @@ License: For each use you must have a valid license purchased only from above li
 							<a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i data-feather="grid"></i>
 							</a>
-							<div class="dropdown-menu p-0" aria-labelledby="appsDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-									<p class="mb-0 fw-bold">Web Apps</p>
-									<a href="javascript:;" class="text-muted">Edit</a>
-								</div>
-                <div class="row g-0 p-1">
-                  <div class="col-3 text-center">
-                    <a href="pages/apps/chat.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="message-square" class="icon-lg mb-1"></i><p class="tx-12">Chat</p></a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="pages/apps/calendar.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="calendar" class="icon-lg mb-1"></i><p class="tx-12">Calendar</p></a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="pages/email/inbox.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="mail" class="icon-lg mb-1"></i><p class="tx-12">Email</p></a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="pages/general/profile.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="instagram" class="icon-lg mb-1"></i><p class="tx-12">Profile</p></a>
-                  </div>
-                </div>
-								<div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-									<a href="javascript:;">View all</a>
-								</div>
-							</div>
+							
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i data-feather="mail"></i>
-							</a>
-							<div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
-								<div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-									<p>9 New Messages</p>
-									<a href="javascript:;" class="text-muted">Clear all</a>
-								</div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Leonardo Payne</p>
-                        <p class="tx-12 text-muted">Project status</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 min ago</p>
-                    </div>	
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Carl Henson</p>
-                        <p class="tx-12 text-muted">Client meeting</p>
-                      </div>
-                      <p class="tx-12 text-muted">30 min ago</p>
-                    </div>	
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Jensen Combs</p>
-                        <p class="tx-12 text-muted">Project updates</p>
-                      </div>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>	
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Amiah Burton</p>
-                        <p class="tx-12 text-muted">Project deatline</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 hrs ago</p>
-                    </div>	
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Yaretzi Mayo</p>
-                        <p class="tx-12 text-muted">New record</p>
-                      </div>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>	
-                  </a>
-                </div>
-								<div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-									<a href="javascript:;">View all</a>
-								</div>
-							</div>
-						</li>
+					
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i data-feather="bell"></i>
@@ -314,7 +208,7 @@ License: For each use you must have a valid license purchased only from above li
 							</a>
 							<div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
 								<div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-									<p>6 New Notifications</p>
+									<p>Notifications</p>
 									<a href="javascript:;" class="text-muted">Clear all</a>
 								</div>
                 <div class="p-1">
@@ -323,46 +217,11 @@ License: For each use you must have a valid license purchased only from above li
 											<i class="icon-sm text-white" data-feather="gift"></i>
                     </div>
                     <div class="flex-grow-1 me-2">
-											<p>New Order Recieved</p>
-											<p class="tx-12 text-muted">30 min ago</p>
+											<p>Fonctionnalité  </p>
+											<p class="tx-12 text-muted">en développement</p>
                     </div>	
                   </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-											<i class="icon-sm text-white" data-feather="alert-circle"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-											<p>Server Limit Reached!</p>
-											<p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>	
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="flex-grow-1 me-2">
-											<p>New customer registered</p>
-											<p class="tx-12 text-muted">2 sec ago</p>
-                    </div>	
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-											<i class="icon-sm text-white" data-feather="layers"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-											<p>Apps are ready for update</p>
-											<p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>	
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-											<i class="icon-sm text-white" data-feather="download"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-											<p>Download completed</p>
-											<p class="tx-12 text-muted">6 hrs ago</p>
-                    </div>	
-                  </a>
+                
                 </div>
 								<div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
 									<a href="javascript:;">View all</a>
@@ -371,41 +230,27 @@ License: For each use you must have a valid license purchased only from above li
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="profile">
+								<img class="wd-30 ht-30 rounded-circle" src="{{url('assets/zahra-profile.png')}}" alt="profile">
 							</a>
 							<div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
 								<div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
 									<div class="mb-3">
-										<img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
+										<img class="wd-80 ht-80 rounded-circle" src="{{url('assets/zahra-profile-80.png')}}" alt="">
 									</div>
 									<div class="text-center">
-										<p class="tx-16 fw-bolder">Amiah Burton</p>
-										<p class="tx-12 text-muted">amiahburton@gmail.com</p>
+										<p class="tx-16 fw-bolder">{{Auth::user()->name}}</p>
+										<p class="tx-12 text-muted">{{Auth::user()->type}}</p>
 									</div>
 								</div>
                 <ul class="list-unstyled p-1">
                   <li class="dropdown-item py-2">
-                    <a href="pages/general/profile.html" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="user"></i>
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="edit"></i>
-                      <span>Edit Profile</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="repeat"></i>
-                      <span>Switch User</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="{{route('logout')}}" class="text-body ms-0" onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
-                      <span>Log Out</span>
+                      <span>Déconnecter</span>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                       </form>
                     </a>
                   </li>
                 </ul>
@@ -419,8 +264,8 @@ License: For each use you must have a valid license purchased only from above li
 
             <!-- partial:partials/_footer.html -->
 			<footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
-				<p class="text-muted mb-1 mb-md-0">Copyright © 2021 <a href="https://www.nobleui.com" target="_blank">NobleUI</a>.</p>
-				<p class="text-muted">Handcrafted With <i class="mb-1 text-primary ms-1 icon-sm" data-feather="heart"></i></p>
+				<p class="text-muted mb-1 mb-md-0">Copyright © 2022 <a href="#" target="_blank">MDL DEV TEAM</a>.</p>
+				<p class="text-muted">MilkCheck V1.0 <i class="mb-1 text-zahra ms-1 icon-sm" data-feather="heart"></i></p>
 			</footer>
 			<!-- partial -->
 		
@@ -443,12 +288,15 @@ License: For each use you must have a valid license purchased only from above li
   <script src="{{asset('/assets/vendors/jquery.flot/jquery.flot.resize.js')}}"></script>
   <script src="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{asset('/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
 	<!-- End plugin js for this page -->
 
 	<!-- inject:js -->
 	<script src="{{asset('/assets/vendors/feather-icons/feather.min.js')}}"></script>
 	<script src="{{asset('/assets/js/template.js')}}"></script>
 	<!-- endinject -->
+
+  <script src="{{asset('/assets/print/printThis.js')}}"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -457,6 +305,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!-- Custom js for this page -->
   <script src="{{asset('/assets/js/dashboard-light.js')}}"></script>
   <script src="{{asset('/assets/js/datepicker.js')}}"></script>
+  <script src="{{asset('/assets/js/select2.js')}}"></script>
 	<!-- End custom js for this page -->
   
   @stack('select-vendeur-scripts')
@@ -465,6 +314,27 @@ License: For each use you must have a valid license purchased only from above li
   @stack('datad-scripts')
   @stack('datap-scripts')
   @stack('modal-achat-scripts')
+  @stack('report-scripts')
+  @stack('report-detail-scripts')
+
+
+  <script>
+
+    if($('.select-date').val() == 'p'){
+      $('.date-section').show();
+    }
+    $('.select-date').on('change', function() {
+      if(this.value == 'p'){
+        $('.date-section').show();
+        $('.date').prop('required',true);
+      }
+      else{
+        $('.date-section').attr('style', 'display: none !important');
+        $('.date').prop('required',false);
+      }
+    });
+  
+  </script>
  
 </body>
 </html>    

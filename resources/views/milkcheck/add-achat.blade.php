@@ -1,6 +1,19 @@
 @extends('layouts.milkcheck')
 
 
+<style>
+    .price-calculator{
+      font-family: 'Orbitron', sans-serif;
+      font-size:25px; 
+      color:#16B4B7; 
+      font-weight : bold;
+	  pointer-events: none;
+	  height: 50px;
+      border: none;
+    }
+</style>
+
+
 @section('content')
 <div class="page-content">
 
@@ -29,43 +42,45 @@
         <div class="col-md-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Ajouter Achat</h6>
+                    <h6 class="card-title">Ajouter Achat - {{$collector->name}}</h6>
                     <p class="text-muted mb-3">Veuillez remplir tous les champs s'il vous plait!</p>
                     <form class="forms-sample" method="POST" action="{{url('/milkcheck/achats')}}" enctype="multipart/form-data">
                         @csrf 
+
+                        <input type="hidden" name="collector" value="{{$collector->id}}">
+
+                        <label for="exampleFormControlSelect1" class="form-label">La liste des eleveurs </label>
                        
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="exampleFormControlSelect1" class="form-label">Vendeur *</label>
-								<select class="form-select select-vendeur" name="vendeur"  class="form-control input-default  @error('vendeur') is-invalid @enderror" id="exampleFormControlSelect1">
-                                    <option value="0">select</option>
-                                    @foreach ($vendeurs as $vendeur)
-                                        <option  value="{{$vendeur->id}}" @if (old('vendeur') == $vendeur->id ) selected @endif > {{ $vendeur->name}}</option>
-                                    @endforeach
-                                @error('vendeur')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
-                               </select>
-                               
-                            </div>
-                            <div class="col-md-3">
-                            <label class="form-label">Date:</label>
-                            <input id="agrement" class="form-control mb-4 mb-md-0 input-default "/>
-                            
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-2">
-                                <label class="form-label">Quantité *:</label>
-                                <input class="form-control mb-4 mb-md-0 input-default @error('qte') is-invalid @enderror"type="number" name="qte" value="{{old('qte')}}" placeholder="0" />
-                                @error('qte')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
-                            </div>
+                        <div class=" col-lg-8 col-12 mb-3">
+
+                            <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Validité</th>
+                                    <th scope="col">Qte / L</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                   @foreach ($breeders as $breeder)
+                                    <tr>
+                                        <th style="width: 10px;">{{$loop->iteration}}</th>
+                                        <td >{{$breeder->name}}</td>
+                                        @if ($breeder->check() > 15 )
+                                        <td><span class="badge bg-success">Valide</span></td>
+                                        @endif
+                                        @if ($breeder->check() <= 0 )
+                                        <td><span class="badge bg-danger">Expiré</span></td>
+                                        @endif
+                                        @if ($breeder->check() < 15 &&  $breeder->check()>0)
+                                        <td><span class="badge bg-warning">Reste {{$breeder->check()}} jours </span></td>
+                                        @endif
+                                        <td style="width: 200px;"> <input class="form-control  input-default" type="number" name="{{$breeder->id.'qte'}}" placeholder="0" /></td>
+                                    </tr>
+                                  @endforeach
+                                </tbody>
+                              </table>
                             
                         </div>
                         <div class="row mb-3">
@@ -87,7 +102,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-1">
                                     <label class="form-label">F *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteF') is-invalid @enderror" value="{{old('qteF')}}" id="inputF" name="qteF" placeholder="0" />
+                                    <input class="form-control fat mb-4 mb-md-0 input-default @error('qteF') is-invalid @enderror" value="{{old('qteF')}}" id="inputF" name="qteF" placeholder="0" />
                                     @error('qteF')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -97,7 +112,7 @@
                                 
                                 <div class="col-md-1">
                                     <label class="form-label">D *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteD') is-invalid @enderror" value="{{old('qteD')}}" id="inputD" name="qteD" placeholder="0" />
+                                    <input class="form-control densite mb-4 mb-md-0 input-default @error('qteD') is-invalid @enderror" value="{{old('qteD')}}" id="inputD" name="qteD" placeholder="0" />
                                     @error('qteD')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -124,7 +139,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <label class="form-label">P *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteP') is-invalid @enderror" value="{{old('qteP')}}" name="qteP" placeholder="0" />
+                                    <input class="form-control protine mb-4 mb-md-0 input-default @error('qteP') is-invalid @enderror" value="{{old('qteP')}}" name="qteP" placeholder="0" />
                                     @error('qteP')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -168,9 +183,26 @@
                                     </span>
                                    @enderror
                                 </div>
+
+                                <div class="col-md-1">
+                                    <label class="form-label">Acidité *:</label>
+                                    <input class="form-control acidite mb-4 mb-md-0 input-default @error('a') is-invalid @enderror" value="{{old('qteA')}}" name="qteA" placeholder="0" />
+                                    @error('qteA')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
+                                </div>
                             </div>
+
+
+                            <button class="btn btn-warning price-action" type="button">Calculer prix d'achat</button>
+                            <button class="btn btn-secondary price-reset" type="button">Réinitialiser</button>
+                             <br>
+                            <input class="price-calculator mt-3" value="{{old('qteFP')}}" name="price_achat" placeholder="50 Da" /> <br>
+
                         
-                        <button class="btn btn-primary" type="submit">Ajouter</button>
+                        <button class="btn btn-primary mt-3" type="submit">Ajouter l'achat</button>
                     </form>
                 </div>
             </div>
@@ -186,6 +218,35 @@
 		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	}
 	});
+
+    $(".price-action").click(function () {
+
+        f =   $( ".fat" ).val();
+        p =   $( ".protine" ).val();
+        d =   $( ".densite" ).val();
+        a =   $( ".acidite" ).val();
+
+        price = 50 ; 
+
+        if (f>28 && p>2.8){
+           
+            price = price + 2 ; 
+        }
+
+        if (d>1028 && a<18){
+            price = price + 2 ; 
+        }
+
+        $( ".price-calculator" ).val(price);
+        
+    });
+
+
+    $(".price-reset").click(function () {
+
+        $( ".price-calculator" ).val(50);
+        
+    });
 
 	$( ".select-vendeur" ).change(function() {
          	

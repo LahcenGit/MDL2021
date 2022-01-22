@@ -14,10 +14,8 @@ License: For each use you must have a valid license purchased only from above li
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="NobleUI">
-	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-	<title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+	<title>Milkchek - Contrôle laitier et analyse du lait </title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +39,8 @@ License: For each use you must have a valid license purchased only from above li
 	<link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
   <!-- End layout styles -->
 
-  <link rel="shortcut icon" href="{{asset('/assets/images/favicon.png')}}" />
+  <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
+
 </head>
 <body>
 	<div class="main-wrapper">

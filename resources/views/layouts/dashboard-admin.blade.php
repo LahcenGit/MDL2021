@@ -1,49 +1,43 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Purchase: https://1.envato.market/nobleui_admin
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="NobleUI">
-	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+  
+	<title>La maison du lait </title>
 
-	<title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{asset('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
-  <!-- End fonts -->
-
-	<!-- core:css -->
-	<link rel="stylesheet" href="{{asset('/assets/vendors/core/core.css')}}">
-	<!-- endinject -->
-
-	<!-- Plugin css for this page -->
-  <link rel="stylesheet" href="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
-	<!-- End plugin css for this page -->
-
-	<!-- inject:css -->
-	<link rel="stylesheet" href="{{asset('/assets/fonts/feather-font/css/iconfont.css')}}">
-	<link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
-	<!-- endinject -->
-
-  <!-- Layout styles -->  
-	<link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
-  <!-- End layout styles -->
-
-  <link rel="shortcut icon" href="{{asset('/assets/images/favicon.png')}}" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <!-- End fonts -->
+  
+    <!-- core:css -->
+    <link rel="stylesheet" href="{{asset('/assets/vendors/core/core.css')}}">
+    <!-- endinject -->
+  
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
+    <!-- End plugin css for this page -->
+  
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{asset('/assets/fonts/feather-font/css/iconfont.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
+  
+    <link rel="stylesheet" href="{{asset('/assets/vendors/select2/select2.min.css')}}">
+    <!-- endinject -->
+  
+    <!-- Layout styles -->  
+    <link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
+    <!-- End layout styles -->
+  
+    <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 	<div class="main-wrapper">
@@ -112,11 +106,23 @@ License: For each use you must have a valid license purchased only from above li
           
          
           <li class="nav-item nav-category">Gestion des ventes</li>
-          <li class="nav-item">
-            <a href="dashboard.html" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
+
+          <li class="nav-item {{ active_class(['dashboard-admin/orders/*','dashboard-admin/orders']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#commandes" role="button" aria-expanded="{{ is_active_route(['dashboard-admin/orders/*','dashboard-admin/orders']) }}" aria-controls="orders">
+              <i class="link-icon" data-feather="anchor"></i>
               <span class="link-title">Commandes</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
+            <div class="collapse {{ show_class(['dashboard-admin/orders/*','dashboard-admin/orders']) }}" id="commandes">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('dashboard-admin/orders/create')}}" class="nav-link {{ active_class(['dashboard-admin/orders/create']) }}">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('dashboard-admin/orders')}}" class="nav-link {{ active_class(['dashboard-admin/orders']) }}">Liste commandes</a>
+                  </li>
+              </ul>
+            </div>
           </li>
          
           <li class="nav-item nav-category">Setting</li>
@@ -417,15 +423,20 @@ License: For each use you must have a valid license purchased only from above li
 	</div>
 
 	<!-- core:js -->
-	<script src="../assets/vendors/core/core.js"></script>
+	<script src="{{asset('/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
 
 	<!-- Plugin js for this page -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{{asset('/assets/vendors/datatables.net/jquery.dataTables.js')}}"></script>
+  <script src="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
+  <script src="{{asset('/assets/js/data-table.js')}}"></script>
   <script src="{{asset('/assets/vendors/chartjs/Chart.min.js')}}"></script>
   <script src="{{asset('/assets/vendors/jquery.flot/jquery.flot.js')}}"></script>
   <script src="{{asset('/assets/vendors/jquery.flot/jquery.flot.resize.js')}}"></script>
   <script src="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{asset('/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
+  <script src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
 	<!-- End plugin js for this page -->
 
 	<!-- inject:js -->
@@ -433,23 +444,23 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="{{asset('/assets/js/template.js')}}"></script>
 	<!-- endinject -->
 
+  <script src="{{asset('/assets/print/printThis.js')}}"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	
+
 	<!-- Custom js for this page -->
   <script src="{{asset('/assets/js/dashboard-light.js')}}"></script>
   <script src="{{asset('/assets/js/datepicker.js')}}"></script>
+  <script src="{{asset('/assets/js/select2.js')}}"></script>
 	<!-- End custom js for this page -->
 
-  <script>
 
-		var loadFile = function(event) {
-		  var output = document.getElementById('output');
-		  output.src = URL.createObjectURL(event.target.files[0]);
-		  var b = document.querySelector("button");
-		  output.setAttribute("style", "width: 200px; height: 200px;");
+  @stack('order-detail-scripts')
+  
 
-		  output.onload = function() {
-			URL.revokeObjectURL(output.src) // free memory
-		  }
-		};
-	</script>
+
+
 </body>
 </html>    

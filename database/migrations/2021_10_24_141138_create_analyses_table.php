@@ -25,6 +25,7 @@ class CreateAnalysesTable extends Migration
             $table->float('l');
             $table->float('t');
             $table->float('fp');
+            $table->float('a');
             $table->foreign('achat_id')->references('id')->on('achats')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

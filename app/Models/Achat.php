@@ -15,14 +15,19 @@ class Achat extends Model
     protected $cascadeDeletes = ['analyse'];
     protected $dates = ['deleted_at'];
     
-    public function vendeur()
+    public function collector()
     {
-        return $this->belongsTo(Vendeur::class,'vendeur_id')->withTrashed();
+        return $this->belongsTo(Collector::class,'collector_id');
     }
-
 
     public function analyse()
     {
         return $this->hasOne(Analyse::class,'achat_id');
+    }
+
+
+    public function lineachats()
+    {
+        return $this->hasMany(Lineachat::class,'achat_id');
     }
 }

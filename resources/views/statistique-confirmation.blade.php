@@ -14,8 +14,7 @@ License: For each use you must have a valid license purchased only from above li
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
-	<title>Statistique journnée du lait</title>
+	<title>Eleveurs et collecteurs</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,26 +82,20 @@ License: For each use you must have a valid license purchased only from above li
         
     }
 
-
     
 </style>
 
 <body>
 
-
     <div class="container ">
         <!-- row -->
       
-          
-
-                   <h5 class="title-st mb-3 mt-3 " style="color: #284D9B">Tableau des participants  :  nombre total : {{$eleveurs->count()}} | confirmé :{{$nbrc}}  | refusé :{{$nbrr}} | Absent :{{$nbra}}  </h5>
                     <div class="row">
                         <div class="col-12">
                             <div class="card" >
                                 <div class="row">
                                     <div class="card-body">
-                                        <h6 class="card-title">La table de tous les participants</h6>
-                                        <p class="text-muted mb-3">Vous trouvez ici  tous les participants.</p>
+                                        <h6 class="card-title">Tableau des Eleveurs et collecteurs</h6>
                                         <div class="table-responsive">
                                             <table id="dataTableExample" class="table">
                                               <thead>
@@ -113,8 +106,6 @@ License: For each use you must have a valid license purchased only from above li
                                                   <th>Wilaya</th>
                                                   <th>Type</th>
                                                   <th>Téléphone</th>
-                                                  <th>Date</th>
-                                                  <th>Action</th>
                                                   
                                                 </tr>
                                               </thead>
@@ -127,26 +118,8 @@ License: For each use you must have a valid license purchased only from above li
                                                   <td>{{$elev->wilaya}}</td>
                                                   <td>{{$elev->type}}</td>
                                                   <td>{{$elev->phone}}</td>
-                                                  <td>{{$elev->created_at}}</td>
-                                                    @if ($elev->check == '1')
-                                                            <td><a class="btn btn-success " disabled> Ok !  </a></td>
-                                                    @endif
-                                                    @if ($elev->check == '2')
-                                                            <td><a class="btn btn-danger " disabled> Refusé !  </a></td>
-                                                    @endif
-                                                    @if ($elev->check == '3')
-                                                            <td><a class="btn btn-warning " disabled> Absent !  </a></td>
-                                                    @endif
-                                                  
-                                                
-                                                    @if ($elev->check == '0')
-                                                    <td>
-                                                        <a href="{{asset('confirm/'.$elev->id.'/'.'1')}}" onclick="return confirm('Vous voulez vraiment confirmer ?')" class="btn btn-light btn-sm"> confirmer </a>
-                                                        <a href="{{asset('confirm/'.$elev->id.'/'.'2')}}" onclick="return confirm('Vous voulez vraiment confirmer ?')" class="btn btn-light btn-sm"> refuser </a>
-                                                        <a href="{{asset('confirm/'.$elev->id.'/'.'3')}}" onclick="return confirm('Vous voulez vraiment confirmer ?')" class="btn btn-light btn-sm"> Marqué absent </a>
-                                                    </td>
-                                                    @endif
-                                                   
+                                              
+                                               
                                                 </tr>
                                                @endforeach
                                               </tbody>
@@ -160,13 +133,8 @@ License: For each use you must have a valid license purchased only from above li
                         </div>
                         
                     </div>
-
-                
-                                
                   
             </div>
-    
-           
     </div>
 
 

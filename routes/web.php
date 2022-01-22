@@ -11,6 +11,12 @@ use App\Http\Controllers\AgrementController;
 use App\Http\Controllers\PrinterController;
 use App\Http\Controllers\EleveurController;
 use App\Http\Controllers\ProfilmilkcheckController;
+use App\Http\Controllers\CollectorController;
+use App\Http\Controllers\BreederController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\ReportController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +32,28 @@ use App\Http\Controllers\ProfilmilkcheckController;
 Route::get('/', function () {
     return view('main-template');
 });
-Route::get('/login-milkcheck', function () {
-    return view('auth/login-milkcheck');
+
+Route::get('/orders/informations', function () {
+    return redirect('/');
 });
+Route::get('/orders/success', function () {
+    return redirect('/');
+});
+
+
+Route::get('/milkcheck/login', function () {
+
+    if(Auth::check()){
+        return redirect('/milkcheck');
+    }
+    else{
+        return view('auth.login-milkcheck');
+    }
+    
+});
+
+
+
 
 Route::get('/dashboard-admin', function () {
     return view('admin.dashboard-admin');
@@ -39,18 +64,39 @@ Route::get('/badge', function () {
 });
 
 
-Route::get('/milkcheck',[App\Http\Controllers\MilkchecController::class, 'index'])->name('milkcheck')
-                                                             ->middleware('can:milkcheck.index');
 
-Route::resource('milkcheck/vendeurs', VendeurController::class);
-Route::resource('milkcheck/agrements', AgrementController::class);
-Route::resource('milkcheck/achats', AchatController::class);
-Route::resource('milkcheck/profil', ProfilmilkcheckController::class);
+Route::middleware('milkcheckAuth')->group(function () {
+    Route::get('/milkcheck',[App\Http\Controllers\MilkchecController::class, 'index'])->name('milkcheck')->middleware('can:milkcheck');
+
+    Route::resource('milkcheck/vendeurs', VendeurcController::class)->middleware('can:milkcheck');
+    Route::resource('milkcheck/collectors', CollectorController::class)->middleware('can:milkcheck');
+    //show achat detail page
+    Route::get('/milkcheck/achats/create/{id}',[App\Http\Controllers\AchatController::class, 'createAchat'])->middleware('can:milkcheck');
+    Route::resource('milkcheck/breeders', BreederController::class)->middleware('can:milkcheck');
+
+
+    Route::get('/milkcheck/accords/collectors/',[App\Http\Controllers\AgrementController::class, 'collectorsAccord'])->middleware('can:milkcheck');
+    Route::get('/milkcheck/accords/breeders/',[App\Http\Controllers\AgrementController::class, 'breedersAccord'])->middleware('can:milkcheck');
+    Route::resource('milkcheck/achats', AchatController::class)->middleware('can:milkcheck');
+    Route::resource('milkcheck/profil', ProfilmilkcheckController::class)->middleware('can:milkcheck');
+
+
+     //Report
+     Route::get('/milkcheck/report',[App\Http\Controllers\ReportController::class, 'index'])->middleware('can:milkcheck');
+     Route::get('/milkcheck/get-type/{type}',[App\Http\Controllers\ReportController::class, 'getType'])->middleware('can:milkcheck');
+     Route::post('/milkcheck/report-detail',[App\Http\Controllers\ReportController::class, 'reportDetail'])->middleware('can:milkcheck');
+});
+
 
 Route::resource('journeedulait', EleveurController::class);
 Route::resource('dashboard-admin/particuliers', AdminController::class);
 Route::resource('dashboard-admin/categories', CategorieController::class);
 Route::resource('dashboard-admin/produits', ProduitController::class);
+Route::resource('dashboard-admin/orders', AdminOrderController::class);
+Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderdetail']);
+
+
+
 Route::get('statistique', [App\Http\Controllers\EleveurController::class, 'statistique']);
 Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achats']);
 Route::get('print-vendeur', [App\Http\Controllers\PrinterController::class, 'vendeurs']);
@@ -63,6 +109,22 @@ Route::get('/get-commune/{name}', [App\Http\Controllers\EleveurController::class
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+//orders
+Route::get('orders/packs', [App\Http\Controllers\OrderController::class, 'packs']);
+Route::get('orders/pack-one', [App\Http\Controllers\OrderController::class, 'definePackOne']);
+Route::get('orders/pack-two', [App\Http\Controllers\OrderController::class, 'definePackTwo']);
+Route::get('orders/pack-three', [App\Http\Controllers\OrderController::class, 'definePackThree']);
+Route::post('orders/informations', [App\Http\Controllers\OrderController::class, 'finalStep']);
+Route::get('orders/success/{name}', [App\Http\Controllers\OrderController::class, 'success']);
+Route::resource('orders', OrderController::class);
+
+
+
+Route::get('/eleveurs-event', [App\Http\Controllers\EleveurController::class, 'statistiqueConfirm']);
 
 Route::get('/register-pro', function () {
     return view('professionel/register-pro');
