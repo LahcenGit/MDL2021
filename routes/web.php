@@ -15,6 +15,7 @@ use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\BreederController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminOrderController;
+
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,9 +56,7 @@ Route::get('/milkcheck/login', function () {
 
 
 
-Route::get('/dashboard-admin', function () {
-    return view('admin.dashboard-admin');
-});
+
 
 Route::get('/badge', function () {
     return view('badge');
@@ -89,7 +88,9 @@ Route::middleware('milkcheckAuth')->group(function () {
 
 
 Route::resource('journeedulait', EleveurController::class);
-Route::resource('dashboard-admin/particuliers', AdminController::class);
+
+//admin routes
+Route::resource('dashboard_admin', AdminController::class);
 Route::resource('dashboard-admin/categories', CategorieController::class);
 Route::resource('dashboard-admin/produits', ProduitController::class);
 Route::resource('dashboard-admin/orders', AdminOrderController::class);

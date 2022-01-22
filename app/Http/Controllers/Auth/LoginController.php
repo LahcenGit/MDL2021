@@ -29,8 +29,12 @@ class LoginController extends Controller
    
 
     public function redirectTo(){
-       
+        if (auth()->user()->type == "admin") {
+            return 'dashboard-admin';
+        }
+        else{
         return 'milkcheck';
+        }
       }
     /**
      * Create a new controller instance.
