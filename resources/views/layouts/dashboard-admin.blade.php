@@ -94,10 +94,10 @@
             <div class="collapse" id="uiComponents">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('dashboard-admin/produits/create')}}" class="nav-link">Ajouter</a>
+                  <a href="#" class="nav-link">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('dashboard-admin/produits')}}" class="nav-link">Tous</a>
+                  <a href="#" class="nav-link">Tous</a>
                 </li>
               
               </ul>
@@ -116,7 +116,7 @@
             <div class="collapse {{ show_class(['dashboard-admin/orders/*','dashboard-admin/orders']) }}" id="commandes">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('dashboard-admin/orders/create')}}" class="nav-link {{ active_class(['dashboard-admin/orders/create']) }}">Ajouter</a>
+                  <a href="#" class="nav-link {{ active_class(['dashboard-admin/orders/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{url('dashboard-admin/orders')}}" class="nav-link {{ active_class(['dashboard-admin/orders']) }}">Liste commandes</a>

@@ -34,6 +34,14 @@
         </div>
       </div>
 
+     <b>Remarque :</b> 
+      @if ($order->remarque == null)
+      Aucune  !
+
+      @else
+      {{$order->remarque}}
+      @endif 
+
 
 
     <div class="row mt-3">
@@ -52,7 +60,8 @@
                         </div>
                         
                         <div class="infos-client" style="width: 250px;">
-                            <h3 >Bon de livraison </h3> <br>
+                            <h3 >Bon de livraison N° {{$order->id}} </h3> <br>
+                            <p ><b> Pack :</b> {{$order->pack}}<br>
                             <p ><b> Nom :</b> {{$order->name}}<br>
                             <b> Tél: </b> {{$order->phone}}  <br>
                             <b> Adresse:</b> {{$order->adress}} <br>
@@ -119,10 +128,11 @@
 
                       
                     </table>
-                      <div style="margin-top:250px;">
-                        <h5>Merci d'avoir choisi la Maison du Lait ! </h5>
-                        <h4>Naturellement Bon ! </h4>
-
+                      <div style="margin-top: 30px;">
+                        <h6>Merci d'avoir choisi la Maison du Lait ! </h5>
+                      </div>
+                      <div class="d-flex flex-row-reverse bd-highlight">
+                        <p>رخصة استعمال وصل التسليم رقم 03 المؤرخ في 10 فيفري 2011</p>
                       </div>
                       
                 </div>
