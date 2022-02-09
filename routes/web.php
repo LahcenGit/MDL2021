@@ -82,6 +82,7 @@ Route::middleware('milkcheckAuth')->group(function () {
 
      //Report
      Route::get('/milkcheck/report',[App\Http\Controllers\ReportController::class, 'index'])->middleware('can:milkcheck');
+     Route::get('/milkcheck/select-breeder',[App\Http\Controllers\ReportController::class, 'selectBreeder'])->middleware('can:milkcheck');
      Route::get('/milkcheck/get-type/{type}',[App\Http\Controllers\ReportController::class, 'getType'])->middleware('can:milkcheck');
      Route::post('/milkcheck/report-detail',[App\Http\Controllers\ReportController::class, 'reportDetail'])->middleware('can:milkcheck');
 });

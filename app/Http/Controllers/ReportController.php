@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Achat;
 use App\Models\Breeder;
 use App\Models\Collector;
 use App\Models\Lineachat;
@@ -41,19 +42,42 @@ class ReportController extends Controller
                              ->where('breeder_id',$request->id)
                              ->get();
             }
-        }
-
-        foreach($lineachats as $lineachat){
-            $i++;
-            $qteglobal = $qteglobal + $lineachat->qte; 
-            $price = $price + $lineachat->price; 
-        }
-
-        $pricemoy = $price/$i;
-
+            foreach($lineachats as $lineachat){
+                $i++;
+                $qteglobal = $qteglobal + $lineachat->qte; 
+                $price = $price + $lineachat->price; 
+            }
     
+            $pricemoy = $price/$i;
+            return view('milkcheck.report-detail-breeder',compact('lineachats','date','breeder','pricemoy','qteglobal'));
+          
+        }
 
-        return view('milkcheck.report-detail',compact('lineachats','date','breeder','pricemoy','qteglobal'));
+       
+
+        if($request->type == "collector"){
+            if($request->date=="m"){
+
+                $date = Carbon::now()->format('M-Y');
+                $collector = Collector::find($request->id);
+               
+                $achats = Achat::whereMonth('created_at', Carbon::now()->month)
+                             ->where('collector_id',$request->id)
+                             ->get();
+            }
+        
+            foreach($achats as $achat){
+                $i++;
+                $qteglobal = $qteglobal + $achat->qte; 
+                $price = $price + $achat->price; 
+            }
+    
+             $pricemoy = $price/$i;
+             return view('milkcheck.report-detail-collector',compact('achats','date','collector','pricemoy','qteglobal'));
+         }
+       
+       
 
     }
+   
 }

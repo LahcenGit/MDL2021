@@ -149,7 +149,14 @@ License: For each use you must have a valid license purchased only from above li
               </ul>
             </div>
           </li>
-
+   
+          <li class="nav-item nav-category">Rapport</li>
+          <li class="nav-item {{ active_class(['milkcheck/report']) }}">
+            <a href="{{url('/milkcheck/report')}}" class="nav-link {{ active_class(['milkcheck/report']) }}">
+              <i class="link-icon" data-feather="box"></i>
+              <span class="link-title">Rapport</span>
+            </a>
+          </li>
 
           <li class="nav-item nav-category">Setting</li>
           <li class="nav-item {{ active_class(['milkcheck/profil']) }}">
