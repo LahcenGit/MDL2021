@@ -28,6 +28,9 @@ class BreederController extends Controller
         $request->validate([
             'name' => 'required',
             'collector' => 'required',
+            'delivry_date' => 'required',
+            'expiration_date' => 'required',
+            'n_agrement' => 'required',
         ]);
 
 
@@ -45,5 +48,34 @@ class BreederController extends Controller
 
         return redirect('milkcheck/breeders');
     }
+       public function edit($id){
+           $breeder = Breeder::find($id);
+           $collectors = Collector::all();
+           return view('milkcheck.edit-breeder',compact('breeder','collectors'));
+       }
+
+
+       public function update(Request $request , $id){
+           $breeder = Breeder::find($id);
+           $breeder->collector_id = $request->collector;
+           $breeder->name = $request->name;
+           $breeder->email = $request->email;
+           $breeder->phone = $request->phone;
+   
+           $breeder->n_agrement = $request->n_agrement;
+           $breeder->delivry_date = $request->delivry_date;
+           $breeder->expiration_date = $request->expiration_date;
+           $breeder->save();
+   
+   
+           return redirect('milkcheck/breeders');
+
+       }
+
+       public function destroy($id){
+        $breeder = Breeder::find($id);
+        $breeder->delete();
+        return redirect('milkcheck/breeders');
+       }
 
 }

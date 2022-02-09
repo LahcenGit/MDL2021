@@ -47,11 +47,11 @@
             <td>{{$breeder->expiration_date}}</td>
             
             <td>
-              <form action="{{url('milkcheck/vendeurs/'.$breeder->id)}}" method="post">
+              <form action="{{url('milkcheck/breeders/'.$breeder->id)}}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                  <a href="{{url('milkcheck/vendeurs/'.$breeder->id.'/edit')}}" class="btn btn-secondary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
+                  <a href="{{url('milkcheck/breeders/'.$breeder->id.'/edit')}}" class="btn btn-secondary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
                 </div>	
             </td>
           </tr>

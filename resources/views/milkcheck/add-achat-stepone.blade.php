@@ -34,7 +34,7 @@
                        
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Collecteur *</label>
-								<select class="form-select select-collector" name="collector"  class="form-control input-default  @error('collector') is-invalid @enderror" id="exampleFormControlSelect1">
+								<select class="form-select select-collector" name="collector"  class="form-control input-default  @error('collector') is-invalid @enderror" id="exampleFormControlSelect1" required>
                                     <option value="0">select</option>
                                     @foreach ($collectors as $collector)
                                         <option  value="{{$collector->id}}" @if (old('vendeur') == $collector->id ) selected @endif > {{ $collector->name}}</option>

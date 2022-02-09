@@ -55,11 +55,11 @@ class CollectorController extends Controller
         public function update(Request $request,$id){
             $collector = Collector::find($id);
             $collector->name = $request->name;
-            $collector->telephone = $request->telephone;
+            $collector->phone = $request->telephone;
             $collector->email = $request->email;
             $collector->n_agrement = $request->numero;
-            $collector->date_expedition = $request->date_expedition;
-            $collector->date_expiration = $request->date_expiration;
+            $collector->delivry_date = $request->date_expedition;
+            $collector->expiration_date = $request->date_expiration;
             $collector->save();
                return redirect('milkcheck/collectors');
         }

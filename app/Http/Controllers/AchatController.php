@@ -51,6 +51,7 @@ class AchatController extends Controller
             'qteL' => 'required',
             'qteT' => 'required',
             'qteFP' => 'required',
+            'qteA' => 'required',
         ]);
 
         $totalachat = 0;

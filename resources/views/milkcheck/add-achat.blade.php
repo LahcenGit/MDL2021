@@ -76,7 +76,7 @@
                                         @if ($breeder->check() < 15 &&  $breeder->check()>0)
                                         <td><span class="badge bg-warning">Reste {{$breeder->check()}} jours </span></td>
                                         @endif
-                                        <td style="width: 200px;"> <input class="form-control  input-default" type="number" name="{{$breeder->id.'qte'}}" placeholder="0" /></td>
+                                        <td style="width: 200px;"> <input class="form-control  input-default" type="number" name="{{$breeder->id.'qte'}}" placeholder="0" required/></td>
                                     </tr>
                                   @endforeach
                                 </tbody>
@@ -86,8 +86,8 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Déstination *</label>
-								<select class="form-select" name="destination" class="form-control input-default @error('destination') is-invalid @enderror" id="exampleFormControlSelect1">
-                                    <option value="0">select</option>
+								<select class="form-select" name="destination" class="form-control input-default @error('destination') is-invalid @enderror" id="exampleFormControlSelect1" required>
+                                  
                                     <option value="fromage" @if (old('destination') == "fromage") selected @endif>Frommage</option>
                                     <option value="lait" @if (old('destination') == "lait") selected @endif>Lait</option>
                                     @error('destination')
@@ -102,7 +102,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-1">
                                     <label class="form-label">F *:</label>
-                                    <input class="form-control fat mb-4 mb-md-0 input-default @error('qteF') is-invalid @enderror" value="{{old('qteF')}}" id="inputF" name="qteF" placeholder="0" />
+                                    <input class="form-control fat mb-4 mb-md-0 input-default @error('qteF') is-invalid @enderror" value="{{old('qteF')}}" id="inputF" name="qteF" placeholder="0" required />
                                     @error('qteF')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -112,7 +112,7 @@
                                 
                                 <div class="col-md-1">
                                     <label class="form-label">D *:</label>
-                                    <input class="form-control densite mb-4 mb-md-0 input-default @error('qteD') is-invalid @enderror" value="{{old('qteD')}}" id="inputD" name="qteD" placeholder="0" />
+                                    <input class="form-control densite mb-4 mb-md-0 input-default @error('qteD') is-invalid @enderror" value="{{old('qteD')}}" id="inputD" name="qteD" placeholder="0" required/>
                                     @error('qteD')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <label class="form-label">C *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteC') is-invalid @enderror" value="{{old('qteC')}}" name="qteC" placeholder="0" />
+                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteC') is-invalid @enderror" value="{{old('qteC')}}" name="qteC" placeholder="0" required/>
                                     @error('qteC')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <label class="form-label">S *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteS') is-invalid @enderror" value="{{old('qteS')}}" name="qteS" placeholder="0" />
+                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteS') is-invalid @enderror" value="{{old('qteS')}}" name="qteS" placeholder="0" required/>
                                     @error('qteS')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <label class="form-label">P *:</label>
-                                    <input class="form-control protine mb-4 mb-md-0 input-default @error('qteP') is-invalid @enderror" value="{{old('qteP')}}" name="qteP" placeholder="0" />
+                                    <input class="form-control protine mb-4 mb-md-0 input-default @error('qteP') is-invalid @enderror" value="{{old('qteP')}}" name="qteP" placeholder="0" required/>
                                     @error('qteP')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -149,7 +149,7 @@
                        
                                 <div class="col-md-1">
                                     <label class="form-label">W *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteW') is-invalid @enderror" value="{{old('qteW')}}" name="qteW" placeholder="0" />
+                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteW') is-invalid @enderror" value="{{old('qteW')}}" name="qteW" placeholder="0" required />
                                     @error('qteW')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <label class="form-label">L *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteL') is-invalid @enderror" value="{{old('qteL')}}" name="qteL" placeholder="0" />
+                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteL') is-invalid @enderror" value="{{old('qteL')}}" name="qteL" placeholder="0" required/>
                                     @error('qteL')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -167,7 +167,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <label class="form-label">T *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteT') is-invalid @enderror"value="{{old('qteT')}}" name="qteT" placeholder="0" />
+                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteT') is-invalid @enderror"value="{{old('qteT')}}" name="qteT" placeholder="0" required />
                                     @error('qteT')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -176,7 +176,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <label class="form-label">FP *:</label>
-                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteFP') is-invalid @enderror" value="{{old('qteFP')}}" name="qteFP" placeholder="0" />
+                                    <input class="form-control mb-4 mb-md-0 input-default @error('qteFP') is-invalid @enderror" value="{{old('qteFP')}}" name="qteFP" placeholder="0" required />
                                     @error('qteFP')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -186,7 +186,7 @@
 
                                 <div class="col-md-1">
                                     <label class="form-label">Acidité *:</label>
-                                    <input class="form-control acidite mb-4 mb-md-0 input-default @error('a') is-invalid @enderror" value="{{old('qteA')}}" name="qteA" placeholder="0" />
+                                    <input class="form-control acidite mb-4 mb-md-0 input-default @error('qteA') is-invalid @enderror" value="{{old('qteA')}}" name="qteA" placeholder="0" required />
                                     @error('qteA')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

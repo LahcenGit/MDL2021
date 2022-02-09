@@ -32,7 +32,7 @@ class MilkchecController extends Controller
         $achats = Achat::with('collector')
                          ->whereMonth('created_at', Carbon::now()->month)
                          ->limit(5)
-                         ->get();
+                         ->get(); 
 
        
         $top_breeders = Lineachat::whereMonth('lineachats.created_at', Carbon::now()->month)
