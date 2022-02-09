@@ -87,7 +87,7 @@ License: For each use you must have a valid license purchased only from above li
                   <a href="{{url('milkcheck/collectors/create')}}" class="nav-link {{ active_class(['milkcheck/collectors/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/collectors')}}" class="nav-link {{ active_class(['milkcheck/collectors']) }}">Liste vendeurs</a>
+                  <a href="{{url('milkcheck/collectors')}}" class="nav-link {{ active_class(['milkcheck/collectors']) }}">Liste collecteurs</a>
                 </li>
               </ul>
             </div>
@@ -106,7 +106,7 @@ License: For each use you must have a valid license purchased only from above li
                   <a href="{{url('milkcheck/breeders/create')}}" class="nav-link {{ active_class(['milkcheck/breeders/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/breeders')}}" class="nav-link {{ active_class(['milkcheck/breeders']) }}">Liste vendeurs</a>
+                  <a href="{{url('milkcheck/breeders')}}" class="nav-link {{ active_class(['milkcheck/breeders']) }}">Liste eleveurs</a>
                 </li>
               </ul>
             </div>
