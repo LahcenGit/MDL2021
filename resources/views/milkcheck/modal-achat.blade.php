@@ -20,6 +20,7 @@
               <th scope="col">L</th>
               <th scope="col">T</th>
               <th scope="col">FP</th>
+              <th scope="col">Acidité</th>
               </tr>
           </thead>
           <tbody>
@@ -35,6 +36,7 @@
               <td>{{$analyse->l}}</td>
               <td>{{$analyse->t}}</td>
               <td>{{$analyse->fp}}</td>
+              <td>{{$analyse->a}}</td>
             
               </tr>
            

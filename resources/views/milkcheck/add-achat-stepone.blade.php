@@ -100,11 +100,11 @@
 			success: function (res) {
                 $( "#agrement" ).val(res);
 	          
-				if(res < d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()){
-                    $( "#agrement" ).addClass( "is-invalid" );
+				if(res > d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()){
+                    $( "#agrement" ).addClass( "is-valid" );
                 }
                 else{
-                    $( "#agrement" ).addClass( "is-valid" );
+                    $( "#agrement" ).addClass( "is-invalid" );
                 }
 
 			}

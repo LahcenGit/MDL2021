@@ -248,33 +248,7 @@
         
     });
 
-	$( ".select-vendeur" ).change(function() {
-         	
 
-        $( "#agrement" ).removeClass( "is-invalid" );
-        $( "#agrement" ).removeClass( "is-valid" );
-
-        var id = $(this).val();
-        var d = new Date();
-        var data ='';
-        //alert(id);
-        $.ajax({
-			url: '/get-date/' + id,
-			type: "GET",
-
-			success: function (res) {
-                $( "#agrement" ).val(res);
-	          
-				if(res < d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()){
-                    $( "#agrement" ).addClass( "is-invalid" );
-                }
-                else{
-                    $( "#agrement" ).addClass( "is-valid" );
-                }
-
-			}
-		});
-});
 
 </script> 
 
