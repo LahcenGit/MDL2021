@@ -45,7 +45,7 @@
                     <div class="d-flex justify-content-between mb-2">
                         <img src="{{asset('assets/images/logo-report.png')}}">
                         <div>
-                            <h3 >Rapport Mensuel Eleveur</h3> <br>
+                            <h3 >Rapport Mensuel Collecteur</h3> <br>
                             <p> Nom : {{$collector->name}} | Mois : {{$date}}</p><br>
                             <p style="margin-top: -20px"> Qte : {{$qteglobal}} | Prix moyen : {{$pricemoy}} Da</p>
                         </div>
@@ -56,7 +56,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Date</th>
+                                <th scope="col">Eleveur</th>
                                 <th scope="col">qte / L</th>
                                 <th scope="col">prix</th>
                                 <th scope="col">total</th>
@@ -67,19 +67,19 @@
                             $global =0 ;
                             $qtetotal = 0;
                              @endphp
-                            @foreach ($achats as $achat)
+                            @foreach ($lineachats as $lineachat)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$achat->created_at->format('d-m-y')}}</td>
-                                    <td>{{$achat->qte}}</td>
-                                    <td>{{$achat->price}}</td>
-                                    <td>{{$achat->total}}</td>
+                                    <td>{{$lineachat->breeder->name}}</td> 
+                                    <td>{{$lineachat->qte}}</td>
+                                    <td>{{$lineachat->price}}</td>
+                                    <td>{{$lineachat->qte * $lineachat->price}}</td>
                                 </tr>
 
                                 @php
-                                    $global = $global + $achat->total ;
-                                    $qtetotal = $qtetotal + $achat->qte;
-                                @endphp
+                                $global = $global + ($lineachat->qte * $lineachat->price) ;
+                                $qtetotal = $qtetotal + $lineachat->qte;
+                            @endphp
                             @endforeach
 
                             <tr>

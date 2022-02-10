@@ -19,7 +19,7 @@ class AchatController extends Controller
     public function index(){
 
         $this->authorize("achat.viewAny");
-        $achats = Achat::all();
+        $achats = Achat::get()->reverse();
        
         return view('milkcheck.achats',compact('achats'));        
     }

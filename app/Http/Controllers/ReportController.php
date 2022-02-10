@@ -64,16 +64,31 @@ class ReportController extends Controller
                 $achats = Achat::whereMonth('created_at', Carbon::now()->month)
                              ->where('collector_id',$request->id)
                              ->get();
+                $list = array();
             }
-        
+       
             foreach($achats as $achat){
-                $i++;
-                $qteglobal = $qteglobal + $achat->qte; 
-                $price = $price + $achat->price; 
+                array_push($list, $achat->id);
             }
-    
-             $pricemoy = $price/$i;
-             return view('milkcheck.report-detail-collector',compact('achats','date','collector','pricemoy','qteglobal'));
+            $lineachats = Lineachat::whereIn('achat_id',$list)
+                                     
+                                     ->groupBy('breeder_id')  
+                                     ->groupBy('price')
+                                     ->selectRaw('price')
+                                     ->selectRaw('breeder_id')
+                                     ->selectRaw('sum(qte) as qte')
+                                     ->with('breeder')
+                                     ->get();
+            // dd($lineachats);
+            foreach($lineachats as $lineachat){
+                $i++;
+                $qteglobal = $qteglobal + $lineachat->qte; 
+                $price = $price + $lineachat->price; 
+            }
+          
+                $pricemoy = $price/$i;
+             
+             return view('milkcheck.report-detail-collector',compact('lineachats','date','collector','pricemoy','qteglobal'));
          }
        
        

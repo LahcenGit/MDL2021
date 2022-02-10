@@ -12,7 +12,7 @@ class Achat extends Model
     use HasFactory;
     use SoftDeletes,CascadeSoftDeletes;
 
-    protected $cascadeDeletes = ['analyse'];
+    protected $cascadeDeletes = ['analyse','lineachats'];
     protected $dates = ['deleted_at'];
     
     public function collector()
