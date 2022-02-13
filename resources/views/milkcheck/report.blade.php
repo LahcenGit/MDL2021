@@ -60,7 +60,8 @@
                                 </select>
                             </div>
 
-                            <div class="date-section row  " style="display: none !important">
+
+                            <div class="date-section row mt-4 " style="display: none !important">
                                 <div class="form-group col-md-3">
                                     <input type="date" class="form-control input-default date" value="{{request()->input('datedebut')}}" name="datedebut" >
                                 </div>
@@ -80,6 +81,20 @@
 @push('report-scripts')
     
 <script>
+
+    if($('.select-date').val() == 'p'){
+		$('.date-section').show();
+	}
+	$('.select-date').on('change', function() {
+		if(this.value == 'p'){
+			$('.date-section').show();
+			$('.date').prop('required',true);
+		}
+		else{
+			$('.date-section').attr('style', 'display: none !important');
+			$('.date').prop('required',false);
+		}
+	});
 
 
 

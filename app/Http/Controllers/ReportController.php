@@ -65,6 +65,10 @@ class ReportController extends Controller
        
 
         if($request->type == "collector"){
+
+
+
+
             if($request->date=="m"){
 
                 $date = Carbon::now()->format('M-Y');
@@ -75,12 +79,29 @@ class ReportController extends Controller
                              ->get();
                 $list = array();
             }
+
+
             if($request->date=="w"){
 
                 $date = Carbon::now()->format('M-Y');
                 $collector = Collector::find($request->id);
                
-                $achats = Achat::whereMonth('created_at', Carbon::now()->week)
+                $achats = Achat::whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SATURDAY),Carbon::now()->endOfWeek(Carbon::FRIDAY)])
+                             ->where('collector_id',$request->id)
+                             ->get();
+                $list = array();
+            }
+
+            if($request->date=="p"){
+
+                $date = Carbon::now()->format('M-Y');
+                $collector = Collector::find($request->id);
+
+                $datedebut = $request->datedebut ;
+                $datefin = $request->datefin;
+               
+                $achats = Achat::whereDate('created_at','>=', $request->datedebut)
+                             ->whereDate('created_at','<=' ,$request->datefin )
                              ->where('collector_id',$request->id)
                              ->get();
                 $list = array();
@@ -105,9 +126,17 @@ class ReportController extends Controller
                 $price = $price + $lineachat->price; 
             }
           
-                $pricemoy = $price/$i;
+            $pricemoy = $price/$i;
+
+            if($request->date=="p"){
+                return view('milkcheck.report-custom-date-collector',compact('lineachats','datedebut','datefin','collector','pricemoy','qteglobal'));
+            }
+
+            elseif($request->date=="m"){
+                return view('milkcheck.report-detail-collector',compact('lineachats','date','collector','pricemoy','qteglobal'));
+            }
              
-             return view('milkcheck.report-detail-collector',compact('lineachats','date','collector','pricemoy','qteglobal'));
+             
          }
        
        

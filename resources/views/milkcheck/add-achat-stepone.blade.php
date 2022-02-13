@@ -92,15 +92,20 @@
         var id = $(this).val();
         var d = new Date();
         var data ='';
+
+        
         //alert(id);
         $.ajax({
 			url: '/get-date/' + id,
 			type: "GET",
 
 			success: function (res) {
+                var date = new Date(res);
+                var current = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() ;
+                var currentdate = new Date(current) ;
                 $( "#agrement" ).val(res);
 	          
-				if(res > d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()){
+				if(date > currentdate){
                     $( "#agrement" ).addClass( "is-valid" );
                 }
                 else{
