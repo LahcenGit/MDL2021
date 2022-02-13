@@ -42,6 +42,15 @@ class ReportController extends Controller
                              ->where('breeder_id',$request->id)
                              ->get();
             }
+
+            if($request->date=="w"){
+
+                $date = Carbon::now()->format('M-Y');
+                $breeder = Breeder::find($request->id);
+                $lineachats = Lineachat::whereMonth('created_at', Carbon::now()->week)
+                             ->where('breeder_id',$request->id)
+                             ->get();
+            }
             foreach($lineachats as $lineachat){
                 $i++;
                 $qteglobal = $qteglobal + $lineachat->qte; 
@@ -62,6 +71,16 @@ class ReportController extends Controller
                 $collector = Collector::find($request->id);
                
                 $achats = Achat::whereMonth('created_at', Carbon::now()->month)
+                             ->where('collector_id',$request->id)
+                             ->get();
+                $list = array();
+            }
+            if($request->date=="w"){
+
+                $date = Carbon::now()->format('M-Y');
+                $collector = Collector::find($request->id);
+               
+                $achats = Achat::whereMonth('created_at', Carbon::now()->week)
                              ->where('collector_id',$request->id)
                              ->get();
                 $list = array();
