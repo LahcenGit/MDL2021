@@ -43,14 +43,19 @@ class ReportController extends Controller
                              ->get();
             }
 
-            if($request->date=="w"){
+            if($request->date=="p"){
 
                 $date = Carbon::now()->format('M-Y');
                 $breeder = Breeder::find($request->id);
-                $lineachats = Lineachat::whereMonth('created_at', Carbon::now()->week)
-                             ->where('breeder_id',$request->id)
-                             ->get();
+                $datedebut = $request->datedebut ;
+                $datefin = $request->datefin;
+                $lineachats = Lineachat::whereDate('created_at','>=', $request->datedebut)
+                                        ->whereDate('created_at','<=' ,$request->datefin )
+                                        ->where('breeder_id',$request->id)
+                                        ->get();
             }
+
+          
             foreach($lineachats as $lineachat){
                 $i++;
                 $qteglobal = $qteglobal + $lineachat->qte; 
@@ -58,8 +63,12 @@ class ReportController extends Controller
             }
     
             $pricemoy = $price/$i;
+            if($request->date=="p"){
+                return view('milkcheck.report-custom-date-breeder',compact('lineachats','datedebut','datefin','breeder','pricemoy','qteglobal'));
+            }
+            if($request->date == "m"){
             return view('milkcheck.report-detail-breeder',compact('lineachats','date','breeder','pricemoy','qteglobal'));
-          
+            }
         }
 
        
