@@ -151,6 +151,8 @@ Route::get('home-dashboard', function () {
     return view('home-dashboard');
 });
 
+Route::get('/ticket/{id}', [App\Http\Controllers\PrinterController::class, 'ticketPos']);
+
 use App\Http\Controllers\PhotoCommentController;
 
 Route::resource('photos.comments', PhotoCommentController::class);

@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Achat;
 use Carbon\Carbon;
+use Exception;
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
+use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\EscposImage;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector  as WindowsPrintConnector;
+use NunoMaduro\Collision\Adapters\Phpunit\Printer as PhpunitPrinter;
 
 class printerController extends Controller
 {
@@ -36,5 +43,54 @@ class printerController extends Controller
 
                   
         return view('milkcheck.print-vendeur',compact('vendeurs'));
+    }
+
+    public function ticketPos($id){
+
+
+            $achat = Achat::find($id);
+            $connector = new WindowsPrintConnector("TM-T70II");
+            $printer = new Printer($connector);
+
+            $justification = Printer::JUSTIFY_CENTER;
+            $justification2 = Printer::JUSTIFY_LEFT;
+            $underline = Printer::UNDERLINE_DOUBLE;
+
+            $img = EscposImage::load("C:\Users\AURES\Documents\mdl-black.png");
+            $printer -> setJustification($justification);
+            $printer -> graphics($img);
+        
+            $printer -> setJustification($justification);
+         
+            $printer -> feed();
+            $printer -> setEmphasis(true);
+            $printer -> text('Collecteur :'. $achat->collector->name);
+            $printer -> feed();
+            $printer -> text('date :'. Carbon::today()->format('d-m-Y')."\n");
+            $printer -> feed();
+
+            $printer -> setUnderline($underline);
+            $line_t = sprintf('%-5.40s %5.3s %13.3s %13.5s','Eleveur', 'Qte', 'P.U', 'Total');
+            $printer->text($line_t);
+            $printer -> feed();
+            $printer -> setUnderline($underline);
+            foreach($achat->lineachats as $line){
+                $line_t = sprintf('%-5.40s %5.0f %13.2f %13.2f',$line->breeder->name, $line->qte, $line->price, $line->total);
+                $printer->text($line_t);
+                $printer->text("\n"); 
+            }
+            $printer -> feed();
+            $printer -> initialize();
+            $printer -> setTextSize(1, 1);
+            $printer -> text('Qte :'. $achat->qte . 'L');
+            $printer -> feed();
+            $printer -> text('Total :'. number_format($achat->total, 2) . 'Da');
+            $printer -> feed(2);
+
+            $printer -> initialize();
+            $printer -> text("Merci !\n");
+            $printer -> feed(3);
+            $printer -> cut();
+            $printer -> close();
     }
 }
