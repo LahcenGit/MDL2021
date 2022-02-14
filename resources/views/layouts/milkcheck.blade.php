@@ -165,6 +165,13 @@ License: For each use you must have a valid license purchased only from above li
               <span class="link-title">Profile</span>
             </a>
           </li>
+
+          <li class="nav-item {{ active_class(['milkcheck/parameters']) }}">
+            <a href="{{url('/milkcheck/parameters')}}" class="nav-link {{ active_class(['milkcheck/parameters']) }}">
+              <i class="link-icon" data-feather="box"></i>
+              <span class="link-title">Paramètres</span>
+            </a>
+          </li>
           
         </ul>
       </div>

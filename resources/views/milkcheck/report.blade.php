@@ -54,8 +54,7 @@
                                 <label class="form-label">Date :</label>
                                 <select class="form-select  select-date" name="date">
                                     <option value="m" >Mois Actuel</option>
-                                    <option value="w" >Semaine</option>
-                                    <option value="d" >Aujourd'hui</option>
+                                    
                                     <option value="p" >Personnalisée</option>
                                 </select>
                             </div>

@@ -15,6 +15,7 @@ use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\BreederController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\SettingController;
 
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +79,7 @@ Route::middleware('milkcheckAuth')->group(function () {
     Route::get('/milkcheck/accords/breeders/',[App\Http\Controllers\AgrementController::class, 'breedersAccord'])->middleware('can:milkcheck');
     Route::resource('milkcheck/achats', AchatController::class)->middleware('can:milkcheck');
     Route::resource('milkcheck/profil', ProfilmilkcheckController::class)->middleware('can:milkcheck');
+    Route::resource('milkcheck/parameters', SettingController::class)->middleware('can:milkcheck');
 
 
      //Report
