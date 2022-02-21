@@ -45,6 +45,7 @@
                 <div class="d-flex">
                     <a href="{{url('milkcheck/achats/'.$achat->id.'/edit')}}" class="btn btn-secondary" style="margin-right: 3px;"><i class="mdi mdi-border-color"></i></a>
                     <a href="#" data-id="{{$achat->id}}" class="btn  btn-primary  show-achat" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
+                    <a href="#"  data-id="{{$achat->id}}" class="btn btn-warning ticket" style="margin-right: 3px;"><i class="mdi mdi-printer"></i></a>
                     <button class="btn btn-danger" onclick="return confirm('Vous voulez vraiment supprimer?')" style="margin-right: 3px;"><i class="mdi mdi-delete "></i></button>
                 </div>
               </form>	
@@ -67,6 +68,9 @@
 
 @push('modal-achat-scripts')
 <script>
+
+
+
   $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -82,6 +86,21 @@ $(".show-achat").click(function() {
     success: function (res) {
       $('#modal-achat').html(res);
       $("#exampleModal").modal('show');
+    }
+  });
+  
+});
+
+
+$(".ticket").click(function() {
+  
+  var id = $(this).data('id');
+ 
+  $.ajax({
+    url: '/ticket/' + id,
+    type: "GET",
+    success: function (res) {
+     alert('success ! ticket imprimé ');
     }
   });
   

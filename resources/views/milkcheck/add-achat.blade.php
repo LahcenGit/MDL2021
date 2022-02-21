@@ -228,12 +228,12 @@
 
         price = 50 ; 
 
-        if (f>28 && p>2.8){
+        if (f>=28 && p>=2.8){
            
             price = price + 2 ; 
         }
 
-        if (d>1028 && a<18){
+        if (d>=1028 && a<=19){
             price = price + 2 ; 
         }
 

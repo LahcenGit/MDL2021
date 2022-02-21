@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $orders = Order::all()->reverse();
         return view('admin.orders',compact('orders'));
@@ -175,6 +181,13 @@ class AdminOrderController extends Controller
 
         $order = Order::find($id);
         return view('orders.order-detail',compact('order'));
+
+    }
+
+    public function orderTicket($id){
+
+        $order = Order::find($id);
+        return view('orders.order-ticket',compact('order'));
 
     }
 
