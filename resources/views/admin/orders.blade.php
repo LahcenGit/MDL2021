@@ -57,6 +57,8 @@
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     <a href="{{url('dashboard-admin/order-detail/'.$order->id)}}" class="btn  btn-secondary  show-order" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
+                    <a href="{{url('dashboard-admin/order-ticket/'.$order->id)}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-cloud-print-outline
+                      "></i></a>
                     @if ($order->statut == 1)
                     <a href="{{url('dashboard-admin/order-approuve/'.$order->id)}}" onclick=" return confirm('Voulez-vous valider la commande ?')" class="btn  btn-primary  show-order" style="margin-right: 3px;"><i class="mdi mdi-check"></i></a>
                     <a href="{{url('dashboard-admin/order-cancel/'.$order->id)}}" onclick="return confirm('Voulez-vous annuler la commande ?')" class="btn  btn-danger  show-order" style="margin-right: 3px;"><i class="mdi mdi-close"></i></a>

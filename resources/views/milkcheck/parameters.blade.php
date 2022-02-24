@@ -13,7 +13,7 @@
         <div class="col-md-12 grid-margin stretch-card">
 <div class="card">
   <div class="card-body">
-    <h6 class="card-title">La table des collecteurs</h6>
+    <h6 class="card-title">La table des paramètres</h6>
     <a href="{{url('/milkcheck/parameters/create')}}" type="button"  class="btn btn-primary mt-3">Ajouter</a>
     <p class="text-muted mb-3">Vous trouvez ici  tous les paramètres.</p>
     <div class="table-responsive">

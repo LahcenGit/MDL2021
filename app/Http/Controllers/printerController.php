@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Achat;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Exception;
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
@@ -49,14 +50,21 @@ class printerController extends Controller
 
 
             $achat = Achat::find($id);
-            $connector = new WindowsPrintConnector("TM-T70II");
+
+            $printer_ticket = Setting::where('type','milkcheck')->where('name','Printer')->first();
+            $img = Setting::where('type','milkcheck')->where('name','Image')->first();
+
+            try{
+
+
+            $connector = new WindowsPrintConnector($printer_ticket->value1);
             $printer = new Printer($connector);
 
             $justification = Printer::JUSTIFY_CENTER;
             $justification2 = Printer::JUSTIFY_LEFT;
             $underline = Printer::UNDERLINE_DOUBLE;
 
-            $img = EscposImage::load("C:\Users\AURES\Documents\mdl-black.png");
+            $img = EscposImage::load( $img->value1);
             $printer -> setJustification($justification);
             $printer -> graphics($img);
         
@@ -92,5 +100,17 @@ class printerController extends Controller
             $printer -> feed(3);
             $printer -> cut();
             $printer -> close();
+
+        } catch (Exception $e) {
+            echo "Impossible d'imprimer: " . $e -> getMessage() . "\n";
+        }
+    }
+
+
+    public function receipt($id){
+
+
+        return view('milkcheck.receipt');
+
     }
 }

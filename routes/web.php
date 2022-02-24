@@ -96,7 +96,8 @@ Route::resource('journeedulait', EleveurController::class);
 Route::resource('dashboard-admin/categories', CategorieController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/produits', ProduitController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/orders', AdminOrderController::class)->middleware('can:admin');
-Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderdetail'])->middleware('can:admin');
+Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
+Route::get('dashboard-admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
 Route::get('dashboard-admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
 Route::get('dashboard-admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel'])->middleware('can:admin');
 
@@ -153,7 +154,9 @@ Route::get('home-dashboard', function () {
     return view('home-dashboard');
 });
 
-Route::get('/ticket/{id}', [App\Http\Controllers\PrinterController::class, 'ticketPos']);
+Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
+
+Route::get('/receipt/{id}', [App\Http\Controllers\printerController::class, 'receipt']);
 
 use App\Http\Controllers\PhotoCommentController;
 

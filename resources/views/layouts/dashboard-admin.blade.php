@@ -248,6 +248,7 @@
 
 	<!-- Plugin js for this page -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
   <script src="{{asset('/assets/vendors/datatables.net/jquery.dataTables.js')}}"></script>
   <script src="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
   <script src="{{asset('/assets/js/data-table.js')}}"></script>
@@ -258,6 +259,8 @@
   <script src="{{asset('/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
 	<!-- End plugin js for this page -->
+
+
 
 	<!-- inject:js -->
 	<script src="{{asset('/assets/vendors/feather-icons/feather.min.js')}}"></script>
@@ -278,6 +281,7 @@
 
 
   @stack('order-detail-scripts')
+  @stack('order-ticket-scripts')
   
 
 
