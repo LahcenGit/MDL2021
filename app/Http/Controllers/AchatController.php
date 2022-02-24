@@ -68,6 +68,10 @@ class AchatController extends Controller
         $achat->price =  $request->price_achat;
         $achat->total = $totalachat * $request->price_achat ;
         $achat->destination = $request->destination;
+        
+        if($request->date){
+            $achat->created_at = $request->date;
+        }
         $achat->save();
 
         foreach($breeders as $breeder){

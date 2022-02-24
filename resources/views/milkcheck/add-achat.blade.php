@@ -98,6 +98,11 @@
                                 </select>
                                
                             </div>
+                            <div class="col-md-6">
+                                <label for="exampleFormControlSelect1" class="form-label">Date</label>
+								<input class="form-select" name="date" type="date" class="form-control input-default">
+                              
+                            </div>
                         </div>
                             <div class="row mb-3">
                                 <div class="col-md-1">
