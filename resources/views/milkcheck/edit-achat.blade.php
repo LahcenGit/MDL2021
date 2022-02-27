@@ -98,7 +98,14 @@
                                 </select>
                                
                             </div>
+                            <div class="col-md-6">
+                                <label for="exampleFormControlSelect1" class="form-label">Date</label>
+                                <input class="form-select" value="{{$achat->created_at->format('Y-m-d')}}" name="date" type="date" class="form-control input-default">
+                              
+                            </div>
                         </div>
+                          
+
                             <div class="row mb-3">
                                 <div class="col-md-1">
                                     <label class="form-label">F:</label>

@@ -104,6 +104,7 @@ class AchatController extends Controller
     }
     public function edit($id){
         $achat = Achat::find($id);
+       
         $this->authorize("achat.update",$achat);
         $lineachats = $achat->lineachats;
         $analyse = Analyse::where('achat_id',$id)->first();
@@ -140,6 +141,7 @@ class AchatController extends Controller
         $achat->qte =$totalachat;
         $achat->price =  $request->price_achat;
         $achat->total =  $totalachat * $request->price_achat;
+        $achat->created_at = $request->date;
         $achat->save();
 
 
