@@ -127,7 +127,9 @@ Route::get('orders/packs', [App\Http\Controllers\OrderController::class, 'packs'
 Route::get('orders/pack-one', [App\Http\Controllers\OrderController::class, 'definePackOne']);
 Route::get('orders/pack-two', [App\Http\Controllers\OrderController::class, 'definePackTwo']);
 Route::get('orders/pack-three', [App\Http\Controllers\OrderController::class, 'definePackThree']);
+Route::get('orders/pack-four', [App\Http\Controllers\OrderController::class, 'definePackFour']);
 Route::post('orders/informations', [App\Http\Controllers\OrderController::class, 'finalStep']);
+Route::post('orders/informations-pack-four', [App\Http\Controllers\OrderController::class, 'finalStep']);
 Route::get('orders/success/{name}', [App\Http\Controllers\OrderController::class, 'success']);
 Route::resource('orders', OrderController::class);
 
