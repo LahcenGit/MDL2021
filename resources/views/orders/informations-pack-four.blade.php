@@ -24,6 +24,7 @@
     <input type="hidden" name="option1" value="{{$option1}}">
     <input type="hidden" name="option2" value="{{$option2}}">
     <input type="hidden" name="option3" value="{{$option3}}">
+    <input type="hidden" name="option4" value="{{$option4}}">
     <div class="container" style="margin-top: 50px;">  
         <div class="row">
             <div class="col-md-8 mt-2">
@@ -105,9 +106,10 @@
                         <span>- 500 g {{$option1}}</span> <br>
                         <span>- 500 g  {{$option2}}</span> <br>
                         <span>- Féta à huile {{$option3}}</span> <br>
+                        <span>- Fromage de chèvre {{$option4}}</span> <br>
                         <span>- 1 Boule Mozzarella</span> <br>
                         <span>- 500g de beurre</span> <br>
-                        <span>- 1 Pot de Fromage Ricotta</span> <br>
+                        
                 
                 <div class="added-section mt-3">
                     <b >Produit ajouté : </b>

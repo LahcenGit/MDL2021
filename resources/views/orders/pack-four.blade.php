@@ -40,20 +40,25 @@
                 </select>
             </div>
             <div class="col-md-6" >
-                <label class="form-label">4- La quatrième option</label> <br>
-                <label class="form-label" style="background-color: #E2E2E2; padding:20px;">1 Boule Mozzarella </label>
+                <label for="exampleFormControlSelect1" class="form-label">4- Fromage de chèvre</label>
+                <select class="form-select" name="option4" class="form-control input-default" required>
+                    <option value="Nature">Nature</option>
+                    <option value="Basilic">Basilic</option>
+                    <option value="Piment">Piment</option>
+                </select>
             </div>
 
         </div>
         <div class="row mt-3">
             <div class="col-md-6" >
+                <label class="form-label">4- La quatrième option</label> <br>
+                <label class="form-label" style="background-color: #E2E2E2; padding:20px;">1 Boule Mozzarella </label>
+            </div>
+            <div class="col-md-6" >
                 <label class="form-label">5- La ciquième option</label> <br>
                 <label class="form-label" style="background-color: #E2E2E2; padding:20px;">500g de beurre  </label>
             </div>
-            <div class="col-md-6" >
-                <label class="form-label">6- La sixième option</label> <br>
-                <label class="form-label" style="background-color: #E2E2E2; padding:20px;">1 pot fromage  ricotta </label>
-            </div>
+            
 
         </div>
         <input type="hidden" value="pack4" name="pack">

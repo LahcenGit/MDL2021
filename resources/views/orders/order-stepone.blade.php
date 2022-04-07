@@ -75,7 +75,11 @@ div label input {
                         <tr>
                             <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
                             <td><p>1 Pot de Feta à l'huile au choix</p></td>
-                            </tr>
+                        </tr>
+                        <tr>
+                            <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
+                            <td><p>Fromage de chèvre</p></td>
+                        </tr>
                       
                         <tr>
                         <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
@@ -85,10 +89,7 @@ div label input {
                             <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
                             <td><p>500g de Beurre</p></td>
                         </tr>
-                        <tr>
-                            <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
-                            <td><p>1 Pot de Fromage  Ricotta</p></td>
-                        </tr>
+                       
                         <tr>
                         <tr>
                         </tr>

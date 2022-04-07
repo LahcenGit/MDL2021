@@ -199,20 +199,22 @@ class OrderController extends Controller
             //line4
             $line = new Orderline();
             $line->order_id  = $order->id;
-            $line->product  = "1 Boule Mozzarella";
+            $line->product  =  $request->option4;
             $line->save();
 
             //line5
             $line = new Orderline();
             $line->order_id  = $order->id;
-            $line->product  = "500g beurre ";
+            $line->product  = "1 Boule Mozzarella";
             $line->save();
 
             //line6
             $line = new Orderline();
             $line->order_id  = $order->id;
-            $line->product  = "1 Pot Fromage Ricotta ";
+            $line->product  = "500g beurre ";
             $line->save();
+
+           
 
             //line3
 
@@ -275,8 +277,9 @@ class OrderController extends Controller
             $option1 = $request->option1;
             $option2 = $request->option2;
             $option3 = $request->option3;
+            $option4 = $request->option4;
             $pack = "Ramadan";
-            return  view("orders.informations-pack-four",compact('option1','option2','option3','pack'));
+            return  view("orders.informations-pack-four",compact('option1','option2','option3','option4','pack'));
         }
     }
 }
