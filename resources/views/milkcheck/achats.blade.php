@@ -45,7 +45,7 @@
                 <div class="d-flex">
                     <a href="{{url('milkcheck/achats/'.$achat->id.'/edit')}}" class="btn btn-secondary" style="margin-right: 3px;"><i class="mdi mdi-border-color"></i></a>
                     <a href="#" data-id="{{$achat->id}}" class="btn  btn-primary  show-achat" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
-                    <a href="#"  data-id="{{$achat->id}}" class="btn btn-warning ticket" style="margin-right: 3px;"><i class="mdi mdi-printer"></i></a>
+                    <a href="{{url('milkcheck/achat-ticket/'.$achat->id)}}"  data-id="{{$achat->id}}" class="btn btn-warning" style="margin-right: 3px;"><i class="mdi mdi-printer"></i></a>
                     <button class="btn btn-danger" onclick="return confirm('Vous voulez vraiment supprimer?')" style="margin-right: 3px;"><i class="mdi mdi-delete "></i></button>
                 </div>
               </form>	

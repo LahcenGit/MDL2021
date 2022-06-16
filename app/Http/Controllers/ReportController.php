@@ -151,5 +151,13 @@ class ReportController extends Controller
        
 
     }
+
+    public function achatTicket($id){
+
+        $achat = Achat::find($id);
+        $date = Carbon::today()->format('d-m-Y');
+        return view('milkcheck.achat-ticket',compact('achat','date'));
+
+    }
    
 }

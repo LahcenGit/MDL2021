@@ -330,6 +330,7 @@ License: For each use you must have a valid license purchased only from above li
   @stack('modal-achat-scripts')
   @stack('report-scripts')
   @stack('report-detail-scripts')
+  @stack('achat-ticket-scripts')
 
 
   <script>
