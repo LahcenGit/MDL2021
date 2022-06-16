@@ -51,7 +51,6 @@
                 <div class="col-md-10 mt-3">
                     <label class="form-label ">Wilaya* (obligatoire):</label>
                     <select class="form-select wilaya" name="wilaya" class="form-control input-default @error('destination') is-invalid @enderror"  required>
-                        <option value="tlemcen">Tlemcen</option>
                         <option value="sba">Sidi Bel Abbès</option>
                         <option value="oran">Oran</option>
                         <option value="alger">Alger</option>
@@ -146,26 +145,38 @@
 @push('order-scripts')
 
 <script>
+
+
+$('.wilaya').prop("selectedIndex", 0);
+
 $('.radio-btn').click(function() {
+    $('#inp-total').val(parseInt($('#delivery').html()) + 2500);
+
    if($('#radio-no').is(':checked')) {
        $('.productadd').hide();
        $('.added-section').hide();
        $('#sub-total').html('2500');
-       $('#total').html('2500');
+       $('#total').html(parseInt($('#delivery').html()) + 2500);
        $('#select-productadd').prop('required',false);
        $('#inp-added').val("");
+
     }
 
    if($('#radio-yes').is(':checked')) {
+       $('.productadd').prop("selectedIndex", 0);
        $('.productadd').show();
        $('.added-section').show();
        $('#select-productadd').prop('required',true);
+
     }
 
 });
 
 
 $('.productadd').on('change', function(){
+   
+
+
     if($(this).val() == "feta500" ){
         $('.p-added').remove();
         $('.added-section').append('<span class="p-added">500g Feta</span>');
@@ -193,7 +204,7 @@ $('.productadd').on('change', function(){
     if($(this).val() == "halloumi500" ){
         $('.p-added').remove();
         $('.added-section').append('<span class="p-added">500g  Halloumi</span>');
-        $('#sub-total').html('2590');
+        $('#sub-total').html('3090');
 
         $('#inp-added').val("500g Halloumi");
         $('#inp-total').val(  parseInt($('#delivery').html())+2500 + 590);

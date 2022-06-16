@@ -64,8 +64,8 @@
                         </div>
                     </div>
 
-                    <div class="order-detail mt-3">
-                        <h4>Détail de la commande : </h4>
+                    <div class="order-detail mt-1">
+                        <h6>Détail de la commande : </h6>
                         <div class="row mt-2">  
                             <div class="col-6">
                                 <p>
@@ -77,6 +77,8 @@
                                         Feta huile {{$line->product}} 340 g
                                         @elseif($line->product == "Fines herbes" || $line->product == "Piment" || $line->product =="Cumin")
                                         Feta huile {{$line->product}} 340 g
+                                        @elseif($line->product == "Nature" || $line->product == "Basilic" || $line->product =="Piment")
+                                        <td>Fromage de chèvre {{$line->product}}</td>
                                         @else
                                         {{$line->product}}
                                         @endif

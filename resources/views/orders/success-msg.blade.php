@@ -11,7 +11,7 @@
         <h4 class="alert-heading">Bien joué ! {{$name}}</h4>
         <p>Nous sommes très heureux que vous ayez choisi les produits de la Maison du Lait.</p>
         <hr>
-        <p class="mb-0">L'un de nos agents vous contactera dans le plus brefs délais pour confirmer votre commande. </p>
+        <p class="mb-0">L'un de nos agents vous contactera dans les plus brefs délais pour confirmer votre commande. </p>
       </div>
  
 

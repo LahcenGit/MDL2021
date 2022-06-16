@@ -92,6 +92,8 @@
                                     <td>Feta huile {{$line->product}} 340 g</td>
                                     @elseif($line->product == "Fines herbes" || $line->product == "Piment" || $line->product =="Cumin")
                                     <td>Feta huile {{$line->product}} 340 g</td>
+                                    @elseif($line->product == "Nature" || $line->product == "Basilic" || $line->product =="Piment")
+                                    <td>Fromage de chèvre {{$line->product}} 100 g</td>
                                     @else
                                     <td>{{$line->product}}</td>
                                     @endif

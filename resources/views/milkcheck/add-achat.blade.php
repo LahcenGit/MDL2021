@@ -235,11 +235,11 @@
 
         if (f>=28 && p>=2.8){
            
-            price = price + 2 ; 
+            price = price + 6 ; 
         }
 
         if (d>=1028 && a<=19){
-            price = price + 2 ; 
+            price = price + 6; 
         }
 
         $( ".price-calculator" ).val(price);
