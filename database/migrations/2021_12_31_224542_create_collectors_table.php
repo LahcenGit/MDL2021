@@ -19,9 +19,11 @@ class CreateCollectorsTable extends Migration
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->string('n_agrement');
-            $table->string('delivry_date');
-            $table->string('expiration_date');
+            $table->string('agrement_type')->nullable();
+            $table->string('n_agrement')->nullable();
+            $table->string('subscription_date')->nullable();
+            $table->string('expiration_date')->nullable();
+            $table->string('delivry_date')->nullable();
             $table->string('balance')->nullable();
             $table->string('slug')->nullable();
             $table->string('flag')->nullable();

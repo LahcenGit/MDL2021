@@ -28,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource('achat','App\Policies\AchatPolicy');
         Gate::resource('vendeur','App\Policies\VendeurPolicy');
         Gate::resource('agrement','App\Policies\AgrementPolicy');
+        
         Gate::define('milkcheck',function(){
             return Auth::user()->type == 'milkcheck';
            });

@@ -57,39 +57,34 @@ div label input {
 <h4 class="text-center mb-3 mt-4"> <span style="color: #6FB53E">Etape 1/3 : </span> Choisir votre pack</h4>
 <p class="text-muted text-center mb-4 pb-2">Veuillez sélectionner un pack pour passer à l'étape suivante</p>
         <div class="container" style="margin-top: 50px;">  
-        <div class="row d-flex mb-4 justify-content-center" style="background-image: url('/assets/images/bg-pack04.jpg')">
+        <div class="row d-flex mb-4 justify-content-center" style="background-image: url('/assets/images/bg-summer.jpg'); display:none!important;">
             <div class="col-md-4 stretch-card grid-margin grid-margin-md-0" >
                 <div class="card">
                     <div class="card-body">
-                    <h5 class="text-center text-uppercase mt-3 mb-4">Pack "Ramadan" </h5>
+                    <h5 class="text-center text-uppercase mt-3 mb-4">Pack "Glaces" </h5>
                     <div class="d-flex justify-content-center">
-                        <img src="{{asset('assets/images/pack-04.png')}}" style="height: 200px; width:200px;">
+                        <img src="{{asset('assets/images/pack-ice-cream.jpg')}}" style="height: 200px; width:200px;">
                     </div>
-                    <h3 class="text-center fw-light"><b style="color: #6FB53E;">2.500 Da</b></h3>
-                    <h6 class="text-muted text-center mb-4 fw-normal">6 pièces</h6>
+                    <h3 class="text-center fw-light"><b style="color: #6FB53E;">2.000 Da</b></h3>
+                    <h6 class="text-muted text-center mb-4 fw-normal">8 pièces</h6>
                     <table class="mx-auto">
                         <tr>
                         <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
-                        <td><p>2x500g Fromage au choix</p></td>
+                        <td><p>8x400g crème glacée</p></td>
                         </tr>
                         <tr>
                             <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
-                            <td><p>1 Pot de Feta à l'huile au choix</p></td>
+                            <td><p>5 goûts</p></td>
                         </tr>
                         <tr>
                             <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
-                            <td><p>Fromage de chèvre</p></td>
+                            <td><p>Sans conservateurs</p></td>
                         </tr>
                       
                         <tr>
                         <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
-                        <td><p>1 Boule Mozzarella</p></td>
+                        <td><p>Sans Colorants</p></td>
                         </tr>
-                        <tr>
-                            <td><i data-feather="check" class="icon-md text-primary me-2"></i></td>
-                            <td><p>500g de Beurre</p></td>
-                        </tr>
-                       
                         <tr>
                         <tr>
                         </tr>
@@ -98,7 +93,7 @@ div label input {
 
                     </div>
                     <div class="d-grid">
-                        <a href="{{asset('orders/pack-four/')}}"  class="btn btn-primary mt-4">J'achète</a>
+                        <a href="{{asset('/checkout-ice-cream')}}"  class="btn btn-primary mt-4">J'achète</a>
                     </div>
                     </div>
                     

@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label class="form-label">N° De Telephone (optionnel):</label>
+                                <label class="form-label">N° Telephone (optionnel):</label>
                                 <input class="form-control mb-4 mb-md-0  input-default @error('phone') is-invalid @enderror" name="phone" value="{{old('phone')}}" placeholder="+2130776443231" />
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -54,9 +54,20 @@
                             </div>
                             
                         </div>
+
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">N° d'agrément *:</label>
+
+                            <div class="col-md-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Type * : </label>
+                                <select class="js-example-basic-single  form-select" name="type" class="form-control input-default @error('collector') is-invalid @enderror" id="exampleFormControlSelect1" required>
+                                        <option value="A" >Agrément</option>
+                                        <option value="IS" >Identification Sanitaire</option>
+                                        <option value="" >Ancun</option>
+                                </select>
+                            </div>
+    
+                            <div class="col-md-3">
+                                <label class="form-label">N° d'agrément :</label>
                                 <input class="form-control mb-4 mb-md-0 input-default @error('n_agrement') is-invalid @enderror" name="n_agrement" value="{{old('n_agrement')}}" placeholder="13681" required/>
                                 @error('n_agrement')
                                 <span class="invalid-feedback" role="alert">
@@ -66,9 +77,12 @@
                             </div>
                             
                         </div>
+                       
+                        
+                            
                         <div class="row mb-3">
                             <div class="col-md-3">
-                                <label class="form-label">Date d'éxpédition *:</label>
+                                <label class="form-label">Date d'éxpédition:</label>
                                 <input class="form-control mb-4 mb-md-0 input-default @error('delivry_date') is-invalid @enderror" name="delivry_date" type="date" value="{{old('delivry_date')}}" required/>
                                 @error('delivry_date')
                                 <span class="invalid-feedback" role="alert">
@@ -78,7 +92,7 @@
                             </div>
                             
                             <div class="col-md-3">
-                                <label class="form-label">Date d'éxpiration *:</label>
+                                <label class="form-label">Date d'éxpiration :</label>
                                 <input class="form-control mb-4 mb-md-0 input-default @error('expiration_date') is-invalid @enderror" name="expiration_date" type="date" value="{{old('expiration_date')}}" required/>
                                 @error('expiration_date')
                                 <span class="invalid-feedback" role="alert">
@@ -88,6 +102,11 @@
                             </div>
                             
                         </div>
+
+                    
+
+
+
                         <button class="btn btn-primary" type="submit">Ajouter Le Collecteur</button>
                     </form>
                 </div>

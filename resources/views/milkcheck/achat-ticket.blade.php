@@ -1,6 +1,6 @@
 @extends('layouts.milkcheck')
-@section('content')
 
+@section('content')
 
 <div class="page-content">
 
@@ -39,23 +39,19 @@
 
     <div class="row mt-3">
         <div class="col-md-12 grid-margin">
-            <div class="card" style="width: 450px; height:auto;"  id="printable" >
+            <div class="card" style="width: 450px; height:auto;" id="printable" >
                 <div class="card-body print-section" >
-
                     <div class="d-flex justify-content-center">
-
                         <div >
                             <img src="{{asset('mdl-black.png')}}" > <br>
                         </div>
-                        
                     </div>
 
-                   
                     <div class="text-center">  
                         <span style=" font-size: 22px !important;">Collecteur : <b>{{$achat->collector->name}}</b>  <br>
                         Date : <b> {{$date}}</b></span>
 
-                        <table class="table">
+                        <table >
                             <thead>
                               <tr>
                                 <th  style=" font-size: 20px !important;">#</th>
@@ -68,18 +64,54 @@
                             <tbody>
                                 @foreach ($achat->lineachats as $line)
                                 <tr>
-                                    <th scope="row" style=" font-size: 20px !important;">{{$loop->iteration}}</th>
-                                    <td style=" font-size: 20px !important;">{{$line->breeder->name}}</td>
-                                    <td style=" font-size: 20px !important;">{{$line->qte}}</td>
-                                    <td style=" font-size: 20px !important;">{{$line->price}}</td>
-                                    <td style=" font-size: 20px !important;">{{$line->total}}</td>
+                                    <th scope="row" class="table-ticket">{{$loop->iteration}}</th>
+                                    <td class="table-ticket">{{$line->breeder->name}}</td>
+                                    <td class="table-ticket">{{$line->qte}}</td>
+                                    <td class="table-ticket">{{$line->price}}</td>
+                                    <td class="table-ticket">{{$line->total}}</td>
                                   </tr>
                                 @endforeach
                             </tbody>
                         </table>
 
                     </div>
-                    
+
+                    <div class="mt-3 d-flex justify-content-center mt-4">
+                        <b class="d-flex justify-content-center" style=" font-size: 22px !important;">Résultats d'analyses</b>
+                     </div>
+
+                    <div class="mt-3 ">
+                        <table >
+                            <thead>
+                                <tr>
+                                <th >F</th>
+                                <th >D</th>
+                                <th >C</th>
+                                <th >S</th>
+                                <th >P</th>
+                                <th >W</th>
+                                <th >L</th>
+                                <th >T</th>
+                                <th >FP</th>
+                                <th >AC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td class="table-analyse">{{$analyse->f}}</td>
+                                <td class="table-analyse">{{$analyse->d}}</td>
+                                <td class="table-analyse">{{$analyse->c}}</td>
+                                <td class="table-analyse">{{$analyse->s}}</td>
+                                <td class="table-analyse">{{$analyse->p}}</td>
+                                <td class="table-analyse">{{$analyse->w}}</td>
+                                <td class="table-analyse">{{$analyse->l}}</td>
+                                <td class="table-analyse">{{$analyse->t}}</td>
+                                <td class="table-analyse">{{$analyse->fp}}</td>
+                                <td class="table-analyse">{{$analyse->a}}</td>
+                                </tr>
+                            </tbody>
+                         </table>
+                    </div>
                     <div class="mt-3 ">
                         <span> <b  style=" font-size: 22px !important;">Qte : {{$achat->qte . ' L'}}</b> </span> <br>
                         <span> <b  style=" font-size: 22px !important;">Total : {{number_format($achat->total, 2) . ' Da'}}</b> </span>

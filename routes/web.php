@@ -43,6 +43,11 @@ Route::get('/orders/success', function () {
 });
 
 
+Route::get('/catalogue', function () {
+    return view('catalogue');
+});
+
+
 Route::get('/milkcheck/login', function () {
 
     if(Auth::check()){
@@ -73,6 +78,14 @@ Route::middleware('milkcheckAuth')->group(function () {
     //show achat detail page
     Route::get('/milkcheck/achats/create/{id}',[App\Http\Controllers\AchatController::class, 'createAchat'])->middleware('can:milkcheck');
     Route::resource('milkcheck/breeders', BreederController::class)->middleware('can:milkcheck');
+
+
+
+    //paiements
+
+    Route::get('/milkcheck/paiements/etat/',[App\Http\Controllers\PaiementMilkcheckController::class, 'indexEtat'])->middleware('can:milkcheck');
+    Route::get('/milkcheck/paiements/etat/{id}',[App\Http\Controllers\PaiementMilkcheckController::class, 'etatSchow'])->middleware('can:milkcheck');
+
 
 
     Route::get('/milkcheck/accords/collectors/',[App\Http\Controllers\AgrementController::class, 'collectorsAccord'])->middleware('can:milkcheck');
@@ -133,6 +146,7 @@ Route::post('orders/informations', [App\Http\Controllers\OrderController::class,
 Route::post('orders/informations-pack-four', [App\Http\Controllers\OrderController::class, 'finalStep']);
 Route::get('orders/success/{name}', [App\Http\Controllers\OrderController::class, 'success']);
 Route::resource('orders', OrderController::class);
+Route::get('/checkout-ice-cream', [App\Http\Controllers\OrderController::class, 'checkoutIce']);
 
 
 

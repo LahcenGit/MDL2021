@@ -19,7 +19,7 @@ class CollectorController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'n_agrement' => 'required',
+            'type' => 'required',
             'delivry_date' => 'required',
             'expiration_date' => 'required',
         ]);
@@ -34,13 +34,13 @@ class CollectorController extends Controller
         $collector = new Collector();
         $collector->user_id = $user->id;
         $collector->name = $request->name;
+        $collector->agrement_type = $request->type;
         $collector->email = $request->email;
         $collector->phone = $request->phone;
         $collector->n_agrement = $request->n_agrement;
         $collector->delivry_date = $request->delivry_date;
         $collector->expiration_date = $request->expiration_date;
         $collector->save();
-
 
         return redirect('milkcheck/collectors');
     }

@@ -47,6 +47,8 @@ License: For each use you must have a valid license purchased only from above li
   <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
+
+
 <body>
 	<div class="main-wrapper">
 
@@ -130,6 +132,7 @@ License: For each use you must have a valid license purchased only from above li
               </ul>
             </div>
           </li>
+
           <li class="nav-item {{ active_class(['milkcheck/agrements/*','milkcheck/agrements']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#agrements" role="button" aria-expanded="{{ is_active_route(['milkcheck/agrements/*','milkcheck/agrements']) }}" aria-controls="agrements">
               <i class="link-icon" data-feather="mail"></i>
@@ -146,6 +149,25 @@ License: For each use you must have a valid license purchased only from above li
                 </li>
                
                 
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item {{ active_class(['milkcheck/paiements/*','milkcheck/paiements']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#paiements" role="button" aria-expanded="{{ is_active_route(['milkcheck/paiements/*','milkcheck/paiements']) }}" aria-controls="paiements">
+              <i class="link-icon" data-feather="dollar-sign"></i>
+              <span class="link-title">Paiements</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+
+            <div class="collapse {{ show_class(['milkcheck/paiements/*','milkcheck/paiements']) }}" id="paiements">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/paiements/etat')}}" class="nav-link {{ active_class(['milkcheck/paiements/etat']) }}">Etat paiement</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/paiements/transfer')}}" class="nav-link {{ active_class(['milkcheck/paiements/transfer']) }}">Virements</a>
+                </li>
               </ul>
             </div>
           </li>

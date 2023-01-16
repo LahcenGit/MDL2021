@@ -226,6 +226,22 @@ class OrderController extends Controller
             }
 
         }
+        if($request->pack == "glaces"){
+
+            $order = new Order();
+            $order->name = $request->name;
+            $order->phone = $request->phone;
+            $order->email = $request->email;
+            $order->adress = $request->adress;
+            $order->pack = "glaces";
+            $order->wilaya = $request->wilaya;
+            $order->statut = 1;
+            $order->remarque = $request->remarque;
+            $order->total = $request->total;
+            $order->save();
+           
+        }
+        
         $name =  $request->name;
 
         return redirect('orders/success/' . $name);
@@ -252,6 +268,7 @@ class OrderController extends Controller
     public function definePackFour(){
         return view("orders.pack-four");
     }
+
     public function finalStep(Request $request){
         if($request->pack == "pack1"){
             $option1 = $request->option1;
@@ -282,4 +299,10 @@ class OrderController extends Controller
             return  view("orders.informations-pack-four",compact('option1','option2','option3','option4','pack'));
         }
     }
+
+    public function checkoutIce(){
+            return  view("orders.checkout-ice");
+    }
+
+
 }

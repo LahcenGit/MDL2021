@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Achat;
+use App\Models\Analyse;
 use App\Models\Breeder;
 use App\Models\Collector;
 use App\Models\Lineachat;
@@ -155,8 +156,9 @@ class ReportController extends Controller
     public function achatTicket($id){
 
         $achat = Achat::find($id);
+        $analyse = Analyse::where('achat_id',$achat->id)->first();
         $date = Carbon::today()->format('d-m-Y');
-        return view('milkcheck.achat-ticket',compact('achat','date'));
+        return view('milkcheck.achat-ticket',compact('achat','date','analyse'));
 
     }
    

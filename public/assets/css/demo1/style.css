@@ -70,6 +70,21 @@
   }
 }
 
+
+.table-ticket{
+ 
+  padding: 0.3rem;
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 20px;
+}
+.table-analyse{
+  font-size:17px; 
+  font-weight:600;
+  padding: 0.3rem;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

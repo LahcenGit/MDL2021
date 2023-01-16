@@ -60,10 +60,19 @@
                             </div>
                             
                         </div>
-
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">N° d'agrément *:</label>
+
+                            <div class="col-md-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Type * : </label>
+                                <select class="js-example-basic-single  form-select" name="type" class="form-control input-default @error('collector') is-invalid @enderror" id="exampleFormControlSelect1" required>
+                                        <option value="A" >Agrément</option>
+                                        <option value="IS" >Identification Sanitaire</option>
+                                        <option value="" >Ancun</option>
+                                </select>
+                            </div>
+    
+                            <div class="col-md-3">
+                                <label class="form-label">N° d'agrément :</label>
                                 <input class="form-control mb-4 mb-md-0 input-default @error('n_agrement') is-invalid @enderror" name="n_agrement" value="{{old('n_agrement')}}" placeholder="13681" required/>
                                 @error('n_agrement')
                                 <span class="invalid-feedback" role="alert">
@@ -73,6 +82,7 @@
                             </div>
                             
                         </div>
+                        
                         <div class="row mb-3">
                             <div class="col-md-3">
                                 <label class="form-label">Date d'éxpédition *:</label>
@@ -98,8 +108,6 @@
 
                         <div class="row mb-3">
 
-                     
-                            
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Collecteur *</label>
 								<select class="js-example-basic-single  form-select" name="collector" class="form-control input-default @error('collector') is-invalid @enderror" id="exampleFormControlSelect1" required>

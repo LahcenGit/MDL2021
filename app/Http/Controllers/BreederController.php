@@ -26,11 +26,12 @@ class BreederController extends Controller
     public function store(Request $request){
 
         $request->validate([
+
             'name' => 'required',
             'collector' => 'required',
+            'type' => 'required',
             'delivry_date' => 'required',
             'expiration_date' => 'required',
-            'n_agrement' => 'required',
         ]);
 
 
@@ -39,15 +40,14 @@ class BreederController extends Controller
         $breeder->name = $request->name;
         $breeder->email = $request->email;
         $breeder->phone = $request->phone;
-
+        $breeder->agrement_type = $request->type;
         $breeder->n_agrement = $request->n_agrement;
         $breeder->delivry_date = $request->delivry_date;
         $breeder->expiration_date = $request->expiration_date;
         $breeder->save();
-
-
         return redirect('milkcheck/breeders');
     }
+    
        public function edit($id){
            $breeder = Breeder::find($id);
            $collectors = Collector::all();
