@@ -9,21 +9,21 @@ class CategorieController extends Controller
 {
     //
     public function create(){
-        $categories = Categorie::all();
+        $categories = Categorie::where('parent_id',null)->get();
         return view('admin.add-categorie',compact('categories'));
     }
 
     public function index(){
-        $categories = Categorie::where('parent_id',NULL)->get();
+        $categories = Categorie::where('parent_id',null)->orderby('designation', 'asc')->get();
         return view('admin.categories',compact('categories'));
     }
 
     public function store(Request $request){
- 
+
 
         $request->validate([
          'designation' => ['required', 'string', 'max:255'],
-         
+
 
         ]);
          $categorie = new Categorie();
@@ -35,11 +35,8 @@ class CategorieController extends Controller
          else{
              $categorie->parent_id = $request['categorie'];
          }
-
-     
-
          $categorie->save();
 
-         return redirect('dashboard-admin/categories')->with('success','Categorie "' .$categorie->designation. '" a été ajoutée avec succes !');
+         return redirect('admin/categories')->with('success','Categorie "' .$categorie->designation. '" a été ajoutée avec succes !');
     }
 }

@@ -18,8 +18,12 @@ class CreateProduitsTable extends Migration
             $table->unsignedBigInteger('categorie_id')->unsigned();
             $table->unsignedBigInteger('promo_id')->unsigned()->nullable();
             $table->string('designation');
-            $table->string('description');
-            $table->float('prix');
+            $table->string('short_description')->nullable();
+            $table->string('long_description')->nullable();
+            $table->string('capacity')->nullable();
+            $table->float('price')->nullable();
+            $table->tinyInteger('flag')->nullable();
+            $table->string('slug')->nullable();
             $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('promo_id')->references('id')->on('promos')->onDelete('cascade');
             $table->timestamps();

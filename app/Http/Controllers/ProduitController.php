@@ -11,22 +11,23 @@ use App\Models\Image;
 class ProduitController extends Controller
 {
     //
+
     public function index(){
         $produits = Produit::with('categorie')->get();
-        return view('admin.produits',compact('produits'));
+        return view('admin.products',compact('produits'));
     }
     public function create(){
         $categories = Categorie::whereNull('parent_id')
             ->with('childCategories')
             ->orderby('designation', 'asc')
             ->get();
-        return view('admin.add-produit',compact('categories'));
+        return view('admin.add-product',compact('categories'));
     }
 
     public function store(Request $request){
         $hasFileP = $request->hasFile('photo');
         $hasFile = $request->hasFile('imageFile');
-  
+
         /*if($hasFileP){
           $path =  $request->file('photo');
           $name = $path->store('produitPhoto');
@@ -34,23 +35,23 @@ class ProduitController extends Controller
 
         }*/
         $lien = [];
-        
+
         $produit = new Produit();
         $produit->designation = $request->designation;
         $produit->prix = $request->prix;
         $produit->description = $request->description;
         $produit->categorie_id = $request->categorie;
-        
+
         $produit->save();
         if($hasFile){
             foreach($request->file('imageFile') as $file){
             $path =  $file;
             $name = $path->store('produitPhoto');
-            $lien = Storage::url($name); 
+            $lien = Storage::url($name);
 
             $fileModal = new Image();
             $fileModal->lien = $lien;
-            
+
             $produit->images()->save($fileModal);
             }
 

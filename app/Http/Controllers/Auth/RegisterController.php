@@ -62,19 +62,37 @@ class RegisterController extends Controller
         if($data['check'] == "pro"){
 
             return Validator::make($data, [
-                'nom' => ['required', 'string', 'max:255'],
-                'prenom' => ['required', 'string', 'max:255'],
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
                 'entreprise' => ['required', 'string', 'max:255'],
                 'adresse' => ['required', 'string', 'max:255'],
                 'NIF' => ['required', 'string', 'max:255'],
                 'RC' => ['required', 'string', 'max:255'],
                 'wilaya' => ['required', 'string', 'max:255'],
-                'commune' => ['required', 'string', 'max:255'],
                 'phone' => ['required', 'string', 'max:255'],
                 'fax' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
-            ]);
+            ],
+            [
+                'password.min' => 'Le mot de passe est obligatoire',
+                'password.regex' =>'Confirmer le mot de passe  ',
+                'email.unique' => 'Ce email existe déja',
+                'email.email' => 'e-mail doit être une adresse e-mail valide.',
+                'phone.unique' => 'Ce numéro existe déja',
+                'fax.required' =>'Fax est obligatoire',
+                'NIF.required' =>'NIF est obligatoire',
+                'RC.required' =>'RC est obligatoire',
+                'wilaya.required' =>'Wilaya est obligatoire',
+                'entreprise.required' =>'Entreprise est obligatoire',
+                'adresse.required' =>'Adresse est obligatoire',
+                'password.required'=>'le mot de passe est obligatoire',
+                'first_name.required' => 'Nom est obligatoire',
+                'last_name.required' => 'Prenom champ est obligatoire',
+                'email.required' => 'E-mail est obligatoire',
+                'phone.required' => 'Telephone est obligatoire',
+            ]
+        );
 
         }
 
@@ -112,42 +130,39 @@ class RegisterController extends Controller
             $user->password = Hash::make($data['password']);
             $user->save();
         }
-      
+
 
         if($data['check'] == "pro"){
 
         $user = new User;
 
         $user->type = 'professionnel';
-        $user->name = $data['name'];
-        
+        $user->first_name = $data['first_name'];
+        $user->last_name = $data['last_name'];
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->save();
 
         $professionnel = new Professionnel();
-      
+
         $professionnel->entreprise = $data['entreprise'];
         $professionnel->adresse = $data['adresse'];
         $professionnel->phone = $data['phone'];
         $professionnel->fax = $data['fax'];
         $professionnel->wilaya = $data['wilaya'];
-        $professionnel->commune = $data['commune'];
         $professionnel->RC = $data['RC'];
         $professionnel->NIF = $data['NIF'];
-     
-       
         $user->professionnel()->save($professionnel);
 
         }
 
         else{
-        
+
         $user = new User;
 
         $user->type = 'particulier';
         $user->name = $data['name'];
-        
+
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->save();
@@ -159,12 +174,12 @@ class RegisterController extends Controller
         $particulier->commune = $data['commune'];
         $particulier->code_postal = $data['code_postal'];
         $particulier->phone = $data['phone'];
-        
+
         $user->particulier()->save($particulier);
 
         }
 
        return $user;
-       
+
 }
 }

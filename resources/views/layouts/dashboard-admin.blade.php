@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
+
 	<title>La maison du lait </title>
 
     <!-- Fonts -->
@@ -15,28 +15,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+
     <!-- End fonts -->
-  
+
     <!-- core:css -->
     <link rel="stylesheet" href="{{asset('/assets/vendors/core/core.css')}}">
     <!-- endinject -->
-  
+
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendors/simplemde/simplemde.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/vendors/dropify/dist/dropify.min.css') }}">
     <!-- End plugin css for this page -->
-  
+
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('/assets/fonts/feather-font/css/iconfont.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
-  
+
     <link rel="stylesheet" href="{{asset('/assets/vendors/select2/select2.min.css')}}">
     <!-- endinject -->
-  
-    <!-- Layout styles -->  
+
+    <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
     <!-- End layout styles -->
-  
+
     <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
@@ -75,16 +79,16 @@
                 <li class="nav-item">
                   <a href="#" class="nav-link">Clients</a>
                 </li>
-               
-                
+
+
               </ul>
             </div>
           </li>
-         
-        
+
+
           <li class="nav-item nav-category">Produits Fabriqués</li>
-          
-         
+
+
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
               <i class="link-icon" data-feather="feather"></i>
@@ -99,12 +103,12 @@
                 <li class="nav-item">
                   <a href="#" class="nav-link">Tous</a>
                 </li>
-              
+
               </ul>
             </div>
           </li>
-          
-         
+
+
           <li class="nav-item nav-category">Gestion des ventes</li>
 
           <li class="nav-item {{ active_class(['dashboard-admin/orders/*','dashboard-admin/orders']) }}">
@@ -124,7 +128,7 @@
               </ul>
             </div>
           </li>
-         
+
           <li class="nav-item nav-category">Setting</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
@@ -137,9 +141,9 @@
     </nav>
     x
 		<!-- partial -->
-	
+
 		<div class="page-wrapper">
-					
+
 			<!-- partial:partials/_navbar.html -->
       <nav class="navbar">
 				<a href="#" class="sidebar-toggler">
@@ -156,7 +160,7 @@
 					</form>
 					<ul class="navbar-nav">
 						<li class="nav-item dropdown">
-						
+
 							<div class="dropdown-menu" aria-labelledby="languageDropdown">
                 <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
                 <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
@@ -169,9 +173,9 @@
 							<a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i data-feather="grid"></i>
 							</a>
-							
+
 						</li>
-					
+
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i data-feather="bell"></i>
@@ -192,9 +196,9 @@
                     <div class="flex-grow-1 me-2">
 											<p>Fonctionnalité  </p>
 											<p class="tx-12 text-muted">en développement</p>
-                    </div>	
+                    </div>
                   </a>
-                
+
                 </div>
 								<div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
 									<a href="javascript:;">View all</a>
@@ -238,7 +242,7 @@
 				<p class="text-muted mb-1 mb-md-0">Copyright © 2022 <a href="#" target="_blank">MDL TEAM</a>.</p>
 			</footer>
 			<!-- partial -->
-		
+
 		</div>
 	</div>
 
@@ -247,44 +251,45 @@
 	<!-- endinject -->
 
 	<!-- Plugin js for this page -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-  <script src="{{asset('/assets/vendors/datatables.net/jquery.dataTables.js')}}"></script>
-  <script src="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
-  <script src="{{asset('/assets/js/data-table.js')}}"></script>
-  <script src="{{asset('/assets/vendors/chartjs/Chart.min.js')}}"></script>
-  <script src="{{asset('/assets/vendors/jquery.flot/jquery.flot.js')}}"></script>
-  <script src="{{asset('/assets/vendors/jquery.flot/jquery.flot.resize.js')}}"></script>
-  <script src="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
-  <script src="{{asset('/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
-  <script src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="{{asset('/assets/vendors/datatables.net/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
+    <script src="{{asset('/assets/js/data-table.js')}}"></script>
+
+    <script src="{{asset('/assets/vendors/dropify/dist/dropify.min.js') }}"></script>
+    <script src="{{asset('/assets/vendors/chartjs/Chart.min.js')}}"></script>
+    <script src="{{asset('/assets/vendors/jquery.flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('/assets/vendors/jquery.flot/jquery.flot.resize.js')}}"></script>
+    <script src="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
+    <script src="{{ asset('/assets/vendors/tinymce/tinymce.min.js') }}"></script>
+
 	<!-- End plugin js for this page -->
-
-
-
-	<!-- inject:js -->
-	<script src="{{asset('/assets/vendors/feather-icons/feather.min.js')}}"></script>
-	<script src="{{asset('/assets/js/template.js')}}"></script>
+     <!-- inject:js -->
+    <script src="{{asset('/assets/vendors/feather-icons/feather.min.js')}}"></script>
+    <script src="{{asset('/assets/js/template.js')}}"></script>
 	<!-- endinject -->
 
-  <script src="{{asset('/assets/print/printThis.js')}}"></script>
+    <script src="{{asset('/assets/print/printThis.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Custom js for this page -->
+    <script src="{{asset('/assets/js/dashboard-light.js')}}"></script>
+    <script src="{{asset('/assets/js/datepicker.js')}}"></script>
+    <script src="{{asset('/assets/js/select2.js')}}"></script>
+    <script src="{{asset('/assets/js/dropify.js') }}"></script>
+    <script src="{{ asset('/assets/js/tinymce.js') }}"></script>
 
-	
-
-	<!-- Custom js for this page -->
-  <script src="{{asset('/assets/js/dashboard-light.js')}}"></script>
-  <script src="{{asset('/assets/js/datepicker.js')}}"></script>
-  <script src="{{asset('/assets/js/select2.js')}}"></script>
 	<!-- End custom js for this page -->
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 
+    @stack('order-detail-scripts')
+    @stack('order-ticket-scripts')
 
-  @stack('order-detail-scripts')
-  @stack('order-ticket-scripts')
-  
 
 
 
 </body>
-</html>    
+</html>

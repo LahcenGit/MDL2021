@@ -26,11 +26,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-   
+
 
     public function redirectTo(){
         if (auth()->user()->type == "admin") {
-            return 'dashboard-admin';
+            return 'admin';
         }
         else{
         return 'milkcheck';

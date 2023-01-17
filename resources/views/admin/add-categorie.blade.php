@@ -17,9 +17,9 @@
                 <div class="card-body">
                     <h6 class="card-title">Ajouter Categorie</h6>
                     <p class="text-muted mb-3">Veuillez remplir tous les champs s'il vous plait!</p>
-                    <form class="forms-sample" method="POST" action="{{url('/dashboard-admin/categories')}}" enctype="multipart/form-data">
-                        @csrf 
-                       
+                    <form class="forms-sample" method="POST" action="{{url('/admin/categories')}}" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="row mb-3">
                             <div class="col-md-8">
                                 <label class="form-label">Designation:</label>
@@ -30,7 +30,7 @@
                                 </span>
                                @enderror
                             </div>
-                            
+
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8">
@@ -46,12 +46,12 @@
                                 </span>
                                @enderror
                                 </select>
-                               
+
                             </div>
-                            
+
                         </div>
-                        
-                       
+
+
                         <button class="btn btn-primary" type="submit">Ajouter</button>
                     </form>
                 </div>

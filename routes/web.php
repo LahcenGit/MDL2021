@@ -18,6 +18,8 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\SettingController;
 
 use App\Http\Controllers\ReportController;
+use App\Models\Citie;
+use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -56,7 +58,7 @@ Route::get('/milkcheck/login', function () {
     else{
         return view('auth.login-milkcheck');
     }
-    
+
 });
 
 
@@ -107,15 +109,15 @@ Route::middleware('milkcheckAuth')->group(function () {
 Route::resource('journeedulait', EleveurController::class);
 
 //admin routes
-Route::resource('dashboard-admin/categories', CategorieController::class)->middleware('can:admin');
-Route::resource('dashboard-admin/produits', ProduitController::class)->middleware('can:admin');
-Route::resource('dashboard-admin/orders', AdminOrderController::class)->middleware('can:admin');
-Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
-Route::get('dashboard-admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
-Route::get('dashboard-admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
-Route::get('dashboard-admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel'])->middleware('can:admin');
+Route::resource('admin/categories', CategorieController::class)->middleware('can:admin');
+Route::resource('admin/products', ProduitController::class)->middleware('can:admin');
+Route::resource('admin/orders', AdminOrderController::class)->middleware('can:admin');
+Route::get('admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
+Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
+Route::get('admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
+Route::get('admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel'])->middleware('can:admin');
 
-Route::resource('dashboard-admin', AdminController::class)->middleware('can:admin');
+Route::resource('admin', AdminController::class)->middleware('can:admin');
 
 
 
@@ -153,7 +155,8 @@ Route::get('/checkout-ice-cream', [App\Http\Controllers\OrderController::class, 
 Route::get('/eleveurs-event', [App\Http\Controllers\EleveurController::class, 'statistiqueConfirm']);
 
 Route::get('/register-pro', function () {
-    return view('professionel/register-pro');
+    $wilayas = Wilaya::all();
+    return view('professionel/register-pro',compact('wilayas'));
 });
 
 

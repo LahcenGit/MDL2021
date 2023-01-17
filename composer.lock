@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ba8331bfafa1ae4989745b7e0d936c2",
+    "content-hash": "774508ee4626d746a94077d54374bdc7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5262,6 +5262,74 @@
             "time": "2022-12-22T17:55:15+00:00"
         },
         {
+            "name": "thehocinesaad/laravel-algereography",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theHocineSaad/laravel-algereography.git",
+                "reference": "b02e59db5b1eb5a95dcf4144def8469aa2805184"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theHocineSaad/laravel-algereography/zipball/b02e59db5b1eb5a95dcf4144def8469aa2805184",
+                "reference": "b02e59db5b1eb5a95dcf4144def8469aa2805184",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.1",
+                "orchestra/testbench": "^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TheHocineSaad\\LaravelAlgereography\\LaravelAlgereographyServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Database\\Seeders\\": "database/seeders/",
+                    "Database\\Migrations\\": "database/migrations/",
+                    "TheHocineSaad\\LaravelAlgereography\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hocine Saad",
+                    "email": "theHocineSaad@gmail.com",
+                    "role": "Creator - Maintainer"
+                }
+            ],
+            "description": "Easily add all the 58 Algerian Wilayas and its Dairas to your cool Laravel project (Migrations, Seeders and Models).",
+            "homepage": "https://github.com/thehocinesaad/laravel-algereography",
+            "keywords": [
+                "Administrative Divisions of Algeria",
+                "Dairas",
+                "Districts of Algeria",
+                "Provinces of Algeria",
+                "Wilayas",
+                "laravel-algereography",
+                "thehocinesaad"
+            ],
+            "support": {
+                "issues": "https://github.com/theHocineSaad/laravel-algereography/issues",
+                "source": "https://github.com/theHocineSaad/laravel-algereography/tree/v1.3.0"
+            },
+            "time": "2022-09-04T21:05:23+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.6",
             "source": {
@@ -7922,5 +7990,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
