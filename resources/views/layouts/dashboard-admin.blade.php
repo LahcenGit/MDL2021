@@ -287,7 +287,7 @@
 
     @stack('order-detail-scripts')
     @stack('order-ticket-scripts')
-
+    @stack('modal-orderline-scripts')
 
 
 

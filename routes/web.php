@@ -116,6 +116,7 @@ Route::resource('admin/categories', CategorieController::class)->middleware('can
 Route::resource('admin/products', ProduitController::class)->middleware('can:admin');
 Route::resource('admin/orders', AdminOrderController::class)->middleware('can:admin');
 Route::resource('admin/professional-orders', ProfessionalorderController::class)->middleware('can:admin');
+Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\ProfessionalorderController::class, 'detailOrder'])->middleware('can:admin');
 Route::get('admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
 Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
 Route::get('admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');

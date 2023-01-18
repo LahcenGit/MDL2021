@@ -58,7 +58,7 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="{{url('admin/order-detail/'.$order->id)}}" class="btn  btn-secondary  show-order" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
+                    <a href="#" class="btn  btn-secondary show-orderline" data-id="{{ $order->id }}" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
                     <a href="{{url('admin/professional-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
                       "></i></a>
 
@@ -76,28 +76,27 @@
     </div>
 
 </div>
-<div id="modal-order">
+<div id="modal-orderline">
 
 </div>
 @endsection
 
-@push('modal-order-scripts')
+@push('modal-orderline-scripts')
 <script>
   $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
 });
-$(".show-order").click(function() {
+$(".show-orderline").click(function() {
 
   var id = $(this).data('id');
-
   $.ajax({
-    url: '/show-order/' + id,
+    url: '/show-professional-orderline/' + id,
     type: "GET",
     success: function (res) {
-      $('#modal-order').html(res);
-      $("#exampleModal").modal('show');
+      $('#modal-orderline').html(res);
+      $("#showModal").modal('show');
     }
   });
 
