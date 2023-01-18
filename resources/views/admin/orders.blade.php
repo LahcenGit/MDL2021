@@ -46,11 +46,11 @@
             <td><span class="badge bg-success">Terminé</span></td>
             @else
             <td><span class="badge bg-danger">Annulé</span></td>
-            
+
             @endif
 
             <td>{{$order->created_at->format('d-m-Y  H:i')}}</td>
-            
+
             <td>
               <form action="{{url('milkcheck/orders/'.$order->id)}}" method="post">
                 {{csrf_field()}}
@@ -69,9 +69,9 @@
                     @if ($order->statut == 3)
                     <a href="{{url('dashboard-admin/order-approuve/'.$order->id)}}" onclick=" return confirm('Voulez-vous valider la commande ?')" class="btn  btn-primary  show-order" style="margin-right: 3px;"><i class="mdi mdi-check"></i></a>
                     @endif
-                    
+
                 </div>
-              </form>	
+              </form>
             </td>
           </tr>
          @endforeach
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-</div>   
+</div>
 <div id="modal-order">
 
 </div>
@@ -97,9 +97,9 @@
   }
 });
 $(".show-order").click(function() {
-  
+
   var id = $(this).data('id');
- 
+
   $.ajax({
     url: '/show-order/' + id,
     type: "GET",
@@ -108,8 +108,8 @@ $(".show-order").click(function() {
       $("#exampleModal").modal('show');
     }
   });
-  
+
 });
 
-</script>  
+</script>
 @endpush

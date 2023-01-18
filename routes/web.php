@@ -16,6 +16,7 @@ use App\Http\Controllers\BreederController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ProfessionalorderController;
 
 use App\Http\Controllers\ReportController;
 use App\Models\Citie;
@@ -112,6 +113,7 @@ Route::resource('journeedulait', EleveurController::class);
 Route::resource('admin/categories', CategorieController::class)->middleware('can:admin');
 Route::resource('admin/products', ProduitController::class)->middleware('can:admin');
 Route::resource('admin/orders', AdminOrderController::class)->middleware('can:admin');
+Route::resource('admin/professional-orders', ProfessionalorderController::class)->middleware('can:admin');
 Route::get('admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
 Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
 Route::get('admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
