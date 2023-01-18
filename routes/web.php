@@ -15,8 +15,10 @@ use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\BreederController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\professional\OrderProfessionalController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ProfessionalorderController;
+
 
 use App\Http\Controllers\ReportController;
 use App\Models\Citie;
@@ -162,6 +164,12 @@ Route::get('/register-pro', function () {
 });
 
 
+//parcours professionel commmande
+
+Route::resource('/order-pro', OrderProfessionalController::class);
+
+
+
 
 Route::get('/register-particulier', function () {
     return view('particulier.register-particulier');
@@ -175,6 +183,7 @@ Route::get('/produit', function () {
 Route::get('home-dashboard', function () {
     return view('home-dashboard');
 });
+
 
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
 
