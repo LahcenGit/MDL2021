@@ -116,10 +116,10 @@
                 </div>
             </div>
 
-            <div class="col-md-6 stretch-card grid-margin grid-margin-md-0">
+            <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Dropzone</h6>
+                        <h6 class="card-title">Autres images</h6>
                         <p class="text-muted mb-3">Read the <a href="https://www.dropzonejs.com/" target="_blank"> Official Dropzone.js Documentation </a>for a full list of instructions and other options.</p>
                         <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
                         <input type="file" name="file" />

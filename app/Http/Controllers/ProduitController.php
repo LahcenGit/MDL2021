@@ -25,37 +25,26 @@ class ProduitController extends Controller
     }
 
     public function store(Request $request){
-        $hasFileP = $request->hasFile('photo');
+        $has_first_image = $request->hasFile('first_image');
         $hasFile = $request->hasFile('imageFile');
-
-        /*if($hasFileP){
-          $path =  $request->file('photo');
-          $name = $path->store('produitPhoto');
-          $lien = Storage::url($name);
-
-        }*/
-        $lien = [];
 
         $produit = new Produit();
         $produit->designation = $request->designation;
         $produit->prix = $request->prix;
-        $produit->description = $request->description;
+        $produit->short_description = $request->short_description;
+        $produit->long_description = $request->long_description;
         $produit->categorie_id = $request->categorie;
-
+        $produit->capacity = $request->capacity;
         $produit->save();
-        if($hasFile){
-            foreach($request->file('imageFile') as $file){
-            $path =  $file;
-            $name = $path->store('produitPhoto');
-            $lien = Storage::url($name);
-
-            $fileModal = new Image();
-            $fileModal->lien = $lien;
-
-            $produit->images()->save($fileModal);
-            }
-
+        if($has_first_image){
+            $destination = 'public/images/products';
+            $path = $request->file('first_image')->store($destination);
+            $storageName = basename($path);
+            $image = new Image();
+            $image->lien = $storageName;
+            $image->type = 1;
+            $produit->images()->save($image);
         }
-        return redirect('dashboard-admin/produits');
+        return redirect('admin/products');
     }
 }
