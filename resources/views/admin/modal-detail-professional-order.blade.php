@@ -16,7 +16,7 @@
 
                    <div class="col-md-3">
                        <label>Qte:</label>
-                       <input type="text"  class="form-control invalid"value="{{$orderline->qte}}"disabled >
+                       <input type="text"  class="form-control invalid"value="{{$orderline->qte}} kg"disabled >
                    </div>
                    <div class="col-md-3">
                        <label>Total:</label>
