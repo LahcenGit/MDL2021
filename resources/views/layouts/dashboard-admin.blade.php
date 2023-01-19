@@ -120,10 +120,10 @@
             <div class="collapse {{ show_class(['dashboard-admin/orders/*','dashboard-admin/orders']) }}" id="commandes">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="#" class="nav-link {{ active_class(['dashboard-admin/orders/create']) }}">Ajouter</a>
+                  <a href="#" class="nav-link {{ active_class(['admin/professional-orders/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('dashboard-admin/orders')}}" class="nav-link {{ active_class(['dashboard-admin/orders']) }}">Liste commandes</a>
+                    <a href="{{url('admin/professional-orders')}}" class="nav-link {{ active_class(['dashboard-admin/orders']) }}">Liste commandes</a>
                   </li>
               </ul>
             </div>
