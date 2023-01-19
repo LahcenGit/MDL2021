@@ -448,6 +448,8 @@
 	
 	<!-- custom js -->
     <script src="{{ asset('mdltheme/js/shop.js') }}"></script>
+
+	@stack('order-pro-front')
 	</div>
   </body>
 </html>

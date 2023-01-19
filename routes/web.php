@@ -168,6 +168,7 @@ Route::get('/register-pro', function () {
 //parcours professionel commmande
 
 Route::resource('/order-pro', OrderProfessionalController::class);
+Route::get('/success-order', [App\Http\Controllers\professional\OrderProfessionalController::class, 'successOrder']);
 
 
 

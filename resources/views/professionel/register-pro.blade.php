@@ -8,7 +8,7 @@
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <div class="bread"><a href="#">Accueil</a> &rsaquo; Inscription</div>
                         <div class="bigtitle">Inscription pour les Professionnels</div>
                     </div>

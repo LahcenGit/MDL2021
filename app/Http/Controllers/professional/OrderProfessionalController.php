@@ -12,4 +12,7 @@ class OrderProfessionalController extends Controller
         $wilayas = Wilaya::all();
         return view('professionel.order-pro',compact('wilayas'));
     }
+    public function successOrder(){
+        return view('professionel.success-order');
+    }
 }
