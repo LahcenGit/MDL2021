@@ -39,21 +39,13 @@
                     <div class="title">Détails personnels</div>
                 </div>
                 <div class="form-group dob">
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control  @error('first_name') is-invalid @enderror" id="name" value="{{ old('first_name') }}" name="first_name" placeholder="Nom" required>
-                        @error('first_name')
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" name="name" placeholder="Nom Complet" required>
+                        @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="prenom" value="{{ old('last_name') }}" name="last_name" placeholder="Prénom" required>
-                        @error('last_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
                     </div>
                 </div>
                 <div class="form-group">
@@ -70,9 +62,9 @@
                             <option>Type</option>
                             <option value="Pizzeria" @if (old('type') == 'Pizzeria')selected @endif>Pizzeria</option>
                             <option value="Grossiste"@if (old('type') == 'Grossiste')selected @endif>Grossiste</option>
-                            <option value="Orrika"@if (old('type') == 'Orrika')selected @endif>Orrika</option>
+                            <option value="Orrika"@if (old('type') == 'Orrika')selected @endif>Orika</option>
                         </select>
-                        @error('wilaya')
+                        @error('type')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -113,6 +105,7 @@
                     <div class="col-sm-12">
                         <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
                             <option>Wilaya</option>
+                            <option value="tlemcen">Tlemcen</option>
                             @foreach($wilayas as $wilaya)
                             <option value="{{ $wilaya->name }}" @if(old('wilaya')== $wilaya->name ) selected @endif>{{ $wilaya->name }}</option>
                             @endforeach

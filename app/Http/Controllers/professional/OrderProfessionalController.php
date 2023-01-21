@@ -17,7 +17,7 @@ class OrderProfessionalController extends Controller
 {
     public function index(){
         $wilayas = Wilaya::all();
-        $products = Produit::all();
+        $products = Produit::orderBy('flag','Asc')->get();
         return view('professionel.order-pro',compact('wilayas','products'));
     }
     public function successOrder(){

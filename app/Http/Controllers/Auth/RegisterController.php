@@ -63,8 +63,7 @@ class RegisterController extends Controller
         if($data['check'] == "pro"){
 
             return Validator::make($data, [
-                'first_name' => ['required', 'string', 'max:255'],
-                'last_name' => ['required', 'string', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
                 'entreprise' => ['required', 'string', 'max:255'],
                 'adresse' => ['required', 'string', 'max:255'],
                 'NIF' => ['required', 'string', 'max:255'],
@@ -88,8 +87,7 @@ class RegisterController extends Controller
                 'entreprise.required' =>'Entreprise est obligatoire',
                 'adresse.required' =>'Adresse est obligatoire',
                 'password.required'=>'le mot de passe est obligatoire',
-                'first_name.required' => 'Nom est obligatoire',
-                'last_name.required' => 'Prenom champ est obligatoire',
+                'name.required' => 'Nom est obligatoire',
                 'email.required' => 'E-mail est obligatoire',
                 'phone.required' => 'Telephone est obligatoire',
             ]
@@ -138,8 +136,7 @@ class RegisterController extends Controller
         $user = new User;
 
         $user->type = 'professionnel';
-        $user->first_name = $data['first_name'];
-        $user->last_name = $data['last_name'];
+        $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->save();

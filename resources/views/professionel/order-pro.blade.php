@@ -39,115 +39,53 @@
                     </ul>
                 </div>
             @endif
-        <div class="row">
-            <div  class="col-md-6">
-                <div id="title-bg">
-                    <div class="title">Choisir vos produits</div>
-                </div>
-                @foreach($products as $product)
-                    <div class="form-group dob">
-                        <div class="col-sm-9">
-                            <input type="checkbox" class="form-check-input big-checkbox"  name="products[]" value="{{ $product->id }}" > <span class="product-title"><b> {{ $product->designation }}</b> 100% naturel</span>
-                                @error('product')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+
+
+        <div class="row ">
+            <div id="title-bg">
+                <div class="title">Choisir vos produits</div>
+            </div>
+            <div class="spacer"></div>
+
+            @foreach($products->split($products->count()/2) as $row)
+                <div class="col-md-6 ">
+                    @foreach ($row as $product)
+                        <div class="form-group dob">
+                            <div class="col-sm-9">
+                                <input type="checkbox" class="form-check-input big-checkbox"  name="products[]" value="{{ $product->id }}" > <span class="product-title"><b> {{ $product->designation }}</b> {{$product->capacity}}</span>
+                                    @error('product')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="number" class="form-control @error('qte') is-invalid @enderror" id="qte" name="qtes[]" placeholder="Qte." >
+                                    @error('qte')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                 @enderror
+                            </div>
                         </div>
-                        <div class="col-sm-3">
-                            <input type="number" class="form-control @error('qte') is-invalid @enderror" id="qte" name="qtes[]" placeholder="Qte. Kg" >
-                                @error('qte')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-                        </div>
-                    </div>
-                @endforeach
-
-
-
-                <div id="title-bg">
-                    <div class="title">Option livraison</div>
+                    @endforeach
                 </div>
-
-                <div class="form-group dob">
-                    <div class="col-sm-12">
-                        <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
-                            <option value="Alger">Alger</option>
-                            <option value="Tlemcen">Tlemcen</option>
-                            <option value="Ain Temouchent">Ain Temouchent</option>
-                        </select>
-
-                    </div>
-
-                    <div class="col-sm-12 " style="margin-top:5px;">
-                       <span><b> Remarque </b> : la livraison est prévu pour le lundi prochain <b>18/01/2023</b> </span>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-6" >
-
-                <div id="title-bg">
-                    <div class="title">Détails commande</div>
-                </div>
-
-                <div style="margin-bottom: 10px;">
-                    <span >Cliquez sur Calculer le prix pour afficher <br>
-                    les détails de la commande</span>
-                </div>
-
-                <div class="ticket " style="display: none">
-
-                    <div class="table-responsive">
-                        <table class="table table-bordered chart">
-                            <thead>
-                                <tr>
-                                    <th>Produit</th>
-                                    <th>Qte</th>
-                                    <th>P.U</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>Mozarella Zahra</td>
-                                    <td>100 Kg</td>
-                                    <td>800 Da</td>
-                                    <td><b>8000.00 Da</b> </td>
-                                </tr>
-                                <tr>
-                                    <td>Feta Zahra</td>
-                                    <td>50 Kg</td>
-                                    <td>600 Da</td>
-                                    <td><b>6000.00 Da</b></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-5 col-md-offset-7">
-                        <div class="subtotal-wrap">
-                           {{-- <div class="subtotal">
-                                <p>Sub Total : $26.00</p>
-                                <p>Vat 17% : $54.00</p>
-                            </div>--}}
-                            <div class="total">Total : <span class="bigprice">14000.00 Da</span></div>
-                        </div>
-                        <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <button type="button"  id="price-calculator" class="btn btn-default btn-red" style="background: -moz-linear-gradient(top, #FFC257, #FF8B00);">Calculer les tarifs</button>
-                <button type="submit" class="btn btn-default btn-red">Valider la commande</button></a>
-            </div>
-
+            @endforeach
         </div>
+
+        <div class="row d-flex justify-content-center">
+            <div id="title-bg">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <span >Cliquez-ici pour avoir tous les détails de votre commande. </span>
+            </div>
+            <div>
+                 <button type="submit" class="btn btn-default btn-red">Détails commande</button></a>
+            </div>
+        
+        </div>
+
     </form>
     <div class="spacer"></div>
 </div>
