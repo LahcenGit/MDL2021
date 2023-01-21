@@ -23,7 +23,7 @@
         <li class="breadcrumb-item active" aria-current="page">Ajouter produit</li>
     </ol>
 </nav>
-<form class="forms-sample" method="POST" action="{{url('/admin/products')}}" enctype="multipart/form-data">
+<form class="forms-sample" method="POST" action="{{url('/dashboard-admin/products')}}" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-md-8 grid-margin stretch-card">
@@ -41,6 +41,25 @@
                                     </span>
                                     @enderror
                             </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Code barre*:</label>
+                                 <input type="text" class="form-control mb-4 mb-md-0" name="bar_code" value="{{old('bar_code')}}" placeholder="62398745987123 " />
+                             </div>
+                            <div class="col-md-3">
+                               <label class="form-label">Type EMB(optionnel):</label>
+                                <input type="text" class="form-control mb-4 mb-md-0" name="type_emb" value="{{old('type_emb')}}" placeholder="Pot verre" />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">PU HT*:</label>
+                                 <input type="number" class="form-control mb-4 mb-md-0" name="pu_ht" value="{{old('pu_ht')}}" placeholder="0.00" />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">DLC*:</label>
+                                 <input type="text" class="form-control mb-4 mb-md-0" name="dlc" value="{{old('dlc')}}" placeholder="3 mois" />
+                            </div>
+
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
@@ -118,11 +137,23 @@
 
             <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            Autres images : </h4>
+                    </div>
                     <div class="card-body">
-                        <h6 class="card-title">Autres images</h6>
-                        <p class="text-muted mb-3">Read the <a href="https://www.dropzonejs.com/" target="_blank"> Official Dropzone.js Documentation </a>for a full list of instructions and other options.</p>
-                        <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
-                        <input type="file" name="file" />
+                            <div class="basic-form custom_file_input">
+                                    <div class="input-group mb-3">
+                                            <input type="file" id="images" name="photos[]" accept="image/*" multiple >
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 ">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <button type="submit"  class="btn btn-primary mt-3" >Ajouter </button>
                     </div>
                 </div>
             </div>

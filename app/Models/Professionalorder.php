@@ -12,4 +12,8 @@ class Professionalorder extends Model
     {
         return $this->belongsTo(Professionnel::class,'professional_id');
     }
+    public function professionalorderlines()
+    {
+        return $this->hasMany(Professionalorderline::class);
+    }
 }

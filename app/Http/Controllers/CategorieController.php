@@ -37,6 +37,6 @@ class CategorieController extends Controller
          }
          $categorie->save();
 
-         return redirect('admin/categories')->with('success','Categorie "' .$categorie->designation. '" a été ajoutée avec succes !');
+         return redirect('dashboard-admin/categories')->with('success','Categorie "' .$categorie->designation. '" a été ajoutée avec succes !');
     }
 }

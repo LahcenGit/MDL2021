@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Professionnel;
@@ -143,18 +144,21 @@ class RegisterController extends Controller
         $user->password = Hash::make($data['password']);
         $user->save();
 
-        $professionnel = new Professionnel();
+        $professional = new Professionnel();
 
-        $professionnel->entreprise = $data['entreprise'];
-        $professionnel->adresse = $data['adresse'];
-        $professionnel->phone = $data['phone'];
-        $professionnel->fax = $data['fax'];
-        $professionnel->wilaya = $data['wilaya'];
-        $professionnel->RC = $data['RC'];
-        $professionnel->NIF = $data['NIF'];
-        $user->professionnel()->save($professionnel);
+        $professional->entreprise = $data['entreprise'];
+        $professional->adresse = $data['adresse'];
+        $professional->phone = $data['phone'];
+        $professional->fax = $data['fax'];
+        $professional->wilaya = $data['wilaya'];
+        $professional->RC = $data['RC'];
+        $professional->NIF = $data['NIF'];
+        $professional->type = $data['type'];
+        $user->professionnel()->save($professional);
 
-
+        $cart = new Cart();
+        $cart->professional_id = $professional->id;
+        $cart->save();
         }
 
         else{

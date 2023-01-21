@@ -17,13 +17,13 @@ class CreateProfessionnelsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->string('entreprise');
+            $table->string('type')->nullable();
             $table->string('adresse');
             $table->string('phone');
             $table->string('fax')->nullable();
             $table->string('wilaya');
             $table->string('RC');
             $table->string('NIF');
-            $table->string('commune')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

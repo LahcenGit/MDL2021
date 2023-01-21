@@ -5,19 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Produit extends Model
+class Cart extends Model
 {
     use HasFactory;
-    public function images()
-{
-    return $this->hasMany(Image::class);
-}
-
-    public function categorie()
+    public function professional()
     {
-        return $this->belongsTo(Categorie::class);
+        return $this->belongsTo(Professionnel::class);
     }
-
     public function cartlines()
     {
         return $this->hasMany(Cartline::class);

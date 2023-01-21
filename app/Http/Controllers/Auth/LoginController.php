@@ -30,7 +30,10 @@ class LoginController extends Controller
 
     public function redirectTo(){
         if (auth()->user()->type == "admin") {
-            return 'admin';
+            return 'dashboard-admin';
+        }
+        else if(auth()->user()->type == "professionnel"){
+           return 'order-pro';
         }
         else{
         return 'milkcheck';

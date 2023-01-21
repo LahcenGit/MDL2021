@@ -17,7 +17,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\professional\OrderProfessionalController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\ProfessionalorderController;
+use App\Http\Controllers\LaboController;
+use App\Http\Controllers\Admin\ProfessionalorderController;
 
 
 use App\Http\Controllers\ReportController;
@@ -112,17 +113,17 @@ Route::middleware('milkcheckAuth')->group(function () {
 Route::resource('journeedulait', EleveurController::class);
 
 //admin routes
-Route::resource('admin/categories', CategorieController::class)->middleware('can:admin');
-Route::resource('admin/products', ProduitController::class)->middleware('can:admin');
-Route::resource('admin/orders', AdminOrderController::class)->middleware('can:admin');
-Route::resource('admin/professional-orders', ProfessionalorderController::class)->middleware('can:admin');
+Route::resource('dashboard-admin/categories', CategorieController::class)->middleware('can:admin');
+Route::resource('dashboard-admin/products', ProduitController::class)->middleware('can:admin');
+Route::resource('dashboard-admin/orders', AdminOrderController::class)->middleware('can:admin');
+Route::resource('dashboard-admin/professional-orders', ProfessionalorderController::class)->middleware('can:admin');
 Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\ProfessionalorderController::class, 'detailOrder'])->middleware('can:admin');
-Route::get('admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
+Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
 Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
 Route::get('admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
 Route::get('admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel'])->middleware('can:admin');
 
-Route::resource('admin', AdminController::class)->middleware('can:admin');
+Route::resource('dashboard-admin', AdminController::class)->middleware('can:admin');
 
 
 
@@ -178,6 +179,7 @@ Route::get('/register-particulier', function () {
 });
 
 
+
 Route::get('/produit', function () {
     return view('produit');
 });
@@ -186,6 +188,8 @@ Route::get('home-dashboard', function () {
     return view('home-dashboard');
 });
 
+//labo route
+Route::resource('labo', LaboController::class);
 
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
 

@@ -18,6 +18,10 @@ class CreateProduitsTable extends Migration
             $table->unsignedBigInteger('categorie_id')->unsigned();
             $table->unsignedBigInteger('promo_id')->unsigned()->nullable();
             $table->string('designation');
+            $table->string('type_emb')->nullable();
+            $table->float('pu_ht');
+            $table->string('dlc')->nullable();
+            $table->string('bar_code')->nullable();
             $table->string('short_description')->nullable();
             $table->string('long_description')->nullable();
             $table->string('capacity')->nullable();

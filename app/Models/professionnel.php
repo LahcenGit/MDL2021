@@ -13,6 +13,10 @@ class Professionnel extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
     public function professionalOrders()
     {
         return $this->hasMany(Professionalorder::class);

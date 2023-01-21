@@ -11,14 +11,14 @@
 	<link href='{{ asset('mdltheme/font-awesome/css/font-awesome.css') }}' rel="stylesheet" type="text/css">
 	<!-- Bootstrap -->
     <link href="{{ asset('mdltheme/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-	
+
 	<!-- Main Style -->
 	<link rel="stylesheet" href="{{ asset('mdltheme/style.css') }}" />
-	
+
 	<!-- owl Style -->
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.carousel.css') }}" />
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.transitions.css') }}" />
-	
+
 	<link rel="stylesheet" type="text/css" href="js/product/jquery.fancybox.css?v=2.1.5" media="screen" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -108,7 +108,7 @@
 													Pour gérer et suivre vos commande, merci d'accéder a votre espace client...
 												</p>
 												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Espace client</button></a>
-												
+
 											</div>
 										</div>
 
@@ -122,7 +122,7 @@
 													<div class="title-widget">Détails</div>
 												</div>
 												<p > Compte : particulier </p>
-											
+
 												<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
 												onclick="event.preventDefault();
 															document.getElementById('logout-form').submit();"> Se déconncter </a>
@@ -138,7 +138,7 @@
 													Pour gérer et suivre vos commande, merci d'accéder a votre espace client...
 												</p>
 												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Espace client</button></a>
-												
+
 											</div>
 										</div>
 
@@ -152,7 +152,7 @@
 													<div class="title-widget">Détails</div>
 												</div>
 												<p > Compte : Admin </p>
-											
+
 												<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
 												onclick="event.preventDefault();
 															document.getElementById('logout-form').submit();"> Se déconncter </a>
@@ -168,12 +168,12 @@
 													Pour gérer le site, merci d'accéder au dashboard...
 												</p>
 												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Dashboard</button></a>
-												
+
 											</div>
 										</div>
 
 								 @endif
-								
+
 								@endguest
 							</div>
 							<div class="srch-wrap">
@@ -341,7 +341,7 @@
 	</div><!--end main-nav -->
 
 @yield('content')
-	
+
 	<div class="f-widget"><!--footer Widget-->
 		<div class="container">
 			<div class="row">
@@ -421,35 +421,36 @@
 			</div>
 		</div>
 	</div><!--footer-->
-    
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ asset('mdltheme/bootstrap/js/bootstrap.min.js') }}"></script>
-	
+
 	<!-- map -->
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="{{ asset('mdltheme/js/jquery.ui.map.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/demo.js') }}"></script>
-	
+
 	<!-- owl carousel -->
     <script src="{{ asset('mdltheme/js/owl.carousel.min.js') }}"></script>
-	
+
 	<!-- rating -->
 	<script src="{{ asset('mdltheme/js/rate/jquery.raty.js') }}"></script>
 	<script src="{{ asset('mdltheme/js/labs.js') }}" type="text/javascript"></script>
-	
+
 	<!-- Add mousewheel plugin (this is optional) -->
 	<script type="text/javascript" src="{{ asset('mdltheme/js/product/lib/jquery.mousewheel-3.0.6.pack.js') }}"></script>
-	
+
 	<!-- fancybox -->
     <script type="text/javascript" src="{{ asset('mdltheme/js/product/jquery.fancybox.js?v=2.1.5') }}"></script>
-	
+
 	<!-- custom js -->
     <script src="{{ asset('mdltheme/js/shop.js') }}"></script>
 
 	@stack('order-pro-front')
+
 	</div>
   </body>
 </html>

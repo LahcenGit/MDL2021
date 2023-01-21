@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('professionalorders', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('professional_id')->unsigned();
-            $table->string('note')->nullable();
-            $table->float('total');
-            $table->tinyInteger('status');
-            $table->float('discount')->nullable();
-            $table->tinyInteger('flag');
-            $table->string('slug')->nullable();
             $table->foreign('professional_id')->references('id')->on('professionnels')->onDelete('cascade');
             $table->timestamps();
         });
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professionalorders');
+        Schema::dropIfExists('carts');
     }
 };

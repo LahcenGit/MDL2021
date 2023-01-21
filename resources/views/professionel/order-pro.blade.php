@@ -20,14 +20,14 @@
                         <div class="bread"><a href="#">Accueil</a> &rsaquo; Commande</div>
                         <div class="bigtitle">Lancez une commande</div>
                     </div>
-                   
+
                 </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <form class="form-horizontal checkout" method="POST" action="{{ route('register') }}">
+    <form class="form-horizontal checkout" method="POST" action="{{ url('order-pro') }}">
         @csrf
 
              @if (count($errors) > 0)
@@ -44,51 +44,33 @@
                 <div id="title-bg">
                     <div class="title">Choisir vos produits</div>
                 </div>
-                <div class="form-group dob">
-                    <div class="col-sm-8">
-                         <input type="checkbox" class="form-check-input big-checkbox" value=""> <span class="product-title"><b> Mozzarella Zahra </b> 100% naturel</span>
+                @foreach($products as $product)
+                    <div class="form-group dob">
+                        <div class="col-sm-9">
+                            <input type="checkbox" class="form-check-input big-checkbox"  name="products[]" value="{{ $product->id }}" > <span class="product-title"><b> {{ $product->designation }}</b> 100% naturel</span>
+                                @error('product')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control @error('qte') is-invalid @enderror" id="qte" name="qtes[]" placeholder="Qte. Kg" >
+                                @error('qte')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control @error('last_name') is-invalid @enderror" id="prenom" name="last_name" placeholder="Qte. Kg" required>
-                        @error('last_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                </div>
-                <div class="form-group dob">
-                    <div class="col-sm-8">
-                         <input type="checkbox" class="form-check-input big-checkbox" value=""> <span class="product-title"><b> Feta Zahra </b> 100% naturel</span>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control @error('last_name') is-invalid @enderror" id="prenom" name="last_name" placeholder="Qte. Kg" required>
-                        @error('last_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                </div>
-                <div class="form-group dob">
-                    <div class="col-sm-8">
-                         <input type="checkbox" class="form-check-input big-checkbox" value=""> <span class="product-title"><b> Halloumi Zahra </b> 100% naturel</span>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" class="form-control @error('last_name') is-invalid @enderror" id="prenom" name="last_name" placeholder="Qte. Kg" required>
-                        @error('last_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                         @enderror
-                    </div>
-                </div>
+                @endforeach
+
 
 
                 <div id="title-bg">
                     <div class="title">Option livraison</div>
                 </div>
-             
+
                 <div class="form-group dob">
                     <div class="col-sm-12">
                         <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
@@ -112,12 +94,12 @@
                 </div>
 
                 <div style="margin-bottom: 10px;">
-                    <span >Cliquez sur Calculer le prix pour affichier <br> 
-                    le détails de la commande</span>
+                    <span >Cliquez sur Calculer le prix pour afficher <br>
+                    les détails de la commande</span>
                 </div>
 
                 <div class="ticket " style="display: none">
-                   
+
                     <div class="table-responsive">
                         <table class="table table-bordered chart">
                             <thead>
@@ -162,7 +144,7 @@
                 </div>
 
                 <button type="button"  id="price-calculator" class="btn btn-default btn-red" style="background: -moz-linear-gradient(top, #FFC257, #FF8B00);">Calculer les tarifs</button>
-                <a href="{{asset('/success-order')}}"><button type="button" class="btn btn-default btn-red">Valider la commande</button></a>
+                <button type="submit" class="btn btn-default btn-red">Valider la commande</button></a>
             </div>
 
         </div>
@@ -174,6 +156,7 @@
 @push('order-pro-front')
 <script>
     $("#price-calculator").click(function() {
+
         $('.ticket').show();
     });
 </script>
