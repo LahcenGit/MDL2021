@@ -62,7 +62,7 @@
                             <option>Type</option>
                             <option value="Pizzeria" @if (old('type') == 'Pizzeria')selected @endif>Pizzeria</option>
                             <option value="Grossiste"@if (old('type') == 'Grossiste')selected @endif>Grossiste</option>
-                            <option value="Orrika"@if (old('type') == 'Orrika')selected @endif>Orika</option>
+                            <option value="Orika"@if (old('type') == 'Orika')selected @endif>Orika</option>
                         </select>
                         @error('type')
                         <span class="invalid-feedback" role="alert">

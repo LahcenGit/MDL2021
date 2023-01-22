@@ -159,7 +159,7 @@ Route::get('/checkout-ice-cream', [App\Http\Controllers\OrderController::class, 
 
 
 Route::get('/eleveurs-event', [App\Http\Controllers\EleveurController::class, 'statistiqueConfirm']);
- 
+
 Route::get('/register-pro', function () {
     $wilayas = Wilaya::all();
     return view('professionel/register-pro',compact('wilayas'));
@@ -170,6 +170,7 @@ Route::get('/register-pro', function () {
 
 Route::resource('/order-pro', OrderProfessionalController::class);
 Route::get('/success-order', [App\Http\Controllers\professional\OrderProfessionalController::class, 'successOrder']);
+Route::get('/script', [App\Http\Controllers\professional\OrderProfessionalController::class, 'script']);
 
 
 

@@ -24,6 +24,7 @@ class CreateProfessionnelsTable extends Migration
             $table->string('wilaya');
             $table->string('RC');
             $table->string('NIF');
+            $table->string('gps')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

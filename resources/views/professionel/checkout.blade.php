@@ -12,7 +12,10 @@
                 <thead>
                     <tr>
                         <th>Produit</th>
+                        <th>Type Emb</th>
+                        <th>DLC</th>
                         <th>qte</th>
+                        <th>PU HT</th>
                         <th>Total</th>
                     </tr>
                 </thead>
@@ -20,7 +23,10 @@
                     @foreach ($cart->cartlines as $cartline)
                     <tr>
                         <td>{{ $cartline->product->designation }}</td>
+                        <td>{{ $cartline->product->type_emb }}</td>
+                        <td>{{ $cartline->product->dlc }}</td>
                         <td>{{ $cartline->qte }}</td>
+                        <td>{{ $cartline->product->pu_ht }}</td>
                         <td>{{ number_format($cartline->total) }} Da</td>
                     </tr>
                    @endforeach
