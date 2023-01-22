@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <form class="form-horizontal checkout" method="POST" action="{{ url('order-pro') }}">
+    <form class="form-horizontal checkout" method="POST" action="{{ url('/checkout') }}">
         @csrf
 
              @if (count($errors) > 0)
@@ -59,8 +59,8 @@
                                         </span>
                                     @enderror
                             </div>
-                            <div class="col-sm-3">
-                                <input type="number" class="form-control @error('qte') is-invalid @enderror" id="qte" name="qtes[]" placeholder="Qte." >
+                            <div class="col-sm-3 ">
+                                <input type="number" class="form-control  @error('qte') is-invalid @enderror" name="qtes[]" min="0" placeholder="Qte." disabled  >
                                     @error('qte')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -83,7 +83,7 @@
             <div>
                  <button type="submit" class="btn btn-default btn-red">Détails commande</button></a>
             </div>
-        
+
         </div>
 
     </form>
@@ -93,9 +93,13 @@
 
 @push('order-pro-front')
 <script>
-    $("#price-calculator").click(function() {
 
-        $('.ticket').show();
+    $(".big-checkbox").click(function() {
+        var set_disabled =  $(this).is(':checked') ? false : true;
+        var set_required=  $(this).is(':checked') ? true : false;
+         $(this).parent().next().children('input').attr('disabled',set_disabled);
+         $(this).parent().next().children('input').attr('required',set_required);
     });
+
 </script>
 @endpush

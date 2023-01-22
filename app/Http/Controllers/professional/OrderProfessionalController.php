@@ -21,72 +21,10 @@ class OrderProfessionalController extends Controller
         $products = Produit::orderBy('flag','Asc')->get();
         return view('professionel.order-pro',compact('wilayas','products'));
     }
-    public function successOrder(){
-        return view('professionel.success-order');
-    }
 
-    public function store(Request $request){
-        $professional = Professionnel::where('user_id', Auth::user()->id)->first();
-        $cart = Cart::where('professional_id',$professional->id)->first();
-        $cartlines = $cart->cartlines;
-        if($cartlines){
-            foreach($cartlines as $cartline){
-                $cartline->delete();
-            }
-        }
 
-        //dd($request->products);
 
-        for($i=0 ; $i<count($request->products); $i++ ){
-
-         $cartline = new Cartline();
-         $cartline->cart_id = $cart->id;
-         $cartline->qte = $request->qtes[$i];
-         $cartline->product_id = $request->products[$i];
-         if($professional->type == 'Pizzeria'){
-
-          $tarification = Tarification::where('type','Pizzeria')->where('product_id',$request->products[$i])->first();
-          if($tarification->price_two == Null && $tarification->price_tree == NULL ){
-             $cartline->total = $request->qtes[$i] * $tarification->price_one;
-
-            }
-          else if($tarification->price_one != NULL && $tarification->price_two != NULL){
-
-            if($request->qtes[$i] <= 100){
-                $cartline->total = $request->qtes[$i] * $tarification->price_one;
-
-            }
-            else {
-                $cartline->total = $request->qtes[$i] * $tarification->price_two;
-            }
-        }
-      }
-         else if($professional->type == 'Grossiste'){
-            $tarification = Tarification::where('type','Grossiste')->where('product_id',$request->products[$i])->first();
-            if($tarification->price_two == Null && $tarification->price_tree == NULL ){
-                $cartline->total = $request->qtes[$i] * $tarification->price_one;
-
-            }
-            else if($tarification->price_one != NULL && $tarification->price_two != NULL){
-               if($request->qtes[$i] >= 100){
-                        $cartline->total = $request->qtes[$i] * $tarification->price_one;
-                }
-                else if($request->qtes[$i] > 300) {
-                        $cartline->total = $request->qte[$i] * $tarification->price_two;
-                }
-
-         }
-        }
-         else{
-           $product = Produit::find($request->products[$i]);
-           $cartline->total = $request->qtes[$i] * $product->pu_ht;
-         }
-         $cartline->save();
-        }
-        return view('professionel.checkout',compact('cart'));
-    }
-
-    public function script(){
+ public function script(){
     $products = Produit::all();
         foreach($products as $product){
          $tarification = new Tarification();

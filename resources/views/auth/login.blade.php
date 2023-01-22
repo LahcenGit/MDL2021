@@ -35,7 +35,7 @@ License: For each use you must have a valid license purchased only from above li
 	<link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
 	<!-- endinject -->
 
-  <!-- Layout styles -->  
+  <!-- Layout styles -->
 	<link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
   <!-- End layout styles -->
 
@@ -65,8 +65,8 @@ License: For each use you must have a valid license purchased only from above li
                     <form class="forms-sample">
                       <div class="mb-3">
                         <label for="userEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="userEmail" placeholder="Email">
-                        @error('email')
+                        <input type="email" class="form-control  @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" id="userEmail" placeholder="Email">
+                        @error('username')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -79,16 +79,24 @@ License: For each use you must have a valid license purchased only from above li
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                         @enderror  
+                         @enderror
                     </div>
-                     
+                    <div class="single-checkbox mt-3">
+                        <div class="checkbox-inline">
+                            <input class="check-input" type="checkbox" id="check15" name="remember_me">
+                            <label class="checkbox-label" for="check15"> Se souvenir de moi </label>
+                        </div>
+                        <div class="forgot-password">
+
+                    </div>
+
                       <div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary mt-3">
                             {{ __('Se connecter') }}
                         </button>
-                       
+
                       </div>
-                      
+
                     </form>
                   </div>
                 </div>

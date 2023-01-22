@@ -35,7 +35,7 @@ License: For each use you must have a valid license purchased only from above li
 	<link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
 	<!-- endinject -->
 
-  <!-- Layout styles -->  
+  <!-- Layout styles -->
 	<link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
   <!-- End layout styles -->
 
@@ -79,16 +79,24 @@ License: For each use you must have a valid license purchased only from above li
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                         @enderror  
+                         @enderror
                     </div>
-                     
+                    <div class="single-checkbox mt-3">
+                        <div class="checkbox-inline">
+                            <input class="check-input" type="checkbox" id="check15" name="remember_me">
+                            <label class="checkbox-label" for="check15"> Se souvenir de moi </label>
+                        </div>
+                        <div class="forgot-password">
+
+                    </div>
+
                       <div>
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Login') }}
+                            {{ __('Se connecter') }}
                         </button>
-                       
+
                       </div>
-                      
+
                     </form>
                   </div>
                 </div>

@@ -5,7 +5,7 @@
 <div class="container">
   <form class="form-horizontal checkout" role="form">
        <div id="title-bg">
-            <div class="title">Confirm Order</div>
+            <div class="title">Confirmation de la commande</div>
         </div>
         <div class="table-responsive">
             <table class="table table-bordered chart">
@@ -15,18 +15,18 @@
                         <th>Type Emb</th>
                         <th>DLC</th>
                         <th>qte</th>
-                        <th>PU HT</th>
+                        <th>P.U </th>
                         <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($cart->cartlines as $cartline)
                     <tr>
-                        <td>{{ $cartline->product->designation }}</td>
+                        <td>{{ $cartline->product->designation }} {{ $cartline->product->capacity }}</td>
                         <td>{{ $cartline->product->type_emb }}</td>
                         <td>{{ $cartline->product->dlc }}</td>
                         <td>{{ $cartline->qte }}</td>
-                        <td>{{ $cartline->product->pu_ht }}</td>
+                        <td>{{ $cartline->pu }}</td>
                         <td>{{ number_format($cartline->total) }} Da</td>
                     </tr>
                    @endforeach
@@ -36,12 +36,14 @@
         <div class="row">
             <div class="col-md-3 col-md-offset-9">
             <div class="subtotal-wrap">
+                @if($sub_total )
                 <div class="subtotal">
-                    <p>Sub Total : $26.00</p>
-                    <p>Vat 17% : $54.00</p>
+                    <p>Total : {{ number_format($sub_total,2) }} Da</p>
+                    <p>TVA 19% : {{ number_format($tva,2) }} Da</p>
                 </div>
-                <div class="total">Total : <span class="bigprice">$255.00</span></div>
-                <button class="btn btn-default btn-red btn-sm">Order Now</button>
+                @endif
+                <div class="total">Total : <span class="bigprice">{{ number_format($total,2) }} Da</span></div>
+                <a href="{{ url('/success-order') }}"class="btn btn-default btn-red btn-sm">Commander</a>
             </div>
             <div class="clearfix"></div>
             </div>

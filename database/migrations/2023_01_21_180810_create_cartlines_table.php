@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('cart_id')->unsigned();
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->integer('qte');
+            $table->float('pu');
             $table->float('total');
             $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('produits')->onDelete('cascade');

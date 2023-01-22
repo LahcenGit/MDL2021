@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /*
@@ -28,17 +30,44 @@ class LoginController extends Controller
      */
 
 
-    public function redirectTo(){
-        if (auth()->user()->type == "admin") {
-            return 'dashboard-admin';
-        }
-        else if(auth()->user()->type == "professionnel"){
-           return 'order-pro';
-        }
-        else{
-        return 'milkcheck';
-        }
-      }
+     public function login(Request $request)
+     {
+
+         $input = $request->all();
+
+         $this->validate($request, [
+             'username' => 'required',
+             'password' => ['required'],
+         ],
+         [
+             'username.required' => 'Ce champ est obligatoire',
+             'password.required' => 'Ce champ est obligatoire',
+         ]
+     );
+
+         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+         $remember_me  = ( !empty( $request->remember_me ) )? TRUE : FALSE;
+
+         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password']),$remember_me))
+         {
+             if(auth::user()->type == 'admin'){
+                 return redirect('dashboard-admin');
+             }
+             else if(auth::user()->type == 'professionnel') {
+                     return redirect('/order-professional');
+                 }
+            else{
+                return redirect('/milkcheck');
+            }
+
+
+         }
+         else{
+             $error = 'Coordonnées incorrectes. Veuillez réessayer.';
+             return view('auth.login',compact('error'));
+             }
+
+     }
     /**
      * Create a new controller instance.
      *

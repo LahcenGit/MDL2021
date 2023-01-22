@@ -19,8 +19,8 @@ use App\Http\Controllers\professional\OrderProfessionalController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\LaboController;
 use App\Http\Controllers\Admin\ProfessionalorderController;
-
-
+use App\Http\Controllers\Admin\ProfessionalController;
+use App\Http\Controllers\Professional\CheckoutController;
 use App\Http\Controllers\ReportController;
 use App\Models\Citie;
 use App\Models\Wilaya;
@@ -117,6 +117,7 @@ Route::resource('dashboard-admin/categories', CategorieController::class)->middl
 Route::resource('dashboard-admin/products', ProduitController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/orders', AdminOrderController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/professional-orders', ProfessionalorderController::class)->middleware('can:admin');
+Route::resource('dashboard-admin/professionals', ProfessionalController::class)->middleware('can:admin');
 Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\ProfessionalorderController::class, 'detailOrder'])->middleware('can:admin');
 Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
 Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
@@ -168,8 +169,9 @@ Route::get('/register-pro', function () {
 
 //parcours professionel commmande
 
-Route::resource('/order-pro', OrderProfessionalController::class);
-Route::get('/success-order', [App\Http\Controllers\professional\OrderProfessionalController::class, 'successOrder']);
+Route::resource('/order-professional', OrderProfessionalController::class);
+Route::resource('/checkout', CheckoutController::class);
+Route::get('/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder']);
 Route::get('/script', [App\Http\Controllers\professional\OrderProfessionalController::class, 'script']);
 
 

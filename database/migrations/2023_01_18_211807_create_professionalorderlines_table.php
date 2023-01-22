@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('professionalorder_id')->unsigned();
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->integer('qte');
+            $table->float('pu');
             $table->float('total');
             $table->foreign('product_id')->references('id')->on('produits')->onDelete('cascade');
             $table->foreign('professionalorder_id')->references('id')->on('professionalorders')->onDelete('cascade');
