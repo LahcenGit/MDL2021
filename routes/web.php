@@ -174,6 +174,11 @@ Route::resource('/checkout', CheckoutController::class);
 Route::get('/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder']);
 Route::get('/script', [App\Http\Controllers\professional\OrderProfessionalController::class, 'script']);
 
+// Dashboard app professionnal 
+Route::get('/app-professional', [App\Http\Controllers\professional\AppProfessionalController::class, 'index']);
+
+
+
 
 
 

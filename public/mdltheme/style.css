@@ -161,7 +161,8 @@ html,body {
 	padding:12px 0 0 0;
 	margin:0;
 	list-style:none;
-	float:right;
+	display: flex;
+	justify-content: center;
 	min-height:45px;
 }
 .small-menu li{
@@ -176,7 +177,7 @@ html,body {
 	color:#343c47;
 	text-decoration:none;
 }
-.myacc, .mycheck, .myshop{
+.myacc, .mycheck, .myshop, .sign-out{
 	display:block;
 	text-indent:27px;
 	line-height:21px;
@@ -211,6 +212,10 @@ html,body {
 }
 .myshop {
 	background:url(images/cartsmall.png) no-repeat;
+}
+
+.sign-out {
+	background:url(images/sign-out.png) no-repeat;
 }
 
 .mycheck {
@@ -1468,6 +1473,7 @@ html,body {
 	/* Opera 11.10+ */
 	background: -o-linear-gradient(top, #e15655, #be3935);
 }
+
 .btn-red:hover{
 	color:#ffffff;
 	background:#be3935;
@@ -1481,6 +1487,21 @@ html,body {
 	background: -ms-linear-gradient(top, #be3935, #e15655);
 	/* Opera 11.10+ */
 	background: -o-linear-gradient(top, #be3935, #e15655);
+}
+
+.btn-green{
+	color:#ffffff;
+	margin:0;
+	border:none;
+	background:#37944e;
+	
+}
+.btn-green:hover{
+	color:#ffffff;
+	margin:0;
+	border:none;
+	background:#54bd6e;
+	
 }
 
 .btn-yellow{

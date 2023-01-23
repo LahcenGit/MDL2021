@@ -7,6 +7,7 @@
 
     <!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700' rel='stylesheet' type='text/css'>
+	
 	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<link href='{{ asset('mdltheme/font-awesome/css/font-awesome.css') }}' rel="stylesheet" type="text/css">
 	<!-- Bootstrap -->
@@ -20,6 +21,9 @@
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.transitions.css') }}" />
 
 	<link rel="stylesheet" type="text/css" href="js/product/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+	<link href='https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -430,6 +434,7 @@
 
 	<!-- map -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    
 	<script type="text/javascript" src="{{ asset('mdltheme/js/jquery.ui.map.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/demo.js') }}"></script>
 
@@ -448,6 +453,15 @@
 
 	<!-- custom js -->
     <script src="{{ asset('mdltheme/js/shop.js') }}"></script>
+
+	<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+	<script>
+		$(document).ready( function () {
+  			  $('#myTable').DataTable();
+		} );
+	</script>
+	
 
 	@stack('order-pro-front')
 
