@@ -34,11 +34,11 @@
             @foreach($orders as $order)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$order->professional->user->first_name}} {{ $order->professional->user->last_name }}</td>
+            <td>{{$order->professional->user->name}} </td>
             <td>{{$order->professional->wilaya}}</td>
             <td>{{$order->professional->adresse}}</td>
             <td>{{$order->professional->phone}}</td>
-            <td> <b class="text-primary"> {{$order->total}} Da </b></td>
+            <td> <b class="text-primary"> {{number_format($order->total)}} Da </b></td>
 
             @if ($order->status == 1 )
             <td><span class="badge bg-warning">En attente</span></td>
@@ -59,7 +59,7 @@
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     <a href="#" class="btn  btn-secondary show-orderline" data-id="{{ $order->id }}" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
-                    <a href="{{url('admin/professional-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
+                    <a href="{{url('dashboard-admin/professional-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
                       "></i></a>
 
                 </div>

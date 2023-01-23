@@ -154,8 +154,8 @@
                     @foreach($order->professionalorderlines as $orderline)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $orderline->product->designation }}</td>
-                        <td>{{ $orderline->qte }} kg</td>
+                        <td>{{ $orderline->product->designation }} {{ $orderline->product->capacity }}</td>
+                        <td>{{ $orderline->qte }} </td>
                     </tr>
                     @endforeach
                     @endforeach

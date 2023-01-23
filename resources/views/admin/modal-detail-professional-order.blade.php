@@ -10,17 +10,17 @@
             <div class="row">
                    <div class="col-md-6">
                        <label> Produit:</label>
-                       <input type="text"  class="form-control invalid" value="{{$orderline->product->designation}}" disabled>
+                       <input type="text"  class="form-control invalid" value="{{$orderline->product->designation}} {{$orderline->product->capacity  }}" disabled>
 
                     </div>
 
                    <div class="col-md-3">
                        <label>Qte:</label>
-                       <input type="text"  class="form-control invalid"value="{{$orderline->qte}} kg"disabled >
+                       <input type="text"  class="form-control invalid"value="{{$orderline->qte}} "disabled >
                    </div>
                    <div class="col-md-3">
                        <label>Total:</label>
-                       <input type="text"  class="form-control invalid"value="{{$orderline->total}}" disabled>
+                       <input type="text"  class="form-control invalid"value="{{$orderline->total}} Da" disabled>
                    </div>
                </div>
           @endforeach

@@ -12,12 +12,12 @@
         <div class="col-md-8 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form class="forms-sample" method="POST" action="{{url('/admin/professional-orders/'.$order->id)}}" enctype="multipart/form-data">
+                    <form class="forms-sample" method="POST" action="{{url('/dashboard-admin/professional-orders/'.$order->id)}}" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
                      @csrf
                         <div class="row mb-3">
                             <div class="col-md-8">
-                                <label for="exampleFormControlSelect1" class="form-label">Liste des categories</label>
+                                <label for="exampleFormControlSelect1" class="form-label">Statut</label>
 								<select class="form-select" name="status"  class="form-control input-default " id="exampleFormControlSelect1">
                                     <option>select</option>
                                     <option value="1" @if ($order->status == 1) selected @endif > En attente</option>

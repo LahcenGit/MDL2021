@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Professionalorder;
 use App\Models\Professionalorderline;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class ProfessionalorderController extends Controller
         $order = Professionalorder::find($id);
         $order->status = $request->status;
         $order->save();
-        return redirect('/admin/professional-orders');
+        return redirect('/dashboard-admin/professional-orders');
     }
 
     public function detailOrder($id){

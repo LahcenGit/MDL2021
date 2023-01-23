@@ -54,8 +54,11 @@ class LoginController extends Controller
                  return redirect('dashboard-admin');
              }
              else if(auth::user()->type == 'professionnel') {
-                     return redirect('/order-professional');
+                     return redirect('/app-professional');
                  }
+            else if(auth::user()->type == 'labo') {
+                    return redirect('/labo');
+                }
             else{
                 return redirect('/milkcheck');
             }

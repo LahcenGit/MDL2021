@@ -64,6 +64,16 @@ Route::get('/milkcheck/login', function () {
     }
 
 });
+Route::get('/labo/login', function () {
+
+    if(Auth::check()){
+        return redirect('/labo');
+    }
+    else{
+        return view('auth.login-labo');
+    }
+
+});
 
 
 
@@ -118,7 +128,7 @@ Route::resource('dashboard-admin/products', ProduitController::class)->middlewar
 Route::resource('dashboard-admin/orders', AdminOrderController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/professional-orders', ProfessionalorderController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/professionals', ProfessionalController::class)->middleware('can:admin');
-Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\ProfessionalorderController::class, 'detailOrder'])->middleware('can:admin');
+Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\Admin\ProfessionalorderController::class, 'detailOrder'])->middleware('can:admin');
 Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
 Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
 Route::get('admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
@@ -174,8 +184,9 @@ Route::resource('/checkout', CheckoutController::class);
 Route::get('/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder']);
 Route::get('/script', [App\Http\Controllers\professional\OrderProfessionalController::class, 'script']);
 
-// Dashboard app professionnal 
+// Dashboard app professionnal
 Route::get('/app-professional', [App\Http\Controllers\professional\AppProfessionalController::class, 'index']);
+Route::get('/app-professional/order-lines/{id}', [App\Http\Controllers\professional\AppProfessionalController::class, 'orderLines']);
 
 
 

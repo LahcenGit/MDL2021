@@ -7,7 +7,7 @@
 
     <!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700' rel='stylesheet' type='text/css'>
-	
+
 	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<link href='{{ asset('mdltheme/font-awesome/css/font-awesome.css') }}' rel="stylesheet" type="text/css">
 	<!-- Bootstrap -->
@@ -23,7 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="js/product/jquery.fancybox.css?v=2.1.5" media="screen" />
 
 	<link href='https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
-	
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,8 +87,8 @@
 									</div>
 								</div>
 								@else
-								 @if (Auth::user()->type == 1 )
-									<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
+								 @if (Auth::user()->type == 'professionnel' )
+									<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->name}}  </a>
 									<div class="regwrap">
 										<div class="row d-flex align-items-center">
 											<div class="col-md-6 regform">
@@ -104,16 +104,7 @@
 																@csrf
 															</form>
 											</div>
-											<div class="col-md-6">
-												<div id="title-widget-bg">
-													<div class="title-widget">Outils</div>
-												</div>
-												<p>
-													Pour gérer et suivre vos commande, merci d'accéder a votre espace client...
-												</p>
-												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Espace client</button></a>
 
-											</div>
 										</div>
 
 								 @endif
@@ -290,55 +281,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-md-2 machart">
-						<button id="popcart" class="btn btn-default btn-chart btn-sm "><span class="mychart">Panier</span>|<span class="allprice">0.00 Da</span></button>
-						<div class="popcart">
-							<table class="table table-condensed popcart-inner">
-								<tbody>
-									<tr>
-										<td>
-										<img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-										</td>
-										<td><a href="product.html">Casio Exilim Zoom</a><br/><span>Color: green</span></td>
-										<td>1X</td>
-										<td>$138.80</td>
-										<td><a href=""><i class="fa fa-times-circle fa-2x"></i></a></td>
-									</tr>
-									<tr>
-										<td>
-										<img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-										</td>
-										<td><a href="product.html">Casio Exilim Zoom</a><br/><span>Color: green</span></td>
-										<td>1X</td>
-										<td>$138.80</td>
-										<td><a href=""><i class="fa fa-times-circle fa-2x"></i></a></td>
-									</tr>
-									<tr>
-										<td>
-										<img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-										</td>
-										<td><a href="product.html">Casio Exilim Zoom</a><br/><span>Color: green</span></td>
-										<td>1X</td>
-										<td>$138.80</td>
-										<td><a href=""><i class="fa fa-times-circle fa-2x"></i></a></td>
-									</tr>
-								</tbody>
-							</table>
-							<span class="sub-tot">Sub-Total : <span>$277.60</span> | <span>Vat (17.5%)</span> : $36.00 </span>
-							<br/>
-							<div class="btn-popcart">
-								<a href="checkout.html" class="btn btn-default btn-red btn-sm">Checkout</a>
-								<a href="cart.html" class="btn btn-default btn-red btn-sm">More</a>
-							</div>
-							<div class="popcart-tot">
-								<p>
-									Total<br/>
-									<span>$313.60</span>
-								</p>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</div>
+
 				</div>
 			</div>
 		</div>
@@ -434,7 +377,7 @@
 
 	<!-- map -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    
+
 	<script type="text/javascript" src="{{ asset('mdltheme/js/jquery.ui.map.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/demo.js') }}"></script>
 
@@ -455,13 +398,15 @@
     <script src="{{ asset('mdltheme/js/shop.js') }}"></script>
 
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.13.1/i18n/fr-FR.json"></script>
 
 	<script>
 		$(document).ready( function () {
   			  $('#myTable').DataTable();
+
 		} );
 	</script>
-	
+
 
 	@stack('order-pro-front')
 
