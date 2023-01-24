@@ -11,18 +11,20 @@
 	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<link href='{{ asset('mdltheme/font-awesome/css/font-awesome.css') }}' rel="stylesheet" type="text/css">
 	<!-- Bootstrap -->
-    <link href="{{ asset('mdltheme/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
+	
+    <link href="{{ asset('mdltheme/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 	<!-- Main Style -->
 	<link rel="stylesheet" href="{{ asset('mdltheme/style.css') }}" />
-
 	<!-- owl Style -->
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.carousel.css') }}" />
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.transitions.css') }}" />
-
 	<link rel="stylesheet" type="text/css" href="js/product/jquery.fancybox.css?v=2.1.5" media="screen" />
-
 	<link href='https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet"> 
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -32,20 +34,79 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
+  <style>
+		.main-text{
+			color: white;
+			font-family: 'Sacramento', cursive;
+			font-size: 30px;
+		}
+		.header-row{
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			-webkit-box-align: center;
+			align-items: center;
+		}
+		.btn-custom{
+			display: inline-block;
+			margin-bottom: 0;
+			font-weight: 400;
+			text-align: center;
+			vertical-align: middle;
+			cursor: pointer;
+			background-image: none;
+			border: 1px solid transparent;
+				border-top-color: transparent;
+				border-right-color: transparent;
+				border-bottom-color: transparent;
+				border-left-color: transparent;
+			white-space: nowrap;
+			padding: 6px 12px;
+			font-size: 14px;
+			line-height: 1.42857143;
+			border-radius: 30px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			color: #fff;
+			background-color: #74BE40;
+			border-color: #74BE40;
+			transition: transform 250ms;
+		}
+		.btn-custom:hover{
+			
+			color: rgb(65, 65, 65);
+			background-color: #fff;
+			border-color: #fff;
+			transform: translateY(-2px);
+		}
+	
+
+  </style>
   <body>
   <div id="wrapper">
 	<div class="header"><!--Header -->
 		<div class="container">
-			<div class="row mt-2" >
-				<div class="col-xs-6 col-md-4 main-logo">
-					<a href="index.html"><img src="mdltheme/images/logo.png" alt="logo" class="logo img-responsive" /></a>
+			<div class="row header-row mt-2" style="height: 90px; padding: 5px;">
+				<div class="col-xs-6 col-md-4 main-logo " >
+					<a href="index.html"><img src="mdltheme/images/logo.png" height="40%" width="40%" alt="logo-maison-du-lait" class="logo img-responsive" /></a>
 				</div>
-				<div class="col-md-8">
+
+				<div class="col-md-4" >
+				   <span class="main-text">Naturellement Bon ! </span>	
+				</div>
+
+				<div class="col-md-4">
 					<div class="pushright">
 						<div class="top">
 							@guest
-							<a href="#" id="reg" class="btn btn-default btn-dark">Se Connecter<span>-- Ou --</span>S'enregistrer</a>
-							<div class="regwrap">
+							<a href="#" id="reg" class="btn btn-default btn-custom">Se Connecter <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+							<div class="regwrap" style="width: 400px;">
 								<div class="row d-flex align-items-center">
 									<div class="col-md-6 regform">
 										<div id="title-widget-bg">
@@ -171,23 +232,7 @@
 
 								@endguest
 							</div>
-							<div class="srch-wrap">
-								<a href="#" id="srch" class="btn btn-default btn-search"><i class="fa fa-search"></i></a>
-							</div>
-							<div class="srchwrap">
-								<div class="row">
-									<div class="col-md-12">
-										<form class="form-horizontal" role="form">
-											<div class="form-group">
-												<label for="search" class="col-sm-2 control-label">Search</label>
-												<div class="col-sm-10">
-													<input type="text" class="form-control" id="search">
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
+
 						</div>
 					</div>
 				</div>

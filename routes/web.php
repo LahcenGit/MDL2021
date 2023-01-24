@@ -37,6 +37,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 Route::get('/', function () {
     return view('main-template');
 });
