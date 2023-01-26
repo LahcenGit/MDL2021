@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource('achat','App\Policies\AchatPolicy');
         Gate::resource('vendeur','App\Policies\VendeurPolicy');
         Gate::resource('agrement','App\Policies\AgrementPolicy');
-        
+
         Gate::define('milkcheck',function(){
             return Auth::user()->type == 'milkcheck';
            });
@@ -36,7 +36,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin',function(){
             return Auth::user()->type == 'admin';
            });
-
+        Gate::define('particular',function(){
+            return Auth::user()->type == 'particulier';
+           });
+        Gate::define('professional',function(){
+            return Auth::user()->type == 'professionnel';
+           });
         //
     }
 }

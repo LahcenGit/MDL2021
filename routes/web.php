@@ -207,12 +207,12 @@ Route::get('/register-professional', function () {
 });
 
 // Dashboard app professionnal
-Route::resource('/app-professiona/order-professional', OrderProfessionalController::class);
-Route::resource('/app-professiona/checkout', CheckoutController::class);
-Route::get('/app-professiona/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder']);
+Route::resource('/app-professiona/order-professional', OrderProfessionalController::class)->middleware('can:professional');
+Route::resource('/app-professiona/checkout', CheckoutController::class)->middleware('can:professional');
+Route::get('/app-professiona/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder'])->middleware('can:professional');
 Route::get('/script', [App\Http\Controllers\professional\OrderProfessionalController::class, 'script']);
-Route::get('/app-professional', [App\Http\Controllers\professional\AppProfessionalController::class, 'index']);
-Route::get('/app-professional/order-lines/{id}', [App\Http\Controllers\professional\AppProfessionalController::class, 'orderLines']);
+Route::get('/app-professional', [App\Http\Controllers\professional\AppProfessionalController::class, 'index'])->middleware('can:professional');
+Route::get('/app-professional/order-lines/{id}', [App\Http\Controllers\professional\AppProfessionalController::class, 'orderLines'])->middleware('can:professional');
 
 
 //parcours particular
@@ -221,11 +221,11 @@ Route::get('/register-particular', function () {
     return view('particulier.register-particulier',compact('wilayas'));
 });
 // Dashboard app particular
-Route::get('/app-particular', [App\Http\Controllers\particular\AppParticularController::class, 'index']);
-Route::resource('/app-particular/order', ParticularorderController::class);
-Route::resource('/app-particular/checkout', ParticularcheckoutController::class);
-Route::post('/app-particular/success-order', [App\Http\Controllers\particular\particularcheckoutController::class, 'successOrder']);
-Route::get('/app-particular/order-lines/{id}', [App\Http\Controllers\particular\AppparticularController::class, 'orderLines']);
+Route::get('/app-particular', [App\Http\Controllers\particular\AppParticularController::class, 'index'])->middleware('can:particular');
+Route::resource('/app-particular/order', ParticularorderController::class)->middleware('can:particular');
+Route::resource('/app-particular/checkout', ParticularcheckoutController::class)->middleware('can:particular');
+Route::post('/app-particular/success-order', [App\Http\Controllers\particular\particularcheckoutController::class, 'successOrder'])->middleware('can:particular');
+Route::get('/app-particular/order-lines/{id}', [App\Http\Controllers\particular\AppparticularController::class, 'orderLines'])->middleware('can:particular');
 //
 Route::get('/produit', function () {
     return view('produit');
