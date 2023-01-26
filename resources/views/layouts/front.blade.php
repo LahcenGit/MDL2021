@@ -12,7 +12,7 @@
 	<link href='{{ asset('mdltheme/font-awesome/css/font-awesome.css') }}' rel="stylesheet" type="text/css">
 	<!-- Bootstrap -->
 
-	
+
     <link href="{{ asset('mdltheme/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 	<!-- Main Style -->
 	<link rel="stylesheet" href="{{ asset('mdltheme/style.css') }}" />
@@ -24,7 +24,7 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -79,13 +79,13 @@
 			transition: transform 250ms;
 		}
 		.btn-custom:hover{
-			
+
 			color: rgb(65, 65, 65);
 			background-color: #fff;
 			border-color: #fff;
 			transform: translateY(-2px);
 		}
-	
+
 
   </style>
   <body>
@@ -98,141 +98,15 @@
 				</div>
 
 				<div class="col-md-4" >
-				   <span class="main-text">Naturellement Bon ! </span>	
+				   <span class="main-text">Naturellement Bon ! </span>
 				</div>
 
 				<div class="col-md-4">
 					<div class="pushright">
 						<div class="top">
 							@guest
-							<a href="#" id="reg" class="btn btn-default btn-custom">Se Connecter <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-							<div class="regwrap" style="width: 400px;">
-								<div class="row d-flex align-items-center">
-									<div class="col-md-6 regform">
-										<div id="title-widget-bg">
-											<div class="title-widget">Connexion</div>
-										</div>
-										<form method="POST" action="{{ route('login') }}">
-											@csrf
-											<div class="form-group">
-												<input id="email" type="email"  placeholder="exemple@gmail.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-												@error('email')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-												@enderror
-											</div>
-											<div class="form-group">
-												<input id="password" type="password" laceholder="Votre mot de passe"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-												@error('password')
-												<span class="invalid-feedback" role="alert">
-												  <strong>{{ $message }}</strong>
-												</span>
-												@enderror
-											</div>
-											<div class="form-group">
-												<button type="submit" class="btn btn-default btn-red btn-sm">Sign In</button>
-											</div>
-										</form>
-									</div>
-									<div class="col-md-6">
-										<div id="title-widget-bg">
-											<div class="title-widget">S'enregistrer</div>
-										</div>
-										<p>
-											En créant un compte, vous pourrez faire vos achats plus rapidement, être au courant du statut d'une commande ...
-										</p>
-										<a href="{{asset('/register-particulier')}}"><button class="btn btn-default btn-yellow">Particulier</button></a>
-										<a href="{{asset('/register-pro')}}">
-										<button class="btn btn-default btn-pro" style="background-color: #65C5D5;">Professionnel</button></a>
-									</div>
-								</div>
-								@else
-								 @if (Auth::user()->type == 'professionnel' )
-									<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->name}}  </a>
-									<div class="regwrap">
-										<div class="row d-flex align-items-center">
-											<div class="col-md-6 regform">
-												<div id="title-widget-bg">
-													<div class="title-widget">Détails</div>
-												</div>
-												<p > Compte : professionel </p>
-												<p style="margin-top : -7px;"> Entreprise : Maison du lait  </p>
-												<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
-												onclick="event.preventDefault();
-															document.getElementById('logout-form').submit();"> Se déconncter </a>
-															<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-																@csrf
-															</form>
-											</div>
-
-										</div>
-
-								 @endif
-								 @if (Auth::user()->type == 2 )
-									<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
-									<div class="regwrap">
-										<div class="row d-flex align-items-center">
-											<div class="col-md-6 regform">
-												<div id="title-widget-bg">
-													<div class="title-widget">Détails</div>
-												</div>
-												<p > Compte : particulier </p>
-
-												<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
-												onclick="event.preventDefault();
-															document.getElementById('logout-form').submit();"> Se déconncter </a>
-															<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-																@csrf
-															</form>
-											</div>
-											<div class="col-md-6">
-												<div id="title-widget-bg">
-													<div class="title-widget">Outils</div>
-												</div>
-												<p>
-													Pour gérer et suivre vos commande, merci d'accéder a votre espace client...
-												</p>
-												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Espace client</button></a>
-
-											</div>
-										</div>
-
-								 @endif
-								 @if (Auth::user()->type == 0 )
-									<a href="#" id="reg" class="btn btn-default btn-success">{{Auth::user()->nom}} {{Auth::user()->prenom}} </a>
-									<div class="regwrap">
-										<div class="row d-flex align-items-center">
-											<div class="col-md-6 regform">
-												<div id="title-widget-bg">
-													<div class="title-widget">Détails</div>
-												</div>
-												<p > Compte : Admin </p>
-
-												<a style="margin-top : -7x; color:red;"  href="{{ route('logout') }}"
-												onclick="event.preventDefault();
-															document.getElementById('logout-form').submit();"> Se déconncter </a>
-															<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-																@csrf
-															</form>
-											</div>
-											<div class="col-md-6">
-												<div id="title-widget-bg">
-													<div class="title-widget">Outils</div>
-												</div>
-												<p>
-													Pour gérer le site, merci d'accéder au dashboard...
-												</p>
-												<a href="{{asset('/register')}}"><button class="btn btn-default btn-yellow">Dashboard</button></a>
-
-											</div>
-										</div>
-
-								 @endif
-
-								@endguest
-							</div>
-
+							<a href="{{ url('/connexion') }}" id="reg" class="btn btn-default btn-custom">Se Connecter <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+				           @endguest
 						</div>
 					</div>
 				</div>

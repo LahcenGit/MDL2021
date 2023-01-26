@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Particularcart;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Professionnel;
@@ -11,7 +12,7 @@ use App\Models\Particulier;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     /*
@@ -32,8 +33,24 @@ class RegisterController extends Controller
      *
      * @var string
      */
-   // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/order-professional';
+
+   //protected $redirectTo = RouteServiceProvider::HOME;
+   protected function redirectTo()
+   {
+       if (auth::user()->type == 'professionnel') {
+           return 'app-professional';
+       }
+       else if(auth::user()->type == 'particulier'){
+          return 'app-particular';
+       }
+
+   }
+
+   /**
+    * Create a new controller instance.
+    *
+    * @return void
+    */
 
     /**
      * Create a new controller instance.
@@ -96,23 +113,28 @@ class RegisterController extends Controller
         }
 
         else {
-
-            return Validator::make($data, [
+           return Validator::make($data, [
                 'name' => ['required', 'string', 'max:255'],
-                'adresse' => ['required', 'string', 'max:255'],
-                'wilaya' => ['required', 'string', 'max:255'],
-                'commune' => ['required', 'string', 'max:255'],
-                'code_postal' => ['required', 'string', 'max:255'],
                 'phone' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
-            ]);
-
-
+                'wilaya' => ['required', 'string', 'max:255'],
+            ],
+            [
+                'password.min' => 'Le mot de passe est obligatoire',
+                'password.regex' =>'Confirmer le mot de passe  ',
+                'email.unique' => 'Ce email existe déja',
+                'email.email' => 'e-mail doit être une adresse e-mail valide.',
+                'phone.unique' => 'Ce numéro existe déja',
+                'password.required'=>'le mot de passe est obligatoire',
+                'name.required' => 'Nom est obligatoire',
+                'email.required' => 'E-mail est obligatoire',
+                'phone.required' => 'Telephone est obligatoire',
+                'wilaya.required' =>'Wilaya est obligatoire',
+            ]
+        );
         }
-
-
-    }
+   }
 
     /**
      * Create a new user instance after a valid registration.
@@ -159,29 +181,22 @@ class RegisterController extends Controller
         }
 
         else{
-
-        $user = new User;
-
-        $user->type = 'particulier';
-        $user->name = $data['name'];
-
-        $user->email = $data['email'];
-        $user->password = Hash::make($data['password']);
-        $user->save();
-
-
-        $particulier = new Particulier();
-        $particulier->adresse = $data['adresse'];
-        $particulier->wilaya = $data['wilaya'];
-        $particulier->commune = $data['commune'];
-        $particulier->code_postal = $data['code_postal'];
-        $particulier->phone = $data['phone'];
-
-        $user->particulier()->save($particulier);
-
+            $user = new User;
+            $user->type = 'particulier';
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = Hash::make($data['password']);
+            $user->save();
+            $particular = new Particulier();
+            $particular->phone = $data['phone'];
+            $particular->wilaya = $data['wilaya'];
+            $user->particulier()->save($particular);
+            $cart = new Particularcart();
+            $cart->particular_id = $particular->id;
+            $cart->save();
         }
 
-       return $user;
+         return $user;
 
 }
 }

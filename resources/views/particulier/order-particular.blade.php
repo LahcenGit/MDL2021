@@ -27,10 +27,9 @@
         </div>
     </div>
 
-    <form class="form-horizontal checkout" method="POST" action="{{ url('app-professional/checkout') }}">
+    <form class="form-horizontal checkout" method="POST" action="{{ url('/app-particular/checkout') }}">
         @csrf
-
-             @if (count($errors) > 0)
+           @if (count($errors) > 0)
                 <div class="error">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -39,8 +38,6 @@
                     </ul>
                 </div>
             @endif
-
-
         <div class="row ">
             <div id="title-bg">
                 <div class="title">Choisir vos produits</div>

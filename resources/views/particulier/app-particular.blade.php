@@ -38,7 +38,7 @@
     </div>
 
     <div class="row" style="text-align: center;">
-        <a href="{{ url('app-professional/order-professional') }}"class="btn btn-default btn-green " style="font-size: 15px;">Lancez une commande </a>
+        <a href="{{ url('/app-particular/order') }}"class="btn btn-default btn-green " style="font-size: 15px;">Construire votre pack </a>
     </div>
 
     <div class="table-responsive " style="margin-top: 10px;" >
@@ -67,7 +67,7 @@
                     @else
                     <td>Annulé</td>
                     @endif
-                    <td><a href="{{ url('/app-professional/order-lines/'.$order->id) }}"><i class="fa fa-eye"></i>Voir détail</a></td>
+                    <td><a href="{{ url('/app-particular/order-lines/'.$order->id) }}"><i class="fa fa-eye"></i>Voir détail</a></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -22,4 +22,13 @@ class Produit extends Model
     {
         return $this->hasMany(Cartline::class);
     }
+    public function professionalOrderLines()
+    {
+        return $this->hasMany(Professionalorderline::class);
+    }
+
+    public function particularOrderLines()
+    {
+        return $this->hasMany(Particularorderline::class);
+    }
 }

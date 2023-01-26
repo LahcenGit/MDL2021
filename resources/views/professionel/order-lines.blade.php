@@ -20,9 +20,13 @@
 
     <div class="row">
         <ul class="small-menu"><!--small-nav -->
-            <li><a href=""  class="myshop">Mes commandes</a></li>
-            <li><a href="" class="myacc">Mon profil</a></li>
-            <li><a href=""  class="sign-out">Déconnexion</a></li>
+            <li><a href="{{ url('/app-professional') }}"  class="myshop">Mes commandes</a></li>
+            <li><a href="#" class="myacc">Mon profil</a></li>
+            <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="sign-out">Déconnexion</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
         </ul><!--small-nav -->
         <div class="clearfix"></div>
         <div class="lines"></div>
@@ -34,7 +38,7 @@
     </div>
 
     <div class="row" style="text-align: center;">
-        <a href="{{ url('/order-professional') }}"class="btn btn-default btn-green " style="font-size: 15px;">Lancez une commande </a>
+        <a href="{{ url('app-professional/order-professional') }}"class="btn btn-default btn-green " style="font-size: 15px;">Lancez une commande </a>
     </div>
 
     <div class="table-responsive " style="margin-top: 10px;" >

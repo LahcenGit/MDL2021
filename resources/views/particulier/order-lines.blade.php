@@ -20,8 +20,8 @@
 
     <div class="row">
         <ul class="small-menu"><!--small-nav -->
-            <li><a href=""  class="myshop">Mes commandes</a></li>
-            <li><a href="" class="myacc">Mon profil</a></li>
+            <li><a href="{{ url('/app-particular') }}"  class="myshop">Mes commandes</a></li>
+            <li><a href="#" class="myacc">Mon profil</a></li>
             <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="sign-out">Déconnexion</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
@@ -33,46 +33,47 @@
     </div>
 
     <div id="title-bg">
-        <div class="title">Mes commandes</div>
+        <div class="title">Détail commande</div>
 
     </div>
 
     <div class="row" style="text-align: center;">
-        <a href="{{ url('app-professional/order-professional') }}"class="btn btn-default btn-green " style="font-size: 15px;">Lancez une commande </a>
+        <a href="{{ url('/order-professional') }}"class="btn btn-default btn-green " style="font-size: 15px;">Lancez une commande </a>
     </div>
 
     <div class="table-responsive " style="margin-top: 10px;" >
-        <table class="table table-bordered chart" id="myTable">
+        <table class="table table-bordered chart" >
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Statut</th>
+                    <th>Produit</th>
+                    <th>Qte</th>
+                    <th>P.U</th>
                     <th>Total</th>
-                    <th>Date</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($orders as $order)
+                @foreach($orderlines as $orderline)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ number_format($order->total,2)}} Da</td>
-                    <td>{{ $order->created_at->format('d-m-Y') }}</td>
-                    @if($order->status == 1)
-                    <td>En attente</td>
-                    @elseif($order->status == 2)
-                    <td>En production</td>
-                    @elseif($order->status == 3)
-                    <td>Validé</td>
-                    @else
-                    <td>Annulé</td>
-                    @endif
-                    <td><a href="{{ url('/app-professional/order-lines/'.$order->id) }}"><i class="fa fa-eye"></i>Voir détail</a></td>
+                    <td>{{$orderline->product->designation}} {{$orderline->product->capacity  }}</td>
+                    <td>{{ $orderline->qte }}</td>
+                    <td>{{ $orderline->pu }}</td>
+                    <td>{{ number_format($orderline->total) }}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-9">
+        <div class="subtotal-wrap">
+          <div class="total">Total : <span class="bigprice">{{ number_format($total,2) }} Da</span></div>
+        </div>
+        <div class="clearfix"></div>
+        </div>
+    </div>
+
     <div class="spacer"></div>
 </div>
 

@@ -56,6 +56,9 @@ class LoginController extends Controller
              else if(auth::user()->type == 'professionnel') {
                      return redirect('/app-professional');
                  }
+            else if(auth::user()->type == 'particulier') {
+                    return redirect('/app-particular');
+                }
             else if(auth::user()->type == 'labo') {
                     return redirect('/labo');
                 }
@@ -65,11 +68,6 @@ class LoginController extends Controller
 
 
          }
-         else{
-             $error = 'Coordonnées incorrectes. Veuillez réessayer.';
-             return view('auth.login',compact('error'));
-             }
-
      }
     /**
      * Create a new controller instance.

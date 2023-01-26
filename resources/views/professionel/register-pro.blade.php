@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group dob">
                     <div class="col-sm-6">
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Téléphone" required>
+                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Téléphone"oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
                         @error('phone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -105,7 +105,6 @@
                     <div class="col-sm-12">
                         <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
                             <option>Wilaya</option>
-                            <option value="tlemcen">Tlemcen</option>
                             @foreach($wilayas as $wilaya)
                             <option value="{{ $wilaya->name }}" @if(old('wilaya')== $wilaya->name ) selected @endif>{{ $wilaya->name }}</option>
                             @endforeach

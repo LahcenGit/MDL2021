@@ -26,6 +26,7 @@ class CreateProduitsTable extends Migration
             $table->string('long_description')->nullable();
             $table->string('capacity')->nullable();
             $table->float('price')->nullable();
+            $table->string('type')->nullable();
             $table->tinyInteger('flag')->nullable();
             $table->string('slug')->nullable();
             $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');

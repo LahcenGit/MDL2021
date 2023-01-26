@@ -16,11 +16,11 @@ class CreateParticuliersTable extends Migration
         Schema::create('particuliers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unsigned();
-            $table->string('adresse');
+            $table->string('adresse')->nullable();
             $table->string('phone');
-            $table->string('wilaya');
+            $table->string('wilaya')->nullable();
             $table->string('commune')->nullable();
-            $table->string('code_postal');
+            $table->string('code_postal')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

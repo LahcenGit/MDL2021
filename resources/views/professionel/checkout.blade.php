@@ -43,7 +43,7 @@
                 </div>
                 @endif
                 <div class="total">Total : <span class="bigprice">{{ number_format($total,2) }} Da</span></div>
-                <a href="{{ url('/success-order') }}"class="btn btn-default btn-red btn-sm">Commander</a>
+                <a href="{{ url('app-professional/success-order') }}"class="btn btn-default btn-red btn-sm">Commander</a>
             </div>
             <div class="clearfix"></div>
             </div>

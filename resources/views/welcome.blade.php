@@ -5,8 +5,8 @@
 <div class="container">
     <ul class="small-menu"><!--small-nav -->
         <li>Créer votre compte maintenant ! </li>
-        <li><a href="" class="myacc">Particulier</a></li> 
-        <li><a href=""  class="myshop">Professionnel</a></li>
+        <li><a href="{{ url('/register-particular') }}" class="myacc">Particulier</a></li>
+        <li><a href="{{ url('/register-professional') }}"  class="myshop">Professionnel</a></li>
     </ul><!--small-nav -->
     <div class="clearfix"></div>
     <div class="lines"></div>
@@ -203,7 +203,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
             <a href="" class="btn btn-default btn-red btn-sm">Read More</a>
-            
+
             <div id="title-bg">
                 <div class="title">Lastest Products</div>
             </div>
@@ -275,7 +275,7 @@
             <div id="title-bg">
                 <div class="title">Categories</div>
             </div>
-            
+
             <div class="categorybox">
                 <ul>
                     <li><a href="category.html">Women Accessories</a></li>
@@ -294,10 +294,10 @@
                     <li class="lastone"><a href="category.html">Unique Stuff</a></li>
                 </ul>
             </div>
-            
+
             <div class="ads">
             </div>
-            
+
         </div><!--sidebar-->
     </div>
 </div>

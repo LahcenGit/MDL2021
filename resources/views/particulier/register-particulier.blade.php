@@ -20,123 +20,47 @@
             </div>
         </div>
     </div>
-    
     <form class="form-horizontal checkout" method="POST" action="{{ route('register') }}">
         @csrf
-
-                   @if (count($errors) > 0)
-                        <div class="error">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
         <div class="row">
-            <div  class="col-md-6">
+            <div  class="col-md-12">
                 <div id="title-bg">
-                    <div class="title">Détails personnels</div>
+                    <div class="title">Détails compte</div>
                 </div>
                 <div class="form-group dob">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name"  name="name" placeholder="Nom">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name"  name="name" placeholder="Nom complet" required>
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
-                    
-                </div>
-                
-                
-                 
-
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control @error('adresse') is-invalid @enderror" name="adresse" placeholder="Adresse">
-                        @error('adresse')
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Téléphone"oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                        @error('phone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
-
                 </div>
                 <div class="form-group dob">
                     <div class="col-sm-6">
-                        <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya">
+                        <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
                             <option>Wilaya</option>
-                            <option value="tlemcen">1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            @foreach($wilayas as $wilaya)
+                            <option value="{{ $wilaya->name }}" @if(old('wilaya')== $wilaya->name ) selected @endif>{{ $wilaya->name }}</option>
+                            @endforeach
                         </select>
-                        
                         @error('wilaya')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
-
-
                     <div class="col-sm-6">
-                        <select class="form-control @error('commune') is-invalid @enderror" name="commune" >
-                            <option>Commune</option>
-                            <option value="oudjlida">1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>   
-                        @error('commune')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    
-                    </div>
-
-                    
-                    
-                </div>
-               
-                <div class="form-group dob">
-                   
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control @error('code_postal') is-invalid @enderror" name="code_postal" placeholder="Code Postal">
-                            @error('code_postal')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Téléphone">
-                            @error('phone')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
-                    
-                    
-                </div>
-               
-               
-            </div>
-              <div  class="col-md-6">
-
-                <div id="title-bg">
-                    <div class="title">Détails du compte</div>
-                </div>
-                <div class="form-group dob">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email">
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" required>
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -147,26 +71,21 @@
                 </div>
                 <div class="form-group dob">
                     <div class="col-sm-6">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Mot de passe">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Mot de passe" required>
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
-                    
+
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirmer le mot de passe">
+                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirmer le mot de passe" required>
                     </div>
                     <input type="hidden"  name="check" value="customer">
                 </div>
-                 
                 <button type="submit" class="btn btn-default btn-red">S'inscrire</button>
             </div>
-
-            
-
-            
         </div>
     </form>
     <div class="spacer"></div>

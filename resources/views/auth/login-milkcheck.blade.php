@@ -86,18 +86,14 @@ License: For each use you must have a valid license purchased only from above li
                             <input class="check-input" type="checkbox" id="check15" name="remember_me">
                             <label class="checkbox-label" for="check15"> Se souvenir de moi </label>
                         </div>
-                        <div class="forgot-password">
-
                     </div>
-
                       <div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary mt-2">
                             {{ __('Se connecter') }}
                         </button>
 
                       </div>
-
-                    </form>
+                   </form>
                   </div>
                 </div>
               </div>
