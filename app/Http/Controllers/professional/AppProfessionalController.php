@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AppProfessionalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('professionalParticularAuth');
+    }
     public function index(){
         $professional = Professionnel::where('user_id',Auth::user()->id)->first();
         $orders = Professionalorder::where('professional_id',$professional->id)->orderBy('created_at','desc')->get();

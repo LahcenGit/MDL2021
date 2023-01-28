@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,5 +45,11 @@ class AuthServiceProvider extends ServiceProvider
             return Auth::user()->type == 'professionnel';
            });
         //
+        ResetPassword::toMailUsing(function ($notifiable, $token) {
+            $url = route('password.reset',$token).'?email='.$notifiable->getEmailForPasswordReset();
+            return (new MailMessage())
+                ->subject('MDL - Mot De Passe Oublié')
+                ->view('vendor.notifications.reset-password', compact('url'));
+        });
     }
 }

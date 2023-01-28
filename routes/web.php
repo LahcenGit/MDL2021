@@ -207,11 +207,11 @@ Route::get('/register-professional', function () {
 });
 
 // Dashboard app professionnal
-Route::resource('/app-professiona/order-professional', OrderProfessionalController::class)->middleware('can:professional');
-Route::resource('/app-professiona/checkout', CheckoutController::class)->middleware('can:professional');
-Route::get('/app-professiona/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder'])->middleware('can:professional');
+Route::resource('/app-professional/order-professional', OrderProfessionalController::class)->middleware('can:professional');
+Route::resource('/app-professional/checkout', CheckoutController::class)->middleware('can:professional');
+Route::get('/app-professional/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder'])->middleware('can:professional');
 Route::get('/script', [App\Http\Controllers\professional\OrderProfessionalController::class, 'script']);
-Route::get('/app-professional', [App\Http\Controllers\professional\AppProfessionalController::class, 'index'])->middleware('can:professional');
+Route::get('/app-professional', [App\Http\Controllers\professional\AppProfessionalController::class, 'index']);
 Route::get('/app-professional/order-lines/{id}', [App\Http\Controllers\professional\AppProfessionalController::class, 'orderLines'])->middleware('can:professional');
 
 
@@ -245,3 +245,6 @@ Route::get('/receipt/{id}', [App\Http\Controllers\printerController::class, 'rec
 use App\Http\Controllers\PhotoCommentController;
 
 Route::resource('photos.comments', PhotoCommentController::class);
+
+//front route
+Route::get('/product/{slug}', [App\Http\Controllers\FrontController::class, 'detailProduct']);

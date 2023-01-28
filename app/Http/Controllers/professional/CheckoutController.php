@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('professionalParticularAuth');
+    }
+
     public function store(Request $request){
         $professional = Professionnel::where('user_id', Auth::user()->id)->first();
         $cart_temp = Cart::where('professional_id',$professional->id)->first();
@@ -93,10 +98,10 @@ class CheckoutController extends Controller
          }
         }
          else{
-           $product = Produit::find($request->products[$i]);
-           $cartline->total = $request->qtes[$i] * $product->pu_ht;
-           $cartline->pu = $product->pu_ht;
-           $total =  $total + $request->qtes[$i] * $product->pu_ht;
+           $tarification = Tarification::where('type','Orika')->where('product_id',$request->products[$i])->first();
+           $cartline->total = $request->qtes[$i] * $tarification->price_one;
+           $cartline->pu = $tarification->price_one;
+           $total =  $total + $request->qtes[$i] * $tarification->price_one;
 
          }
          $cartline->save();
