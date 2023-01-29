@@ -46,9 +46,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Statut</th>
                     <th>Total</th>
                     <th>Date</th>
+                    <th>Statut</th>
                     <th>Action</th>
                 </tr>
             </thead>

@@ -24,7 +24,6 @@
                 <div id="title-bg">
                     <div class="title">Détails compte</div>
                 </div>
-
                 <div class="form-group dob">
                    <div class="col-sm-6">
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="username" placeholder="Email" required>
@@ -34,7 +33,6 @@
                         </span>
                         @enderror
                     </div>
-
                 </div>
                 <div class="form-group dob">
                     <div class="col-sm-6">
@@ -58,10 +56,10 @@
                 </div>
                 <button type="submit" class="btn btn-default btn-red ">Se connecter</button>
                 @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('Mot de passe oublié?') }}
-                </a>
-            @endif
+                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                        {{ __('Mot de passe oublié?') }}
+                    </a>
+                @endif
             </div>
         </div>
     </form>
