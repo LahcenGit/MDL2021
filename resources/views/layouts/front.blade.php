@@ -39,7 +39,7 @@
 		.main-text{
 			color: white;
 			font-family: 'Sacramento', cursive;
-			font-size: 30px;
+			font-size: 2vw;
 		}
 		.header-row{
 			display: -ms-flexbox;
@@ -93,15 +93,20 @@
 	<div class="header"><!--Header -->
 		<div class="container">
 			<div class="row header-row mt-2" style="height: 90px; padding: 5px;">
-				<div class="col-xs-6 col-md-4 main-logo " >
-					<a href="index.html"><img src="mdltheme/images/logo.png" height="40%" width="40%" alt="logo-maison-du-lait" class="logo img-responsive" /></a>
+				<div class="col-xs-6 col-md-2 main-logo " >
+					<a href="index.html"><img src="mdltheme/images/logo.png" height="80%" width="80%" alt="logo-maison-du-lait" class="logo img-responsive" /></a>
 				</div>
 
+<<<<<<< Updated upstream
 				<div class="col-md-4" >
 				   <span class="main-text">Naturellement Bon ! </span>
+=======
+				<div class="col-md-8 text-center">
+				   <span class="main-text">Naturellement Bon ! </span>	
+>>>>>>> Stashed changes
 				</div>
 
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<div class="pushright">
 						<div class="top">
 							@guest
