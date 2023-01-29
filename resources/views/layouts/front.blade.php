@@ -33,80 +33,94 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+		<style>
+			.main-logo{
+					height:80%;
+					width:80%;
+			}
+			.main-text{
+				color: white;
+				font-family: 'Sacramento', cursive;
+				font-size: 30px;
+			}
+			.header-row{
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				-webkit-box-align: center;
+				align-items: center;
+			}
+			.btn-custom{
+				display: inline-block;
+				margin-bottom: 0;
+				font-weight: 400;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+				background-image: none;
+				border: 1px solid transparent;
+					border-top-color: transparent;
+					border-right-color: transparent;
+					border-bottom-color: transparent;
+					border-left-color: transparent;
+				white-space: nowrap;
+				padding: 6px 12px;
+				font-size: 14px;
+				line-height: 1.42857143;
+				border-radius: 30px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				color: #fff;
+				background-color: #74BE40;
+				border-color: #74BE40;
+				transition: transform 250ms;
+			}
+			.btn-custom:hover{
+
+				color: rgb(65, 65, 65);
+				background-color: #fff;
+				border-color: #fff;
+				transform: translateY(-2px);
+			}
+
+			@media (max-width:500px){
+				.main-text{
+					font-size: 22px;
+				}
+				.main-logo{
+					height:100%;
+					width:100%;
+				}
+				.btn-custom{
+					font-size: 11px;
+				}
+
+			}
+
+	</style>
   </head>
 
-  <style>
-		.main-text{
-			color: white;
-			font-family: 'Sacramento', cursive;
-			font-size: 2vw;
-		}
-		.header-row{
-			display: -ms-flexbox;
-			display: -webkit-flex;
-			display: flex;
 
-			-ms-flex-align: center;
-			-webkit-align-items: center;
-			-webkit-box-align: center;
-			align-items: center;
-		}
-		.btn-custom{
-			display: inline-block;
-			margin-bottom: 0;
-			font-weight: 400;
-			text-align: center;
-			vertical-align: middle;
-			cursor: pointer;
-			background-image: none;
-			border: 1px solid transparent;
-				border-top-color: transparent;
-				border-right-color: transparent;
-				border-bottom-color: transparent;
-				border-left-color: transparent;
-			white-space: nowrap;
-			padding: 6px 12px;
-			font-size: 14px;
-			line-height: 1.42857143;
-			border-radius: 30px;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-			color: #fff;
-			background-color: #74BE40;
-			border-color: #74BE40;
-			transition: transform 250ms;
-		}
-		.btn-custom:hover{
-
-			color: rgb(65, 65, 65);
-			background-color: #fff;
-			border-color: #fff;
-			transform: translateY(-2px);
-		}
-
-
-  </style>
   <body>
   <div id="wrapper">
 	<div class="header"><!--Header -->
 		<div class="container">
 			<div class="row header-row mt-2" style="height: 90px; padding: 5px;">
-				<div class="col-xs-6 col-md-2 main-logo " >
-					<a href="index.html"><img src="mdltheme/images/logo.png" height="80%" width="80%" alt="logo-maison-du-lait" class="logo img-responsive" /></a>
+				<div class="col-xs-4 col-md-2">
+					<a href="#"><img src="mdltheme/images/logo.png"  alt="logo-maison-du-lait" class="logo img-responsive main-logo" /></a>
 				</div>
 
-<<<<<<< Updated upstream
-				<div class="col-md-4" >
-				   <span class="main-text">Naturellement Bon ! </span>
-=======
-				<div class="col-md-8 text-center">
+				<div class="col-xs-4 col-md-8 text-center">
 				   <span class="main-text">Naturellement Bon ! </span>	
->>>>>>> Stashed changes
 				</div>
 
-				<div class="col-md-2">
+				<div class="col-xs-4 col-md-2">
 					<div class="pushright">
 						<div class="top">
 							@guest
