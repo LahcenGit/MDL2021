@@ -24,9 +24,7 @@
                         <div class="bread"><a href="#">Home</a> &rsaquo; Product Detail</div>
                         <div class="bigtitle">Product Detail</div>
                     </div>
-                    <div class="col-md-3 col-md-offset-5">
-                        <button class="btn btn-default btn-red btn-lg">Purchase Theme</button>
-                    </div>
+
                 </div>
                 </div>
             </div>
@@ -41,17 +39,17 @@
                 <div class="col-md-6">
                     <div class="dt-img">
                         <div class="detpricetag"><div class="inner">{{ number_format($product->pu_ht )}} Da</div></div>
-                        <a class="fancybox" href="{{ asset('mdltheme/images/'.$product->images[0]->lien) }}" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="{{ asset('mdltheme/images/'.$product->images[0]->lien) }}" alt="" class="img-responsive" /></a>
+                        <a class="fancybox" href="{{ asset('mdltheme/images/'.$product->images[0]->lien) }}" data-fancybox-group="gallery" title="Fromage 100% naturel "><img src="{{ asset('mdltheme/images/'.$product->images[0]->lien) }}" alt="" class="img-responsive" /></a>
                     </div>
                     @foreach ($product->images as $image )
                         <div class="thumb-img">
-                            <a class="fancybox" href="{{ asset('mdltheme/images/'.$image->lien) }}" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="{{ asset('mdltheme/images/'.$image->lien) }}" alt="" class="img-responsive" /></a>
+                            <a class="fancybox" href="{{ asset('mdltheme/images/'.$image->lien) }}" data-fancybox-group="gallery" title="Fromage 100% naturel"><img src="{{ asset('mdltheme/images/'.$image->lien) }}" alt="" class="img-responsive" /></a>
                         </div>
                     @endforeach
                 </div>
                 <div class="col-md-6 det-desc">
                     <div class="productdata">
-                        <div class="infospan">Type d'emabllage <span>{{ $product->type_emb }}</span></div>
+                        <div class="infospan" >Type d'emabllage <span  style="padding: 0px !important">{{ $product->type_emb }}</span></div>
                         <div class="infospan">DLC <span>{{ $product->dlc }}</span></div>
                         <div class="average">
                         <form role="form">
@@ -59,7 +57,7 @@
                             <div class="rate"><span class="lbl">Avis</span>
                             </div>
                             <div class="starwrap">
-                                <div id="score"></div>
+                                 {{-- <div id="score"></div> --}}
                                 <img src="{{ asset('mdltheme/js/rate/images/star-on.png') }}" alt="1" title="regular">
                                 <img src="{{ asset('mdltheme/js/rate/images/star-on.png') }}" alt="1" title="regular">
                                 <img src="{{ asset('mdltheme/js/rate/images/star-on.png') }}" alt="1" title="regular">
@@ -80,7 +78,7 @@
                             </div>
                             <div class="avatock"><span>In stock</span></div>
                         </div>
-
+                        <button class="btn btn-default btn-red btn-lg" style="margin-top: 10px">Construire votre pack</button>
                     </div>
                 </div>
             </div>
@@ -88,37 +86,12 @@
             <div class="tab-review">
                 <ul id="myTab" class="nav nav-tabs shop-tab">
                     <li class="active"><a href="#desc" data-toggle="tab">Description</a></li>
-                    <li class=""><a href="#rev" data-toggle="tab">Reviews (0)</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content shop-tab-ct">
                     <div class="tab-pane fade active in" id="desc">
                         <p>
                         Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
                         </p>
-                    </div>
-                    <div class="tab-pane fade" id="rev">
-                        <p class="dash">
-                        <span>Jhon Doe</span> (11/25/2012)<br/><br/>
-                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.
-                        </p>
-                        <h4>Write Review</h4>
-                        <form role="form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" >
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="text" ></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="rate"><span>Rating:</span></div>
-                            <div class="starwrap">
-                                <div id="default"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <button type="submit" class="btn btn-default btn-red btn-sm">Submit</button>
-                    </form>
-
                     </div>
                 </div>
             </div>
@@ -150,20 +123,9 @@
 
             <div class="categorybox">
                 <ul>
-                    <li><a href="category.html">Women Accessories</a></li>
-                    <li><a href="category.html">Men Shoes</a></li>
-                    <li><a href="category.html">Gift Specials</a></li>
-                    <li><a href="category.html">Electronics</a>
-                        <ul>
-                            <li><a href="#">iPhone 4S</a></li>
-                            <li><a href="#">Samsung Galaxy</a></li>
-                            <li><a href="#">MacBook Pro 17"</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="category.html">On sale</a></li>
-                    <li><a href="category.html">Summer Specials</a></li>
-                    <li><a href="category.html">Electronics</a></li>
-                    <li class="lastone"><a href="category.html">Unique Stuff</a></li>
+                    <li><a href="#">Zahra</a></li>
+                    <li><a href="#">Noora</a></li>
+                    <li><a href="#">jnan</a></li>
                 </ul>
             </div>
 

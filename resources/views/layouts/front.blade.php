@@ -19,7 +19,7 @@
 	<!-- owl Style -->
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.carousel.css') }}" />
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.transitions.css') }}" />
-	<link rel="stylesheet" type="text/css" href="js/product/jquery.fancybox.css?v=2.1.5" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('mdltheme/js/product/jquery.fancybox.css?v=2.1.5') }}" media="screen" />
 	<link href='https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,7 +117,7 @@
 				</div>
 
 				<div class="col-xs-4 col-md-8 text-center">
-				   <span class="main-text">Naturellement Bon ! </span>	
+				   <span class="main-text">Naturellement Bon ! </span>
 				</div>
 
 				<div class="col-xs-4 col-md-2">
@@ -252,7 +252,7 @@
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 	<script type="text/javascript" src="{{ asset('mdltheme/js/jquery.ui.map.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/demo.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('mdltheme/js/demo.js') }}"></script>
 
 	<!-- owl carousel -->
     <script src="{{ asset('mdltheme/js/owl.carousel.min.js') }}"></script>

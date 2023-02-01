@@ -129,7 +129,7 @@
                         <div class="pricetag blue"><div class="inner"><span>{{ $product->pu_ht }} Da</span></div></div>
                     </div>
                         <span class="smalltitle"><a href="{{ url('product/'.$product->slug) }}">{{ $product->designation }}</a></span>
-                        <span class="smalldesc">100% naturelle</span>
+                        <span class="smalldesc">{{ $product->capacity }}</span>
                 </div>
             </div>
             @endforeach
