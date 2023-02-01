@@ -36,8 +36,8 @@
 
 		<style>
 			.main-logo{
-					height:80%;
-					width:80%;
+					height:85%;
+					width:85%;
 			}
 			.main-text{
 				color: white;
@@ -113,7 +113,7 @@
 		<div class="container">
 			<div class="row header-row mt-2" style="height: 90px; padding: 5px;">
 				<div class="col-xs-4 col-md-2">
-					<a href="#"><img src="mdltheme/images/logo.png"  alt="logo-maison-du-lait" class="logo img-responsive main-logo" /></a>
+					<a href="#"><img src="{{asset('mdltheme/images/logo.png')}}"  alt="logo-maison-du-lait" class="logo img-responsive main-logo" /></a>
 				</div>
 
 				<div class="col-xs-4 col-md-8 text-center">
@@ -147,75 +147,10 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="index.html" class="active">Home</a><div class="curve"></div></li>
-								<li class="dropdown menu-large">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mega Menu</a>
-									<ul class="dropdown-menu megamenu container row">
-										<li class="col-sm-4">
-											<h4>Page Template</h4>
-											<ul>
-												<li><a href="index.html">Home Page</a></li>
-												<li><a href="category.html">Category Page</a></li>
-												<li><a href="category-list.html">Category List Page</a></li>
-												<li><a href="category-fullwidth.html">Category List Page</a></li>
-												<li><a href="product.html">Detail Product Page</a></li>
-												<li><a href="page-sidebar.html">Page with sidebar</a></li>
-												<li><a href="register.html">Register Page</a></li>
-												<li><a href="checkout.html">Checkout Page</a></li>
-												<li><a href="contact.html">Contact Page</a></li>
-											</ul>
-											<div class="dashed-nav"></div>
-										</li>
-										<li class="col-sm-4">
-											<h4>Page Template</h4>
-											<ul>
-												<li><a href="index.html">Home Page</a></li>
-												<li><a href="category.html">Category Page</a></li>
-												<li><a href="category-list.html">Category List Page</a></li>
-												<li><a href="category-fullwidth.html">Category List Page</a></li>
-												<li><a href="product.html">Detail Product Page</a></li>
-												<li><a href="page-sidebar.html">Page with sidebar</a></li>
-												<li><a href="register.html">Register Page</a></li>
-												<li><a href="checkout.html">Checkout Page</a></li>
-												<li><a href="contact.html">Contact Page</a></li>
-											</ul>
-											<div class="dashed-nav"></div>
-										</li>
-										<li class="col-sm-4">
-											<h4>Page Template</h4>
-											<ul>
-												<li><a href="index.html">Home Page</a></li>
-												<li><a href="category.html">Category Page</a></li>
-												<li><a href="category-list.html">Category List Page</a></li>
-												<li><a href="category-fullwidth.html">Category List Page</a></li>
-												<li><a href="product.html">Detail Product Page</a></li>
-												<li><a href="page-sidebar.html">Page with sidebar</a></li>
-												<li><a href="register.html">Register Page</a></li>
-												<li><a href="checkout.html">Checkout Page</a></li>
-												<li><a href="contact.html">Contact Page</a></li>
-											</ul>
-											<div class="dashed-nav"></div>
-										</li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">List <b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a href="index.html">Home Page</a></li>
-										<li><a href="category.html">Category Page</a></li>
-										<li><a href="category-list.html">Category List Page</a></li>
-										<li><a href="category-fullwidth.html">Category List Page</a></li>
-										<li><a href="product.html">Detail Product Page</a></li>
-										<li><a href="page-sidebar.html">Page with sidebar</a></li>
-										<li><a href="register.html">Register Page</a></li>
-										<li><a href="order.html">Order Page</a></li>
-										<li><a href="checkout.html">Checkout Page</a></li>
-										<li><a href="contact.html">Contact Page</a></li>
-									</ul>
-								</li>
-								<li><a href="page-sidebar.html">A propos</a></li>
-								<li><a href="category.html">Produits</a></li>
-								<li><a href="contact.html">Contactez-nous</a></li>
+								<li><a href="{{asset('/')}}" class="active">Accueil</a><div class="curve"></div></li>
+								<li><a href="#">Produits</a></li>
+								<li><a href="#">A propos</a></li>
+								<li><a href="#">Contactez-nous</a></li>
 							</ul>
 						</div>
 					</div>
