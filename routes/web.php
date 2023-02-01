@@ -42,9 +42,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+
 Route::get('/', function () {
     return view('main-template');
 });
@@ -248,3 +246,4 @@ Route::resource('photos.comments', PhotoCommentController::class);
 
 //front route
 Route::get('/product/{slug}', [App\Http\Controllers\FrontController::class, 'detailProduct']);
+Route::get('/welcome', [App\Http\Controllers\FrontController::class, 'welcome']);

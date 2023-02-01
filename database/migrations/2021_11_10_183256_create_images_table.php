@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->unsignedBigInteger('produit_id')->unsigned()->nullable();
             $table->unsignedBigInteger('recette_id')->unsigned()->nullable();
             $table->string('lien');
+            $table->tinyInteger('type');
             $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
             $table->foreign('recette_id')->references('id')->on('recettes')->onDelete('cascade');
             $table->timestamps();

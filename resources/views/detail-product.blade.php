@@ -1,5 +1,19 @@
 @extends('layouts.front')
 @section('content')
+<style>
+    .detpricetag .inner{
+        background-color: #6fb53d !important;
+    }
+    .detpricetag{
+        background-color: #6fb53d !important;
+    }
+    .blue .inner{
+        background-color: #6fb53d !important;
+    }
+    .blue{
+        background-color: #6fb53d !important;
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -27,17 +41,13 @@
                 <div class="col-md-6">
                     <div class="dt-img">
                         <div class="detpricetag"><div class="inner">{{ number_format($product->pu_ht )}} Da</div></div>
-                        <a class="fancybox" href="images/dummy-1.png" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="{{ asset('mdltheme/images/dummy-1.png') }}" alt="" class="img-responsive" /></a>
+                        <a class="fancybox" href="{{ asset('mdltheme/images/'.$product->images[0]->lien) }}" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="{{ asset('mdltheme/images/'.$product->images[0]->lien) }}" alt="" class="img-responsive" /></a>
                     </div>
-                    <div class="thumb-img">
-                        <a class="fancybox" href="images/dummy-1.png" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="{{ asset('mdltheme/images/dummy-1.png') }}" alt="" class="img-responsive" /></a>
-                    </div>
-                    <div class="thumb-img">
-                        <img src="{{ asset('mdltheme/images/dummy-1.png') }}" alt="" class="img-responsive"/>
-                    </div>
-                    <div class="thumb-img">
-                        <img src="{{ asset('mdltheme/images/dummy-1.png') }}" alt="" class="img-responsive"/>
-                    </div>
+                    @foreach ($product->images as $image )
+                        <div class="thumb-img">
+                            <a class="fancybox" href="{{ asset('mdltheme/images/'.$image->lien) }}" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="{{ asset('mdltheme/images/'.$image->lien) }}" alt="" class="img-responsive" /></a>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="col-md-6 det-desc">
                     <div class="productdata">
@@ -122,10 +132,10 @@
                         <div class="productwrap">
                             <div class="pr-img">
                                 <div class="hot"></div>
-                                <img src="{{ asset('mdltheme/images/dummy-1.png') }}" alt="" class="img-responsive"/>
-                                <div class="pricetag on-sale"><div class="inner on-sale"><span class="onsale">{{ $related_product->pu_ht }} Da</span></div></div>
+                                <img src="{{ asset('mdltheme/images/'.$related_product->images[0]->lien) }}" alt="" class="img-responsive"/>
+                                <div class="pricetag blue"><div class="inner"><span>{{ $product->pu_ht }} Da</span></div></div>
                             </div>
-                            <span class="smalltitle"><a href="product.html">{{ $related_product->designation }}</a></span>
+                            <span class="smalltitle"><a href="{{ url('product/'.$related_product->slug) }}">{{ $related_product->designation }}</a></span>
 
                         </div>
                     </div>
@@ -160,22 +170,7 @@
             <div class="ads">
             </div>
 
-            <div id="title-bg">
-                <div class="title">Les produits les plus vendus</div>
-            </div>
-            <div class="best-seller">
-                <ul>
-                    @foreach($best_sellers as $best_seller)
-                        <li class="clearfix">
-                            <a href="#"><img src="{{ asset('mdltheme/images/demo-img.jpg') }}" alt="" class="img-responsive mini" /></a>
-                            <div class="mini-meta">
-                                <a href="#" class="smalltitle2">{{ $best_seller->product->designation }}</a>
-                                <p class="smallprice2">Prix : {{ $best_seller->product->pu_ht }}</p>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+
 
         </div><!--sidebar-->
     </div>

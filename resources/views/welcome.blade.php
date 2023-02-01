@@ -1,7 +1,15 @@
 @extends('layouts.front')
 
 @section('content')
+<style>
+    .blue .inner{
+        background-color: #6fb53d !important;
+    }
+    .blue{
+        background-color: #6fb53d !important;
+    }
 
+</style>
 <div class="container">
     <ul class="small-menu"><!--small-nav -->
         <li>Créer votre compte maintenant ! </li>
@@ -105,96 +113,34 @@
 <div class="f-widget featpro">
     <div class="container">
         <div id="title-widget-bg">
-            <div class="title-widget">Featured Products</div>
+            <div class="title-widget">Nos produits</div>
             <div class="carousel-nav">
                 <a class="prev"></a>
                 <a class="next"></a>
             </div>
         </div>
         <div id="product-carousel" class="owl-carousel owl-theme">
+            @foreach ($products as $product )
             <div class="item">
                 <div class="productwrap">
                     <div class="pr-img">
                         <div class="hot"></div>
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
+                        <img src="{{ asset('/mdltheme/images/'.$product->images[0]->lien) }}" alt="" class="img-responsive"/>
+                        <div class="pricetag blue"><div class="inner"><span>{{ $product->pu_ht }} Da</span></div></div>
                     </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
+                        <span class="smalltitle"><a href="{{ url('product/'.$product->slug) }}">{{ $product->designation }}</a></span>
+                        <span class="smalldesc">100% naturelle</span>
                 </div>
             </div>
-            <div class="item">
-                <div class="productwrap">
-                    <div class="pr-img">
-                        <div class="new"></div>
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag on-sale"><div class="inner on-sale"><span class="onsale"><span class="oldprice">$314</span>$199</span></div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                </div>
-            </div>
-            <div class="item">
-                <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                </div>
-            </div>
-            <div class="item">
-                <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                </div>
-            </div>
-            <div class="item">
-                <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                </div>
-            </div>
-            <div class="item">
-                <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                </div>
-            </div>
-            <div class="item">
-                <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-9"><!--Main content-->
             <div id="title-bg">
-                <div class="title">About Shopping</div>
+                <div class="title">La maison du lait</div>
             </div>
             <p class="ct">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -211,61 +157,22 @@
                 <div class="col-md-4">
                     <div class="productwrap">
                         <div class="pr-img">
-                            <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                            <div class="pricetag on-sale"><div class="inner on-sale"><span class="onsale"><span class="oldprice">$314</span>$199</span></div></div>
+                            <img src="{{ asset('mdltheme/images/img9.png') }}" alt="" class="img-responsive"/>
                         </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag"><div class="inner">$199</div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
+                        <div class="pr-img">
+                            <img src="{{ asset('mdltheme/images/img11.png') }}" alt="" class="img-responsive"/>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag"><div class="inner">$199</div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag"><div class="inner">$199</div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag"><div class="inner">$199</div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="productwrap">
-                    <div class="pr-img">
-                        <img src="mdltheme/images/dummy-1.png" alt="" class="img-responsive"/>
-                        <div class="pricetag"><div class="inner">$199</div></div>
-                    </div>
-                        <span class="smalltitle"><a href="product.html">Nikon Camera</a></span>
-                        <span class="smalldesc">Item no.: 1000</span>
+                        <div class="pr-img">
+                            <img src="{{ asset('mdltheme/images/img10.png') }}" alt="" class="img-responsive"/>
+                        </div>
                     </div>
                 </div>
             </div><!--Products-->
@@ -278,20 +185,9 @@
 
             <div class="categorybox">
                 <ul>
-                    <li><a href="category.html">Women Accessories</a></li>
-                    <li><a href="category.html">Men Shoes</a></li>
-                    <li><a href="category.html">Gift Specials</a></li>
-                    <li><a href="category.html">Electronics</a>
-                        <ul>
-                            <li><a href="#">iPhone 4S</a></li>
-                            <li><a href="#">Samsung Galaxy</a></li>
-                            <li><a href="#">MacBook Pro 17"</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="category.html">On sale</a></li>
-                    <li><a href="category.html">Summer Specials</a></li>
-                    <li><a href="category.html">Electronics</a></li>
-                    <li class="lastone"><a href="category.html">Unique Stuff</a></li>
+                    <li><a href="#">Zahra</a></li>
+                    <li><a href="#">Noora</a></li>
+                    <li><a href="#">Jnan</a></li>
                 </ul>
             </div>
 

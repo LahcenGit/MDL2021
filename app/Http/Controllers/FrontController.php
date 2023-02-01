@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
     //
+    public function welcome(){
+     $products = Produit::where('type','particular')->orderBy('flag','asc')->get();
+     return view('welcome',compact('products'));
+    }
     public function detailProduct($slug){
         $product = Produit::where('slug',$slug)->first();
         $related_products = Produit::where('slug', '!=' , $slug)->where('type','particular')->limit(3)->get();
