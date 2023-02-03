@@ -13,6 +13,12 @@
     .blue{
         background-color: #6fb53d !important;
     }
+    .cut-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 120px;
+    white-space: nowrap;
+}
 </style>
 <div class="container">
     <div class="row">
@@ -108,7 +114,8 @@
                                 <img src="{{ asset('mdltheme/images/'.$related_product->images[0]->lien) }}" alt="" class="img-responsive"/>
                                 <div class="pricetag blue"><div class="inner"><span>{{ $product->pu_ht }} Da</span></div></div>
                             </div>
-                            <span class="smalltitle"><a href="{{ url('product/'.$related_product->slug) }}">{{ $related_product->designation }}</a></span>
+                            <span class="smalltitle cut-text"><a href="{{ url('product/'.$related_product->slug) }}">{{ $related_product->designation }}</a></span>
+                            <span class="smalldesc">{{ $product->capacity }}</span>
 
                         </div>
                     </div>

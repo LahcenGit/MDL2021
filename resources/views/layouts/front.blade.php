@@ -7,7 +7,7 @@
 
 
 	 <!-- Favicon -->
-	 
+
 	 <link rel="shortcut icon" href="{{asset('/assets/images/logo.png')}}" />
 
     <!-- Fonts -->
@@ -177,7 +177,7 @@
 					<ul class="tweets">
 						<li>La laiteire La Maison du lait S.A.R.L est une entreprise familiale Algérienne.
 						<span> créée en 1999</span></li>
-						
+
 					</ul>
 					<div class="clearfix"></div>
 					<a href="https://www.facebook.com/MDLTLEMCEN" class="btn btn-default btn-follow"><i class="fa fa-facebook fa-2x"></i><div>Facebook</div></a>
@@ -214,14 +214,14 @@
 			<div class="spacer"></div>
 		</div>
 	</div><!--footer Widget-->
-	
+
 	<div class=""><!--footer-->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9" style="margin: 20px;">
 					<div class="f-credit">&copy;Développé par <a href="#">MDL Dev Team </a></div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div><!--footer-->
@@ -266,7 +266,7 @@
 
 
 	@stack('order-pro-front')
-
+    @stack('contact-scripts')
 	</div>
   </body>
 </html>
