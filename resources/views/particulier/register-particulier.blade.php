@@ -8,13 +8,11 @@
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-10">
                         <div class="bread"><a href="#">Accueil</a> &rsaquo; Inscription</div>
                         <div class="bigtitle">Inscription pour les Particuliers</div>
                     </div>
-                    <div class="col-md-3 col-md-offset-5">
-                        <button class="btn btn-default btn-yellow btn-lg">Particulier</button>
-                    </div>
+                
                 </div>
                 </div>
             </div>

@@ -9,6 +9,45 @@
         background-color: #6fb53d !important;
     }
 
+    .cut-text { 
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 120px; 
+  white-space: nowrap;
+}
+
+
+/* Animation property */
+.ads {
+  animation: wiggle 2s linear infinite;
+}
+
+/* Keyframes */
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
+}
+
+
 </style>
 <div class="container">
     <ul class="small-menu"><!--small-nav -->
@@ -23,89 +62,75 @@
             <div class="item">
                 <div class="slide-desc">
                     <div class="inner">
-                        <h1>Stylish Jacket, be your best deal</h1>
+                        <h1>Fromages 100% naturels</h1>
                         <p>
-                            Nunc non fermentum nunc. Sed ut ante eget leo tempor consequat sit amet eu orci. Donec dignissim dolor eget..
+                           Mozzarella, Feta, Halloumi à base de lait de vache
                         </p>
-                        <button class="btn btn-default btn-red btn-lg">Add to cart</button>
                     </div>
                     <div class="inner">
                         <div class="pro-pricetag big-deal">
                             <div class="inner">
-                                    <span class="oldprice">$314</span>
-                                    <span>$199</span>
-                                    <span class="ondeal">Best Deal</span>
+                                    <span>500g</span>
+                                    <span class="ondeal">Poids</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="slide-type-1">
-                    <img src="mdltheme/images/dummy-1500x700.png" alt="" class="img-responsive"/>
+                    <img src="{{asset('/slider/slider-1.jpg')}}" alt="" class="img-responsive"/>
                 </div>
             </div>
             <div class="item">
+                <div class="slide-desc">
+                    <div class="inner">
+                        <h1 style="color: #fff;text-shadow: 1px 1px 1px rgb(3, 122, 23);">Découvrez la mozzarella Zahra</h1>
+                        <p style="color: #fff">
+                            délicieuse, laiteuse et savoureuse...
+                        </p>
+                        <a href="{{asset('/product/fromage-mozzarella-zahra-sous-vide')}}"><button class="btn btn-default btn-red btn-lg">Découvrir</button></a> 
+                    </div>
+                    
+                </div>
                 <div class="slide-type-1">
-                    <img src="mdltheme/images/dummy-1500x700.png" alt="" class="img-responsive"/>
+                    <img src="{{asset('/slider/slider-2.jpg')}}" alt="" class="img-responsive"/>
                 </div>
             </div>
             <div class="item">
+                <div class="slide-desc">
+                    <div class="inner">
+                        <p style="color: #fff">
+                            Feta à l'huile d'olive aux herbes...
+                        </p>
+                        <a href="{{asset("/product/feta-cube-fines-herbes-et-huile-d'olive")}}"><button class="btn btn-default btn-red btn-lg">Découvrir</button></a> 
+                    </div>
+                    
+                </div>
                 <div class="slide-type-1">
-                    <img src="mdltheme/images/dummy-1500x700.png" alt="" class="img-responsive"/>
+                    <img src="{{asset('/slider/slider-3.jpg')}}" alt="" class="img-responsive"/>
                 </div>
             </div>
-            <div class="item">
-                <div class="slide-type-1">
-                    <img src="mdltheme/images/dummy-1500x700.png" alt="" class="img-responsive"/>
-                </div>
-            </div>
-            <div class="item">
-                <div class="slide-type-1">
-                    <img src="mdltheme/images/dummy-1500x700.png" alt="" class="img-responsive"/>
-                </div>
-            </div>
-            <div class="item">
-                <div class="slide-type-1">
-                    <img src="mdltheme/images/dummy-1500x700.png" alt="" class="img-responsive"/>
-                </div>
-            </div>
+            
+           
         </div>
     </div>
     <div class="bar"></div>
     <div id="sync2" class="owl-carousel">
         <div class="item">
             <div class="slide-type-1-sync">
-                <h3>Some title here</h3>
-                <p>Description here here here</p>
+                <h3>Fromages 500g</h3>
+                <p>100% naturels</p>
             </div>
         </div>
         <div class="item">
             <div class="slide-type-1-sync">
-                <h3>Some title here</h3>
-                <p>Description here here here</p>
+                <h3>Mozarella</h3>
+                <p>délicieuse, laiteuse</p>
             </div>
         </div>
         <div class="item">
             <div class="slide-type-1-sync">
-                <h3>Some title here</h3>
-                <p>Description here here here</p>
-            </div>
-        </div>
-        <div class="item">
-            <div class="slide-type-1-sync">
-                <h3>Some title here</h3>
-                <p>Description here here here</p>
-            </div>
-        </div>
-        <div class="item">
-            <div class="slide-type-1-sync">
-                <h3>Some title here</h3>
-                <p>Description here here here</p>
-            </div>
-        </div>
-        <div class="item">
-            <div class="slide-type-1-sync">
-                <h3>Some title here</h3>
-                <p>Description here here here</p>
+                <h3>Feta fines herbes</h3>
+                <p>avec huile d'olive</p>
             </div>
         </div>
     </div>
@@ -125,10 +150,12 @@
                 <div class="productwrap">
                     <div class="pr-img">
                         <div class="hot"></div>
-                        <img src="{{ asset('/mdltheme/images/'.$product->images[0]->lien) }}" alt="" class="img-responsive"/>
+                        <a href="{{ url('product/'.$product->slug) }}">
+                            <img src="{{ asset('/mdltheme/images/'.$product->images[0]->lien) }}" alt="" class="img-responsive"/>
+                        </a>
                         <div class="pricetag blue"><div class="inner"><span>{{ $product->pu_ht }} Da</span></div></div>
                     </div>
-                        <span class="smalltitle"><a href="{{ url('product/'.$product->slug) }}">{{ $product->designation }}</a></span>
+                        <span class="smalltitle cut-text " ><a href="{{ url('product/'.$product->slug) }}">{{ $product->designation }}</a></span>
                         <span class="smalldesc">{{ $product->capacity }}</span>
                 </div>
             </div>
@@ -140,18 +167,17 @@
     <div class="row">
         <div class="col-md-9"><!--Main content-->
             <div id="title-bg">
-                <div class="title">La maison du lait</div>
+                <div class="title">Une seule mission !</div>
             </div>
             <p class="ct">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Chez La Maison du Lait, nous croyons que manger sainement tout en se faisant plaisir n'est pas une contradiction, mais une mission.
+
+                C'est pourquoi nous proposons des <b style="color: #6fb53d"> produits laitiers frais</b> pour chaque instant de la vie et pour le plus grand plaisir de tous.
             </p>
-            <p class="ct">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <a href="" class="btn btn-default btn-red btn-sm">Read More</a>
+            
 
             <div id="title-bg">
-                <div class="title">Lastest Products</div>
+                <div class="title">Plats de nos clients !</div>
             </div>
             <div class="row prdct"><!--Products-->
                 <div class="col-md-4">
@@ -179,19 +205,9 @@
             <div class="spacer"></div>
         </div><!--Main content-->
         <div class="col-md-3"><!--sidebar-->
-            <div id="title-bg">
-                <div class="title">Categories</div>
-            </div>
 
-            <div class="categorybox">
-                <ul>
-                    <li><a href="#">Zahra</a></li>
-                    <li><a href="#">Noora</a></li>
-                    <li><a href="#">Jnan</a></li>
-                </ul>
-            </div>
-
-            <div class="ads">
+            <div class="ads " >
+               <a href=""><img style="border-radius:10px" src="{{asset('/pack-02.png')}}" width="100%" height="100%" alt="" srcset=""></a> 
             </div>
 
         </div><!--sidebar-->

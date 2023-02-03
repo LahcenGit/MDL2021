@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Maison du lait ! Naturellement Bon</title>
 
+
+	 <!-- Favicon -->
+	 
+	 <link rel="shortcut icon" href="{{asset('/assets/images/logo.png')}}" />
+
     <!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700' rel='stylesheet' type='text/css'>
 
@@ -167,77 +172,56 @@
 			<div class="row">
 				<div class="col-md-4"><!--footer twitter widget-->
 					<div id="title-widget-bg">
-						<div class="title-widget">Facebook posts</div>
+						<div class="title-widget">La maison du lait</div>
 					</div>
 					<ul class="tweets">
-						<li>La nouvelle FETA piments' <a href="#">http://t.co/LbLwldb6 </a>
-						<span>2 hours ago</span></li>
-						<li class="lastone">Check out this great #themeforest item for you
-						'Simpler Landing' <a href="#">http://t.co/LbLwldb6 </a>
-						<span>2 hours ago</span></li>
+						<li>La laiteire La Maison du lait S.A.R.L est une entreprise familiale Algérienne.
+						<span> créée en 1999</span></li>
+						
 					</ul>
 					<div class="clearfix"></div>
-					<a href="#" class="btn btn-default btn-follow"><i class="fa fa-twitter fa-2x"></i><div>Follow us on twitter</div></a>
+					<a href="https://www.facebook.com/MDLTLEMCEN" class="btn btn-default btn-follow"><i class="fa fa-facebook fa-2x"></i><div>Facebook</div></a>
+					<a href="https://www.instagram.com/maison.dulait/" class="btn btn-default btn-follow"><i class="fa fa-instagram fa-2x"></i><div>Instagram</div></a>
 				</div><!--footer twitter widget-->
 				<div class="col-md-4"><!--footer newsletter widget-->
 					<div id="title-widget-bg">
-						<div class="title-widget">Newsletter</div>
+						<div class="title-widget">Notre Newsletter </div>
 					</div>
 					<div class="newsletter">
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							Nous vous invitons à vous inscrire à notre newsletter afin de recevoir toutes les mises à jour
 						</p>
 						<form role="form">
 							<div class="form-group">
 								<label>Votre adresse Email</label>
 								<input type="email" class="form-control newstler-input" id="exampleInputEmail1" placeholder="Enter email">
-								<button class="btn btn-default btn-red btn-sm">Sign Up</button>
+								<button class="btn btn-default btn-red btn-sm">S'inscrire</button>
 							</div>
 						</form>
 					</div>
 				</div><!--footer newsletter widget-->
 				<div class="col-md-4"><!--footer contact widget-->
 					<div id="title-widget-bg">
-						<div class="title-widget-cursive">MDL</div>
+						<div class="title-widget">Contactez-nous</div>
 					</div>
 					<ul class="contact-widget">
-						<li class="fphone">+213 123 456, +387 123 456 <br /> +213 123 456</li>
-						<li class="fmobile">+213-123-456-1<br />+213-123-456-2</li>
-						<li class="fmail lastone">your@email.com<br />customer.care@mail.com</li>
+						<li class="fphone">+213 560 09 90 33</li>
+						<li class="fmail lastone">contact@lamaisondulait.dz</li>
+						<li class="fmobile">ZI remchi bp 322 Tlemcen-, lgerie </li>
 					</ul>
 				</div><!--footer contact widget-->
 			</div>
 			<div class="spacer"></div>
 		</div>
 	</div><!--footer Widget-->
-	<div class="footer"><!--footer-->
+	
+	<div class=""><!--footer-->
 		<div class="container">
 			<div class="row">
-				<div class="col-md-9">
-					<ul class="footermenu"><!--footer nav-->
-						<li><a href="index.html">Home</a></li>
-						<li><a href="cart.html">My Cart</a></li>
-						<li><a href="checkout.html">Checkout</a></li>
-						<li><a href="order.html">Completed Orders</a></li>
-						<li><a href="contact.html">Contact us</a></li>
-					</ul><!--footer nav-->
-					<div class="f-credit">&copy;All rights reserved by <a href="#">yoursite.com</a></div>
-					<a href=""><div class="payment visa"></div></a>
-					<a href=""><div class="payment paypal"></div></a>
-					<a href=""><div class="payment mc"></div></a>
-					<a href=""><div class="payment nh"></div></a>
+				<div class="col-md-9" style="margin: 20px;">
+					<div class="f-credit">&copy;Développé par <a href="#">MDL Dev Team </a></div>
 				</div>
-				<div class="col-md-3"><!--footer Share-->
-					<div class="followon">Follow us on</div>
-					<div class="fsoc">
-						<a href="http://twitter.com/minimalthemes" class="ftwitter">twitter</a>
-						<a href="http://www.facebook.com/pages/Minimal-Themes/264056723661265" class="ffacebook">facebook</a>
-						<a href="#" class="fflickr">flickr</a>
-						<a href="#" class="ffeed">feed</a>
-						<div class="clearfix"></div>
-					</div>
-					<div class="clearfix"></div>
-				</div><!--footer Share-->
+				
 			</div>
 		</div>
 	</div><!--footer-->

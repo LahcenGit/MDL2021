@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AppParticularController extends Controller
 {
-    //
+   
     public function index(){
         $orders = Particularorder::all();
         return view('particulier.app-particular',compact('orders'));

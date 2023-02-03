@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 
 class ParticularorderController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('professionalParticularAuth');
+    }
+    
     public function index(){
         $products = Produit::where('type','particular')->orderBy('flag','asc')->get();
         return view('particulier.order-particular',compact('products'));
