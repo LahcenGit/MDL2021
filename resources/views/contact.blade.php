@@ -24,9 +24,8 @@
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indusy standard dummy text ever since the 1500s.
             </p>
             <ul class="contact-widget">
-                <li class="fphone">+387 123 456, +387 123 456 <br /> +387 123 456</li>
-                <li class="fmobile">+387-123-456-1<br />+387-123-456-2</li>
-                <li class="fmail lastone">your@email.com<br />customer.care@mail.com</li>
+                <li class="fphone">+213 560 09 90 33 </li>
+                <li class="fmail lastone">contact@lamaisondulait.dz</li>
             </ul>
         </div>
         <div class="col-md-7 col-md-offset-1">

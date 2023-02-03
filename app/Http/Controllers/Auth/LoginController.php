@@ -57,7 +57,7 @@ class LoginController extends Controller
                      return redirect('/app-professional');
                  }
             else if(auth::user()->type == 'particulier') {
-                    return redirect('/app-particular');
+                    return redirect('/welcome');
                 }
             else if(auth::user()->type == 'labo') {
                     return redirect('/labo');

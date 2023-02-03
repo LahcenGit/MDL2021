@@ -84,7 +84,7 @@
                             </div>
                             <div class="avatock"><span>In stock</span></div>
                         </div>
-                        <button class="btn btn-default btn-red btn-lg" style="margin-top: 10px">Construire votre pack</button>
+                        <a href="{{ asset('/app-particular/order') }}" class="btn btn-default btn-red btn-lg" style="margin-top: 10px">Construire votre pack</a>
                     </div>
                 </div>
             </div>
@@ -92,6 +92,7 @@
             <div class="tab-review">
                 <ul id="myTab" class="nav nav-tabs shop-tab">
                     <li class="active"><a href="#desc" data-toggle="tab">Description</a></li>
+                    <li class=""><a href="#rev" data-toggle="tab">Commentaires ({{ $comments->count() }})</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content shop-tab-ct">
                     <div class="tab-pane fade active in" id="desc">
@@ -99,9 +100,31 @@
                         Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
                         </p>
                     </div>
+                    <div class="tab-pane fade" id="rev">
+                        <div id="add-comment">
+                            @foreach($comments as $comment)
+                            <p class="dash">
+                            <span>{{ $comment->user->name }}</span> ({{ $comment->created_at->format('Y-m-d H:m') }})<br/><br/>
+                            {{ $comment->comment }}.
+                            </p>
+                            @endforeach
+                        </div>
+                        <h4>Ajouter un commentaire</h4>
+                        <form id="comment-form" action="{{asset('/comment')}}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <textarea class="form-control" id="comment" ></textarea>
+                            </div>
+                            <input class="form-control" type="hidden" id="product" value="{{ $product->id }}" >
+
+                            <div id="show_comment_msg" >
+
+                            </div>
+                            <button class="btn btn-default btn-red btn-sm">Envoyer</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-
             <div id="title-bg">
                 <div class="title">Produits associés</div>
             </div>
@@ -146,3 +169,38 @@
 </div>
 
 @endsection
+@push('comment-scripts')
+<script>
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+   $("#comment-form").on("submit", function (e)
+    {
+        $('#show_comment_msg').html('<div >En cours....</div>');
+        var comment = $('#comment').val();
+        var product = $('#product').val();
+        var formURL = $(this).attr("action");
+        var data = {
+            "_token": "{{ csrf_token() }}",
+            comment: comment,
+            product: product
+        };
+        $.ajax(
+                {
+                    url: formURL,
+                    type: "POST",
+                    data: data,
+                    success: function (res) {
+                      $('#add-comment').append('<p class="dash"><span>'+res.name+'</span> ('+res.date+')<br/>'+res.comment+'</p>');
+                      $('#show_comment_msg').html('<div class="alert alert-success mt-2" id="form-success" role="alert"> Commentaire ajouté !</div>');
+
+                    }
+                });
+        e.preventDefault();
+    });
+
+</script>
+@endpush

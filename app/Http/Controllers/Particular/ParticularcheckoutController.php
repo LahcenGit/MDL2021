@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Auth;
 class ParticularcheckoutController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('professionalParticularAuth');
+    }
     public function store(Request $request){
         $particular = Particulier::where('user_id', Auth::user()->id)->first();
         $cart_temp = Particularcart::where('particular_id',$particular->id)->first();

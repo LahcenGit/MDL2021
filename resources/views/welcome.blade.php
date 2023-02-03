@@ -9,10 +9,10 @@
         background-color: #6fb53d !important;
     }
 
-    .cut-text { 
+    .cut-text {
   text-overflow: ellipsis;
-  overflow: hidden; 
-  width: 120px; 
+  overflow: hidden;
+  width: 120px;
   white-space: nowrap;
 }
 
@@ -87,9 +87,9 @@
                         <p style="color: #fff">
                             délicieuse, laiteuse et savoureuse...
                         </p>
-                        <a href="{{asset('/product/fromage-mozzarella-zahra-sous-vide')}}"><button class="btn btn-default btn-red btn-lg">Découvrir</button></a> 
+                        <a href="{{asset('/product/fromage-mozzarella-zahra-sous-vide')}}"><button class="btn btn-default btn-red btn-lg">Découvrir</button></a>
                     </div>
-                    
+
                 </div>
                 <div class="slide-type-1">
                     <img src="{{asset('/slider/slider-2.jpg')}}" alt="" class="img-responsive"/>
@@ -101,16 +101,16 @@
                         <p style="color: #fff">
                             Feta à l'huile d'olive aux herbes...
                         </p>
-                        <a href="{{asset("/product/feta-cube-fines-herbes-et-huile-d'olive")}}"><button class="btn btn-default btn-red btn-lg">Découvrir</button></a> 
+                        <a href="{{asset("/product/feta-cube-fines-herbes-et-huile-d'olive")}}"><button class="btn btn-default btn-red btn-lg">Découvrir</button></a>
                     </div>
-                    
+
                 </div>
                 <div class="slide-type-1">
                     <img src="{{asset('/slider/slider-3.jpg')}}" alt="" class="img-responsive"/>
                 </div>
             </div>
-            
-           
+
+
         </div>
     </div>
     <div class="bar"></div>
@@ -174,7 +174,7 @@
 
                 C'est pourquoi nous proposons des <b style="color: #6fb53d"> produits laitiers frais</b> pour chaque instant de la vie et pour le plus grand plaisir de tous.
             </p>
-            
+
 
             <div id="title-bg">
                 <div class="title">Plats de nos clients !</div>
@@ -207,7 +207,7 @@
         <div class="col-md-3"><!--sidebar-->
 
             <div class="ads " >
-               <a href=""><img style="border-radius:10px" src="{{asset('/pack-02.png')}}" width="100%" height="100%" alt="" srcset=""></a> 
+               <a href=""><img style="border-radius:10px" src="{{asset('/pack-02.png')}}" width="100%" height="100%" alt="" srcset=""></a>
             </div>
 
         </div><!--sidebar-->

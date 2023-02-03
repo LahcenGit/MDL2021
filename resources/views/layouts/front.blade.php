@@ -130,7 +130,13 @@
 						<div class="top">
 							@guest
 							<a href="{{ url('/connexion') }}" id="reg" class="btn btn-default btn-custom">Se Connecter <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-				           @endguest
+                            @else
+                                @if(Auth::user()->type == 'particulier')
+                                <a href="{{ url('/app-particular') }}" id="reg" class="btn btn-default btn-custom">Dashboard <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                @elseif(Auth::user()->type == 'professionnel')
+                                <a href="{{ url('/app-professional') }}" id="reg" class="btn btn-default btn-custom">Dashboard <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                @endif
+				            @endguest
 						</div>
 					</div>
 				</div>
@@ -155,7 +161,7 @@
 								<li><a href="{{asset('/')}}" class="active">Accueil</a><div class="curve"></div></li>
 								<li><a href="#">Produits</a></li>
 								<li><a href="#">A propos</a></li>
-								<li><a href="#">Contactez-nous</a></li>
+								<li><a href="{{ asset('/contact') }}">Contactez-nous</a></li>
 							</ul>
 						</div>
 					</div>
@@ -267,6 +273,7 @@
 
 	@stack('order-pro-front')
     @stack('contact-scripts')
+    @stack('comment-scripts')
 	</div>
   </body>
 </html>

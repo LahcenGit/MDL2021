@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Particularcartline;
 use App\Models\Particularorderline;
 use App\Models\Produit;
@@ -23,7 +24,7 @@ class FrontController extends Controller
                                             ->groupBy('product_id')
                                             ->orderBy('sum','desc')
                                             ->limit('3')->get();
-
-        return view('detail-product',compact('product','related_products','best_sellers'));
+        $comments = Comment::where('product_id',$product->id)->get();
+        return view('detail-product',compact('product','related_products','best_sellers','comments'));
     }
 }

@@ -27,6 +27,7 @@ use App\Http\Controllers\Particular\ParticularorderController;
 use App\Http\Controllers\Particular\ParticularcheckoutController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CommentController;
 
 use App\Models\Citie;
 use App\Models\Wilaya;
@@ -255,3 +256,4 @@ Route::resource('photos.comments', PhotoCommentController::class);
 Route::get('/product/{slug}', [App\Http\Controllers\FrontController::class, 'detailProduct']);
 Route::get('/welcome', [App\Http\Controllers\FrontController::class, 'welcome']);
 Route::resource('/contact',ContactController::class);
+Route::resource('/comment',CommentController::class);
