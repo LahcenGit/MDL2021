@@ -268,7 +268,7 @@
   			  $('#myTable').DataTable();
 
 		} );
-	</script>
+    </script>
 
 
 	@stack('order-pro-front')

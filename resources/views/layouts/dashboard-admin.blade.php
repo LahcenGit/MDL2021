@@ -128,6 +128,7 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item nav-category">Gestion des ventes</li>
           <li class="nav-item {{ active_class(['dashboard-admin/professional-orders/*','dashboard-admin/professional-orders']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#commandes" role="button" aria-expanded="{{ is_active_route(['dashboard-admin/professional-orders/*','dashboard-admin/professional-orders']) }}" aria-controls="ordersprofessional">
               <i class="link-icon" data-feather="anchor"></i>
@@ -156,7 +157,7 @@
         </ul>
       </div>
     </nav>
-    x
+
 		<!-- partial -->
 
 		<div class="page-wrapper">
