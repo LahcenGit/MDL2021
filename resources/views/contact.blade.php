@@ -29,41 +29,36 @@
             </ul>
         </div>
         <div class="col-md-7 col-md-offset-1">
-            <div class="loc">
-                <div id="map_canvas"></div>
+            <div class="qc">
+                <form id="contact-form" action="{{asset('/contact')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Nom complet<span>*</span></label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email<span>*</span></label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet<span>*</span></label>
+                        <input type="text" class="form-control" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="text">Messages<span>*</span></label>
+                        <textarea class="form-control" id="message" name="message" required></textarea>
+                    </div>
+
+                    <div id="show_contact_msg" >
+
+                    </div>
+                    <button class="btn btn-default btn-red btn-sm">Envoyer</button>
+                </form>
             </div>
         </div>
     </div>
 
-    <div id="title-bg">
-        <div class="title">Contact rapide</div>
-    </div>
-    <div class="qc">
-        <form id="contact-form" action="{{asset('/contact')}}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="name">Nom complet<span>*</span></label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email<span>*</span></label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="subject">Sujet<span>*</span></label>
-                <input type="text" class="form-control" id="subject" name="subject" required>
-            </div>
-            <div class="form-group">
-                <label for="text">Messages<span>*</span></label>
-                <textarea class="form-control" id="message" name="message" required></textarea>
-            </div>
 
-            <div id="show_contact_msg" >
-
-            </div>
-            <button class="btn btn-default btn-red btn-sm">Envoyer</button>
-        </form>
-    </div>
     <div class="spacer"></div>
 
 </div>
