@@ -104,9 +104,6 @@ Route::get('/connexion', function () {
 Route::get('/badge', function () {
     return view('badge');
 });
-
-
-
 Route::middleware('milkcheckAuth')->group(function () {
     Route::get('/milkcheck',[App\Http\Controllers\MilkchecController::class, 'index'])->name('milkcheck')->middleware('can:milkcheck');
 
@@ -254,6 +251,7 @@ Route::resource('photos.comments', PhotoCommentController::class);
 
 //front route
 Route::get('/product/{slug}', [App\Http\Controllers\FrontController::class, 'detailProduct']);
+Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'detailBlog']);
 Route::get('/welcome', [App\Http\Controllers\FrontController::class, 'welcome']);
 Route::resource('/contact',ContactController::class);
 Route::resource('/comment',CommentController::class);
