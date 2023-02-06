@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Comment;
 use App\Models\Particularcartline;
 use App\Models\Particularorderline;
@@ -13,7 +14,8 @@ class FrontController extends Controller
     //
     public function welcome(){
      $products = Produit::where('type','particular')->orderBy('flag','asc')->get();
-     return view('welcome',compact('products'));
+     $blogs = Blog::all();
+     return view('welcome',compact('products','blogs'));
     }
     public function detailProduct($slug){
         $product = Produit::where('slug',$slug)->first();

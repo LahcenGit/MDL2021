@@ -10,11 +10,17 @@
     }
 
     .cut-text {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 120px;
-  white-space: nowrap;
-}
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 120px;
+        white-space: nowrap;
+    }
+    .cut-title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 150;
+        white-space: nowrap;
+    }
 
 
 /* Animation property */
@@ -203,6 +209,26 @@
                 </div>
             </div><!--Products-->
             <div class="spacer"></div>
+
+            <div id="title-bg">
+                <div class="title">Les actualités</div>
+            </div>
+            <div class="row prdct"><!--Products-->
+                @foreach($blogs as $blog)
+                    <div class="col-md-4">
+                        <div class="productwrap">
+                            <div class="pr-img">
+                                <a href="{{ asset('blog/'.$blog->slug) }}">
+                                <img src="{{ asset('mdltheme/images/'.$blog->image_principale) }}" alt="" class="img-responsive"/>
+                                </a>
+                            </div>
+                            <span class="smalltitle"><a href="{{ asset('blog/'.$blog->slug) }}">{{ $blog->title }}</a></span>
+                            <span class="smalldesc">{{ $blog->date }}</span>
+                        </div>
+                    </div>
+                @endforeach
+            </div><!--Products-->
+        <div class="spacer"></div>
         </div><!--Main content-->
         <div class="col-md-3"><!--sidebar-->
 

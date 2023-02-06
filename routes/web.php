@@ -255,3 +255,6 @@ Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'detailB
 Route::get('/welcome', [App\Http\Controllers\FrontController::class, 'welcome']);
 Route::resource('/contact',ContactController::class);
 Route::resource('/comment',CommentController::class);
+Route::get('/about', function () {
+    return view('about');
+});
