@@ -30,6 +30,16 @@ class ParticularcheckoutController extends Controller
             }
         }
         $total = 0;
+        $total_temp = 0;
+        for($i=0 ; $i<count($request->products); $i++ ){
+            $product = Produit::find($request->products[$i]);
+            $total_temp = $total_temp +$request->qtes[$i] * $product->pu_ht;
+        }
+        if($total_temp < 2000){
+            $error = 1;
+            $products = Produit::where('type','particular')->orderBy('flag','asc')->get();
+            return view('particulier.order-particular',compact('error','products'));
+        }
         for($i=0 ; $i<count($request->products); $i++ ){
          $cartline = new Particularcartline();
          $cartline->particularcart_id = $cart_temp->id;

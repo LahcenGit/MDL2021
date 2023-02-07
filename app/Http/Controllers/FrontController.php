@@ -29,4 +29,9 @@ class FrontController extends Controller
         $comments = Comment::where('product_id',$product->id)->get();
         return view('detail-product',compact('product','related_products','best_sellers','comments'));
     }
+
+    public function products(){
+        $products = Produit::where('type','particular')->orderBy('flag','asc')->get();
+        return view('products',compact('products'));
+    }
 }

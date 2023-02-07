@@ -12,9 +12,10 @@ class ParticularorderController extends Controller
     {
         $this->middleware('professionalParticularAuth');
     }
-    
+
     public function index(){
         $products = Produit::where('type','particular')->orderBy('flag','asc')->get();
-        return view('particulier.order-particular',compact('products'));
+        $error = null;
+        return view('particulier.order-particular',compact('products','error'));
     }
 }

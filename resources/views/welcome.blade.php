@@ -15,12 +15,7 @@
         width: 120px;
         white-space: nowrap;
     }
-    .cut-title {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width: 150;
-        white-space: nowrap;
-    }
+
 
 
 /* Animation property */

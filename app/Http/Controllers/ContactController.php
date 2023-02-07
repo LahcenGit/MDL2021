@@ -13,7 +13,7 @@ class ContactController extends Controller
       return view('contact');
     }
     public function store(Request $request){
-     Mail::to('benosmanhind@gmail.com')->send(new MailContact($request));
+     Mail::to('contact@lamaisondulait.dz')->send(new MailContact($request));
         return 1;
     }
 }

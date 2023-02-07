@@ -27,8 +27,8 @@
                 <div class="page-title-inner">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="bread"><a href="#">Home</a> &rsaquo; Product Detail</div>
-                        <div class="bigtitle">Product Detail</div>
+                        <div class="bread"><a href="#">Home</a> &rsaquo; Détail produit</div>
+                        <div class="bigtitle">Détail produit</div>
                     </div>
 
                 </div>
@@ -97,7 +97,7 @@
                 <div id="myTabContent" class="tab-content shop-tab-ct">
                     <div class="tab-pane fade active in" id="desc">
                         <p>
-                        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+                        {{ $product->long_description }}
                         </p>
                     </div>
                     <div class="tab-pane fade" id="rev">

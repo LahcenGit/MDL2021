@@ -27,6 +27,20 @@
         </div>
     </div>
 
+    <div class="row">
+        <ul class="small-menu"><!--small-nav -->
+            <li><a href="{{ url('/app-particular') }}"  class="myshop">Mes commandes</a></li>
+            <li><a href="#" class="myacc">Mon profil</a></li>
+            <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="sign-out">Déconnexion</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+        </ul><!--small-nav -->
+        <div class="clearfix"></div>
+        <div class="lines"></div>
+    </div>
+
     <form class="form-horizontal checkout" method="POST" action="{{ url('/app-particular/checkout') }}">
         @csrf
            @if (count($errors) > 0)
@@ -40,8 +54,15 @@
             @endif
         <div class="row ">
             <div id="title-bg">
-                <div class="title">Choisir vos produits</div>
+                <div class="title">Choisir vos produits </div>
             </div>
+            @if($error == null)
+            <p>Vous devez passer une commande d'un montant minimum de <b>2000 da</b></p>
+            @else
+                <div class="alert alert-danger mt-3" style="margin-top: 20px" role="alert">
+                    Vous devez passer une commande d'un montant minimum de <b>2000 da</b>
+                </div>
+            @endif
             <div class="spacer"></div>
 
             @foreach($products->split($products->count()/2) as $row)

@@ -158,9 +158,9 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="{{asset('/')}}" class="active">Accueil</a><div class="curve"></div></li>
-								<li><a href="#">Produits</a></li>
-								<li><a href="#">A propos</a></li>
+								<li><a href="{{asset('/welcome')}}" class="active">Accueil</a><div class="curve"></div></li>
+								<li><a href="{{ asset('/products') }}">Produits</a></li>
+								<li><a href="{{ asset('/about') }}">A propos</a></li>
 								<li><a href="{{ asset('/contact') }}">Contactez-nous</a></li>
 							</ul>
 						</div>

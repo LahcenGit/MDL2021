@@ -22,8 +22,8 @@ class CreateProduitsTable extends Migration
             $table->float('pu_ht');
             $table->string('dlc')->nullable();
             $table->string('bar_code')->nullable();
-            $table->string('short_description')->nullable();
-            $table->string('long_description')->nullable();
+            $table->longText('short_description')->nullable();
+            $table->longText('long_description')->nullable();
             $table->string('capacity')->nullable();
             $table->float('price')->nullable();
             $table->string('type')->nullable();

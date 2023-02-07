@@ -253,6 +253,7 @@ Route::resource('photos.comments', PhotoCommentController::class);
 Route::get('/product/{slug}', [App\Http\Controllers\FrontController::class, 'detailProduct']);
 Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'detailBlog']);
 Route::get('/welcome', [App\Http\Controllers\FrontController::class, 'welcome']);
+Route::get('/products', [App\Http\Controllers\FrontController::class, 'products']);
 Route::resource('/contact',ContactController::class);
 Route::resource('/comment',CommentController::class);
 Route::get('/about', function () {
