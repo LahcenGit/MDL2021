@@ -180,29 +180,54 @@
             <div id="title-bg">
                 <div class="title">Plats de nos clients !</div>
             </div>
-            <div class="row prdct"><!--Products-->
-                <div class="col-md-4">
+
+            <div class="owl-carousel owl-theme" >
+                <div class="item" style="width:250px" >  
                     <div class="productwrap">
                         <div class="pr-img">
                             <img src="{{ asset('mdltheme/images/img9.png') }}" alt="" class="img-responsive"/>
                         </div>
-                    </div>
+                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="item" style="width:250px">  
                     <div class="productwrap">
                         <div class="pr-img">
                             <img src="{{ asset('mdltheme/images/img11.png') }}" alt="" class="img-responsive"/>
                         </div>
-                    </div>
+                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="item" style="width:250px">  
                     <div class="productwrap">
                         <div class="pr-img">
                             <img src="{{ asset('mdltheme/images/img10.png') }}" alt="" class="img-responsive"/>
                         </div>
-                    </div>
+                     </div>
                 </div>
-            </div><!--Products-->
+                <div class="item" style="width:250px">  
+                    <div class="productwrap">
+                        <div class="pr-img">
+                            <img src="{{ asset('mdltheme/images/img9.png') }}" alt="" class="img-responsive"/>
+                        </div>
+                     </div>
+                </div>
+                <div class="item" style="width:250px">  
+                    <div class="productwrap">
+                        <div class="pr-img">
+                            <img src="{{ asset('mdltheme/images/img11.png') }}" alt="" class="img-responsive"/>
+                        </div>
+                     </div>
+                </div>
+                <div class="item" style="width:250px">  
+                    <div class="productwrap">
+                        <div class="pr-img">
+                            <img src="{{ asset('mdltheme/images/img10.png') }}" alt="" class="img-responsive"/>
+                        </div>
+                     </div>
+                </div>
+                
+            </div>
+            
+           
             <div class="spacer"></div>
 
             <div id="title-bg">

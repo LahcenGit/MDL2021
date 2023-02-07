@@ -268,7 +268,15 @@
   			  $('#myTable').DataTable();
 
 		} );
+<<<<<<< Updated upstream
     </script>
+=======
+
+		$(document).ready(function(){
+  $(".owl-carousel").owlCarousel();
+});
+	</script>
+>>>>>>> Stashed changes
 
 
 	@stack('order-pro-front')
