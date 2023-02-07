@@ -17,7 +17,7 @@
                 <div class="page-title-inner">
                 <div class="row">
                     <div class="col-md-5">
-                        <div class="bread"><a href="#">Accueil</a> &rsaquo; Commande</div>
+                        <div class="bread"><a href="{{ asset('/') }}">Accueil</a> &rsaquo; Commande</div>
                         <div class="bigtitle">Commande envoyée</div>
                     </div>
 
@@ -33,7 +33,7 @@
           </div>
     </div>
 
-    <button type="submit" class="btn btn-default btn-red">Retour sur le site</button>
+    <a href="{{ asset('/') }}" class="btn btn-default btn-red">Retour sur le site</button>
 
 
     <div class="spacer"></div>

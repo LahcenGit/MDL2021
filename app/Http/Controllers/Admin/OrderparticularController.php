@@ -11,7 +11,7 @@ class OrderparticularController extends Controller
 {
     //
     public function index(){
-        $orders = Particularorder::all();
+        $orders = Particularorder::orderBy('created_at','desc')->get();
         return view('admin.particular-orders',compact('orders'));
     }
     public function edit($id){

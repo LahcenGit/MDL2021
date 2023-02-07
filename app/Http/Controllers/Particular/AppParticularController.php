@@ -16,7 +16,7 @@ class AppParticularController extends Controller
         $this->middleware('professionalParticularAuth');
     }
     public function index(){
-        $orders = Particularorder::all();
+        $orders = Particularorder::orderBy('created_at','desc')->get();
         return view('particulier.app-particular',compact('orders'));
     }
 

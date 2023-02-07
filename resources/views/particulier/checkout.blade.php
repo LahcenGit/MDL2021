@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-sm-6">
                            <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
-                                <option>Wilaya</option>
+                                <option value="0">Wilaya</option>
                                 <option value="Alger" @if(old('wilaya')== 'Alger') selected @endif>Alger</option>
                                 <option value="Oran" @if(old('wilaya')== 'Oran') selected @endif>Oran</option>
                                 <option value="Aïn Témouchent" @if(old('wilaya')== 'Aïn Témouchent') selected @endif>Aïn Témouchent</option>
@@ -98,11 +98,7 @@
                 <textarea class="form-control" name="note"></textarea>
             </div>
         </div>
-        <div class="checkbox">
-            <label>
-              <input type="checkbox">  J'ai lu et j'accepte les termes et conditions
-            </label>
-        </div>
+
         <div class="row d-flex justify-content-center">
             <div id="title-bg">
             </div>

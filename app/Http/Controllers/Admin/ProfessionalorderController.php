@@ -11,7 +11,7 @@ class ProfessionalorderController extends Controller
 {
     //
     public function index(){
-        $orders = Professionalorder::all();
+        $orders = Professionalorder::orderBy('created_at','desc')->get();
         return view('admin.professional-orders',compact('orders'));
     }
     public function edit($id){
