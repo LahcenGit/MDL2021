@@ -20,12 +20,12 @@
     <form class="form-horizontal checkout" method="POST" action="{{ route('login') }}">
         @csrf
         <div class="row">
-            <div  class="col-md-12">
+            <div  class="col-md-6">
                 <div id="title-bg">
                     <div class="title">Détails compte</div>
                 </div>
                 <div class="form-group dob">
-                   <div class="col-sm-6">
+                   <div class="col-sm-12">
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="username" placeholder="Email" required>
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="form-group dob">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Mot de passe" required>
                         @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="form-group dob">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="single-checkbox ">
                             <div class="checkbox-inline">
                                 <input class="check-input" type="checkbox" id="check15" name="remember_me">
@@ -60,6 +60,23 @@
                         {{ __('Mot de passe oublié?') }}
                     </a>
                 @endif
+            </div>
+            <div  class="col-md-6">
+                <div id="title-bg">
+                    <div class="title">Inscription</div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <ul class="small-menu"><!--small-nav -->
+                            <li><a href="{{ url('/register-particular') }}" class="myacc">Particulier</a></li>
+                            <li><a href="{{ url('/register-professional') }}"  class="myshop">Professionnel</a></li>
+                        </ul><!--small-nav -->
+                    </div>
+                </div>
+
+
+            </div>
+
             </div>
         </div>
     </form>

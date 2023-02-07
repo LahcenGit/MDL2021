@@ -183,7 +183,7 @@
             </div>
 
             <div id="plat-carousel" class="owl-carousel owl-theme" style="background-color: #DBDFE3; padding:20px">
-                <div class="item" style="margin-right: 10px">  
+                <div class="item" style="margin-right: 10px">
                     <div class="productwrap">
                         <div class="pr-img">
                             <a href="{{ asset('mdltheme/images/img9.png') }}" class="fancybox">
@@ -192,7 +192,7 @@
                         </div>
                      </div>
                 </div>
-                <div class="item" style="margin-right: 10px">  
+                <div class="item" style="margin-right: 10px">
                     <div class="productwrap">
                         <div class="pr-img">
                             <a href="{{ asset('mdltheme/images/img11.png') }}" class="fancybox">
@@ -201,7 +201,17 @@
                         </div>
                      </div>
                 </div>
-                <div class="item" style="margin-right: 10px">  
+
+                <div class="item" style="margin-right: 10px">
+                    <div class="productwrap">
+                        <div class="pr-img">
+                            <a href="{{ asset('mdltheme/images/img12.png') }}" class="fancybox">
+                                <img class="img-responsive" src="{{ asset('mdltheme/images/img12.png') }}" alt="" />
+                            </a>
+                        </div>
+                     </div>
+                </div>
+                <div class="item" style="margin-right: 10px">
                     <div class="productwrap">
                         <div class="pr-img">
                             <a href="{{ asset('mdltheme/images/img10.png') }}" class="fancybox">
@@ -210,38 +220,20 @@
                         </div>
                      </div>
                 </div>
-                <div class="item" style="margin-right: 10px" >  
-                    <div class="productwrap" >
-                        <div class="pr-img">
-                            <a href="{{ asset('mdltheme/images/img9.png') }}" class="fancybox">
-                                <img class="img-responsive" src="{{ asset('mdltheme/images/img9.png') }}" alt="" />
-                            </a>
-                        </div>
-                     </div>
-                </div>
-                <div class="item" style="margin-right: 10px">  
+                <div class="item" style="margin-right: 10px">
                     <div class="productwrap">
                         <div class="pr-img">
-                            <a href="{{ asset('mdltheme/images/img11.png') }}" class="fancybox">
-                                <img class="img-responsive" src="{{ asset('mdltheme/images/img11.png') }}" alt="" />
+                            <a href="{{ asset('mdltheme/images/img13.png') }}" class="fancybox">
+                                <img class="img-responsive" src="{{ asset('mdltheme/images/img13.png') }}" alt="" />
                             </a>
                         </div>
                      </div>
                 </div>
-                <div class="item" style="margin-right: 10px">  
-                    <div class="productwrap">
-                        <div class="pr-img">
-                            <a href="{{ asset('mdltheme/images/img10.png') }}" class="fancybox">
-                                <img class="img-responsive" src="{{ asset('mdltheme/images/img10.png') }}" alt="" />
-                            </a>
-                        </div>
-                     </div>
-                </div>
-                
+
             </div>
-            
-           
-           
+
+
+
         <div class="spacer"></div>
         </div><!--Main content-->
         <div class="col-md-3"><!--sidebar-->
@@ -252,7 +244,7 @@
 
         </div><!--sidebar-->
 
-        
+
     </div>
 
     <div class="row">
@@ -272,12 +264,12 @@
                             <span class="smalltitle"><a href="{{ asset('blog/'.$blog->slug) }}">{{ $blog->title }}</a></span>
                             <span class="smalldesc">{{ $blog->date }}</span>
                         </div>
-                       
+
                     </div>
                 @endforeach
             </div>
         </div>
-        
+
     </div>
 
     <div class="spacer"></div>

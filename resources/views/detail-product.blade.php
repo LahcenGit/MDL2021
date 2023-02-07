@@ -26,9 +26,9 @@
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="bread"><a href="#">Home</a> &rsaquo; Détail produit</div>
-                        <div class="bigtitle">Détail produit</div>
+                    <div class="col-md-9">
+                        <div class="bread"><a href="#">Home</a> &rsaquo;Produit</div>
+                        <div class="bigtitle">{{ $product->designation }}</div>
                     </div>
 
                 </div>
@@ -194,9 +194,15 @@
                     type: "POST",
                     data: data,
                     success: function (res) {
-                      $('#add-comment').append('<p class="dash"><span>'+res.name+'</span> ('+res.date+')<br/>'+res.comment+'</p>');
-                      $('#show_comment_msg').html('<div class="alert alert-success mt-2" id="form-success" role="alert"> Commentaire ajouté !</div>');
-
+                       if(res != 'error'){
+                        $('#add-comment').append('<p class="dash"><span>'+res.name+'</span> ('+res.date+')<br/>'+res.comment+'</p>');
+                        $('#show_comment_msg').html('<div class="alert alert-success mt-2 flash-alert" id="form-success" role="alert"> Commentaire ajouté !</div>');
+                        $('#comment').val('').empty();
+                        $(".flash-alert").slideDown(200).delay(3500).slideUp(200);
+                       }
+                       else{
+                        window.location.replace('/connexion');
+                       }
                     }
                 });
         e.preventDefault();

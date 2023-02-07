@@ -14,9 +14,9 @@
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="bread"><a href="#">Accueil</a> &rsaquo; Détail article</div>
-                        <div class="bigtitle">Détail article</div>
+                    <div class="col-md-12">
+                        <div class="bread"><a href="#">Accueil</a> &rsaquo; Article</div>
+                        <div class="bigtitle">{{ $blog->title }}</div>
                     </div>
 
                 </div>
