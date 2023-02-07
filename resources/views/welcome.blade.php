@@ -177,50 +177,63 @@
             </p>
 
 
+
             <div id="title-bg">
-                <div class="title">Plats de nos clients !</div>
+                <div class="title">Plats de nos Clients !</div>
             </div>
 
-            <div class="owl-carousel owl-theme" >
-                <div class="item" style="width:250px" >  
+            <div id="plat-carousel" class="owl-carousel owl-theme" style="background-color: #DBDFE3; padding:20px">
+                <div class="item" style="margin-right: 10px">  
                     <div class="productwrap">
                         <div class="pr-img">
-                            <img src="{{ asset('mdltheme/images/img9.png') }}" alt="" class="img-responsive"/>
+                            <a href="{{ asset('mdltheme/images/img9.png') }}" class="fancybox">
+                                <img class="img-responsive" src="{{ asset('mdltheme/images/img9.png') }}" alt="" />
+                            </a>
                         </div>
                      </div>
                 </div>
-                <div class="item" style="width:250px">  
+                <div class="item" style="margin-right: 10px">  
                     <div class="productwrap">
                         <div class="pr-img">
-                            <img src="{{ asset('mdltheme/images/img11.png') }}" alt="" class="img-responsive"/>
+                            <a href="{{ asset('mdltheme/images/img11.png') }}" class="fancybox">
+                                <img class="img-responsive" src="{{ asset('mdltheme/images/img11.png') }}" alt="" />
+                            </a>
                         </div>
                      </div>
                 </div>
-                <div class="item" style="width:250px">  
+                <div class="item" style="margin-right: 10px">  
                     <div class="productwrap">
                         <div class="pr-img">
-                            <img src="{{ asset('mdltheme/images/img10.png') }}" alt="" class="img-responsive"/>
+                            <a href="{{ asset('mdltheme/images/img10.png') }}" class="fancybox">
+                                <img class="img-responsive" src="{{ asset('mdltheme/images/img10.png') }}" alt="" />
+                            </a>
                         </div>
                      </div>
                 </div>
-                <div class="item" style="width:250px">  
-                    <div class="productwrap">
+                <div class="item" style="margin-right: 10px" >  
+                    <div class="productwrap" >
                         <div class="pr-img">
-                            <img src="{{ asset('mdltheme/images/img9.png') }}" alt="" class="img-responsive"/>
+                            <a href="{{ asset('mdltheme/images/img9.png') }}" class="fancybox">
+                                <img class="img-responsive" src="{{ asset('mdltheme/images/img9.png') }}" alt="" />
+                            </a>
                         </div>
                      </div>
                 </div>
-                <div class="item" style="width:250px">  
+                <div class="item" style="margin-right: 10px">  
                     <div class="productwrap">
                         <div class="pr-img">
-                            <img src="{{ asset('mdltheme/images/img11.png') }}" alt="" class="img-responsive"/>
+                            <a href="{{ asset('mdltheme/images/img11.png') }}" class="fancybox">
+                                <img class="img-responsive" src="{{ asset('mdltheme/images/img11.png') }}" alt="" />
+                            </a>
                         </div>
                      </div>
                 </div>
-                <div class="item" style="width:250px">  
+                <div class="item" style="margin-right: 10px">  
                     <div class="productwrap">
                         <div class="pr-img">
-                            <img src="{{ asset('mdltheme/images/img10.png') }}" alt="" class="img-responsive"/>
+                            <a href="{{ asset('mdltheme/images/img10.png') }}" class="fancybox">
+                                <img class="img-responsive" src="{{ asset('mdltheme/images/img10.png') }}" alt="" />
+                            </a>
                         </div>
                      </div>
                 </div>
@@ -228,26 +241,7 @@
             </div>
             
            
-            <div class="spacer"></div>
-
-            <div id="title-bg">
-                <div class="title">Les actualités</div>
-            </div>
-            <div class="row prdct"><!--Products-->
-                @foreach($blogs as $blog)
-                    <div class="col-md-4">
-                        <div class="productwrap">
-                            <div class="pr-img">
-                                <a href="{{ asset('blog/'.$blog->slug) }}">
-                                <img src="{{ asset('mdltheme/images/'.$blog->image_principale) }}" alt="" class="img-responsive"/>
-                                </a>
-                            </div>
-                            <span class="smalltitle"><a href="{{ asset('blog/'.$blog->slug) }}">{{ $blog->title }}</a></span>
-                            <span class="smalldesc">{{ $blog->date }}</span>
-                        </div>
-                    </div>
-                @endforeach
-            </div><!--Products-->
+           
         <div class="spacer"></div>
         </div><!--Main content-->
         <div class="col-md-3"><!--sidebar-->
@@ -257,7 +251,36 @@
             </div>
 
         </div><!--sidebar-->
+
+        
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="title-bg">
+                <div class="title">Actualités</div>
+            </div>
+            <div class="owl-carousel owl-theme" id="article-carousel"  style="background-color: #DBDFE3; padding:20px">
+                @foreach($blogs as $blog)
+                    <div class="item" style="margin-right: 5px">
+                        <div class="productwrap">
+                            <div class="pr-img">
+                                <a href="{{ asset('blog/'.$blog->slug) }}">
+                                <img src="{{ asset('mdltheme/images/'.$blog->image_principale) }}" alt="" class="img-responsive"/>
+                                </a>
+                            </div>
+                            <span class="smalltitle"><a href="{{ asset('blog/'.$blog->slug) }}">{{ $blog->title }}</a></span>
+                            <span class="smalldesc">{{ $blog->date }}</span>
+                        </div>
+                       
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="spacer"></div>
 </div>
 
 @endsection

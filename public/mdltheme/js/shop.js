@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
 	  var owl = $("#product-carousel");
 	  owl.owlCarousel({
 		items : 4,
-		autoPlay: 5000,
+		autoPlay: 3000,
 		goToFirstSpeed : 3000,
 		pagination: false
 	  });
@@ -17,6 +17,30 @@ jQuery(document).ready(function($) {
 		  $(".prev").click(function(){
 			owl.trigger('owl.prev');
 		  })
+	});
+	////////////////////////////////////plat-carousel
+	$(function() {
+	  var owl_plat = $("#plat-carousel");
+	  owl_plat.owlCarousel({
+		items : 3,
+		autoPlay: 3000,
+		goToFirstSpeed : 3000,
+		pagination: false,
+	  });
+	  
+	
+	});
+	
+	$(function() {
+	  var owl_plat = $("#article-carousel");
+	  owl_plat.owlCarousel({
+		items : 3,
+		autoPlay: 3000,
+		goToFirstSpeed : 3000,
+		pagination: false,
+	  });
+	  
+	
 	});
 	
 	////////////////////////////////////home-slider
