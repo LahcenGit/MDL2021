@@ -16,9 +16,9 @@
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                 <div class="row">
-                    <div class="col-md-5">
-                        <div class="bread"><a href="#">Accueil</a> &rsaquo; Commande</div>
-                        <div class="bigtitle">Lancez une commande</div>
+                    <div class="col-md-12">
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; Commande</div>
+                        <div class="bigtitle" style="color:#1847AD">Lancez une commande</div>
                     </div>
 
                 </div>

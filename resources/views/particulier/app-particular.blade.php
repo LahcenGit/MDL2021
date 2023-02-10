@@ -9,8 +9,8 @@
                 <div class="page-title-inner">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="bread"><a href="#">Accueil</a> &rsaquo; dashboard</div>
-                        <div class="bigtitle">Tableau de board</div>
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; dashboard</div>
+                        <div class="bigtitle" style="color:#1847AD">Tableau de board</div>
                     </div>
                 </div>
                 </div>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="row" style="text-align: center;">
-        <a href="{{ url('/app-particular/order') }}"class="btn btn-default btn-green " style="font-size: 15px;">Construire votre pack </a>
+        <a href="{{ url('/app-particular/order') }}"class="btn btn-default btn-red btn-sm " style="font-size: 15px;">Construire votre pack </a>
     </div>
 
     <div class="table-responsive " style="margin-top: 10px;" >

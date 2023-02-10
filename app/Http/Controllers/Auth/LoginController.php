@@ -37,13 +37,13 @@ class LoginController extends Controller
 
          $this->validate($request, [
              'username' => 'required',
-             'password' => ['required'],
+             'password' => 'required',
          ],
          [
              'username.required' => 'Ce champ est obligatoire',
              'password.required' => 'Ce champ est obligatoire',
          ]
-     );
+         );
 
          $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
          $remember_me  = ( !empty( $request->remember_me ) )? TRUE : FALSE;
@@ -65,9 +65,11 @@ class LoginController extends Controller
             else{
                 return redirect('/milkcheck');
             }
-
-
          }
+
+         else{
+            return  redirect()->back()->with('error','Mot de passe ou adresse e-mail incorrects');
+           }
      }
     /**
      * Create a new controller instance.

@@ -41,7 +41,7 @@ class RegisterController extends Controller
            return 'app-professional';
        }
        else if(auth::user()->type == 'particulier'){
-          return 'app-particular';
+          return '/';
        }
 
    }
@@ -87,26 +87,26 @@ class RegisterController extends Controller
                 'RC' => ['required', 'string', 'max:255'],
                 'wilaya' => ['required', 'string', 'max:255'],
                 'phone' => ['required', 'string', 'max:255'],
-                'fax' => ['required', 'string', 'max:255'],
+                'fax' => ['nullable','string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
             ],
             [
-                'password.min' => 'Le mot de passe est obligatoire',
-                'password.regex' =>'Confirmer le mot de passe  ',
-                'email.unique' => 'Ce email existe déja',
+                'password.min' => 'minimum 8 caractères',
+                'password.confirmed' => 'la confirmation du mot de passe ne correspond pas',
+                'password.regex' =>'confirmer le mot de passe  ',
+                'email.unique' => 'ce email existe déja',
                 'email.email' => 'e-mail doit être une adresse e-mail valide.',
-                'phone.unique' => 'Ce numéro existe déja',
-                'fax.required' =>'Fax est obligatoire',
+                'phone.unique' => 'ce numéro existe déja',
                 'NIF.required' =>'NIF est obligatoire',
                 'RC.required' =>'RC est obligatoire',
-                'wilaya.required' =>'Wilaya est obligatoire',
-                'entreprise.required' =>'Entreprise est obligatoire',
-                'adresse.required' =>'Adresse est obligatoire',
+                'wilaya.required' =>'wilaya est obligatoire',
+                'entreprise.required' =>'entreprise est obligatoire',
+                'adresse.required' =>'adresse est obligatoire',
                 'password.required'=>'le mot de passe est obligatoire',
-                'name.required' => 'Nom est obligatoire',
-                'email.required' => 'E-mail est obligatoire',
-                'phone.required' => 'Telephone est obligatoire',
+                'name.required' => 'nom est obligatoire',
+                'email.required' => 'e-mail est obligatoire',
+                'phone.required' => 'telephone est obligatoire',
             ]
         );
 
@@ -121,16 +121,17 @@ class RegisterController extends Controller
                 'wilaya' => ['required', 'string', 'max:255'],
             ],
             [
-                'password.min' => 'Le mot de passe est obligatoire',
-                'password.regex' =>'Confirmer le mot de passe  ',
-                'email.unique' => 'Ce email existe déja',
-                'email.email' => 'e-mail doit être une adresse e-mail valide.',
-                'phone.unique' => 'Ce numéro existe déja',
+                'password.min' => 'minimum 8 caractères',
+                'password.confirmed' => 'la confirmation du mot de passe ne correspond pas',
+                'password.regex' =>'confirmer le mot de passe  ',
+                'email.unique' => 'ce email existe déja',
+                'email.email' => 'adresse e-mail invalide',
+                'phone.unique' => 'ce numéro existe déja',
                 'password.required'=>'le mot de passe est obligatoire',
-                'name.required' => 'Nom est obligatoire',
-                'email.required' => 'E-mail est obligatoire',
-                'phone.required' => 'Telephone est obligatoire',
-                'wilaya.required' =>'Wilaya est obligatoire',
+                'name.required' => 'nom est obligatoire',
+                'email.required' => 'e-mail est obligatoire',
+                'phone.required' => 'telephone est obligatoire',
+                'wilaya.required' =>'wilaya est obligatoire',
             ]
         );
         }
@@ -173,7 +174,7 @@ class RegisterController extends Controller
         $professional->RC = $data['RC'];
         $professional->NIF = $data['NIF'];
         $professional->type = $data['type'];
-        $user->professionnel()->save($professional);
+        $user->professional()->save($professional);
 
         $cart = new Cart();
         $cart->professional_id = $professional->id;
@@ -190,7 +191,7 @@ class RegisterController extends Controller
             $particular = new Particulier();
             $particular->phone = $data['phone'];
             $particular->wilaya = $data['wilaya'];
-            $user->particulier()->save($particular);
+            $user->particular()->save($particular);
             $cart = new Particularcart();
             $cart->particular_id = $particular->id;
             $cart->save();

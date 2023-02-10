@@ -1,12 +1,28 @@
 @extends('layouts.front')
 @section('content')
 
-
 <div class="container">
-  <form class="form-horizontal checkout" role="form">
-       <div id="title-bg">
-            <div class="title">Confirmation de la commande</div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title-wrap">
+                <div class="page-title-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; Confirmation</div>
+                        <div class="bigtitle" style="color:#1847AD">Confirmation de la commande</div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+  <form class="form-horizontal checkout" role="form">
+
+        <h5>Merci de bien vérifier les détails de votre commande</h5>
+       
         <div class="table-responsive">
             <table class="table table-bordered chart">
                 <thead>
@@ -43,7 +59,7 @@
                 </div>
                 @endif
                 <div class="total">Total : <span class="bigprice">{{ number_format($total,2) }} Da</span></div>
-                <a href="{{ url('app-professional/success-order') }}"class="btn btn-default btn-red btn-sm">Commander</a>
+                <a href="{{ url('app-professional/success-order') }}"class="btn btn-default btn-red btn-lg">Commander</a>
             </div>
             <div class="clearfix"></div>
             </div>

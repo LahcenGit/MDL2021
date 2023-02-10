@@ -177,7 +177,7 @@ html,body {
 	color:#343c47;
 	text-decoration:none;
 }
-.myacc, .mycheck, .myshop, .sign-out{
+.myacc, .mycheck, .myshop, .sign-out, .mypro{
 	display:block;
 	text-indent:27px;
 	line-height:21px;
@@ -204,8 +204,12 @@ html,body {
 	margin-left:5px;
 	color:#1089a1;
 }
+
 .myacc {
 	background:url(images/account.png) no-repeat;
+}
+.mypro {
+	background:url(images/pro.png) no-repeat;
 }
 .mycheck {
 	background:url(images/checkout.png) no-repeat;

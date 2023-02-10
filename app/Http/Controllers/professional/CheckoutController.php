@@ -21,6 +21,12 @@ class CheckoutController extends Controller
         $this->middleware('professionalParticularAuth');
     }
 
+
+
+    public function index(){
+       return redirect('/app-professional/order-professional');
+    }
+
     public function store(Request $request){
         $professional = Professionnel::where('user_id', Auth::user()->id)->first();
         $cart_temp = Cart::where('professional_id',$professional->id)->first();

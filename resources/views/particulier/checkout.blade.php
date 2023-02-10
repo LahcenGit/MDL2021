@@ -9,8 +9,8 @@
                 <div class="page-title-inner">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="bread"><a href="#">Accuiel</a> &rsaquo; Validation</div>
-                        <div class="bigtitle">Validation</div>
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; Validation</div>
+                        <div class="bigtitle" style="color:#1847AD">Validation</div>
                     </div>
 
                 </div>
@@ -34,12 +34,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" style="margin-bottom: 8px;">
                             <input type="text" class="form-control" id="name" placeholder="Adresse" name="address" required>
                         </div>
                         <div class="col-sm-6">
                            <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
-                                <option value="0">Wilaya</option>
+                                 <option value="" disabled selected>La wilaya: </option>
                                 <option value="Alger" @if(old('wilaya')== 'Alger') selected @endif>Alger</option>
                                 <option value="Oran" @if(old('wilaya')== 'Oran') selected @endif>Oran</option>
                                 <option value="Aïn Témouchent" @if(old('wilaya')== 'Aïn Témouchent') selected @endif>Aïn Témouchent</option>
@@ -90,24 +90,23 @@
             </div>
         </div>
         <div id="title-bg">
-            <div class="title">Remarque</div>
+            <div class="title">Remarque (optionnel)</div>
         </div>
         <p>Remarques sur la commande, par exemple les instructions de livraison.</p>
         <div class="form-group ">
-            <div class="col-sm-12">
-                <textarea class="form-control" name="note"></textarea>
+            <div class="col-sm-8">
+                <textarea class="form-control"  name="note" style="
+                height: 100px;"></textarea>
             </div>
         </div>
 
         <div class="row d-flex justify-content-center">
-            <div id="title-bg">
-            </div>
 
             <div style="margin-bottom: 10px;">
                 <span >Cliquez-ici pour valider votre commande. </span>
             </div>
             <div>
-                 <button type="submit" class="btn btn-default btn-red">Commander</button></a>
+                 <button type="submit" class="btn btn-default btn-red btn-lg">Commander</button></a>
             </div>
 
         </div>

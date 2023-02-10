@@ -51,11 +51,19 @@
 
 </style>
 <div class="container">
-    <ul class="small-menu"><!--small-nav -->
-        <li>Créer votre compte maintenant ! </li>
-        <li><a href="{{ url('/register-particular') }}" class="myacc">Particulier</a></li>
-        <li><a href="{{ url('/register-professional') }}"  class="myshop">Professionnel</a></li>
-    </ul><!--small-nav -->
+
+    @auth
+        <ul class="small-menu"><!--small-nav -->
+            <li ><a href="javascript:void(0)" class="myacc">Bonjour, <span style="color: #6fb53d">{{ucfirst(Auth::user()->name) }}</span> </a> </li>
+        </ul><!--small-nav -->
+    @else
+        <ul class="small-menu"><!--small-nav -->
+            <li>Créer votre compte maintenant ! </li>
+            <li><a href="{{ url('/register-particular') }}" class="myacc">Particulier</a></li>
+            <li><a href="{{ url('/register-professional') }}"  class="mypro">Professionnel</a></li>
+        </ul><!--small-nav -->
+    @endauth
+   
     <div class="clearfix"></div>
     <div class="lines"></div>
     <div class="main-slide">

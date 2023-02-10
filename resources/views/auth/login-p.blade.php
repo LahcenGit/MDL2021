@@ -26,6 +26,13 @@
                 </div>
 
                 <h5>Entrez vos informations de connexion pour accéder à votre compte.</h5>
+
+                @if(Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
+
                 <div class="form-group dob" style=""> 
                    <div class="col-sm-12">
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="username" placeholder="Email" required>
@@ -73,7 +80,7 @@
                     <div class="col-sm-12">
                         <ul class="small-menu"><!--small-nav -->
                             <li style="background-color: #DADFE2; padding:20px;"><a  href="{{ url('/register-particular') }}" class="myacc">Particulier</a></li>
-                            <li style="background-color: #DADFE2; padding:20px;"><a  href="{{ url('/register-professional') }}" class="myshop">Professionnel</a></li>
+                            <li style="background-color: #DADFE2; padding:20px;"><a  href="{{ url('/register-professional') }}" class="mypro">Professionnel</a></li>
                         </ul><!--small-nav -->
                     </div>
                 </div>

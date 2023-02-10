@@ -98,6 +98,10 @@
 				transform: translateY(-2px);
 			}
 
+			.invalid-feedback{
+				color: #C7413D;
+			}
+
 			@media (max-width:500px){
 				.main-text{
 					font-size: 22px;
@@ -268,11 +272,16 @@
     <script src="{{ asset('mdltheme/js/shop.js') }}"></script>
 
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-
+	<script src="https://cdn.datatables.net/plug-ins/1.10.21/i18n/French.json"></script>
 	<script>
 
 		$(document).ready( function () {
-  		    $('#myTable').DataTable();
+  		    $('#myTable').DataTable({
+				language: {
+						url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/French.json"
+					}
+			});
+
 		});
 
 		$(".my-rating").starRating({
