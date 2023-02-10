@@ -20,8 +20,8 @@
 
     <div class="row">
         <ul class="small-menu"><!--small-nav -->
-            <li><a href=""  class="myshop">Mes commandes</a></li>
-            <li><a href="" class="myacc">Mon profil</a></li>
+            <li><a href="{{ asset('/app-professional') }}"  class="myshop">Mes commandes</a></li>
+            <li><a href="{{ asset('app-professional/profil') }}" class="myacc">Mon profil</a></li>
             <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="sign-out">Déconnexion</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf

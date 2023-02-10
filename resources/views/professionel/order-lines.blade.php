@@ -20,8 +20,8 @@
 
     <div class="row">
         <ul class="small-menu"><!--small-nav -->
-            <li><a href="{{ url('/app-professional') }}"  class="myshop">Mes commandes</a></li>
-            <li><a href="#" class="myacc">Mon profil</a></li>
+            <li><a href="{{ asset('/app-professional') }}"  class="myshop">Mes commandes</a></li>
+            <li><a href="{{ asset('app-professional/profil') }}" class="myacc">Mon profil</a></li>
             <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="sign-out">Déconnexion</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
@@ -33,7 +33,7 @@
     </div>
 
     <div id="title-bg">
-        <div class="title">Détail commande N°{{$number}}</div>
+        <div class="title">Détail commande N°{{$code}}</div>
 
     </div>
 
@@ -61,7 +61,7 @@
                         <td>{{ $orderline->qte }}</td>
                         <td>{{ $orderline->pu }}</td>
                         <td>{{ number_format($orderline->total) }}</td>
-    
+
                     </tr>
                     @endforeach
                 </tbody>
@@ -77,14 +77,14 @@
                 </div>
                 @endif
                 <div class="total">Total : <span class="bigprice">{{ number_format($total,2) }} Da</span></div>
-    
+
             </div>
             <div class="clearfix"></div>
             </div>
         </div>
 
     </div>
-    
+
 
     <div class="spacer"></div>
 </div>

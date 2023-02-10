@@ -28,7 +28,8 @@ use App\Http\Controllers\Particular\ParticularcheckoutController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\Particular\ProfilParticularController;
+use App\Http\Controllers\Professional\ProfilProfessionalController;
 use App\Models\Citie;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
@@ -210,6 +211,7 @@ Route::middleware('professionalParticularAuth')->group(function () {
     Route::get('/app-professional/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder'])->middleware('can:professional');
     Route::get('/script', [App\Http\Controllers\professional\OrderProfessionalController::class, 'script']);
     Route::get('/app-professional', [App\Http\Controllers\professional\AppProfessionalController::class, 'index']);
+    Route::resource('/app-professional/profil', ProfilProfessionalController::class)->middleware('can:professional');
     Route::get('/app-professional/order-lines/{id}', [App\Http\Controllers\professional\AppProfessionalController::class, 'orderLines'])->middleware('can:professional');
 });
 
@@ -227,6 +229,7 @@ Route::middleware('professionalParticularAuth')->group(function () {
     Route::resource('/app-particular/checkout', ParticularcheckoutController::class)->middleware('can:particular');
     Route::post('/app-particular/success-order', [App\Http\Controllers\particular\particularcheckoutController::class, 'successOrder'])->middleware('can:particular');
     Route::get('/app-particular/order-lines/{id}', [App\Http\Controllers\particular\AppparticularController::class, 'orderLines'])->middleware('can:particular');
+    Route::resource('/app-particular/profil', ProfilParticularController::class)->middleware('can:particular');
     Route::get('/app-particular/success-order', function () {
        return view('particulier.success-order');
     });

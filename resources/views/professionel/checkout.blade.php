@@ -18,11 +18,24 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <ul class="small-menu"><!--small-nav -->
+            <li><a href="{{ asset('/app-professional') }}"  class="myshop">Mes commandes</a></li>
+            <li><a href="{{ asset('app-professional/profil') }}" class="myacc">Mon profil</a></li>
+            <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="sign-out">Déconnexion</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+        </ul><!--small-nav -->
+        <div class="clearfix"></div>
+        <div class="lines"></div>
+    </div>
 
   <form class="form-horizontal checkout" role="form">
 
         <h5>Merci de bien vérifier les détails de votre commande</h5>
-       
+
         <div class="table-responsive">
             <table class="table table-bordered chart">
                 <thead>

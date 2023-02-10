@@ -30,8 +30,9 @@ class AppProfessionalController extends Controller
             $total = $total + $tva;
         }
 
-        $number = $id;
+       $order = Professionalorder::find($id);
+       $code = $order->code;
 
-        return view('professionel.order-lines',compact('orderlines','total','sub_total','tva','number'));
+        return view('professionel.order-lines',compact('orderlines','total','sub_total','tva','code'));
     }
 }

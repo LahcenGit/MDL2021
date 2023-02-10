@@ -12,7 +12,7 @@
                         <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; Inscription</div>
                         <div class="bigtitle" style="color:#1847AD">Inscription pour les Particuliers</div>
                     </div>
-                
+
                 </div>
                 </div>
             </div>
@@ -75,6 +75,8 @@
                         <span class="invalid-feedback" role="alert">
                             {{ $message }}
                         </span>
+                        @else
+                        <span >minimum 8 caractères. </span>
                         @enderror
                     </div>
 

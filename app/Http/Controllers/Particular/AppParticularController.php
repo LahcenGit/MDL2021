@@ -24,6 +24,8 @@ class AppParticularController extends Controller
         $particular = Particulier::where('user_id',Auth::user()->id)->first();
         $orderlines = Particularorderline::where('particularorder_id',$id)->get();
         $total = Particularorderline::where('particularorder_id',$id)->sum('total');
-        return view('particulier.order-lines',compact('orderlines','total'));
+        $order = Particularorder::find($id);
+        $code = $order->code;
+        return view('particulier.order-lines',compact('orderlines','total','code'));
     }
 }

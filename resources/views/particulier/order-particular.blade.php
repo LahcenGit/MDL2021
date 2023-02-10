@@ -29,8 +29,8 @@
 
     <div class="row">
         <ul class="small-menu"><!--small-nav -->
-            <li><a href="{{ url('/app-particular') }}"  class="myshop">Mes commandes</a></li>
-            <li><a href="#" class="myacc">Mon profil</a></li>
+            <li><a href="{{ asset('/app-particular') }}"  class="myshop">Mes commandes</a></li>
+            <li><a href="{{ asset('/app-particular/profil') }}" class="myacc">Mon profil</a></li>
             <li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"  class="sign-out">Déconnexion</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
