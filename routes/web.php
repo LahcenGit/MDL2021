@@ -259,3 +259,9 @@ Route::resource('/comment',CommentController::class);
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/quality', function () {
+    return view('quality');
+});
+Route::get('/recipes', function () {
+    return view('recipe');
+});

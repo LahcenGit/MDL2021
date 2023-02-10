@@ -19,6 +19,7 @@ class FrontController extends Controller
     }
     public function detailProduct($slug){
         $product = Produit::where('slug',$slug)->first();
+        $rating = Comment::where('product_id',$product->id)->avg('rating');
         $related_products = Produit::where('slug', '!=' , $slug)->where('type','particular')->limit(3)->get();
         $best_sellers = Particularorderline::selectRaw('sum(qte) as sum')
                                             ->selectRaw('product_id')
@@ -27,7 +28,7 @@ class FrontController extends Controller
                                             ->orderBy('sum','desc')
                                             ->limit('3')->get();
         $comments = Comment::where('product_id',$product->id)->get();
-        return view('detail-product',compact('product','related_products','best_sellers','comments'));
+        return view('detail-product',compact('product','related_products','best_sellers','comments','rating'));
     }
 
     public function products(){

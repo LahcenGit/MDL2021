@@ -616,7 +616,7 @@ html,body {
 	float:left;
 }
 .page-content{
-	font-size:13px;
+	font-size:15px;
 	color:#7D8388;
 }
 /**sidebar**/
@@ -1702,7 +1702,7 @@ html,body {
 }
 .shop-tab-ct p{
 	color: #798086 !important;
-	font-size: 13px !important;
+	font-size: 15px !important;
 	line-height:1.5em;
 	padding:15px 0;
 }

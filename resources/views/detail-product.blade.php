@@ -27,10 +27,9 @@
                 <div class="page-title-inner">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="bread"><a href="#">Home</a> &rsaquo;Produit</div>
-                        <div class="bigtitle">{{ $product->designation }}</div>
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; Produit</div>
+                        <div class="bigtitle" style="color:#1847AD">{{ $product->designation }}</div>
                     </div>
-
                 </div>
                 </div>
             </div>
@@ -58,33 +57,19 @@
                         <div class="infospan" >Type d'emabllage <span  style="padding: 0px !important">{{ $product->type_emb }}</span></div>
                         <div class="infospan">DLC <span>{{ $product->dlc }}</span></div>
                         <div class="average">
-                        <form role="form">
                         <div class="form-group">
-                            <div class="rate"><span class="lbl">Avis</span>
+                            <input type="hidden" value={{$rating}} id="rate-result">
+                            <div class="rate"><span class="lbl">Note : </span>
                             </div>
-                            <div class="starwrap">
-                                 {{-- <div id="score"></div> --}}
-                                <img src="{{ asset('mdltheme/js/rate/images/star-on.png') }}" alt="1" title="regular">
-                                <img src="{{ asset('mdltheme/js/rate/images/star-on.png') }}" alt="1" title="regular">
-                                <img src="{{ asset('mdltheme/js/rate/images/star-on.png') }}" alt="1" title="regular">
-                                <img src="{{ asset('mdltheme/js/rate/images/star-on.png') }}" alt="1" title="regular">
-                                <img src="{{ asset('mdltheme/js/rate/images/star-off.png') }}" alt="4" title="regular">
-                            </div>
+                            <div class="rating-result"></div>
                             <div class="clearfix"></div>
                         </div>
-                        </form>
+
                         </div>
-                        <div class="sharing">
-                            <div class="share-bt">
-                                <div class="addthis_toolbox addthis_default_style ">
-                                    <a class="addthis_counter addthis_pill_style"></a>
-                                </div>
-                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f0d0827271d1c3b"></script>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="avatock"><span>In stock</span></div>
+                        <div class="sharing" >
+                            <img src="{{ asset('/gout-naturel.png')}}" alt="" class="img-responsive"/>
                         </div>
-                        <a href="{{ asset('/app-particular/order') }}" class="btn btn-default btn-red btn-lg" style="margin-top: 10px">Construire votre pack</a>
+                        <a href="{{ asset('/app-particular/order') }}" class="btn btn-default btn-red btn-lg"  style="margin-top: 10px;font-size:15px">Construire votre pack</a>
                     </div>
                 </div>
             </div>
@@ -92,7 +77,7 @@
             <div class="tab-review">
                 <ul id="myTab" class="nav nav-tabs shop-tab">
                     <li class="active"><a href="#desc" data-toggle="tab">Description</a></li>
-                    <li class=""><a href="#rev" data-toggle="tab">Commentaires ({{ $comments->count() }})</a></li>
+                    <li class=""><a href="#rev" data-toggle="tab">Avis ({{ $comments->count() }})</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content shop-tab-ct">
                     <div class="tab-pane fade active in" id="desc">
@@ -104,24 +89,34 @@
                         <div id="add-comment">
                             @foreach($comments as $comment)
                             <p class="dash">
-                            <span>{{ $comment->user->name }}</span> ({{ $comment->created_at->format('Y-m-d H:m') }})<br/><br/>
+                            <span>{{ $comment->user->name }}</span> ({{ $comment->created_at->format('Y-m-d H:m') }}) | (<b>{{$comment->rating }}/5</b>)<br/>
                             {{ $comment->comment }}.
                             </p>
                             @endforeach
                         </div>
-                        <h4>Ajouter un commentaire</h4>
-                        <form id="comment-form" action="{{asset('/comment')}}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <textarea class="form-control" id="comment" ></textarea>
-                            </div>
-                            <input class="form-control" type="hidden" id="product" value="{{ $product->id }}" >
 
-                            <div id="show_comment_msg" >
+                        @Auth
+                            <h5>Votre note :</h5>
+                            <div class="my-rating"></div>
+                            <h5>Commentaire :</h5>
+                            <form id="comment-form" action="{{asset('/comment')}}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea class="form-control" id="comment" ></textarea>
+                                </div>
 
-                            </div>
-                            <button class="btn btn-default btn-red btn-sm">Envoyer</button>
-                        </form>
+                                <input type="hidden" id="product" value="{{ $product->id }}" >
+
+                                <div id="show_comment_msg" >
+
+                                </div>
+                                <button class="btn btn-default btn-red btn-sm">Envoyer</button>
+                            </form>
+                        @else
+                         <h5>Veuillez vous authentifier pour pouvoir poster un commentaire.</h5>
+                         <a href="{{asset('/connexion')}}"><button class="btn btn-default btn-red">Se connecter</button></a> 
+                        @endauth
+                 
                     </div>
                 </div>
             </div>
@@ -146,24 +141,13 @@
             </div><!--Products-->
             <div class="spacer"></div>
         </div><!--Main content-->
+        
         <div class="col-md-3"><!--sidebar-->
-            <div id="title-bg">
-                <div class="title">Categories</div>
-            </div>
-
-            <div class="categorybox">
-                <ul>
-                    <li><a href="#">Zahra</a></li>
-                    <li><a href="#">Noora</a></li>
-                    <li><a href="#">jnan</a></li>
-                </ul>
-            </div>
-
-            <div class="ads">
-            </div>
-
-
-
+            
+                <div>
+                  <img style="border-radius:10px" src="{{asset('/banner-02.jpg')}}" width="100%" height="100%" alt="" srcset="">
+                </div>
+    
         </div><!--sidebar-->
     </div>
 </div>
@@ -182,11 +166,15 @@
         $('#show_comment_msg').html('<div >En cours....</div>');
         var comment = $('#comment').val();
         var product = $('#product').val();
+        var rating = $('.my-rating').starRating('getRating');
         var formURL = $(this).attr("action");
+
+
         var data = {
             "_token": "{{ csrf_token() }}",
             comment: comment,
-            product: product
+            product: product,
+            rating: rating
         };
         $.ajax(
                 {

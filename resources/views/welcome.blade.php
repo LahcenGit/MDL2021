@@ -139,7 +139,7 @@
 <div class="f-widget featpro">
     <div class="container">
         <div id="title-widget-bg">
-            <div class="title-widget">Nos produits</div>
+            <div class="title-widget">Nos produits 100% naturels</div>
             <div class="carousel-nav">
                 <a class="prev"></a>
                 <a class="next"></a>
@@ -170,7 +170,7 @@
             <div id="title-bg">
                 <div class="title">Une seule mission !</div>
             </div>
-            <p class="ct">
+            <p class="ct" style="font-size:15px">
                 Chez La Maison du Lait, nous croyons que manger sainement tout en se faisant plaisir n'est pas une contradiction, mais une mission.
 
                 C'est pourquoi nous proposons des <b style="color: #6fb53d"> produits laitiers frais</b> pour chaque instant de la vie et pour le plus grand plaisir de tous.

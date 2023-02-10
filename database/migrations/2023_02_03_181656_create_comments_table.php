@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->longText('comment');
+            $table->float('rating');
+            $table->tinyInteger('flag')->nullable();
             $table->foreign('product_id')->references('id')->on('produits')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

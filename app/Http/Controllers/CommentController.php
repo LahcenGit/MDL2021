@@ -18,6 +18,7 @@ class CommentController extends Controller
             $comment->user_id = $user->id;
             $comment->product_id = $request->product;
             $comment->comment = $request->comment;
+            $comment->rating = $request->rating;
             $comment->save();
 
             $data = array(

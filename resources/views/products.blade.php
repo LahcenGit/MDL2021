@@ -21,9 +21,9 @@
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="bread"><a href="#">Accueil</a> &rsaquo; Produits</div>
-                        <div class="bigtitle">Nos produits</div>
+                    <div class="col-md-12">
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; Produits</div>
+                        <div class="bigtitle" style="color:#1847AD">Nos produits 100% naturels</div>
                     </div>
                 </div>
                 </div>

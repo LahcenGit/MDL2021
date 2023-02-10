@@ -15,8 +15,8 @@
                 <div class="page-title-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="bread"><a href="#">Accueil</a> &rsaquo; Article</div>
-                        <div class="bigtitle">{{ $blog->title }}</div>
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; Article</div>
+                        <div class="bigtitle" style="color:#1847AD">{{ $blog->title }}</div>
                     </div>
 
                 </div>
@@ -47,12 +47,11 @@
             </div>
             <div class="tab-review">
                 <ul id="myTab" class="nav nav-tabs shop-tab">
-                    <li class="active"><a href="#desc" data-toggle="tab">Description</a></li>
+                    <li class="active"><a href="#desc" data-toggle="tab"><b>{{ $blog->date }}</b></a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content shop-tab-ct">
                     <div class="tab-pane fade active in" id="desc">
                         <p>
-                        {{ $blog->date }}<br>
                         {{$blog->description}}
                         </p>
                     </div>

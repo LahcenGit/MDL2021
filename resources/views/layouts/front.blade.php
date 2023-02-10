@@ -24,12 +24,16 @@
 	<!-- owl Style -->
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.carousel.css') }}" />
 	<link rel="stylesheet" href="{{ asset('mdltheme/css/owl.transitions.css') }}" />
+
+	<link rel="stylesheet" href="{{ asset('plugins/star-rating-svg.css') }}" />
+
 	<link rel="stylesheet" type="text/css" href="{{ asset('mdltheme/js/product/jquery.fancybox.css?v=2.1.5') }}" media="screen" />
 	<link href='https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+	
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -46,7 +50,7 @@
 			}
 			.main-text{
 				color: white;
-				font-family: 'Sacramento', cursive;
+				font-family: 'Dancing Script', cursive;
 				font-size: 30px;
 			}
 			.header-row{
@@ -118,7 +122,7 @@
 		<div class="container">
 			<div class="row header-row mt-2" style="height: 90px; padding: 5px;">
 				<div class="col-xs-4 col-md-2">
-					<a href="#"><img src="{{asset('mdltheme/images/logo.png')}}"  alt="logo-maison-du-lait" class="logo img-responsive main-logo" /></a>
+					<a href="{{asset('/')}}"><img src="{{asset('mdltheme/images/logo.png')}}"  alt="logo-maison-du-lait" class="logo img-responsive main-logo" /></a>
 				</div>
 
 				<div class="col-xs-4 col-md-8 text-center">
@@ -160,6 +164,8 @@
 							<ul class="nav navbar-nav">
 								<li><a href="{{asset('/welcome')}}" class="active">Accueil</a><div class="curve"></div></li>
 								<li><a href="{{ asset('/products') }}">Produits</a></li>
+								<li><a href="{{ asset('/quality') }}">Qualité</a></li>
+								<li><a href="{{ asset('/recipes') }}">Recettes</a></li>
 								<li><a href="{{ asset('/about') }}">A propos</a></li>
 								<li><a href="{{ asset('/contact') }}">Contactez-nous</a></li>
 							</ul>
@@ -178,7 +184,7 @@
 			<div class="row">
 				<div class="col-md-4"><!--footer twitter widget-->
 					<div id="title-widget-bg">
-						<div class="title-widget">La maison du lait</div>
+						<div class="title-widget"  >La Maison du Lait</div>
 					</div>
 					<ul class="tweets">
 						<li>La laiteire La Maison du lait S.A.R.L est une entreprise familiale Algérienne.
@@ -213,7 +219,7 @@
 					<ul class="contact-widget">
 						<li class="fphone">+213 560 09 90 33</li>
 						<li class="fmail lastone">contact@lamaisondulait.dz</li>
-						<li class="fmobile">ZI remchi bp 322 Tlemcen-, lgerie </li>
+						<li class="fmobile">ZI remchi bp 322 Tlemcen, Algerie </li>
 					</ul>
 				</div><!--footer contact widget-->
 			</div>
@@ -239,9 +245,7 @@
     <script src="{{ asset('mdltheme/bootstrap/js/bootstrap.min.js') }}"></script>
 
 	<!-- map -->
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-	<script type="text/javascript" src="{{ asset('mdltheme/js/jquery.ui.map.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('mdltheme/js/demo.js') }}"></script>
 
 	<!-- owl carousel -->
@@ -257,21 +261,33 @@
 	<!-- fancybox -->
     <script type="text/javascript" src="{{ asset('mdltheme/js/product/jquery.fancybox.js?v=2.1.5') }}"></script>
 
+	<!-- rating -->
+    <script type="text/javascript" src="{{ asset('plugins/jquery.star-rating-svg.js') }}"></script>
+
 	<!-- custom js -->
     <script src="{{ asset('mdltheme/js/shop.js') }}"></script>
 
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.13.1/i18n/fr-FR.json"></script>
 
 	<script>
+
 		$(document).ready( function () {
   		    $('#myTable').DataTable();
-		} );
+		});
 
+		$(".my-rating").starRating({
+			starSize: 25,
+			initialRating: 3.5,
+		});
+
+		let rate =$('#rate-result').val();
+
+		$(".rating-result").starRating({
+			starSize: 25,
+			initialRating: rate,
+		});
 
 	</script>
-
-
 
 	@stack('order-pro-front')
     @stack('contact-scripts')

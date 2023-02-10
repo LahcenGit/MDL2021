@@ -9,8 +9,8 @@
                 <div class="page-title-inner">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="bread"><a href="#">Accueil</a> &rsaquo; Authentification</div>
-                        <div class="bigtitle">Authentification</div>
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; connexion</div>
+                        <div class="bigtitle" style="color:#1847AD">Connexion</div>
                     </div>
                 </div>
                 </div>
@@ -22,9 +22,11 @@
         <div class="row">
             <div  class="col-md-6">
                 <div id="title-bg">
-                    <div class="title">Détails compte</div>
+                    <div class="title" >Détails du compte</div>
                 </div>
-                <div class="form-group dob">
+
+                <h5>Entrez vos informations de connexion pour accéder à votre compte.</h5>
+                <div class="form-group dob" style=""> 
                    <div class="col-sm-12">
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="username" placeholder="Email" required>
                         @error('email')
@@ -49,14 +51,14 @@
                         <div class="single-checkbox ">
                             <div class="checkbox-inline">
                                 <input class="check-input" type="checkbox" id="check15" name="remember_me">
-                                <label class="checkbox-label" for="check15"> Se souvenir de moi </label>
+                                <label class="checkbox-label" for="check15" style="font-weight:300"> Se souvenir de moi </label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-default btn-red ">Se connecter</button>
                 @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                    <a class="btn btn-link"  style="color:#1847AD" href="{{ route('password.request') }}">
                         {{ __('Mot de passe oublié?') }}
                     </a>
                 @endif
@@ -65,11 +67,13 @@
                 <div id="title-bg">
                     <div class="title">Inscription</div>
                 </div>
+
+                <h5>Si vous n'avez pas de compte, veuillez vous inscrire pour accéder à nos services</h5>
                 <div class="form-group">
                     <div class="col-sm-12">
                         <ul class="small-menu"><!--small-nav -->
-                            <li><a href="{{ url('/register-particular') }}" class="myacc">Particulier</a></li>
-                            <li><a href="{{ url('/register-professional') }}"  class="myshop">Professionnel</a></li>
+                            <li style="background-color: #DADFE2; padding:20px;"><a  href="{{ url('/register-particular') }}" class="myacc">Particulier</a></li>
+                            <li style="background-color: #DADFE2; padding:20px;"><a  href="{{ url('/register-professional') }}" class="myshop">Professionnel</a></li>
                         </ul><!--small-nav -->
                     </div>
                 </div>
