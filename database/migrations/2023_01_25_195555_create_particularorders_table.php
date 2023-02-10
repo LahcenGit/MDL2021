@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('note')->nullable();
             $table->float('total');
+            $table->string('code')->nullable();
             $table->tinyInteger('status');
             $table->float('discount')->nullable();
             $table->tinyInteger('flag')->nullable();

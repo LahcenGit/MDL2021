@@ -10,6 +10,7 @@ use App\Models\Professionalorder;
 use App\Models\Professionalorderline;
 use App\Models\Professionnel;
 use App\Models\Tarification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -126,12 +127,15 @@ class CheckoutController extends Controller
         $professional = Professionnel::where('user_id',Auth::user()->id)->first();
         $cart = Cart::where('professional_id',$professional->id)->first();
         $cartlines = $cart->cartlines;
+        $date = Carbon::now()->format('y');
         if($cartlines){
             $total_order = Cartline::where('cart_id',$cart->id)->sum('total');
             $order = new Professionalorder();
             $order->professional_id = $professional->id;
             $order->status = 1;
             $order->total = $total_order;
+            $order->save();
+            $order->code = 'mdl'.'-'.$date.'-'.$order->id;
             $order->save();
             foreach($cartlines as $cartline){
                 $orderline = new Professionalorderline();

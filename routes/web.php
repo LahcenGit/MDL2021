@@ -227,6 +227,9 @@ Route::middleware('professionalParticularAuth')->group(function () {
     Route::resource('/app-particular/checkout', ParticularcheckoutController::class)->middleware('can:particular');
     Route::post('/app-particular/success-order', [App\Http\Controllers\particular\particularcheckoutController::class, 'successOrder'])->middleware('can:particular');
     Route::get('/app-particular/order-lines/{id}', [App\Http\Controllers\particular\AppparticularController::class, 'orderLines'])->middleware('can:particular');
+    Route::get('/app-particular/success-order', function () {
+       return view('particulier.success-order');
+    });
 });
 
 //

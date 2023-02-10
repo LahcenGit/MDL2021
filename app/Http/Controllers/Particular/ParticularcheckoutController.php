@@ -10,6 +10,7 @@ use App\Models\Particularorderline;
 use App\Models\Particulier;
 use App\Models\Produit;
 use App\Models\Wilaya;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,6 +65,7 @@ class ParticularcheckoutController extends Controller
     public function successOrder(Request $request){
         $particular = Particulier::where('user_id',Auth::user()->id)->first();
         $cart = Particularcart::where('particular_id',$particular->id)->first();
+        $date = Carbon::now()->format('y');
         $cartlines = $cart->cartlines;
         if($cartlines){
             $total_order = Particularcartline::where('particularcart_id',$cart->id)->sum('total');
@@ -76,6 +78,8 @@ class ParticularcheckoutController extends Controller
             $order->status = 1;
             $order->total = $total_order;
             $order->note = $request->note;
+            $order->save();
+            $order->code = 'mdl'.'-'.$date.'-'.$order->id;
             $order->save();
             foreach($cartlines as $cartline){
                 $orderline = new Particularorderline();

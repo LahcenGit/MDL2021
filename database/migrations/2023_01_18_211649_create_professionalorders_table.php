@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('total');
             $table->tinyInteger('status');
             $table->float('discount')->nullable();
+            $table->string('code')->nullable();
             $table->tinyInteger('flag')->nullable();
             $table->string('slug')->nullable();
             $table->foreign('professional_id')->references('id')->on('professionnels')->onDelete('cascade');
