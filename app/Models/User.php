@@ -44,12 +44,12 @@ class User extends Authenticatable
 
     public function professional()
     {
-        return $this->hasOne(professionnel::class);
+        return $this->hasOne(Professionnel::class);
     }
 
     public function particular()
     {
-        return $this->hasOne(particulier::class);
+        return $this->hasOne(Particulier::class);
     }
 
 }
