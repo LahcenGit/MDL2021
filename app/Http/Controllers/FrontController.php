@@ -8,6 +8,7 @@ use App\Models\Particularcartline;
 use App\Models\Particularorderline;
 use App\Models\Produit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -27,8 +28,13 @@ class FrontController extends Controller
                                             ->groupBy('product_id')
                                             ->orderBy('sum','desc')
                                             ->limit('3')->get();
+        $nbr_comment = 0;
         $comments = Comment::where('product_id',$product->id)->get();
-        return view('detail-product',compact('product','related_products','best_sellers','comments','rating'));
+        if(Auth::user()){
+            $nbr_comment = Comment::where('product_id',$product->id)->where('user_id',Auth::user()->id)->count();
+        }
+
+        return view('detail-product',compact('product','related_products','best_sellers','comments','rating','nbr_comment'));
     }
 
     public function products(){

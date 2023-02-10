@@ -89,33 +89,37 @@
                         <div id="add-comment">
                             @foreach($comments as $comment)
                             <p class="dash">
-                            <span>{{ $comment->user->name }}</span> ({{ $comment->created_at->format('Y-m-d H:m') }}) | (<b>{{$comment->rating }}/5</b>)<br/>
+                            <span>{{ $comment->user->name }}</span> ({{ $comment->created_at->format('Y-m-d H:m') }}) | (<b>{{number_format($comment->rating) }}/5</b>)<br/>
                             {{ $comment->comment }}.
                             </p>
                             @endforeach
                         </div>
+                        @if($nbr_comment == 0)
+                            @Auth
+                                <div class="comment-section">
+                                    <h5>Votre note :</h5>
+                                    <div class="my-rating"></div>
+                                    <h5>Commentaire :</h5>
+                                    <form id="comment-form" action="{{asset('/comment')}}" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="comment" ></textarea>
+                                        </div>
 
-                        @Auth
-                            <h5>Votre note :</h5>
-                            <div class="my-rating"></div>
-                            <h5>Commentaire :</h5>
-                            <form id="comment-form" action="{{asset('/comment')}}" method="POST">
-                                @csrf
-                                <div class="form-group">
-                                    <textarea class="form-control" id="comment" ></textarea>
+                                        <input type="hidden" id="product" value="{{ $product->id }}" >
+                                        <button class="btn btn-default btn-red btn-sm">Envoyer</button>
+                                    </form>
                                 </div>
-
-                                <input type="hidden" id="product" value="{{ $product->id }}" >
-
                                 <div id="show_comment_msg" >
 
                                 </div>
-                                <button class="btn btn-default btn-red btn-sm">Envoyer</button>
-                            </form>
+                            @else
+                            <h5>Veuillez vous authentifier pour pouvoir poster un commentaire.</h5>
+                            <a href="{{asset('/connexion')}}"><button class="btn btn-default btn-red">Se connecter</button></a>
+                            @endauth
                         @else
-                         <h5>Veuillez vous authentifier pour pouvoir poster un commentaire.</h5>
-                         <a href="{{asset('/connexion')}}"><button class="btn btn-default btn-red">Se connecter</button></a>
-                        @endauth
+                        <h5 style="color: #be3935">Vous avez déja donné un avis sur ce produit !</h5>
+                        @endif
 
                     </div>
                 </div>
@@ -132,10 +136,10 @@
                                 <a href="{{ url('product/'.$related_product->slug) }}">
                                  <img src="{{ asset('mdltheme/images/'.$related_product->images[0]->lien) }}" alt="" class="img-responsive"/>
                                 </a>
-                                <div class="pricetag blue"><div class="inner"><span>{{ number_format($product->pu_ht) }} Da</span></div></div>
+                                <div class="pricetag blue"><div class="inner"><span>{{ number_format($related_product->pu_ht) }} Da</span></div></div>
                             </div>
                             <span class="smalltitle cut-text"><a href="{{ url('product/'.$related_product->slug) }}">{{ $related_product->designation }}</a></span>
-                            <span class="smalldesc">{{ $product->capacity }}</span>
+                            <span class="smalldesc">{{ $related_product->capacity }}</span>
 
                         </div>
                     </div>
@@ -184,15 +188,12 @@
                     type: "POST",
                     data: data,
                     success: function (res) {
-                       if(res != 'error'){
-                        $('#add-comment').append('<p class="dash"><span>'+res.name+'</span> ('+res.date+')<br/>'+res.comment+'</p>');
-                        $('#show_comment_msg').html('<div class="alert alert-success mt-2 flash-alert" id="form-success" role="alert"> Commentaire ajouté !</div>');
-                        $('#comment').val('').empty();
+                        $('#add-comment').append('<p class="dash"><span>'+res.name+'</span> ('+res.date+')'+' | '+'('+'<b>'+res.rating+'/'+'5'+'</b>'+')'+'<br/>'+res.comment+'</p>');
+                        $('#show_comment_msg').html('<div class="alert alert-success mt-2 flash-alert" id="form-success" role="alert"> Merci pour votre commentaire !</div>');
                         $(".flash-alert").slideDown(200).delay(3500).slideUp(200);
-                       }
-                       else{
-                        window.location.replace('/connexion');
-                       }
+                        $(".comment-section").hide();
+
+
                     }
                 });
         e.preventDefault();

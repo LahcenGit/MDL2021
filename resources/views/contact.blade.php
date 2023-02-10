@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="bread"><a href="#">Accueil</a> &rsaquo; Contact</div>
-                        <div class="bigtitle">Contactez-nous</div>
+                        <div class="bigtitle" style="color:#1847AD">Contactez-nous</div>
                     </div>
                 </div>
                 </div>
@@ -27,7 +27,7 @@
     <div class="row">
         <form id="contact-form" action="{{asset('/contact')}}" method="POST">
         @csrf
-    
+
         <div class="col-md-5">
             <div class="qc">
                 <div class="form-group">
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-      
+
         <div class="col-md-5" >
             <div class="qc">
                 <div class="form-group">

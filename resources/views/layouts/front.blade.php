@@ -33,7 +33,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
-	
+
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -294,6 +294,7 @@
 		$(".rating-result").starRating({
 			starSize: 25,
 			initialRating: rate,
+            readOnly: true
 		});
 
 	</script>

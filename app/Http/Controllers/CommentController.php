@@ -25,6 +25,7 @@ class CommentController extends Controller
                 'date' => $comment->created_at->format('Y-m-d H:m'),
                 'name' => $comment->user->name,
                 'comment' => $comment->comment,
+                'rating' => number_format($comment->rating),
             );
             return $data;
         }
