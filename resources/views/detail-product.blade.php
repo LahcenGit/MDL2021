@@ -114,9 +114,9 @@
                             </form>
                         @else
                          <h5>Veuillez vous authentifier pour pouvoir poster un commentaire.</h5>
-                         <a href="{{asset('/connexion')}}"><button class="btn btn-default btn-red">Se connecter</button></a> 
+                         <a href="{{asset('/connexion')}}"><button class="btn btn-default btn-red">Se connecter</button></a>
                         @endauth
-                 
+
                     </div>
                 </div>
             </div>
@@ -129,8 +129,10 @@
                         <div class="productwrap">
                             <div class="pr-img">
                                 <div class="hot"></div>
-                                <img src="{{ asset('mdltheme/images/'.$related_product->images[0]->lien) }}" alt="" class="img-responsive"/>
-                                <div class="pricetag blue"><div class="inner"><span>{{ $product->pu_ht }} Da</span></div></div>
+                                <a href="{{ url('product/'.$related_product->slug) }}">
+                                 <img src="{{ asset('mdltheme/images/'.$related_product->images[0]->lien) }}" alt="" class="img-responsive"/>
+                                </a>
+                                <div class="pricetag blue"><div class="inner"><span>{{ number_format($product->pu_ht) }} Da</span></div></div>
                             </div>
                             <span class="smalltitle cut-text"><a href="{{ url('product/'.$related_product->slug) }}">{{ $related_product->designation }}</a></span>
                             <span class="smalldesc">{{ $product->capacity }}</span>
@@ -141,13 +143,13 @@
             </div><!--Products-->
             <div class="spacer"></div>
         </div><!--Main content-->
-        
+
         <div class="col-md-3"><!--sidebar-->
-            
+
                 <div>
                   <img style="border-radius:10px" src="{{asset('/banner-02.jpg')}}" width="100%" height="100%" alt="" srcset="">
                 </div>
-    
+
         </div><!--sidebar-->
     </div>
 </div>
