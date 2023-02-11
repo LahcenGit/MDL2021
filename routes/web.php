@@ -269,3 +269,7 @@ Route::get('/quality', function () {
 Route::get('/recipes', function () {
     return view('recipe');
 });
+
+Route::get('/professionnel-pack-order', function () {
+    return view('professionel.do-not-access');
+});

@@ -53,7 +53,7 @@
                 </div>
             @endif
         <div class="row ">
-            <div class="md-col-12">
+            <div class="col-md-12">
                 <div id="title-bg">
                     <div class="title">Choisir vos produits </div>
                 </div>
