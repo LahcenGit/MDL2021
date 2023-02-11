@@ -7,8 +7,8 @@
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="bigtitle">Réinitialisation du mot de passe</div>
+                    <div class="col-md-12">
+                        <div class="bigtitle" style="color:#1847AD">Réinitialisation du mot de passe</div>
                     </div>
                 </div>
                 </div>

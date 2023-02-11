@@ -63,7 +63,7 @@
             <li><a href="{{ url('/register-professional') }}"  class="mypro">Professionnel</a></li>
         </ul><!--small-nav -->
     @endauth
-   
+
     <div class="clearfix"></div>
     <div class="lines"></div>
     <div class="main-slide">
@@ -245,14 +245,19 @@
         <div class="spacer"></div>
         </div><!--Main content-->
         <div class="col-md-3"><!--sidebar-->
-
             <div class="ads " >
-               <a href="{{asset('app-particular/order')}}"><img style="border-radius:10px" src="{{asset('/pack-02.jpg')}}" width="100%" height="100%" alt="" srcset=""></a>
+                @if(Auth::user())
+                    @if(Auth::user()->type == 'particulier')
+                    <a href="{{asset('app-particular/order')}}"><img style="border-radius:10px" src="{{asset('/pack-02.jpg')}}" width="100%" height="100%" alt="" srcset=""></a>
+                    @elseif(Auth::user()->type == 'professionnel')
+                    <a href="{{asset('professionnel-pack-order')}}"><img style="border-radius:10px" src="{{asset('/pack-02.jpg')}}" width="100%" height="100%" alt="" srcset=""></a>
+                    @endif
+                @else
+                <a href="{{asset('app-particular/order')}}"><img style="border-radius:10px" src="{{asset('/pack-02.jpg')}}" width="100%" height="100%" alt="" srcset=""></a>
+                @endif
             </div>
 
         </div><!--sidebar-->
-
-
     </div>
 
     <div class="row">

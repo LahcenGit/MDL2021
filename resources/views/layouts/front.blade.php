@@ -172,7 +172,7 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="{{asset('/welcome')}}" class="active">Accueil</a><div class="curve"></div></li>
+								<li><a href="{{asset('/')}}" class="active">Accueil</a><div class="curve"></div></li>
 								<li><a href="{{ asset('/products') }}">Produits</a></li>
 								<li><a href="{{ asset('/quality') }}">Qualité</a></li>
 								<li><a href="{{ asset('/recipes') }}">Recettes</a></li>

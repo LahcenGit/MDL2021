@@ -65,7 +65,7 @@
                             <input type="text" class="form-control" id="phone" value="{{ Auth::user()->particular->phone }}" name="phone">
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="email" value="{{ Auth::user()->email }}" name="phone">
+                            <input type="text" class="form-control" id="email" value="{{ Auth::user()->email }}" name="email">
                         </div>
                     </div>
             </div>

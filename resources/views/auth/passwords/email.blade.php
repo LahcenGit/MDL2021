@@ -7,9 +7,9 @@
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="bread"><a href="#">Accueil</a> &rsaquo; Mot de passe oublié</div>
-                        <div class="bigtitle">Mot de passe oublié</div>
+                        <div class="bigtitle" style="color:#1847AD">Mot de passe oublié</div>
                     </div>
                 </div>
                 </div>

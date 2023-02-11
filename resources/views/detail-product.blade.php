@@ -69,7 +69,15 @@
                         <div class="sharing" >
                             <img src="{{ asset('/gout-naturel.png')}}" alt="" class="img-responsive"/>
                         </div>
+                        @if(Auth::user())
+                            @if(Auth::user()->type == 'particulier')
+                            <a href="{{ asset('/app-particular/order') }}" class="btn btn-default btn-red btn-lg"  style="margin-top: 10px;font-size:15px">Construire votre pack</a>
+                            @elseif(Auth::user()->type == 'professionnel')
+                            <a href="{{ asset('/app-professional/order-professional') }}" class="btn btn-default btn-red btn-lg"  style="margin-top: 10px;font-size:15px">Lancer une commande professionnelle</a>
+                            @endif
+                        @else
                         <a href="{{ asset('/app-particular/order') }}" class="btn btn-default btn-red btn-lg"  style="margin-top: 10px;font-size:15px">Construire votre pack</a>
+                        @endif
                     </div>
                 </div>
             </div>

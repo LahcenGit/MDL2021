@@ -154,6 +154,7 @@ Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrder
 Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
 Route::get('admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
 Route::get('admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel'])->middleware('can:admin');
+Route::get('dashboard-admin/add-order-particular', [App\Http\Controllers\Admin\ParticularController::class, 'addOrder'])->middleware('can:admin');
 
 Route::resource('dashboard-admin', AdminController::class)->middleware('can:admin');
 
