@@ -11,9 +11,9 @@
 	 <link rel="shortcut icon" href="{{asset('/assets/images/logo.png')}}" />
 
     <!-- Fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700' rel='stylesheet' type='text/css'>
 
-	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<link href='{{ asset('mdltheme/font-awesome/css/font-awesome.css') }}' rel="stylesheet" type="text/css">
 	<!-- Bootstrap -->
 
@@ -100,6 +100,12 @@
 
 			.invalid-feedback{
 				color: #C7413D;
+			}
+
+			.form-control {
+
+  				height: 42px;
+
 			}
 
 			@media (max-width:500px){
@@ -276,7 +282,7 @@
 	<script>
 
 		$(document).ready( function () {
-  		    $('#myTable').DataTable({
+         $('#myTable').DataTable({
 				language: {
 						url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/French.json"
 					}

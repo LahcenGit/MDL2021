@@ -53,16 +53,18 @@
                 </div>
             @endif
         <div class="row ">
-            <div id="title-bg">
-                <div class="title">Choisir vos produits </div>
-            </div>
-            @if($error == null)
-            <p>Vous devez passer une commande d'un montant minimum de <b>2000 da</b></p>
-            @else
-                <div class="alert alert-danger mt-3" style="margin-top: 20px" role="alert">
-                    Vous devez passer une commande d'un montant minimum de <b>2000 da</b>
+            <div class="md-col-12">
+                <div id="title-bg">
+                    <div class="title">Choisir vos produits </div>
                 </div>
-            @endif
+                @if($error == null)
+                <p>Vous devez passer une commande d'un montant minimum de <b>2000 da</b></p>
+                @else
+                    <div class="alert alert-danger mt-3" style="margin-top: 20px" role="alert">
+                        Vous devez passer une commande d'un montant minimum de <b>2000 da</b>
+                    </div>
+                @endif
+            </div>
             <div class="spacer"></div>
 
             @foreach($products->split($products->count()/2) as $row)
@@ -94,14 +96,14 @@
         <div class="row d-flex justify-content-center">
             <div id="title-bg">
             </div>
-
-            <div style="margin-bottom: 10px;">
-                <span >Cliquez-ici pour avoir tous les détails de votre commande. </span>
+            <div class="col-md-12">
+                <div style="margin-bottom: 10px;">
+                    <span >Cliquez-ici pour avoir tous les détails de votre commande. </span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-default btn-red">Détails commande</button></a>
+                </div>
             </div>
-            <div>
-                 <button type="submit" class="btn btn-default btn-red">Détails commande</button></a>
-            </div>
-
         </div>
 
     </form>
