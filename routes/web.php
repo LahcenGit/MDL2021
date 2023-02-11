@@ -146,7 +146,6 @@ Route::resource('dashboard-admin/orders', AdminOrderController::class)->middlewa
 Route::resource('dashboard-admin/professional-orders', ProfessionalorderController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/professionals', ProfessionalController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/particular-orders', OrderparticularController::class)->middleware('can:admin');
-Route::resource('dashboard-admin/particulars', ParticularController::class)->middleware('can:admin');
 Route::resource('dashboard-admin/professionals', ProfessionalController::class)->middleware('can:admin');
 Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\Admin\ProfessionalorderController::class, 'detailOrder'])->middleware('can:admin');
 Route::get('/show-particular-orderline/{id}', [App\Http\Controllers\Admin\OrderparticularController::class, 'detailOrder'])->middleware('can:admin');
@@ -155,7 +154,10 @@ Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController
 Route::get('admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
 Route::get('admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel'])->middleware('can:admin');
 Route::get('dashboard-admin/add-order-particular', [App\Http\Controllers\Admin\ParticularController::class, 'addOrder'])->middleware('can:admin');
+Route::post('dashboard-admin/add-order-particular', [App\Http\Controllers\Admin\ParticularController::class, 'storeOrder'])->middleware('can:admin');
 Route::get('/get-phone/{id}', [App\Http\Controllers\Admin\ParticularController::class, 'getInformations'])->middleware('can:admin');
+Route::get('/dashboard-admin/particulars', [App\Http\Controllers\Admin\ParticularController::class, 'index'])->middleware('can:admin');
+Route::get('/dashboard-admin/professionals', [App\Http\Controllers\Admin\ProfessionalController::class, 'index'])->middleware('can:admin');
 
 Route::resource('dashboard-admin', AdminController::class)->middleware('can:admin');
 

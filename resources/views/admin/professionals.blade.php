@@ -22,31 +22,36 @@
           <tr>
             <th>#</th>
             <th>Nom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Entreprise</th>
             <th>Adresse</th>
-            <th>N°Telephone</th>
             <th>Wilaya</th>
+            <th>RC</th>
+            <th>NIF</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-            @foreach($particuliers as $particulier)
+            @foreach($professionals as $professional)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$particulier->user->name}}</td>
-            <td>{{$particulier->adresse}}</td>
-            <td>{{$particulier->phone}}</td>
-            <td>{{$particulier->wilaya}}</td>
-           
+            <td>{{$professional->name}}</td>
+            <td>{{$professional->email}}</td>
+            <td>{{$professional->professional->phone}}</td>
+            <td>{{$professional->professional->entreprise}}</td>
+            <td>{{$professional->professional->adresse}}</td>
+            <td>{{$professional->professional->wilaya}}</td>
+            <td>{{$professional->professional->RC}}</td>
+            <td>{{$professional->professional->NIF}}</td>
             <td>
-              <form action="{{url('dashboard-admin/particuliers/'.$particulier->id)}}" method="post">
+              <form action="{{url('dashboard-admin/professionals/'.$professional->id)}}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
-                   
                     <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
                 </div>
-              </form>	
+              </form>
             </td>
           </tr>
          @endforeach
@@ -58,6 +63,6 @@
         </div>
     </div>
 
-</div>   
+</div>
 
 @endsection
