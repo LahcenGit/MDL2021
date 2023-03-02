@@ -35,11 +35,11 @@
       </div>
 
      <b>Remarque :</b> 
-      @if ($order->remarque == null)
+      @if ($order->note == null)
       Aucune  !
 
       @else
-      {{$order->remarque}}
+      {{$order->note}}
       @endif 
 
 
@@ -59,12 +59,11 @@
 
                         </div>
                         
-                        <div class="infos-client" style="width: 250px;">
-                            <h3 >Bon de livraison N° {{$order->id}} </h3> <br>
-                            <p ><b> Pack :</b> {{$order->pack}}<br>
+                        <div class="infos-client" style="width: 350px;">
+                            <h3 >Bon de livraison N° {{$order->code}} </h3> <br>
                             <p ><b> Nom :</b> {{$order->name}}<br>
                             <b> Tél: </b> {{$order->phone}}  <br>
-                            <b> Adresse:</b> {{$order->adress}} <br>
+                            <b> Adresse:</b> {{$order->address}} <br>
                              <b> Wilaya:</b>  {{ucfirst($order->wilaya)}}<br>
 
                             Date: {{$order->created_at->format('Y-m-d')}} </p><br>
@@ -77,53 +76,36 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Produit</th>
+                                <th scope="col">P.U</th>
                                 <th scope="col">Qte</th>
+                                <th scope="col">Total</th>
                             </tr>
                         </thead>
 
                         <tbody>
                          
-                            @foreach ($order->orderlines as $line)
+                            @foreach ($orderlines as $orderline)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    @if ( $line->product == "Mozzarella" || $line->product == "Feta" || $line->product =="Halloumi")
-                                    <td>{{$line->product}} 500 g</td>
-                                    @elseif($line->product == "Fines herbes" || $line->product == "Piment" || $line->product =="Cumin")
-                                    <td>Feta huile {{$line->product}} 340 g</td>
-                                    @elseif($line->product == "Fines herbes" || $line->product == "Piment" || $line->product =="Cumin")
-                                    <td>Feta huile {{$line->product}} 340 g</td>
-                                    @elseif($line->product == "Nature" || $line->product == "Basilic" || $line->product =="Piment")
-                                    <td>Fromage de chèvre {{$line->product}} 100 g</td>
-                                    @else
-                                    <td>{{$line->product}}</td>
-                                    @endif
-
-                                    <td>1</td>
-                                    
+                                    <td>{{$orderline->product->designation}} {{$orderline->product->capacity  }}</td>
+                                    <td>{{$orderline->pu}}</td>
+                                    <td>{{$orderline->qte}}</td>
+                                    <td>{{$orderline->total}} Da</td>
                                 </tr>
                             @endforeach
 
                             <tr >
-                                <td colspan="2" style="text-align:right;"><b>Total</b> </td>
-
-                                @if ( $order->wilaya == "alger" )
-                                <td > <b >{{ number_format($order->total - 200, 2) }}  Da</b> </td>
-                                @else
+                                <td colspan="4" style="text-align:right;"><b>Total</b> </td>
                                 <td > <b >{{ number_format($order->total, 2) }}  Da</b> </td>
-                                @endif
                                 
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align:right;"><b>Livraison</b> </td>
-                                @if ( $order->wilaya == "alger" )
-                                <td >  200 Da</td>
-                                @else
+                                <td colspan="4" style="text-align:right;"><b>Livraison</b> </td>
                                 <td >  0 Da</td>
-                                @endif
                                 
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align:right;"><b>Total</b> </td>
+                                <td colspan="4" style="text-align:right;"><b>Total</b> </td>
                                 <td > <b style="font-size: 17px">{{ number_format($order->total, 2) }}  Da</b> </td>
                             </tr>
                         </tbody>
