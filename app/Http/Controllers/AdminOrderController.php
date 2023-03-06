@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Orderline;
+use App\Models\Particularorder;
+use App\Models\Particularorderline;
 use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
@@ -179,8 +181,9 @@ class AdminOrderController extends Controller
 
     public function orderDetail($id){
 
-        $order = Order::find($id);
-        return view('orders.order-detail',compact('order'));
+        $order = Particularorder::find($id);
+        $orderlines = Particularorderline::where('particularorder_id',$id)->get();
+        return view('orders.order-detail',compact('order','orderlines'));
 
     }
 
