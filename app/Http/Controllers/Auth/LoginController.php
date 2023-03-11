@@ -62,6 +62,9 @@ class LoginController extends Controller
             else if(auth::user()->type == 'labo') {
                     return redirect('/labo');
                 }
+            else if(auth::user()->type == 'commercial') {
+                    return redirect('/commercial');
+                }
             else{
                 return redirect('/milkcheck');
             }

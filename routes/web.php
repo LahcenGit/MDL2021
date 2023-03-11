@@ -30,6 +30,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Particular\ProfilParticularController;
 use App\Http\Controllers\professional\ProfilProfessionalController;
+use App\Http\Controllers\commercial\CommercialController;
 use App\Models\Citie;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +79,17 @@ Route::get('/labo/login', function () {
     }
     else{
         return view('auth.login-labo');
+    }
+
+});
+
+Route::get('/commercial/login', function () {
+
+    if(Auth::check()){
+        return redirect('/commercial');
+    }
+    else{
+        return view('auth.login-commercial');
     }
 
 });
@@ -248,6 +260,16 @@ Route::get('home-dashboard', function () {
 
 //labo route
 Route::resource('labo', LaboController::class);
+
+//commercial route
+Route::get('commercial', [App\Http\Controllers\Commercial\CommercialController::class,'index']);
+Route::get('commercial/professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createProfessional']);
+Route::post('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeProfessional']);
+Route::get('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'professionals']);
+Route::get('commercial/order-professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createOrder']);
+Route::post('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeOrder']);
+Route::get('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'orders']);
+
 
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
 

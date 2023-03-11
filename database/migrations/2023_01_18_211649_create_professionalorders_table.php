@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('professional_id')->unsigned();
             $table->string('note')->nullable();
-            $table->float('total');
+            $table->float('total')->nullable();
             $table->tinyInteger('status');
             $table->float('discount')->nullable();
             $table->string('code')->nullable();

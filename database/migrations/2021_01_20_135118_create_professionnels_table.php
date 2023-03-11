@@ -15,17 +15,19 @@ class CreateProfessionnelsTable extends Migration
     {
         Schema::create('professionnels', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->unsigned();
-            $table->string('entreprise');
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('commercial_id')->unsigned()->nullable();
+            $table->string('entreprise')->nullable();
             $table->string('type')->nullable();
-            $table->string('adresse');
-            $table->string('phone');
+            $table->string('adresse')->nullable();
+            $table->string('phone')->nullable();
             $table->string('fax')->nullable();
-            $table->string('wilaya');
-            $table->string('RC');
-            $table->string('NIF');
+            $table->string('wilaya')->nullable();
+            $table->string('RC')->nullable();
+            $table->string('NIF')->nullable();
             $table->string('gps')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('commercial_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
