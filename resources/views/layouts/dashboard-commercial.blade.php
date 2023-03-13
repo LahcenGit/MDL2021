@@ -263,5 +263,6 @@
 
 	<!-- End custom js for this page -->
 @stack('select-professional')
+@stack('modal-orderline-scripts')
 </body>
 </html>

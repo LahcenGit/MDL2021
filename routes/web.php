@@ -271,6 +271,7 @@ Route::post('commercial/order-professionals', [App\Http\Controllers\Commercial\C
 Route::get('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'orders']);
 Route::get('commercial/order-professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editOrder']);
 Route::get('get-type/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'getType']);
+Route::get('modal-order-line/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'showModal']);
 });
 
 //labo route

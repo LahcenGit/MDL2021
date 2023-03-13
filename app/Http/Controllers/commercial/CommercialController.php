@@ -361,4 +361,11 @@ class CommercialController extends Controller
      return $professional;
     }
 
+    public function showModal($id){
+        $order = Professionalorder::find($id);
+        $orderlines = Professionalorderline::where('professionalorder_id',$id)->get();
+        $total = $orderlines->sum('total');
+        return view('commercial.modal-order-lines',compact('orderlines','total','order'));
+    }
+
 }

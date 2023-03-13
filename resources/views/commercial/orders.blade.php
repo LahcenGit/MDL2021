@@ -45,8 +45,8 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
-
+                    <a href="#" data-id="{{ $order->id }}" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
+                    <a href="#" data-id="{{ $order->id }}" class="btn btn-primary shadow btn-xs sharp show-orderline"><i class="mdi mdi-eye"></i></a>
                     <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
                 </div>
               </form>
@@ -62,5 +62,30 @@
     </div>
 
 </div>
-
+<div id="modal-orderline">
+</div>
 @endsection
+@push('modal-orderline-scripts')
+<script>
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(".show-orderline").click(function() {
+
+  var id = $(this).data('id');
+
+  $.ajax({
+    url: '/modal-order-line/' + id,
+    type: "GET",
+    success: function (res) {
+      $('#modal-orderline').html(res);
+      $("#modal-order-line").modal('show');
+    }
+  });
+
+});
+
+</script>
+@endpush

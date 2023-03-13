@@ -56,7 +56,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Type*:</label>
-                                    <select class="form-select" name="type"  class="form-control input-default " id="exampleFormControlSelect1" >
+                                    <select class="form-select" name="type"  class="form-control input-default" id="select-type" >
                                         <option value="" disabled selected>Type: </option>
                                         <option value="Pizzeria" @if(old('type')== 'Orika') selected @endif>Pizzeria</option>
                                         <option value="Grossiste" @if(old('type')== 'Grossiste') selected @endif>Grossiste</option>
@@ -167,6 +167,27 @@
                 }
             }
         });
+
+    });
+</script>
+<script>
+    $("#select-type").change(function() {
+        var type =  $("#select-type").val();
+        if(type == 'Superette'){
+         $("#pack").css("display", "block");
+          $("#check-pack").change(function() {
+            if(this.checked) {
+                $("#product").css("display", "none");
+            }
+            else{
+                $("#product").css("display", "block");
+            }
+        });
+       }
+       else{
+        $("#pack").css("display", "none");
+       }
+
 
     });
 </script>
