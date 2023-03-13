@@ -70,7 +70,8 @@
                                     <option value="" disabled selected>Type: </option>
                                     <option value="Pizzeria" @if(old('type')== 'Orika') selected @endif>Pizzeria</option>
                                     <option value="Grossiste" @if(old('type')== 'Grossiste') selected @endif>Grossiste</option>
-                                    <option value="Orika" @if(old('type')== 'Orika') selected @endif>Orika</option>
+                                    <option value="Superette" @if(old('type')== 'Superette') selected @endif>Supérette</option>
+                                    <option value="Orika" @if(old('type')== 'Orika') selected @endif>Autre</option>
                                 </select>
                             </div>
                         </div>

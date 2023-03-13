@@ -67,6 +67,25 @@
               <span class="link-title">Dashboard</span>
             </a>
           </li>
+          <li class="nav-item nav-category">Productions</li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Productions</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="emails">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ asset('labo/productions/create') }}" class="nav-link">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ asset('labo/productions') }}" class="nav-link">Tous</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>
@@ -220,7 +239,7 @@
     @stack('order-ticket-scripts')
     @stack('modal-orderline-scripts')
 
-
+    @stack('check-product')
 
 </body>
 </html>

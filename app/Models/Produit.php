@@ -31,4 +31,6 @@ class Produit extends Model
     {
         return $this->hasMany(Particularorderline::class);
     }
+
+
 }

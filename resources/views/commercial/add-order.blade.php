@@ -60,6 +60,7 @@
                                         <option value="" disabled selected>Type: </option>
                                         <option value="Pizzeria" @if(old('type')== 'Orika') selected @endif>Pizzeria</option>
                                         <option value="Grossiste" @if(old('type')== 'Grossiste') selected @endif>Grossiste</option>
+                                        <option value="Superette" @if(old('type')== 'Superette') selected @endif>Supérette</option>
                                         <option value="Orika" @if(old('type')== 'Orika') selected @endif>Orika</option>
                                     </select>
                                 </div>
@@ -78,25 +79,37 @@
                                 </div>
                              </div>
                         </div>
-                        <div class="row mb-3">
-                            <label class="form-label">Produits*:</label>
-                            @foreach($products->split($products->count()/2) as $row)
-                                <div class="col-md-6">
-                                    @foreach ($row as $product)
-                                    <div class="row mb-3">
-                                        <div class="col-md-9">
-                                         <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->id }}" name="products[]">
-                                            <label class="form-check-label" for="checkDefault">
-                                            {{$product->designation}}
-                                            </label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-control mb-4 mb-md-0 input-default" type="number" min="0" placeholder="Qte." name="qtes[]" disabled/>
-                                        </div>
-                                    </div>
-                                    @endforeach
+                        <div id="pack" style="display:none;">
+                            <div class="row mb-3">
+                                <div class="col-md-9">
+                                <input type="checkbox" class="form-check-input check-pack" id="check-pack" name="check_pack" value="1">
+                                    <label class="form-check-label" for="check-pack">
+                                    pack supérette
+                                    </label>
                                 </div>
-                            @endforeach
+                            </div>
+                        </div>
+                        <div id="product" >
+                            <div class="row mb-3">
+                                <label class="form-label">Produits*:</label>
+                                @foreach($products->split($products->count()/2) as $row)
+                                    <div class="col-md-6">
+                                        @foreach ($row as $product)
+                                        <div class="row mb-3">
+                                            <div class="col-md-9">
+                                            <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->id }}" name="products[]">
+                                                <label class="form-check-label" for="checkDefault">
+                                                {{$product->designation}}
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input class="form-control mb-4 mb-md-0 input-default" type="number" min="0" placeholder="Qte." name="qtes[]" disabled/>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Ajouter</button>
                     </form>
@@ -128,6 +141,32 @@
         $("#add-particular").css("display", "none");
         $("#particular-info").css("display", "block");
        }
+
+    });
+</script>
+<script>
+    $("#select-professional").change(function() {
+        var id =  $("#select-professional").val();
+        $.ajax({
+                url: '/get-type/'+id,
+                type: "GET",
+                success: function (res) {
+                if(res.type == 'Superette'){
+                 $("#pack").css("display", "block");
+                 $("#check-pack").change(function() {
+                if(this.checked) {
+                    $("#product").css("display", "none");
+
+                }
+                else{
+                    $("#product").css("display", "block");
+                }
+
+                });
+
+                }
+            }
+        });
 
     });
 </script>

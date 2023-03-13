@@ -258,10 +258,10 @@ Route::get('home-dashboard', function () {
     return view('home-dashboard');
 });
 
-//labo route
-Route::resource('labo', LaboController::class);
+
 
 //commercial route
+Route::middleware('CommercialAuth')->group(function () {
 Route::get('commercial', [App\Http\Controllers\Commercial\CommercialController::class,'index']);
 Route::get('commercial/professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createProfessional']);
 Route::post('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeProfessional']);
@@ -269,6 +269,17 @@ Route::get('commercial/professionals', [App\Http\Controllers\Commercial\Commerci
 Route::get('commercial/order-professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createOrder']);
 Route::post('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeOrder']);
 Route::get('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'orders']);
+Route::get('commercial/order-professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editOrder']);
+Route::get('get-type/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'getType']);
+});
+
+//labo route
+Route::get('labo', [App\Http\Controllers\Labo\LaboController::class,'index']);
+Route::get('labo/productions/create', [App\Http\Controllers\Labo\LaboController::class,'createProduction']);
+Route::post('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'storeProduction']);
+Route::get('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'productions']);
+Route::get('labo/productions/edit/{id}', [App\Http\Controllers\Labo\LaboController::class,'editProduction']);
+Route::put('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction']);
 
 
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
