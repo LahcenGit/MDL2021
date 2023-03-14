@@ -35,8 +35,8 @@
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
                             <div class="d-flex">
-                                <a href="" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
-                                <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
+                                <a href="{{ asset('labo/productions/edit/'.$production->id) }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
+                                <a href="#" data-id="{{ $production->id }}" class=" btn-xs sharp mr-1 show-productionline"><i data-feather="eye"></i></a>
                             </div>
                         </form>
                         </td>
@@ -51,5 +51,28 @@
     </div>
 
 </div>
-
+<div id="modal-productionline">
+</div>
 @endsection
+@push('modal-productionline-scripts')
+<script>
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(".show-productionline").click(function() {
+  var id = $(this).data('id');
+  $.ajax({
+    url: '/modal-production-line/' + id,
+    type: "GET",
+    success: function (res) {
+      $('#modal-productionline').html(res);
+      $("#modal-production-line").modal('show');
+    }
+  });
+
+});
+
+</script>
+@endpush

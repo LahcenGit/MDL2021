@@ -21,7 +21,7 @@
                                     <select class="js-example-basic-single form-select" data-width="100%" id="select-professional" name="professional">
                                         <option value="">Le client :</option>
                                         @foreach($professionals as $professional)
-                                        <option value="{{ $professional->id }}">{{ $professional->user->name }}</option>
+                                        <option value="{{ $professional->id }}" @if($order->professional_id == $professional->id)selected @endif>{{ $professional->user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

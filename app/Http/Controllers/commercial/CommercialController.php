@@ -19,7 +19,11 @@ class CommercialController extends Controller
     //
 
     public function index(){
-        return view('commercial.dashboard-commercial');
+        $orders = Professionalorder::orderBy('created_at','desc')->limit(10)->get();
+        $order_en_attente = Professionalorder::where('status',1)->count();
+        $order_valide = Professionalorder::where('status',2)->count();
+        $order_annuler = Professionalorder::where('status',3)->count();
+        return view('commercial.dashboard-commercial',compact('orders','order_en_attente','order_valide','order_annuler'));
     }
     public function createProfessional(){
         $wilayas = Wilaya::all();
@@ -353,7 +357,7 @@ class CommercialController extends Controller
             array_push($array , $orderline->product_id);
         }
         $products = Produit::whereNotIn('id',$array)->orderBy('flag','asc')->get();
-        return view('commercial.edit-commercial',compact('order','professionals','products','orderlines'));
+        return view('commercial.edit-order-professional',compact('order','professionals','products','orderlines'));
     }
 
     public function getType($id){
@@ -366,6 +370,26 @@ class CommercialController extends Controller
         $orderlines = Professionalorderline::where('professionalorder_id',$id)->get();
         $total = $orderlines->sum('total');
         return view('commercial.modal-order-lines',compact('orderlines','total','order'));
+    }
+
+    public function editProfessional($id){
+        $professional = Professionnel::find($id);
+        $wilayas = Wilaya::all();
+        return view('commercial.edit-professional',compact('professional','wilayas'));
+    }
+
+    public function updateProfessional(Request $request , $id){
+        $professional = Professionnel::find($id);
+        $user = User::where('id',$professional->user_id)->first();
+        $user->name = $request->name;
+        $user->type = 'professionnel';
+        $user->save();
+        $professional->phone = $request->phone;
+        $professional->wilaya = $request->wilaya;
+        $professional->type = $request->type;
+        $professional->gps = $request->position_gps;
+        $professional->save();
+        return redirect('/commercial/professionals');
     }
 
 }

@@ -70,7 +70,7 @@
           <li class="nav-item nav-category">Professionnels</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-              <i class="link-icon" data-feather="mail"></i>
+              <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Professionnels</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -89,7 +89,7 @@
          <li class="nav-item nav-category">Commandes</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-              <i class="link-icon" data-feather="feather"></i>
+                <i class="link-icon" data-feather="command"></i>
               <span class="link-title">Commandes</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -109,7 +109,7 @@
           <li class="nav-item nav-category">Setting</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
-              <i class="link-icon" data-feather="hash"></i>
+              <i class="link-icon" data-feather="settings"></i>
               <span class="link-title">Setting</span>
             </a>
           </li>

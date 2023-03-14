@@ -88,4 +88,9 @@ class LaboController extends Controller
         }
        return redirect('labo/productions');
     }
+    public function showModalProduction($id){
+        $productionlines = Productionline::where('production_id',$id)->get();
+        return view('labo.modal-productionlines',compact('productionlines'));
+    }
+
 }

@@ -45,9 +45,9 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="#" data-id="{{ $order->id }}" class="btn btn-primary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
-                    <a href="#" data-id="{{ $order->id }}" class="btn btn-primary shadow btn-xs sharp show-orderline"><i class="mdi mdi-eye"></i></a>
-                    <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
+                    <a href="{{ asset('commercial/order-professionals/edit/'.$order->id) }}" data-id="{{ $order->id }}" class=" btn-xs sharp "><i data-feather="edit"></i></a>
+                    <a href="#" data-id="{{ $order->id }}" class="btn-xs sharp show-orderline"><i data-feather="eye"></i></a>
+                    <button class="btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
                 </div>
               </form>
             </td>

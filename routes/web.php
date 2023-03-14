@@ -270,6 +270,8 @@ Route::get('commercial/order-professionals/create', [App\Http\Controllers\Commer
 Route::post('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeOrder']);
 Route::get('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'orders']);
 Route::get('commercial/order-professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editOrder']);
+Route::get('commercial/professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editProfessional']);
+Route::put('commercial/professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateProfessional']);
 Route::get('get-type/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'getType']);
 Route::get('modal-order-line/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'showModal']);
 });
@@ -281,8 +283,10 @@ Route::post('labo/productions', [App\Http\Controllers\Labo\LaboController::class
 Route::get('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'productions']);
 Route::get('labo/productions/edit/{id}', [App\Http\Controllers\Labo\LaboController::class,'editProduction']);
 Route::put('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction']);
+Route::get('modal-production-line/{id}', [App\Http\Controllers\Labo\LaboController::class,'showModalProduction']);
 
 
+//
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
 
 Route::get('/receipt/{id}', [App\Http\Controllers\printerController::class, 'receipt']);
