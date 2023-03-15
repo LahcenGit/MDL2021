@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Particulier;
 use Illuminate\Http\Request;
 use App\Models\Order;
-class AdminController extends Controller
+class AdvController extends Controller
 {
     //
     public function __construct()
@@ -17,9 +17,9 @@ class AdminController extends Controller
         $pendingorder= Order::where('statut',1)->count();
         $gain = Order::selectRaw('sum(total) as total')->first();
         $orders = Order::limit(10)->get()->reverse();
-       
-        return view('admin.dashboard-admin',compact('order','pendingorder','gain','orders'));
-       
+
+        return view('adv.dashboard-adv',compact('order','pendingorder','gain','orders'));
+
 
     }
 }

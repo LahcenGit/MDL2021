@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-admin')
+@extends('layouts.dashboard-adv')
 @section('content')
 <div class="page-content">
 
@@ -22,7 +22,7 @@
             <th>#</th>
             <th>Nom</th>
             <th>wilaya</th>
-            
+
             <th>Téléphone</th>
             <th>Total</th>
             <th>Statut</th>
@@ -36,7 +36,7 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$order->name}} </td>
             <td>{{$order->wilaya}}</td>
-          
+
             <td>{{$order->phone}}</td>
             <td> <b class="text-primary"> {{number_format($order->total)}} Da </b></td>
 
@@ -54,13 +54,13 @@
             <td>{{$order->created_at->format('d-m-Y  H:i')}}</td>
 
             <td>
-              <form action="{{url('admin/particular-orders/'.$order->id)}}" method="post">
+              <form action="{{url('adv/particular-orders/'.$order->id)}}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     {{--<a href="#" class="btn  btn-secondary show-orderline" data-id="{{ $order->id }}" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>--}}
-                    <a href="{{url('dashboard-admin/order-detail/'.$order->id)}}" class="btn  btn-secondary  show-order" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
-                    <a href="{{url('dashboard-admin/particular-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
+                    <a href="{{url('adv/order-detail/'.$order->id)}}" class="btn  btn-secondary  show-order" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
+                    <a href="{{url('adv/particular-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
                       "></i></a>
 
                 </div>

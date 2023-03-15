@@ -1,7 +1,7 @@
-@extends('layouts.dashboard-admin')
+@extends('layouts.dashboard-adv')
 
 @section('content')
- 
+
 <div class="page-content">
 
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
@@ -32,7 +32,7 @@
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <h6 class="card-title mb-0">Commandes globales</h6>
-               
+
                 </div>
                 <div class="row">
                   <div class="col-6 col-md-12 col-xl-5">
@@ -44,7 +44,7 @@
                       </p>
                     </div>
                   </div>
-                 
+
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <h6 class="card-title mb-0">Commandes en attentes</h6>
-               
+
                 </div>
                 <div class="row">
                   <div class="col-6 col-md-12 col-xl-5">
@@ -66,7 +66,7 @@
                       </p>
                     </div>
                   </div>
-                 
+
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <h6 class="card-title mb-0">Gain</h6>
-                 
+
                 </div>
                 <div class="row">
                   <div class="col-6 col-md-12 col-xl-5">
@@ -88,7 +88,7 @@
                       </p>
                     </div>
                   </div>
-                 
+
                 </div>
               </div>
             </div>
@@ -97,25 +97,25 @@
       </div>
     </div> <!-- row -->
 
-    
 
-    
+
+
 
     <div class="row">
-      
+
       <div class="col-lg-7 col-xl-12 stretch-card">
         <div class="card">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-baseline mb-2">
               <h6 class="card-title mb-0">Les dix dernières commandes</h6>
-              
+
             </div>
             <div class="table-responsive">
               <table class="table table-hover mb-0">
                 <thead>
                   <tr>
                     <th class="pt-0">#</th>
-                   
+
                     <th>Nom</th>
                     <th>wilaya</th>
                     <th>Téléphone</th>
@@ -134,23 +134,23 @@
                     <td>{{$order->phone}}</td>
                     <td><b> {{$order->pack}} </b></td>
                     <td> <b class="text-primary"> {{$order->total}} Da </b></td>
-        
+
                     @if ($order->statut == 1 )
                     <td><span class="badge bg-warning">En cours</span></td>
                     @elseif($order->statut == 2)
                     <td><span class="badge bg-success">Terminé</span></td>
                     @else
                     <td><span class="badge bg-danger">Annulé</span></td>
-                    
+
                     @endif
-        
+
                     <td>{{$order->created_at->format('d-m-Y  H:i')}}</td>
                   </tr>
-                  @endforeach        
+                  @endforeach
                 </tbody>
               </table>
             </div>
-          </div> 
+          </div>
         </div>
       </div>
     </div> <!-- row -->

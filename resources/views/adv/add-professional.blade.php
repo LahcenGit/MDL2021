@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-admin')
+@extends('layouts.dashboard-adv')
 @section('content')
 <div class="page-content">
 
@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Détails personnels</h6>
                     <p class="text-muted mb-3">Veuillez remplir tous les champs s'il vous plait!</p>
-                    <form class="forms-sample" method="POST" action="{{url('/dashboard-admin/professionals')}}" enctype="multipart/form-data">
+                    <form class="forms-sample" method="POST" action="{{url('adv/professionals')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <div class="col-md-12">

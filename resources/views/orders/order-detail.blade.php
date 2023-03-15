@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-admin')
+@extends('layouts.dashboard-adv')
 
 @section('content')
 <div class="page-content">
@@ -13,7 +13,7 @@
 
     @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
-       Svp ! Corrigez les erreurs suivantes : 
+       Svp ! Corrigez les erreurs suivantes :
        <div class="mb-2"></div>
     <div class="error">
         <ul class="ml-2">
@@ -34,13 +34,13 @@
         </div>
       </div>
 
-     <b>Remarque :</b> 
+     <b>Remarque :</b>
       @if ($order->note == null)
       Aucune  !
 
       @else
       {{$order->note}}
-      @endif 
+      @endif
 
 
 
@@ -58,7 +58,7 @@
                                 </p>
 
                         </div>
-                        
+
                         <div class="infos-client" style="width: 350px;">
                             <h3 >Bon de livraison N° {{$order->code}} </h3> <br>
                             <p ><b> Nom :</b> {{$order->name}}<br>
@@ -68,9 +68,9 @@
 
                             Date: {{$order->created_at->format('Y-m-d')}} </p><br>
                         </div>
-                            
+
                     </div>
-                  
+
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -83,7 +83,7 @@
                         </thead>
 
                         <tbody>
-                         
+
                             @foreach ($orderlines as $orderline)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
@@ -97,12 +97,12 @@
                             <tr >
                                 <td colspan="4" style="text-align:right;"><b>Total</b> </td>
                                 <td > <b >{{ number_format($order->total, 2) }}  Da</b> </td>
-                                
+
                             </tr>
                             <tr>
                                 <td colspan="4" style="text-align:right;"><b>Livraison</b> </td>
                                 <td >  0 Da</td>
-                                
+
                             </tr>
                             <tr>
                                 <td colspan="4" style="text-align:right;"><b>Total</b> </td>
@@ -110,7 +110,7 @@
                             </tr>
                         </tbody>
 
-                      
+
                     </table>
                       <div style="margin-top: 30px;">
                         <h6>Merci d'avoir choisi la Maison du Lait ! </h5>
@@ -118,7 +118,7 @@
                       <div class="d-flex flex-row-reverse bd-highlight">
                         <p>رخصة استعمال وصل التسليم رقم 03 المؤرخ في 10 فيفري 2011</p>
                       </div>
-                      
+
                 </div>
             </div>
         </div>
@@ -126,11 +126,11 @@
 </div>
 @endsection
 @push('order-detail-scripts')
-    
+
 <script>
 $('.printMe').click(function(){
     $('#printable').printThis();
 });
-</script> 
+</script>
 
 @endpush

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Adv;
 
 use App\Http\Controllers\Controller;
 use App\Models\Particularcart;
@@ -21,7 +21,7 @@ class ParticularController extends Controller
         $particulars = Particulier::all();
         $products = Produit::where('type','particular')->orderBy('flag','asc')->get();
         $wilayas = Wilaya::all();
-        return view('admin.add-order-particular',compact('particulars','products','wilayas'));
+        return view('adv.add-order-particular',compact('particulars','products','wilayas'));
     }
 
     public function storeOrder(Request $request){
@@ -109,7 +109,7 @@ class ParticularController extends Controller
                }
         }
 
-        return redirect('dashboard-admin/particular-orders');
+        return redirect('adv/particular-orders');
     }
 
     public function getInformations($id){
@@ -119,6 +119,6 @@ class ParticularController extends Controller
 
     public function index(){
         $particulars = User::where('type','particulier')->orderBy('created_at','desc')->get();
-        return view('admin.particulars',compact('particulars'));
+        return view('adv.particulars',compact('particulars'));
     }
 }

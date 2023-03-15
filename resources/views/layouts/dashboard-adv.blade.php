@@ -50,7 +50,7 @@
 		<nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            MDL<span>Admin</span>
+            MDL<span>Adv</span>
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>
@@ -62,7 +62,7 @@
         <ul class="nav">
           <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="{{url('dashboard-admin')}}" class="nav-link">
+            <a href="{{url('adv')}}" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
@@ -109,58 +109,58 @@
           </li>
 
 
-   
+
 
           <li class="nav-item nav-category">Gestion des ventes</li>
 
-          <li class="nav-item {{ active_class(['dashboard-admin/orders/*','dashboard-admin/orders']) }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#commandes" role="button" aria-expanded="{{ is_active_route(['dashboard-admin/orders/*','dashboard-admin/orders']) }}" aria-controls="orders">
+          <li class="nav-item {{ active_class(['adv/orders/*','adv/orders']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#commandes" role="button" aria-expanded="{{ is_active_route(['adv/orders/*','adv/orders']) }}" aria-controls="orders">
               <i class="link-icon" data-feather="anchor"></i>
               <span class="link-title">Anciennes</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse {{ show_class(['dashboard-admin/orders/*','dashboard-admin/orders']) }}" id="commandes">
+            <div class="collapse {{ show_class(['adv/orders/*','adv/orders']) }}" id="commandes">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                    <a href="{{url('dashboard-admin/orders')}}" class="nav-link {{ active_class(['dashboard-admin/orders']) }}">Liste commandes</a>
+                    <a href="{{url('adv/orders')}}" class="nav-link {{ active_class(['adv/orders']) }}">Liste commandes</a>
                   </li>
               </ul>
             </div>
           </li>
 
-        
 
-          <li class="nav-item {{ active_class(['dashboard-admin/particular-orders/*','dashboard-admin/particular-orders']) }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#commandesPaticular" role="button" aria-expanded="{{ is_active_route(['dashboard-admin/particular-orders/*','dashboard-admin/particular-orders']) }}" aria-controls="ordersparticulier">
+
+          <li class="nav-item {{ active_class(['adv/particular-orders/*','adv/particular-orders']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#commandesPaticular" role="button" aria-expanded="{{ is_active_route(['adv/particular-orders/*','adv/particular-orders']) }}" aria-controls="ordersparticulier">
               <i class="link-icon" data-feather="anchor"></i>
               <span class="link-title">Particuliers</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse {{ show_class(['dashboard-admin/particular-orders/*','dashboard-admin/particular-orders']) }}" id="commandesPaticular">
+            <div class="collapse {{ show_class(['adv/particular-orders/*','adv/particular-orders']) }}" id="commandesPaticular">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{url('dashboard-admin/add-order-particular')}}" class="nav-link {{ active_class(['dashboard-admin/add-order-particular']) }}">Ajouter</a>
+                  <a href="{{url('adv/add-order-particular')}}" class="nav-link {{ active_class(['adv/add-order-particular']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('dashboard-admin/particular-orders')}}" class="nav-link {{ active_class(['dashboard-admin/particular-orders']) }}">Liste commandes</a>
+                    <a href="{{url('adv/particular-orders')}}" class="nav-link {{ active_class(['adv/particular-orders']) }}">Liste commandes</a>
                   </li>
               </ul>
             </div>
           </li>
 
-          <li class="nav-item {{ active_class(['dashboard-admin/professional-orders/*','dashboard-admin/professional-orders']) }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#commandesPro" role="button" aria-expanded="{{ is_active_route(['dashboard-admin/professional-orders/*','dashboard-admin/professional-orders']) }}" aria-controls="ordersprofessional">
+          <li class="nav-item {{ active_class(['adv/professional-orders/*','adv/professional-orders']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#commandesPro" role="button" aria-expanded="{{ is_active_route(['adv/professional-orders/*','dashboard-admin/professional-orders']) }}" aria-controls="ordersprofessional">
               <i class="link-icon" data-feather="anchor"></i>
               <span class="link-title">Professionnels</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse {{ show_class(['dashboard-admin/professional-orders/*','dashboard-admin/professional-orders']) }}" id="commandesPro">
+            <div class="collapse {{ show_class(['adv/professional-orders/*','adv/professional-orders']) }}" id="commandesPro">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="#" class="nav-link {{ active_class(['dashboard-admin/professional-orders/create']) }}">Ajouter</a>
+                  <a href="#" class="nav-link {{ active_class(['adv/professional-orders/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('dashboard-admin/professional-orders')}}" class="nav-link {{ active_class(['dashboard-admin/professional-orders']) }}">Liste commandes</a>
+                    <a href="{{url('adv/professional-orders')}}" class="nav-link {{ active_class(['adv/professional-orders']) }}">Liste commandes</a>
                   </li>
               </ul>
             </div>

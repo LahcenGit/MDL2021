@@ -44,7 +44,6 @@
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     <a href="{{ asset('commercial/professionals/edit/'.$professional->id) }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
-                    <button style="background-color: #ffff; border-color:#ffff" class=" btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
                 </div>
               </form>
             </td>

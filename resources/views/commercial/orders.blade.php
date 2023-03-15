@@ -23,10 +23,12 @@
         <thead>
           <tr>
             <th>#</th>
+            <th>Commande</th>
             <th>Nom complet</th>
             <th>Téléphone</th>
             <th>Wilaya</th>
             <th>Total</th>
+            <th>Statut</th>
             <th>Date</th>
            <th>Action</th>
           </tr>
@@ -35,11 +37,19 @@
             @foreach($orders as $order)
             <tr>
             <td>{{$loop->iteration}}</td>
+            <td>{{$order->code}}</td>
             <td>{{$order->professional->user->name}}</td>
             <td>{{$order->professional->phone}}</td>
             <td>{{$order->professional->wilaya}}</td>
             <td><b>{{number_format($order->total)}}</b> Da</td>
-            <td>{{$order->created_at}}</td>
+            @if ($order->status == 1 )
+            <td><span class="badge bg-warning">En attente</span></td>
+            @elseif($order->status == 2)
+            <td><span class="badge bg-success">Validé</span></td>
+            @else
+            <td><span class="badge bg-danger">Annulé</span></td>
+            @endif
+            <td>{{$order->created_at->format('d-m-Y  H:i')}}</td>
             <td>
               <form action="" method="post">
                 {{csrf_field()}}
@@ -47,7 +57,6 @@
                 <div class="d-flex">
                     <a href="{{ asset('commercial/order-professionals/edit/'.$order->id) }}" data-id="{{ $order->id }}" class=" btn-xs sharp "><i data-feather="edit"></i></a>
                     <a href="#" data-id="{{ $order->id }}" class="btn-xs sharp show-orderline"><i data-feather="eye"></i></a>
-                    <button class="btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
                 </div>
               </form>
             </td>

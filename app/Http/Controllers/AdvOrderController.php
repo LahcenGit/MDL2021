@@ -8,24 +8,24 @@ use App\Models\Particularorder;
 use App\Models\Particularorderline;
 use Illuminate\Http\Request;
 
-class AdminOrderController extends Controller
+class AdvOrderController extends Controller
 {
 
     public function __construct()
     {
         $this->middleware('auth');
     }
-    
+
     public function index(){
         $orders = Order::all()->reverse();
-        return view('admin.orders',compact('orders'));
+        return view('adv.orders',compact('orders'));
     }
 
 
     public function store(Request $request){
 
         if($request->pack =="Tot Bag"){
-        
+
             $order = new Order();
             $order->name = $request->name;
             $order->phone = $request->phone;
@@ -38,13 +38,13 @@ class AdminOrderController extends Controller
             $order->total = $request->total;
             $order->save();
 
-            //line1 
+            //line1
             $line = new Orderline();
             $line->order_id  = $order->id;
             $line->product  = $request->option1;
             $line->save();
 
-            //line2 
+            //line2
             $line = new Orderline();
             $line->order_id  = $order->id;
             $line->product  = $request->option2;
@@ -76,7 +76,7 @@ class AdminOrderController extends Controller
 
         if($request->pack =="9ouffa"){
 
-        
+
             $order = new Order();
             $order->name = $request->name;
             $order->phone = $request->phone;
@@ -89,13 +89,13 @@ class AdminOrderController extends Controller
             $order->total = $request->total;
             $order->save();
 
-            //line1 
+            //line1
             $line = new Orderline();
             $line->order_id  = $order->id;
             $line->product  = $request->option1;
             $line->save();
 
-            //line2 
+            //line2
             $line = new Orderline();
             $line->order_id  = $order->id;
             $line->product  = $request->option2;
@@ -126,7 +126,7 @@ class AdminOrderController extends Controller
 
         if($request->pack == "Zahra"){
 
-        
+
             $order = new Order();
             $order->name = $request->name;
             $order->phone = $request->phone;
@@ -139,13 +139,13 @@ class AdminOrderController extends Controller
             $order->total = $request->total;
             $order->save();
 
-            //line1 
+            //line1
             $line = new Orderline();
             $line->order_id  = $order->id;
             $line->product  = $request->option1;
             $line->save();
 
-            //line2 
+            //line2
             $line = new Orderline();
             $line->order_id  = $order->id;
             $line->product  = $request->option2;
@@ -198,17 +198,17 @@ class AdminOrderController extends Controller
     public function orderApprouve($id){
 
         $order = Order::find($id);
-        $order->statut = 2 ; 
+        $order->statut = 2 ;
         $order->save();
-        return redirect('/dashboard-admin/orders');
+        return redirect('/adv/orders');
 
     }
     public function orderCancel($id){
 
         $order = Order::find($id);
-        $order->statut = 3 ; 
+        $order->statut = 3 ;
         $order->save();
-        return redirect('/dashboard-admin/orders');
+        return redirect('/adv/orders');
 
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-admin')
+@extends('layouts.dashboard-adv')
 
 @section('content')
 <div class="page-content">

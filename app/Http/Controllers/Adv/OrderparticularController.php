@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Adv;
 
 use App\Http\Controllers\Controller;
 use App\Models\Particularorder;
@@ -12,21 +12,21 @@ class OrderparticularController extends Controller
     //
     public function index(){
         $orders = Particularorder::orderBy('created_at','desc')->get();
-        return view('admin.particular-orders',compact('orders'));
+        return view('adv.particular-orders',compact('orders'));
     }
     public function edit($id){
         $order = Particularorder::find($id);
-        return view('admin.edit-particular-order',compact('order'));
+        return view('adv.edit-particular-order',compact('order'));
     }
     public function update($id , Request $request){
         $order = Particularorder::find($id);
         $order->status = $request->status;
         $order->save();
-        return redirect('/dashboard-admin/particular-orders');
+        return redirect('/adv/particular-orders');
     }
 
     public function detailOrder($id){
         $orderlines = Particularorderline::where('particularorder_id',$id)->get();
-        return view('admin.modal-detail-particular-order',compact('orderlines'));
+        return view('adv.modal-detail-particular-order',compact('orderlines'));
     }
 }

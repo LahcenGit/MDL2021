@@ -9,6 +9,7 @@ use App\Models\Produit;
 use App\Models\Professionalorder;
 use App\Models\Professionalorderline;
 use App\Models\Professionnel;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
 class LaboController extends Controller
@@ -41,11 +42,20 @@ class LaboController extends Controller
         $production = new Production();
         $production->save();
         for($i=0 ; $i<count($request->products); $i++){
+            //store production
             $productionline = new Productionline();
             $productionline->production_id = $production->id;
             $productionline->product_id = $request->products[$i];
             $productionline->qte = $request->qtes[$i];
             $productionline->save();
+
+            //add in stock
+            $stock = new Stock();
+            $stock->product_id = $request->products[$i];
+            $stock->qte = $request->qtes[$i];
+            $stock->type = 'Entre';
+            $stock->save();
+
         }
        return redirect('labo/productions');
     }

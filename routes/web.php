@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendeurController;
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\MilkchecController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdvController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\AgrementController;
@@ -14,14 +14,14 @@ use App\Http\Controllers\ProfilmilkcheckController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\BreederController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdvOrderController;
 use App\Http\Controllers\professional\OrderProfessionalController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\LaboController;
-use App\Http\Controllers\Admin\ProfessionalorderController;
-use App\Http\Controllers\Admin\ProfessionalController;
-use App\Http\Controllers\Admin\ParticularController;
-use App\Http\Controllers\Admin\OrderparticularController;
+use App\Http\Controllers\Adv\ProfessionalorderController;
+use App\Http\Controllers\Adv\ProfessionalController;
+use App\Http\Controllers\Adv\ParticularController;
+use App\Http\Controllers\Adv\OrderparticularController;
 use App\Http\Controllers\professional\CheckoutController;
 use App\Http\Controllers\Particular\ParticularorderController;
 use App\Http\Controllers\Particular\ParticularcheckoutController;
@@ -151,28 +151,28 @@ Route::middleware('milkcheckAuth')->group(function () {
 
 Route::resource('journeedulait', EleveurController::class);
 
-//admin routes
+//adv routes
 
 Route::middleware('auth')->group(function () {
-    Route::resource('dashboard-admin/categories', CategorieController::class)->middleware('can:admin');
-    Route::resource('dashboard-admin/products', ProduitController::class)->middleware('can:admin');
-    Route::resource('dashboard-admin/orders', AdminOrderController::class)->middleware('can:admin');
-    Route::resource('dashboard-admin/professional-orders', ProfessionalorderController::class)->middleware('can:admin');
-    Route::resource('dashboard-admin/professionals', ProfessionalController::class)->middleware('can:admin');
-    Route::resource('dashboard-admin/particular-orders', OrderparticularController::class)->middleware('can:admin');
-    Route::resource('dashboard-admin/professionals', ProfessionalController::class)->middleware('can:admin');
-    Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\Admin\ProfessionalorderController::class, 'detailOrder'])->middleware('can:admin');
-    Route::get('/show-particular-orderline/{id}', [App\Http\Controllers\Admin\OrderparticularController::class, 'detailOrder'])->middleware('can:admin');
-    Route::get('dashboard-admin/order-detail/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderDetail'])->middleware('can:admin');
-    Route::get('admin/order-ticket/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderTicket'])->middleware('can:admin');
-    Route::get('admin/order-approuve/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderApprouve'])->middleware('can:admin');
-    Route::get('admin/order-cancel/{id}', [App\Http\Controllers\AdminOrderController::class, 'orderCancel'])->middleware('can:admin');
-    Route::get('dashboard-admin/add-order-particular', [App\Http\Controllers\Admin\ParticularController::class, 'addOrder'])->middleware('can:admin');
-    Route::post('dashboard-admin/add-order-particular', [App\Http\Controllers\Admin\ParticularController::class, 'storeOrder'])->middleware('can:admin');
-    Route::get('/get-phone/{id}', [App\Http\Controllers\Admin\ParticularController::class, 'getInformations'])->middleware('can:admin');
-    Route::get('/dashboard-admin/particulars', [App\Http\Controllers\Admin\ParticularController::class, 'index'])->middleware('can:admin');
-    Route::get('/dashboard-admin/professionals', [App\Http\Controllers\Admin\ProfessionalController::class, 'index'])->middleware('can:admin');
-    Route::resource('dashboard-admin', AdminController::class)->middleware('can:admin');
+    Route::resource('adv/categories', CategorieController::class)->middleware('can:adv');
+    Route::resource('adv/products', ProduitController::class)->middleware('can:adv');
+    Route::resource('adv/orders', AdvOrderController::class)->middleware('can:adv');
+    Route::resource('adv/professional-orders', ProfessionalorderController::class)->middleware('can:adv');
+    Route::resource('adv/professionals', ProfessionalController::class)->middleware('can:adv');
+    Route::resource('adv/particular-orders', OrderparticularController::class)->middleware('can:adv');
+    Route::resource('adv/professionals', ProfessionalController::class)->middleware('can:adv');
+    Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\Adv\ProfessionalorderController::class, 'detailOrder'])->middleware('can:adv');
+    Route::get('/show-particular-orderline/{id}', [App\Http\Controllers\Adv\OrderparticularController::class, 'detailOrder'])->middleware('can:adv');
+    Route::get('adv/order-detail/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderDetail'])->middleware('can:adv');
+    Route::get('adv/order-ticket/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderTicket'])->middleware('can:adv');
+    Route::get('adv/order-approuve/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderApprouve'])->middleware('can:adv');
+    Route::get('adv/order-cancel/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderCancel'])->middleware('can:adv');
+    Route::get('adv/add-order-particular', [App\Http\Controllers\Adv\ParticularController::class, 'addOrder'])->middleware('can:adv');
+    Route::post('adv/add-order-particular', [App\Http\Controllers\Adv\ParticularController::class, 'storeOrder'])->middleware('can:adv');
+    Route::get('/get-phone/{id}', [App\Http\Controllers\Adv\ParticularController::class, 'getInformations'])->middleware('can:adv');
+    Route::get('/adv/particulars', [App\Http\Controllers\Adv\ParticularController::class, 'index'])->middleware('can:adv');
+    Route::get('/adv/professionals', [App\Http\Controllers\Adv\ProfessionalController::class, 'index'])->middleware('can:adv');
+    Route::resource('adv', AdvController::class)->middleware('can:adv');
 });
 
 
@@ -270,6 +270,7 @@ Route::get('commercial/order-professionals/create', [App\Http\Controllers\Commer
 Route::post('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeOrder']);
 Route::get('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'orders']);
 Route::get('commercial/order-professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editOrder']);
+Route::put('commercial/order-professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateOrder']);
 Route::get('commercial/professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editProfessional']);
 Route::put('commercial/professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateProfessional']);
 Route::get('get-type/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'getType']);

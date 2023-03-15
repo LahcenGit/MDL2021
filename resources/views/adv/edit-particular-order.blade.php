@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-admin')
+@extends('layouts.dashboard-adv')
 @section('content')
 <div class="page-content">
 
@@ -12,7 +12,7 @@
         <div class="col-md-8 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form class="forms-sample" method="POST" action="{{url('/dashboard-admin/particular-orders/'.$order->id)}}" enctype="multipart/form-data">
+                    <form class="forms-sample" method="POST" action="{{url('adv/particular-orders/'.$order->id)}}" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
                      @csrf
                         <div class="row mb-3">

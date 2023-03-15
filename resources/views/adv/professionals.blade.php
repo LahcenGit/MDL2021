@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-admin')
+@extends('layouts.dashboard-adv')
 
 @section('content')
 <div class="page-content">
@@ -45,7 +45,7 @@
             <td>{{$professional->professional->RC}}</td>
             <td>{{$professional->professional->NIF}}</td>
             <td>
-              <form action="{{url('dashboard-admin/professionals/'.$professional->id)}}" method="post">
+              <form action="{{url('adv/professionals/'.$professional->id)}}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">

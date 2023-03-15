@@ -5,15 +5,16 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Commande mdl-23-3</li>
+            <li class="breadcrumb-item active" aria-current="page">Commande {{ $order->code }}</li>
         </ol>
     </nav>
     <div class="row d-flex ">
         <div class="col-md-8 grid-margin">
             <div class="card">
                 <div class="card-body">
-                  <form class="forms-sample" method="POST" action="{{url('/commercial/order-professionals')}}" enctype="multipart/form-data">
-                        @csrf
+                    <form class="forms-sample" method="POST" action="{{url('/commercial/order-professionals/'.$order->id)}}" enctype="multipart/form-data">
+                        <input type="hidden" name="_method" value="PUT">
+                         @csrf
                         <div id="particular-info">
                             <div class="row mb-3">
                             <div class="col-md-6">
@@ -34,7 +35,7 @@
                                     @foreach ($row as $product)
                                     <div class="row mb-3">
                                         <div class="col-md-9">
-                                         <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->product->id }}" name="products[]">
+                                         <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->product->id }}" name="products_order[]"checked>
                                             <label class="form-check-label" for="checkDefault">
                                             {{$product->product->designation}}
                                             </label>

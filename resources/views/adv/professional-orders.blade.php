@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-admin')
+@extends('layouts.dashboard-adv')
 @section('content')
 <div class="page-content">
 
@@ -54,12 +54,12 @@
             <td>{{$order->created_at->format('d-m-Y  H:i')}}</td>
 
             <td>
-              <form action="{{url('admin/professional-orders/'.$order->id)}}" method="post">
+              <form action="{{url('adv/professional-orders/'.$order->id)}}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     <a href="#" class="btn  btn-secondary show-orderline" data-id="{{ $order->id }}" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
-                    <a href="{{url('dashboard-admin/professional-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
+                    <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
                       "></i></a>
 
                 </div>
