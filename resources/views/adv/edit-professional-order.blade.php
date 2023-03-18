@@ -21,8 +21,8 @@
 								<select class="form-select" name="status"  class="form-control input-default " id="exampleFormControlSelect1">
                                     <option>select</option>
                                     <option value="1" @if ($order->status == 1) selected @endif > En attente</option>
-                                    <option value="2" @if ($order->status == 2) selected @endif > En production</option>
-                                    <option value="3" @if ($order->status == 3) selected @endif > Validé</option>
+                                    <option value="2" @if ($order->status == 2) selected @endif > Validé</option>
+                                    <option value="3" @if ($order->status == 3) selected @endif > Livré</option>
                                     <option value="4" @if ($order->status == 4) selected @endif > Annulé</option>
                                 </select>
 

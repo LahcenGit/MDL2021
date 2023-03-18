@@ -67,55 +67,47 @@
               <span class="link-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Main Menu</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Compte</span>
+          <li class="nav-item nav-category">Clients</li>
+          <li class="nav-item {{ active_class(['adv/professionals/*','adv/professionals']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#professionals" role="button" aria-expanded="{{ is_active_route(['adv/professionals/*','adv/professionals']) }}" aria-controls="professionals">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Professionnels</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="emails">
+            <div class="collapse {{ show_class(['adv/professionals/*','adv/professionals']) }}" id="professionals">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">Clients</a>
+                  <a href="{{ asset('adv/professionals/create') }}" class="nav-link {{ active_class(['adv/professionals/create']) }}">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ asset('adv/professionals') }}" class="nav-link {{ active_class(['adv/professionals']) }}">Tous</a>
                 </li>
 
 
               </ul>
             </div>
           </li>
-
-
-          <li class="nav-item nav-category">Produits Fabriqués</li>
-
-
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Produits</span>
+          <li class="nav-item {{ active_class(['adv/particulars/*','adv/particulars']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#particulars" role="button" aria-expanded="{{ is_active_route(['adv/particulars/*','adv/particulars']) }}" aria-controls="particulars">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Particuliers</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="uiComponents">
+            <div class="collapse {{ show_class(['adv/particulars/*','adv/particulars']) }}" id="particulars">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">Ajouter</a>
+                  <a href="{{ asset('adv/particulars/create') }}" class="nav-link">Ajouter</a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">Tous</a>
+                  <a href="{{ asset('adv/particulars') }}" class="nav-link {{ active_class(['adv/particulars']) }}">Tous</a>
                 </li>
-
-              </ul>
+             </ul>
             </div>
           </li>
-
-
-
-
           <li class="nav-item nav-category">Gestion des ventes</li>
-
           <li class="nav-item {{ active_class(['adv/orders/*','adv/orders']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#commandes" role="button" aria-expanded="{{ is_active_route(['adv/orders/*','adv/orders']) }}" aria-controls="orders">
-              <i class="link-icon" data-feather="anchor"></i>
+              <i class="link-icon" data-feather="command"></i>
               <span class="link-title">Anciennes</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -127,12 +119,9 @@
               </ul>
             </div>
           </li>
-
-
-
           <li class="nav-item {{ active_class(['adv/particular-orders/*','adv/particular-orders']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#commandesPaticular" role="button" aria-expanded="{{ is_active_route(['adv/particular-orders/*','adv/particular-orders']) }}" aria-controls="ordersparticulier">
-              <i class="link-icon" data-feather="anchor"></i>
+              <i class="link-icon" data-feather="command"></i>
               <span class="link-title">Particuliers</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -150,14 +139,14 @@
 
           <li class="nav-item {{ active_class(['adv/professional-orders/*','adv/professional-orders']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#commandesPro" role="button" aria-expanded="{{ is_active_route(['adv/professional-orders/*','dashboard-admin/professional-orders']) }}" aria-controls="ordersprofessional">
-              <i class="link-icon" data-feather="anchor"></i>
+              <i class="link-icon" data-feather="command"></i>
               <span class="link-title">Professionnels</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse {{ show_class(['adv/professional-orders/*','adv/professional-orders']) }}" id="commandesPro">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="#" class="nav-link {{ active_class(['adv/professional-orders/create']) }}">Ajouter</a>
+                  <a href="{{url('adv/professional-orders/create')}}" class="nav-link {{ active_class(['adv/professional-orders/create']) }}">Ajouter</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{url('adv/professional-orders')}}" class="nav-link {{ active_class(['adv/professional-orders']) }}">Liste commandes</a>
@@ -169,7 +158,7 @@
           <li class="nav-item nav-category">Setting</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
-              <i class="link-icon" data-feather="hash"></i>
+              <i class="link-icon" data-feather="settings"></i>
               <span class="link-title">Setting</span>
             </a>
           </li>
@@ -360,6 +349,7 @@
     @stack('order-ticket-scripts')
     @stack('modal-orderline-scripts')
     @stack('select-particular')
+    @stack('select-professional')
 
 
 </body>

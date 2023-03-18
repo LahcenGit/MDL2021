@@ -159,8 +159,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('adv/orders', AdvOrderController::class)->middleware('can:adv');
     Route::resource('adv/professional-orders', ProfessionalorderController::class)->middleware('can:adv');
     Route::resource('adv/professionals', ProfessionalController::class)->middleware('can:adv');
+    Route::resource('adv/particulars', ParticularController::class)->middleware('can:adv');
     Route::resource('adv/particular-orders', OrderparticularController::class)->middleware('can:adv');
-    Route::resource('adv/professionals', ProfessionalController::class)->middleware('can:adv');
     Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\Adv\ProfessionalorderController::class, 'detailOrder'])->middleware('can:adv');
     Route::get('/show-particular-orderline/{id}', [App\Http\Controllers\Adv\OrderparticularController::class, 'detailOrder'])->middleware('can:adv');
     Route::get('adv/order-detail/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderDetail'])->middleware('can:adv');
@@ -171,7 +171,6 @@ Route::middleware('auth')->group(function () {
     Route::post('adv/add-order-particular', [App\Http\Controllers\Adv\ParticularController::class, 'storeOrder'])->middleware('can:adv');
     Route::get('/get-phone/{id}', [App\Http\Controllers\Adv\ParticularController::class, 'getInformations'])->middleware('can:adv');
     Route::get('/adv/particulars', [App\Http\Controllers\Adv\ParticularController::class, 'index'])->middleware('can:adv');
-    Route::get('/adv/professionals', [App\Http\Controllers\Adv\ProfessionalController::class, 'index'])->middleware('can:adv');
     Route::resource('adv', AdvController::class)->middleware('can:adv');
 });
 

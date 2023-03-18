@@ -43,9 +43,9 @@
             @if ($order->status == 1 )
             <td><span class="badge bg-warning">En attente</span></td>
             @elseif($order->status == 2)
-            <td><span class="badge bg-primary">En production</span></td>
+            <td><span class="badge bg-primary">Validé</span></td>
             @elseif($order->status == 3)
-            <td><span class="badge bg-success">Validé</span></td>
+            <td><span class="badge bg-success">Livré</span></td>
             @else
             <td><span class="badge bg-danger">Annulé</span></td>
 
@@ -59,9 +59,8 @@
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     {{--<a href="#" class="btn  btn-secondary show-orderline" data-id="{{ $order->id }}" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>--}}
-                    <a href="{{url('adv/order-detail/'.$order->id)}}" class="btn  btn-secondary  show-order" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
-                    <a href="{{url('adv/particular-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
-                      "></i></a>
+                    <a href="{{url('adv/order-detail/'.$order->id)}}" class="show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                    <a href="{{url('adv/particular-orders/'.$order->id.'/edit')}}"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
 
                 </div>
               </form>

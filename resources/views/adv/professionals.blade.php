@@ -34,34 +34,35 @@
         </thead>
         <tbody>
             @foreach($professionals as $professional)
-          <tr>
-            <td>{{$loop->iteration}}</td>
-            <td>{{$professional->name}}</td>
-            <td>{{$professional->email}}</td>
-            <td>{{$professional->professional->phone}}</td>
-            <td>{{$professional->professional->entreprise}}</td>
-            <td>{{$professional->professional->adresse}}</td>
-            <td>{{$professional->professional->wilaya}}</td>
-            <td>{{$professional->professional->RC}}</td>
-            <td>{{$professional->professional->NIF}}</td>
-            <td>
-              <form action="{{url('adv/professionals/'.$professional->id)}}" method="post">
-                {{csrf_field()}}
-                {{method_field('DELETE')}}
-                <div class="d-flex">
-                    <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
-                </div>
-              </form>
-            </td>
-          </tr>
-         @endforeach
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$professional->name}}</td>
+                    <td>{{$professional->email}}</td>
+                    <td>{{$professional->professional->phone}}</td>
+                    <td>{{$professional->professional->entreprise}}</td>
+                    <td>{{$professional->professional->adresse}}</td>
+                    <td>{{$professional->professional->wilaya}}</td>
+                    <td>{{$professional->professional->RC}}</td>
+                    <td>{{$professional->professional->NIF}}</td>
+                    <td>
+                    <form action="{{url('adv/professionals/'.$professional->professional->id)}}" method="post">
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
+                        <div class="d-flex">
+                            <a href="{{ asset('adv/professionals/'.$professional->professional->id.'/edit') }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
+                            <button style="background-color: #ffffff; border-color:#ffffff" onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
+                        </div>
+                    </form>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
       </table>
     </div>
   </div>
 </div>
-        </div>
-    </div>
+</div>
+</div>
 
 </div>
 

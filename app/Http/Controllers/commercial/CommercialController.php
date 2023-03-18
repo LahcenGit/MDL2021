@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\commercial;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Produit;
 use App\Models\Professionalorder;
 use App\Models\Professionalorderline;
@@ -43,16 +44,19 @@ class CommercialController extends Controller
         $professional->type = $request->type;
         $professional->gps = $request->position_gps;
         $professional->save();
+        $cart = new Cart();
+        $cart->professional_id = $professional->id;
+        $cart->save();
         return redirect('/commercial/professionals');
     }
     public function professionals(){
-        $professionals = Professionnel::where('commercial_id',Auth::user()->id)->get();
+        $professionals = Professionnel::all();
         return view('commercial.professionals',compact('professionals'));
     }
 
     //order parcours
     public function createOrder(){
-        $professionals = Professionnel::where('commercial_id',Auth::user()->id)->get();
+        $professionals = Professionnel::all();
         $wilayas = Wilaya::all();
         $products = Produit::orderBy('flag','asc')->get();
         return view('commercial.add-order',compact('professionals','wilayas','products'));
@@ -72,6 +76,9 @@ class CommercialController extends Controller
             $professional->type = $request->type;
             $professional->gps = $request->position_gps;
             $professional->save();
+            $cart = new Cart();
+            $cart->professional_id = $professional->id;
+            $cart->save();
 
             $total = 0;
             $sub_total = null;

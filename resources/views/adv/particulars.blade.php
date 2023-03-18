@@ -44,7 +44,8 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <button class="btn btn-danger shadow btn-xs sharp "onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="mdi mdi-delete "></i></button>
+                    <a href="{{ asset('adv/particulars/'.$particular->particular->id.'/edit') }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
+                    <button style="background-color: #ffffff; border-color:#ffffff" onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
                 </div>
               </form>
             </td>
