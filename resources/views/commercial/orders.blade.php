@@ -45,9 +45,12 @@
             @if ($order->status == 1 )
             <td><span class="badge bg-warning">En attente</span></td>
             @elseif($order->status == 2)
-            <td><span class="badge bg-success">Validé</span></td>
+            <td><span class="badge bg-primary">Validé</span></td>
+            @elseif($order->status == 3)
+            <td><span class="badge bg-success">Livré</span></td>
             @else
             <td><span class="badge bg-danger">Annulé</span></td>
+
             @endif
             <td>{{$order->created_at->format('d-m-Y  H:i')}}</td>
             <td>
@@ -55,7 +58,9 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
+                    @if($order->status == 1)
                     <a href="{{ asset('commercial/order-professionals/edit/'.$order->id) }}" data-id="{{ $order->id }}" class=" btn-xs sharp "><i data-feather="edit"></i></a>
+                    @endif
                     <a href="#" data-id="{{ $order->id }}" class="btn-xs sharp show-orderline"><i data-feather="eye"></i></a>
                 </div>
               </form>

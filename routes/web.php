@@ -164,6 +164,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/show-professional-orderline/{id}', [App\Http\Controllers\Adv\ProfessionalorderController::class, 'detailOrder'])->middleware('can:adv');
     Route::get('/show-particular-orderline/{id}', [App\Http\Controllers\Adv\OrderparticularController::class, 'detailOrder'])->middleware('can:adv');
     Route::get('adv/order-detail/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderDetail'])->middleware('can:adv');
+    Route::get('adv/order-professional-detail/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderDetailProfessional'])->middleware('can:adv');
     Route::get('adv/order-ticket/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderTicket'])->middleware('can:adv');
     Route::get('adv/order-approuve/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderApprouve'])->middleware('can:adv');
     Route::get('adv/order-cancel/{id}', [App\Http\Controllers\AdvOrderController::class, 'orderCancel'])->middleware('can:adv');

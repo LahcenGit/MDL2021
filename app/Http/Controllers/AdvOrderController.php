@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Models\Orderline;
 use App\Models\Particularorder;
 use App\Models\Particularorderline;
+use App\Models\Professionalorder;
+use App\Models\Professionalorderline;
 use Illuminate\Http\Request;
 
 class AdvOrderController extends Controller
@@ -180,9 +182,14 @@ class AdvOrderController extends Controller
 
 
     public function orderDetail($id){
-
         $order = Particularorder::find($id);
         $orderlines = Particularorderline::where('particularorder_id',$id)->get();
+        return view('orders.order-detail',compact('order','orderlines'));
+
+    }
+    public function orderDetailProfessional($id){
+        $order = Professionalorder::find($id);
+        $orderlines = Professionalorderline::where('professionalorder_id',$id)->get();
         return view('orders.order-detail',compact('order','orderlines'));
 
     }

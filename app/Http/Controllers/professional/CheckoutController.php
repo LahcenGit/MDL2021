@@ -91,15 +91,15 @@ class CheckoutController extends Controller
 
                 }
                 else if($request->qtes[$i] > 300) {
-                    $cartline->total = $request->qte[$i] * $tarification->price_two;
+                    $cartline->total = $request->qtes[$i] * $tarification->price_two;
                     $cartline->pu = $tarification->price_two;
-                    $total = $total + $request->qte[$i] * $tarification->price_two;
+                    $total = $total + $request->qtes[$i] * $tarification->price_two;
 
                 }
                 else if($request->qtes[$i] < 100){
-                    $cartline->total = $request->qte[$i] * 1400;
+                    $cartline->total = $request->qtes[$i] * 1400;
                     $cartline->pu = 1400;
-                    $total = $total + $request->qte[$i] * 1400;
+                    $total = $total + $request->qtes[$i] * 1400;
                 }
 
          }

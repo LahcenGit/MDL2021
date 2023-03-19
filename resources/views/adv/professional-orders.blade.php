@@ -58,10 +58,8 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="#" class="btn  btn-secondary show-orderline" data-id="{{ $order->id }}" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
-                    <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}" class="btn  btn-warning  show-order" style="margin-right: 3px;"><i class="mdi mdi-border-color
-                      "></i></a>
-
+                    <a href="{{url('adv/order-professional-detail/'.$order->id)}}" class="show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                    <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
                 </div>
               </form>
             </td>

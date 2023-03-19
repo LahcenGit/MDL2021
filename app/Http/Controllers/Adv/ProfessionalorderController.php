@@ -327,9 +327,20 @@ class ProfessionalorderController extends Controller
 
     public function edit($id){
         $order = Professionalorder::find($id);
-        return view('adv.edit-professional-order',compact('order'));
+        $professionals = Professionnel::all();
+        $orderlines = Professionalorderline::where('professionalorder_id',$id)->get();
+        $array = array();
+        foreach($orderlines as $orderline){
+            array_push($array , $orderline->product_id);
+        }
+        $products = Produit::whereNotIn('id',$array)->orderBy('flag','asc')->get();
+        return view('adv.edit-professional-order',compact('order','products','professionals','orderlines'));
     }
     public function update($id , Request $request){
+        $total = 0;
+        $sub_total = null;
+        $tva = null;
+        $date = Carbon::now()->format('y');
         $order = Professionalorder::find($id);
         $order->status = $request->status;
         $order->save();
@@ -342,6 +353,188 @@ class ProfessionalorderController extends Controller
                 $stock->type = 'sortie';
                 $stock->save();
             }
+        }
+
+        $orderlines = Professionalorderline::where('professionalorder_id',$id)->get();
+        foreach($orderlines as $orderline){
+            $orderline->delete();
+        }
+        if($request->products_order){
+            for($i=0 ; $i<count($request->products_order); $i++ ){
+                $orderline = new Professionalorderline();
+                $orderline->professionalorder_id = $order->id;
+                $orderline->qte = $request->qtes_order[$i];
+                $orderline->product_id = $request->products_order[$i];
+                if($order->professional->type == 'Pizzeria'){
+
+                $tarification = Tarification::where('type','Pizzeria')->where('product_id',$request->products_order[$i])->first();
+                if($tarification->price_two == Null && $tarification->price_tree == NULL ){
+                    $orderline->total = $request->qtes_order[$i] * $tarification->price_one;
+                    $orderline->pu = $tarification->price_one;
+                    $total = $total +  $request->qtes_order[$i] * $tarification->price_one;
+
+
+                    }
+                else if($tarification->price_one != NULL && $tarification->price_two != NULL){
+
+                    if($request->qtes_order[$i] <= 100){
+                        $orderline->total = $request->qtes_order[$i] * $tarification->price_one;
+                        $orderline->pu = $tarification->price_one;
+                        $total = $total + $request->qtes_order[$i] * $tarification->price_one;
+
+                    }
+                    else {
+                        $orderline->total = $request->qtes_order[$i] * $tarification->price_two;
+                        $orderline->pu = $tarification->price_two;
+                        $total = $total + $request->qtes_order[$i] * $tarification->price_two;
+
+                    }
+                }
+
+            }
+                else if($order->professional->type == 'Grossiste'){
+                    $tarification = Tarification::where('type','Grossiste')->where('product_id',$request->products_order[$i])->first();
+                    if($tarification->price_two == Null && $tarification->price_tree == NULL ){
+                        $orderline->total = $request->qtes_order[$i] * $tarification->price_one;
+                        $orderline->pu = $tarification->price_one;
+                        $total = $total +  $request->qtes_order[$i] * $tarification->price_one;
+
+                    }
+                    else if($tarification->price_one != NULL && $tarification->price_two != NULL){
+                    if($request->qtes_order[$i] >= 100){
+                            $orderline->total = $request->qtes_order[$i] * $tarification->price_one;
+                            $orderline->pu = $tarification->price_one;
+                            $total = $total + $request->qtes_order[$i] * $tarification->price_one;
+
+                        }
+                        else if($request->qtes_order[$i] > 300) {
+                            $orderline->total = $request->qtes_order[$i] * $tarification->price_two;
+                            $orderline->pu = $tarification->price_two;
+                            $total = $total + $request->qtes_order[$i] * $tarification->price_two;
+
+                        }
+                        else if($request->qtes_order[$i] < 100){
+                            $orderline->total = $request->qtes_order[$i] * 1400;
+                            $orderline->pu = 1400;
+                            $total = $total + $request->qtes_order[$i] * 1400;
+                        }
+
+                }
+                }
+                else if($order->professional->type == 'Superette'){
+                    $tarification = Tarification::where('type','Superette')->where('product_id',$request->products_order[$i])->first();
+                    $orderline->total = $request->qtes_order[$i] * $tarification->price_one;
+                    $orderline->pu = $tarification->price_one;
+                    $total = $total +  $request->qtes_order[$i] * $tarification->price_one;
+                }
+                else{
+                $tarification = Tarification::where('type','Orika')->where('product_id',$request->products_order[$i])->first();
+                $orderline->total = $request->qtes_order[$i] * $tarification->price_one;
+                $orderline->pu = $tarification->price_one;
+                $total =  $total + $request->qtes_order[$i] * $tarification->price_one;
+
+                }
+                $orderline->save();
+                }
+
+            if($order->professional->type == 'Orika'){
+
+                $tva = ($total*19)/100;
+                $sub_total = $total;
+                $total = $total + $tva;
+            }
+            $total_order = Professionalorderline::where('professionalorder_id',$order->id)->sum('total');
+            $order->total = $total_order;
+            $order->save();
+
+        }
+        if($request->products){
+            for($i=0 ; $i<count($request->products); $i++ ){
+                $orderline = new Professionalorderline();
+                $orderline->professionalorder_id = $order->id;
+                $orderline->qte = $request->qtes[$i];
+                $orderline->product_id = $request->products[$i];
+                if($order->professional->type == 'Pizzeria'){
+
+                $tarification = Tarification::where('type','Pizzeria')->where('product_id',$request->products[$i])->first();
+                if($tarification->price_two == Null && $tarification->price_tree == NULL ){
+                    $orderline->total = $request->qtes[$i] * $tarification->price_one;
+                    $orderline->pu = $tarification->price_one;
+                    $total = $total +  $request->qtes[$i] * $tarification->price_one;
+
+
+                    }
+                else if($tarification->price_one != NULL && $tarification->price_two != NULL){
+
+                    if($request->qtes[$i] <= 100){
+                        $orderline->total = $request->qtes[$i] * $tarification->price_one;
+                        $orderline->pu = $tarification->price_one;
+                        $total = $total + $request->qtes[$i] * $tarification->price_one;
+
+                    }
+                    else {
+                        $orderline->total = $request->qtes[$i] * $tarification->price_two;
+                        $orderline->pu = $tarification->price_two;
+                        $total = $total + $request->qtes[$i] * $tarification->price_two;
+
+                    }
+                }
+
+            }
+                else if($order->professional->type == 'Grossiste'){
+                    $tarification = Tarification::where('type','Grossiste')->where('product_id',$request->products[$i])->first();
+                    if($tarification->price_two == Null && $tarification->price_tree == NULL ){
+                        $orderline->total = $request->qtes[$i] * $tarification->price_one;
+                        $orderline->pu = $tarification->price_one;
+                        $total = $total +  $request->qtes[$i] * $tarification->price_one;
+
+                    }
+                    else if($tarification->price_one != NULL && $tarification->price_two != NULL){
+                    if($request->qtes[$i] >= 100){
+                            $orderline->total = $request->qtes[$i] * $tarification->price_one;
+                            $orderline->pu = $tarification->price_one;
+                            $total = $total + $request->qtes[$i] * $tarification->price_one;
+
+                        }
+                        else if($request->qtes[$i] > 300) {
+                            $orderline->total = $request->qtes[$i] * $tarification->price_two;
+                            $orderline->pu = $tarification->price_two;
+                            $total = $total + $request->qtes[$i] * $tarification->price_two;
+
+                        }
+                        else if($request->qtes[$i] < 100){
+                            $orderline->total = $request->qtes[$i] * 1400;
+                            $orderline->pu = 1400;
+                            $total = $total + $request->qtes[$i] * 1400;
+                        }
+
+                }
+                }
+                else if($order->professional->type == 'Superette'){
+                    $tarification = Tarification::where('type','Superette')->where('product_id',$request->products[$i])->first();
+                    $orderline->total = $request->qtes[$i] * $tarification->price_one;
+                    $orderline->pu = $tarification->price_one;
+                    $total = $total +  $request->qtes[$i] * $tarification->price_one;
+                }
+                else{
+                $tarification = Tarification::where('type','Orika')->where('product_id',$request->products[$i])->first();
+                $orderline->total = $request->qtes[$i] * $tarification->price_one;
+                $orderline->pu = $tarification->price_one;
+                $total =  $total + $request->qtes[$i] * $tarification->price_one;
+
+                }
+                $orderline->save();
+                }
+
+            if($order->professional->type == 'Orika'){
+
+                $tva = ($total*19)/100;
+                $sub_total = $total;
+                $total = $total + $tva;
+            }
+            $total_order = Professionalorderline::where('professionalorder_id',$order->id)->sum('total');
+            $order->total = $total_order;
+            $order->save();
         }
         return redirect('/adv/professional-orders');
     }
