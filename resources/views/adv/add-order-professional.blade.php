@@ -18,7 +18,7 @@
                             <div class="col-md-9">
                              <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" name="check" value="1">
                                 <label class="form-check-label" for="checkDefault">
-                                Un nouveau Client ?
+                                Nouveau Client ?
                                 </label>
                             </div>
                         </div>
@@ -181,7 +181,7 @@
                                             <div class="col-md-9">
                                             <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->id }}" name="products[]">
                                                 <label class="form-check-label" for="checkDefault">
-                                                {{$product->designation}}
+                                                    {{$product->soft_name}} {{$product->capacity}}
                                                 </label>
                                             </div>
                                             <div class="col-md-3">
