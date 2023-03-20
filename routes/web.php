@@ -93,6 +93,16 @@ Route::get('/commercial/login', function () {
     }
 
 });
+Route::get('/adv/login', function () {
+
+    if(Auth::check()){
+        return redirect('/adv');
+    }
+    else{
+        return view('auth.login-adv');
+    }
+
+});
 Route::get('/connexion', function () {
   if(Auth::check()){
         if(Auth::user()->type == 'professionnel'){
