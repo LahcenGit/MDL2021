@@ -17,7 +17,7 @@
 
     <h6 class="card-title">La table des commandes</h6>
 
-    <p class="text-muted mb-3">Vous trouvez ici  tous les professionnels.</p>
+    <p class="text-muted mb-3">Vous trouvez ici  toutes les commandes.</p>
     <div class="table-responsive">
       <table id="dataTableExample" class="table">
         <thead>

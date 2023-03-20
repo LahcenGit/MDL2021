@@ -22,7 +22,6 @@
             <th>#</th>
             <th>Nom</th>
             <th>wilaya</th>
-
             <th>Téléphone</th>
             <th>Total</th>
             <th>Statut</th>

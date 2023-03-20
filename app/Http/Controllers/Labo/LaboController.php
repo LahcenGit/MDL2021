@@ -16,21 +16,12 @@ class LaboController extends Controller
 {
     //
     public function index(){
-        $orders = Professionalorder::where('status',3)->get('id');
-        $orderLines = Professionalorderline::whereIn('professionalorder_id',$orders)->get();
-        $product_1 = $orderLines->where('product_id',1)->sum('qte');
-        $product_2 = $orderLines->where('product_id',2)->sum('qte');
-        $product_3 = $orderLines->where('product_id',3)->sum('qte');
-        $product_4 = $orderLines->where('product_id',4)->sum('qte');
-        $product_5 = $orderLines->where('product_id',5)->sum('qte');
-        $product_6 = $orderLines->where('product_id',6)->sum('qte');
-        $product_7 = $orderLines->where('product_id',7)->sum('qte');
-        $product_8 = $orderLines->where('product_id',8)->sum('qte');
-        $product_9 = $orderLines->where('product_id',9)->sum('qte');
-        $product_10 = $orderLines->where('product_id',10)->sum('qte');
-        $product_11 = $orderLines->where('product_id',11)->sum('qte');
-        $product_12 = $orderLines->where('product_id',12)->sum('qte');
-        return view('labo.dashboard-labo',compact('orders','product_1','product_2','product_3','product_4','product_5','product_6','product_7','product_8','product_9','product_10','product_11','product_12'));
+        $resultats = Stock::selectRaw('product_id, SUM(CASE WHEN type = "Entre" THEN qte ELSE 0 END) as entree , SUM(CASE WHEN type = "sortie" THEN qte ELSE 0 END) as sortie ,  SUM(CASE WHEN type = "Entre" THEN qte ELSE 0 END) - SUM(CASE WHEN type = "sortie" THEN qte ELSE 0 END) as stock')
+        ->groupBy('product_id')
+        ->where('type', 'Entre')
+        ->orWhere('type', 'sortie')
+        ->get();
+        return view('labo.dashboard-labo',compact('resultats'));
     }
 
     public function createProduction(){

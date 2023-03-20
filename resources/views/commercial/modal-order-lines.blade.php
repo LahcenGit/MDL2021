@@ -1,5 +1,5 @@
 <div class="modal" tabindex="-1" id="modal-order-line">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Détail commande  </h5><h5 style="color:#6FB53E">({{ $order->code }})</h5>
@@ -11,6 +11,7 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Produit</th>
+                    <th scope="col">Capacité</th>
                     <th scope="col">Qte</th>
                     <th scope="col">Total</th>
                   </tr>
@@ -19,14 +20,15 @@
                     @foreach($orderlines as $orderline)
                     <tr >
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td >{{ $orderline->product->designation }}</td>
+                        <td >{{ $orderline->product->soft_name }} </td>
+                        <td >{{ $orderline->product->capacity }} </td>
                         <td>{{ $orderline->qte }}</td>
                         <td>{{ number_format($orderline->total) }} Da</td>
                     </tr>
                     @endforeach
                     <tr>
-                        <td colspan="3"><b>Total</b></td>
-                        <td style="color:#6FB53E;"><b>{{ number_format($total,0) }} Da</b></td>
+                        <td colspan="4"><b>Total</b></td>
+                        <td style="color:#6FB53E;"><b>{{ number_format($total,2) }} Da</b></td>
                     </tr>
                 </tbody>
               </table>

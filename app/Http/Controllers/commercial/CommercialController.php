@@ -23,8 +23,9 @@ class CommercialController extends Controller
         $orders = Professionalorder::orderBy('created_at','desc')->limit(10)->get();
         $order_en_attente = Professionalorder::where('status',1)->count();
         $order_valide = Professionalorder::where('status',2)->count();
-        $order_annuler = Professionalorder::where('status',3)->count();
-        return view('commercial.dashboard-commercial',compact('orders','order_en_attente','order_valide','order_annuler'));
+        $order_livre= Professionalorder::where('status',3)->count();
+        $order_annuler= Professionalorder::where('status',4)->count();
+        return view('commercial.dashboard-commercial',compact('orders','order_en_attente','order_valide','order_annuler','order_livre'));
     }
     public function createProfessional(){
         $wilayas = Wilaya::all();
@@ -50,13 +51,13 @@ class CommercialController extends Controller
         return redirect('/commercial/professionals');
     }
     public function professionals(){
-        $professionals = Professionnel::all();
+        $professionals = Professionnel::orderBy('created_at','desc')->get();
         return view('commercial.professionals',compact('professionals'));
     }
 
     //order parcours
     public function createOrder(){
-        $professionals = Professionnel::all();
+        $professionals = Professionnel::orderBy('created_at','desc')->get();
         $wilayas = Wilaya::all();
         $products = Produit::orderBy('flag','asc')->get();
         return view('commercial.add-order',compact('professionals','wilayas','products'));

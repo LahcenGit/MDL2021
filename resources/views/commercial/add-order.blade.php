@@ -18,7 +18,7 @@
                             <div class="col-md-9">
                              <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" name="check" value="1">
                                 <label class="form-check-label" for="checkDefault">
-                                Un nouveau Client ?
+                                  Nouveau Client ?
                                 </label>
                             </div>
                         </div>
@@ -70,10 +70,10 @@
                             <div class="row mb-3">
                             <div class="col-md-6">
                                     <label class="form-label">Client*:</label>
-                                    <select class="js-example-basic-single form-select" data-width="100%" id="select-professional" name="professional">
-                                        <option value="">Le client :</option>
+                                    <select class="js-example-basic-single form-select"   data-width="100%" id="select-professional" name="professional">
+                                        <option  disabled selected>selectionner...</option>
                                         @foreach($professionals as $professional)
-                                        <option value="{{ $professional->id }}">{{ $professional->user->name }}</option>
+                                        <option value="{{ $professional->id }}">{{ $professional->user->name }} - {{ $professional->type }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -84,7 +84,7 @@
                                 <div class="col-md-9">
                                 <input type="checkbox" class="form-check-input check-pack" id="check-pack" name="check_pack" value="1">
                                     <label class="form-check-label" for="check-pack">
-                                    pack supérette
+                                      <span style="color:#6FB53E"> <b>PACK SUPÉRETTE</b>  </span>
                                     </label>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                             <div class="col-md-9">
                                             <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->id }}" name="products[]">
                                                 <label class="form-check-label" for="checkDefault">
-                                                {{$product->designation}}
+                                                {{$product->soft_name}} {{ $product->capacity }}
                                                 </label>
                                             </div>
                                             <div class="col-md-3">

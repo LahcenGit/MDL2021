@@ -83,6 +83,8 @@
     $(".big-checkbox").click(function() {
         var set_disabled =  $(this).is(':checked') ? false : true;
         var set_required=  $(this).is(':checked') ? true : false;
+       //  $(this).parent().next().children('input').removeAttr('value');
+        // $(this).parent().next().children('input').attr('placeholder' ,'Qte.');
          $(this).parent().next().children('input').attr('disabled',set_disabled);
          $(this).parent().next().children('input').attr('required',set_required);
     });
