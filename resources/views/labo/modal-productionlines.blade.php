@@ -1,5 +1,5 @@
 <div class="modal" tabindex="-1" id="modal-production-line">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Détail production  </h5>
@@ -18,7 +18,7 @@
                     @foreach($productionlines as $productionline)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td >{{ $productionline->product->designation }}</td>
+                        <td >{{ $productionline->product->soft_name }} {{ $productionline->product->capacity }}</td>
                         <td>{{ $productionline->qte }}</td>
                     </tr>
                     @endforeach
