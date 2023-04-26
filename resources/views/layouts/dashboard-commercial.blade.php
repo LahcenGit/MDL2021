@@ -106,6 +106,26 @@
             </div>
           </li>
 
+          <li class="nav-item nav-category">Visites</li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#visit" role="button" aria-expanded="false" aria-controls="visit">
+                <i class="link-icon" data-feather="visit"></i>
+              <span class="link-title">Visites</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="visit">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ asset('commercial/visits/create') }}" class="nav-link">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ asset('commercial/visits') }}" class="nav-link">Tous</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+
           <li class="nav-item nav-category">Setting</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">

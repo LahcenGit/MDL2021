@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'milkcheckAuth' => \App\Http\Middleware\milkcheckAuth::class,
         'professionalParticularAuth' => \App\Http\Middleware\ProfessionalParticularAuth::class,
         'CommercialAuth' => \App\Http\Middleware\CommercialAuth::class,
-        'AdminAuth' => \App\Http\Middleware\AdminAuth::class
+        'AdminAuth' => \App\Http\Middleware\AdminAuth::class,
+        'LaboAuth' => \App\Http\Middleware\AdminAuth::class
     ];
 }

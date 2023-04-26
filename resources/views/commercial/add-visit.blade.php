@@ -79,19 +79,45 @@
                                 </div>
                              </div>
                         </div>
+
+                        <div class="form-check">
+                            <label class="form-label">connaissance du produit*:</label>
+                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" checked name="cp">
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Oui ?
+                            </label>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                    <label class="form-label">Avis prix*:</label>
+                                    <select class="js-example-basic-single form-select"   data-width="100%"  name="price_feedback">
+                                        <option  disabled selected>selectionner...</option>
+                                        <option value="0">Meilleur prix</option>
+                                        <option value="1">Bon prix</option>
+                                        <option value="2">Prix elevé</option>
+                                    </select>
+                            </div>
+                        </div>
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                     <label class="form-label">Etat*:</label>
                                     <select class="js-example-basic-single form-select"   data-width="100%"  name="etat">
                                         <option  disabled selected>selectionner...</option>
-                                        <option value="0">Accépté</option>
-                                        <option value="1">Refus</option>
+                                        <option value="0">Demande d'essai</option>
+                                        <option value="1">Passé commande</option>
+                                        <option value="2">Problème signalé</option>
+                                        <option value="3">Refusé</option>
                                     </select>
                                 </div>
                         </div>
+
+
+
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                    <label class="form-label">Remarque*:</label>
+                                    <label class="form-label">Remarque(optionnel):</label>
                                     <textarea class="form-control mb-4 mb-md-0  input-default " name="note" value="{{old('note')}}" placeholder="remarque...." ></textarea>
                             </div>
                         </div>

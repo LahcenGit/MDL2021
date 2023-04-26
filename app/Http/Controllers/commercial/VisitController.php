@@ -47,6 +47,8 @@ class VisitController extends Controller
             $visit->commercial_id = Auth::user()->id;
             $visit->note = $request->note;
             $visit->etat = $request->etat;
+            $visit->cp = $request->cp;
+            $visit->price_feedback = $request->price_feedback;
             $visit->save();
 
     }
@@ -56,6 +58,8 @@ class VisitController extends Controller
             $visit->commercial_id = Auth::user()->id;
             $visit->note = $request->note;
             $visit->etat = $request->etat;
+            $visit->cp = $request->cp;
+            $visit->price_feedback = $request->price_feedback;
             $visit->save();
     }
     return redirect('/commercial/visits');
@@ -73,6 +77,8 @@ public function update($id, Request $request){
     $visit->commercial_id = Auth::user()->id;
     $visit->note = $request->note;
     $visit->etat = $request->etat;
+    $visit->cp = $request->cp;
+    $visit->price_feedback = $request->price_feedback;
     $visit->save();
     return redirect('/commercial/visits');
 

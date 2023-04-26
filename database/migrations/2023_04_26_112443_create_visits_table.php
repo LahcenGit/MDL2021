@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('commercial_id')->unsigned()->nullable();
             $table->unsignedBigInteger('professional_id')->unsigned();
-            $table->string('note');
+            $table->string('note')->nullable();
+            $table->tinyInteger('cp');
+            $table->tinyInteger('price_feedback');
             $table->tinyInteger('etat');
             $table->foreign('commercial_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('professional_id')->references('id')->on('professionnels')->onDelete('cascade');

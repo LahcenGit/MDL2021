@@ -60,60 +60,27 @@
       </div>
       <div class="sidebar-body">
         <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
+          <li class="nav-item nav-category">administration ventes</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ asset('admin/adv') }}" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
+              <span class="link-title">administration ventes</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Adv</li>
-          <li class="nav-item {{ active_class(['admin/orders/*','admin/orders']) }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#professionals" role="button" aria-expanded="{{ is_active_route(['admin/orders/*','admin/orders']) }}" aria-controls="orders">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Commandes</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse {{ show_class(['admin/orders/*','admin/orders']) }}" id="orders">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ asset('admin/orders') }}" class="nav-link {{ active_class(['admin/orders']) }}">Toutes les commandes</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
           <li class="nav-item nav-category">Commercial</li>
-          <li class="nav-item {{ active_class(['adv/orders/*','adv/orders']) }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#commandes" role="button" aria-expanded="{{ is_active_route(['admin/commercial/*','admin/commercial']) }}" aria-controls="commercial">
-              <i class="link-icon" data-feather="command"></i>
+          <li class="nav-item">
+            <a href="{{ asset('admin/commercial') }}" class="nav-link">
+              <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Commercial</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse {{ show_class(['admin/commercial/*','admin/commercial']) }}" id="commercial">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                    <a href="{{url('admin/commercial')}}" class="nav-link {{ active_class(['admin/commercial']) }}">Commercial</a>
-                  </li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item nav-category">Production</li>
-          <li class="nav-item {{ active_class(['admin/production/*','admin/production']) }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#commandes" role="button" aria-expanded="{{ is_active_route(['admin/production/*','admin/production']) }}" aria-controls="production">
-              <i class="link-icon" data-feather="command"></i>
+          <li class="nav-item">
+            <a href="{{ asset('admin/production') }}" class="nav-link">
+              <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Production</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse {{ show_class(['admin/production/*','admin/production']) }}" id="production">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                    <a href="{{url('admin/production')}}" class="nav-link {{ active_class(['admin/production']) }}">Production</a>
-                  </li>
-              </ul>
-            </div>
           </li>
-
 
         </ul>
       </div>
