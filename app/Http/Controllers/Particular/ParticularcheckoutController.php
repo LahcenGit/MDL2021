@@ -63,6 +63,18 @@ class ParticularcheckoutController extends Controller
         return view('particulier.checkout',compact('cart','total','wilayas'));
     }
     public function successOrder(Request $request){
+        $delivery = 0;
+
+        if($request->wilaya == 'Alger'){
+            $delivery = 500;
+        }
+        elseif($request->wilaya == 'Oran'){
+            $delivery = 300;
+        }
+        else{
+            $delivery = 200;
+        }
+
         $particular = Particulier::where('user_id',Auth::user()->id)->first();
         $cart = Particularcart::where('particular_id',$particular->id)->first();
         $date = Carbon::now()->format('y');
@@ -78,6 +90,7 @@ class ParticularcheckoutController extends Controller
             $order->status = 1;
             $order->total = $total_order;
             $order->note = $request->note;
+            $order->delivery = $delivery;
             $order->save();
             $order->code = 'mdl'.'-'.$date.'-'.$order->id;
             $order->save();

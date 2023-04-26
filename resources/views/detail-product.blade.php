@@ -24,11 +24,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-title-wrap">
-                <div class="page-title-inner">
+                <div class="page-title-inner" style="min-height: 0px;">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; Produit</div>
-                        <div class="bigtitle" style="color:#1847AD">{{ $product->designation }}</div>
+                        <div class="bread"><a href="{{asset('/')}}">Accueil</a> &rsaquo; {{ $product->designation }}</div>
                     </div>
                 </div>
                 </div>

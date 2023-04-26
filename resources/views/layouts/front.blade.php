@@ -308,6 +308,7 @@
 	@stack('order-pro-front')
     @stack('contact-scripts')
     @stack('comment-scripts')
+	@stack('checkout-particular')
 	</div>
   </body>
 </html>

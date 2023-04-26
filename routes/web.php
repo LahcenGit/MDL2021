@@ -257,6 +257,11 @@ Route::middleware('professionalParticularAuth')->group(function () {
     Route::get('/app-particular/success-order', function () {
        return view('particulier.success-order');
     });
+
+    //added fees to wilaya 
+    
+    Route::get('/app-particular/wilaya-coast/{name}/{total}', [App\Http\Controllers\Particular\AppParticularController::class, 'wilayaCost'])->middleware('can:particular');
+
 });
 
 //
@@ -326,3 +331,6 @@ Route::get('/recipes', function () {
 Route::get('/professionnel-pack-order', function () {
     return view('professionel.do-not-access');
 });
+
+
+

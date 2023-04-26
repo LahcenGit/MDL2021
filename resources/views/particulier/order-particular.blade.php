@@ -68,27 +68,29 @@
             <div class="spacer"></div>
 
             @foreach($products->split($products->count()/2) as $row)
-                <div class="col-md-6 ">
-                    @foreach ($row as $product)
-                        <div class="form-group dob">
-                            <div class="col-sm-9">
-                                <input type="checkbox" class="form-check-input big-checkbox"  name="products[]" value="{{ $product->id }}" > <span class="product-title"><b> {{ $product->designation }}</b> {{$product->capacity}}</span>
-                                    @error('product')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                <div class="row">
+                    <div class="col-md-12">
+                        @foreach ($row as $product)
+                            <div class="form-group dob">
+                                <div class="col-sm-6">
+                                    <input type="checkbox" class="form-check-input big-checkbox"  name="products[]" value="{{ $product->id }}" > <span class="product-title"><b> {{ $product->designation }}</b> {{$product->capacity}}</span>
+                                        @error('product')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                                <div class="col-sm-3 ">
+                                    <input type="number" class="form-control  @error('qte') is-invalid @enderror" name="qtes[]" min="0" placeholder="Qte." disabled  >
+                                        @error('qte')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
                             </div>
-                            <div class="col-sm-3 ">
-                                <input type="number" class="form-control  @error('qte') is-invalid @enderror" name="qtes[]" min="0" placeholder="Qte." disabled  >
-                                    @error('qte')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             @endforeach
         </div>

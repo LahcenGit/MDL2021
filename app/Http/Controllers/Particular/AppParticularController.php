@@ -23,11 +23,36 @@ class AppParticularController extends Controller
     }
 
     public function orderLines($id){
-        $particular = Particulier::where('user_id',Auth::user()->id)->first();
         $orderlines = Particularorderline::where('particularorder_id',$id)->get();
-        $total = Particularorderline::where('particularorder_id',$id)->sum('total');
         $order = Particularorder::find($id);
-        $code = $order->code;
-        return view('particulier.order-lines',compact('orderlines','total','code'));
+        return view('particulier.order-lines',compact('orderlines','order'));
+    }
+
+
+    public function wilayaCost($name,$total){
+        if($name == "Alger"){
+            $total = number_format($total+500,2);
+            $coast = 500;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
+        if($name == "Oran"){
+            $total = number_format($total+300,2);
+            $coast = 300;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
+        if($name == "Sba"){
+            $total = number_format($total+200,2);
+            $coast = 200;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
     }
 }

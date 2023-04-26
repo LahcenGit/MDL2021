@@ -43,28 +43,33 @@
             <div class="col-md-6">
                     <div class="form-group dob">
                         <div class="col-sm-12">
+                            <label>Nom complet* :</label>
                             <input type="text" class="form-control" id="name" value="{{ Auth::user()->name }}" name="name">
                         </div>
                     </div>
                     <div class="form-group">
+                       
                         <div class="col-sm-6" style="margin-bottom: 8px;">
+                            <label>Adresse* :</label>
                             <input type="text" class="form-control" id="name" placeholder="Adresse" name="address" required>
                         </div>
                         <div class="col-sm-6">
-                           <select class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
+                            <label>Wilaya* :</label>
+                           <select id="wilaya-select" class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
                                  <option value="" disabled selected>La wilaya: </option>
                                 <option value="Alger" @if(old('wilaya')== 'Alger') selected @endif>Alger</option>
                                 <option value="Oran" @if(old('wilaya')== 'Oran') selected @endif>Oran</option>
-                                <option value="Aïn Témouchent" @if(old('wilaya')== 'Aïn Témouchent') selected @endif>Aïn Témouchent</option>
-                                <option value="Sidi Bel Abbès" @if(old('wilaya')== 'Sidi Bel Abbès') selected @endif>Sidi Bel Abbès</option>
+                                <option value="Sba" @if(old('wilaya')== 'Sba') selected @endif>Sidi Bel Abbès</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group dob">
                         <div class="col-sm-6">
+                            <label>N° Téléphone* :</label>
                             <input type="text" class="form-control" id="phone" value="{{ Auth::user()->particular->phone }}" name="phone">
                         </div>
                         <div class="col-sm-6">
+                            <label>Email* :</label>
                             <input type="text" class="form-control" id="email" value="{{ Auth::user()->email }}" name="email">
                         </div>
                     </div>
@@ -95,7 +100,9 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-6">
                         <div class="subtotal-wrap">
-                        <div class="total">Total : <span class="bigprice">{{ number_format($total,2) }} Da</span></div>
+                        <div >Total : <span id="total" data-total="{{ $total }}">{{ number_format($total,2) }} </span>Da</div>
+                        <div >Livraison : <span id="delivery-cost">- </span>Da</div>
+                        <div class="total">Total : <span class="bigprice final-total">{{ number_format($total,2) }} </span>Da</div>
                         </div>
                         <div class="clearfix"></div>
                         </div>
@@ -128,3 +135,34 @@
     <div class="spacer"></div>
 </div>
 @endsection
+
+@push('checkout-particular')
+<script>
+
+$.ajaxSetup({
+	headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+	});
+          
+	$("#wilaya-select").change(function() {
+      
+            var name = $(this).val();
+            var total = $('#total').data('total');
+
+            
+            
+             $.ajax({
+                url: '/app-particular/wilaya-coast/' + name +'/'+ total ,
+                type: "GET",
+                success: function (res) {
+                    $('#delivery-cost').html(res.coast);
+                    $('.final-total').html(res.total);
+
+			    }
+        	});
+
+	});
+
+</script>
+@endpush

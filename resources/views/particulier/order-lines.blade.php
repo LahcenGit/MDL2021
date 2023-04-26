@@ -33,7 +33,7 @@
     </div>
 
     <div id="title-bg">
-        <div class="title">Détail commande {{ $code }}</div>
+        <div class="title">Détail commande {{ $order->code }}</div>
 
     </div>
 
@@ -66,7 +66,9 @@
         <div class="row">
             <div class="col-md-3 col-md-offset-9">
             <div class="subtotal-wrap">
-               <div class="total">Total : <span class="bigprice">{{ number_format($total,2) }} Da</span></div>
+               <div >Total : <span >{{ number_format($order->total,2) }} Da</span></div>
+               <div >Livraison : <span>{{ number_format($order->delivery,2) }} Da</span></div>
+               <div class="total">Total : <span class="bigprice">{{ number_format($order->total +$order->delivery,2) }} Da</span></div>
             </div>
             <div class="clearfix"></div>
             </div>

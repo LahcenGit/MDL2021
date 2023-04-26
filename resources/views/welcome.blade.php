@@ -69,6 +69,12 @@
     <div class="main-slide">
         <div id="sync1" class="owl-carousel">
             <div class="item">
+                
+                <div class="slide-type-1">
+                    <img src="{{asset('/slider/slider-ramadan.jpg')}}" alt="" class="img-responsive"/>
+                </div>
+            </div>
+            <div class="item">
                 <div class="slide-desc">
                     <div class="inner">
                         <h1>Fromages 100% naturels</h1>
@@ -126,6 +132,12 @@
     <div id="sync2" class="owl-carousel">
         <div class="item">
             <div class="slide-type-1-sync">
+                <h3>Produits Ramdan</h3>
+                <p>Ramadan Kareem </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="slide-type-1-sync">
                 <h3>Fromages 500g</h3>
                 <p>100% naturels</p>
             </div>
@@ -162,7 +174,7 @@
                         <a href="{{ url('product/'.$product->slug) }}">
                             <img src="{{ asset('/mdltheme/images/'.$product->images[0]->lien) }}" alt="" class="img-responsive"/>
                         </a>
-                        <div class="pricetag blue"><div class="inner"><span>{{ $product->pu_ht }} Da</span></div></div>
+                        <div class="pricetag blue"><div class="inner"><span>{{ number_format($product->pu_ht )}} Da</span></div></div>
                     </div>
                         <span class="smalltitle cut-text " ><a href="{{ url('product/'.$product->slug) }}">{{ $product->designation }}</a></span>
                         <span class="smalldesc">{{ $product->capacity }}</span>
