@@ -25,6 +25,7 @@ use App\Http\Controllers\Adv\OrderparticularController;
 use App\Http\Controllers\professional\CheckoutController;
 use App\Http\Controllers\Particular\ParticularorderController;
 use App\Http\Controllers\Particular\ParticularcheckoutController;
+use App\Http\Controllers\commercial\VisitController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommentController;
@@ -69,6 +70,16 @@ Route::get('/milkcheck/login', function () {
     }
     else{
         return view('auth.login-milkcheck');
+    }
+
+});
+Route::get('/admin/login', function () {
+
+    if(Auth::check()){
+        return redirect('/admin/adv');
+    }
+    else{
+        return view('auth.login-admin');
     }
 
 });
@@ -285,6 +296,7 @@ Route::get('commercial/professionals/edit/{id}', [App\Http\Controllers\Commercia
 Route::put('commercial/professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateProfessional']);
 Route::get('get-type/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'getType']);
 Route::get('modal-order-line/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'showModal']);
+Route::resource('commercial/visits',VisitController::class);
 });
 
 //labo route
@@ -296,7 +308,13 @@ Route::get('labo/productions/edit/{id}', [App\Http\Controllers\Labo\LaboControll
 Route::put('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction']);
 Route::get('modal-production-line/{id}', [App\Http\Controllers\Labo\LaboController::class,'showModalProduction']);
 
-
+//admin route
+Route::middleware('AdminAuth')->group(function () {
+Route::get('admin', [App\Http\Controllers\Admin\AdminController::class,'index']);
+Route::get('admin/adv', [App\Http\Controllers\Admin\AdminController::class,'advOrders']);
+Route::get('admin/commercial', [App\Http\Controllers\Admin\AdminController::class,'commercial']);
+Route::get('admin/production', [App\Http\Controllers\Admin\AdminController::class,'production']);
+});
 //
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
 

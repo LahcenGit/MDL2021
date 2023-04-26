@@ -87,6 +87,7 @@ class CommercialController extends Controller
             $date = Carbon::now()->format('y');
             $order = new Professionalorder();
             $order->professional_id = $professional->id;
+            $order->commercial_id = Auth::user()->id;
             $order->status = 1;
             $order->save();
             if($request->check_pack == 1){
@@ -224,6 +225,7 @@ class CommercialController extends Controller
            $date = Carbon::now()->format('y');
            $order = new Professionalorder();
            $order->professional_id = $professional->id;
+           $order->commercial_id = Auth::user()->id;
            $order->status = 1;
            $order->save();
            if($request->check_pack == 1){
