@@ -50,7 +50,7 @@
 		<nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-            MDL<span>Commercial</span>
+            MDL<span>Admin</span>
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>
@@ -60,79 +60,28 @@
       </div>
       <div class="sidebar-body">
         <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
+          <li class="nav-item nav-category">administration ventes</li>
           <li class="nav-item">
-            <a href="{{url('/commercial')}}" class="nav-link">
+            <a href="{{ asset('admin/adv') }}" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
+              <span class="link-title">administration ventes</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Professionnels</li>
+          <li class="nav-item nav-category">Commercial</li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Professionnels</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
+            <a href="{{ asset('admin/commercial') }}" class="nav-link">
+              <i class="link-icon" data-feather="box"></i>
+              <span class="link-title">Commercial</span>
             </a>
-            <div class="collapse" id="emails">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/professionals/create') }}" class="nav-link">Ajouter</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ asset('commercial/professionals') }}" class="nav-link">Tous</a>
-                </li>
-
-              </ul>
-            </div>
           </li>
-         <li class="nav-item nav-category">Commandes</li>
+          <li class="nav-item nav-category">Production</li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-                <i class="link-icon" data-feather="command"></i>
-              <span class="link-title">Commandes</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="uiComponents">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/order-professionals/create') }}" class="nav-link">Ajouter</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/order-professionals') }}" class="nav-link">Tous</a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-item nav-category">Visites</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#visit" role="button" aria-expanded="false" aria-controls="visit">
-                <i class="link-icon" data-feather="visit"></i>
-              <span class="link-title">Visites</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="visit">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/visits/create') }}" class="nav-link">Ajouter</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/visits') }}" class="nav-link">Tous</a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-item nav-category">Setting</li>
-          <li class="nav-item">
-            <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
-              <i class="link-icon" data-feather="settings"></i>
-              <span class="link-title">Setting</span>
+            <a href="{{ asset('admin/production') }}" class="nav-link">
+              <i class="link-icon" data-feather="box"></i>
+              <span class="link-title">Production</span>
             </a>
           </li>
+
         </ul>
       </div>
     </nav>
@@ -244,7 +193,38 @@
 	</div>
 
 	<!-- core:js -->
+    <script>
 
+        $(document).ready(function(){
+        $('#images').drop_uploader({
+            uploader_text: 'Drop files to upload, or',
+            browse_text: 'Browse',
+            only_one_error_text: 'Only one file allowed',
+            not_allowed_error_text: 'File type is not allowed',
+            big_file_before_error_text: 'Files, bigger than',
+            big_file_after_error_text: 'is not allowed',
+            allowed_before_error_text: 'Only',
+            allowed_after_error_text: 'files allowed',
+            browse_css_class: 'button button-primary',
+            browse_css_selector: 'file_browse',
+            uploader_icon: '',
+            file_icon: '',
+            progress_color: '#4a90e2',
+            time_show_errors: 5,
+            layout: 'thumbnails',
+            method: 'normal',
+            chunk_size: 1000000,
+            concurrent_uploads: 5,
+            show_percentage: true,
+            existing_files: false,
+            existing_files_removable: true,
+            send_existing_files: false,
+            url: 'ajax_upload.php',
+            delete_url: 'ajax_delete.php',
+        });
+    });
+
+    </script>
 
 	<script src="{{asset('/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
@@ -282,7 +262,15 @@
     <script src="{{ asset('/assets/js/tinymce.js') }}"></script>
 
 	<!-- End custom js for this page -->
-@stack('select-professional')
-@stack('modal-orderline-scripts')
+
+
+
+    @stack('order-detail-scripts')
+    @stack('order-ticket-scripts')
+    @stack('modal-orderline-scripts')
+    @stack('select-particular')
+    @stack('select-professional')
+
+
 </body>
 </html>

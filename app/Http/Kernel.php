@@ -66,6 +66,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'milkcheckAuth' => \App\Http\Middleware\milkcheckAuth::class,
         'professionalParticularAuth' => \App\Http\Middleware\ProfessionalParticularAuth::class,
-        'CommercialAuth' => \App\Http\Middleware\CommercialAuth::class
+        'CommercialAuth' => \App\Http\Middleware\CommercialAuth::class,
+        'AdminAuth' => \App\Http\Middleware\AdminAuth::class,
+        'LaboAuth' => \App\Http\Middleware\AdminAuth::class
     ];
 }

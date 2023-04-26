@@ -25,6 +25,7 @@ use App\Http\Controllers\Adv\OrderparticularController;
 use App\Http\Controllers\professional\CheckoutController;
 use App\Http\Controllers\Particular\ParticularorderController;
 use App\Http\Controllers\Particular\ParticularcheckoutController;
+use App\Http\Controllers\commercial\VisitController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommentController;
@@ -69,6 +70,16 @@ Route::get('/milkcheck/login', function () {
     }
     else{
         return view('auth.login-milkcheck');
+    }
+
+});
+Route::get('/admin/login', function () {
+
+    if(Auth::check()){
+        return redirect('/admin/adv');
+    }
+    else{
+        return view('auth.login-admin');
     }
 
 });
@@ -277,31 +288,39 @@ Route::get('home-dashboard', function () {
 
 //commercial route
 Route::middleware('CommercialAuth')->group(function () {
-Route::get('commercial', [App\Http\Controllers\Commercial\CommercialController::class,'index']);
-Route::get('commercial/professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createProfessional']);
-Route::post('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeProfessional']);
-Route::get('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'professionals']);
-Route::get('commercial/order-professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createOrder']);
-Route::post('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeOrder']);
-Route::get('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'orders']);
-Route::get('commercial/order-professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editOrder']);
-Route::put('commercial/order-professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateOrder']);
-Route::get('commercial/professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editProfessional']);
-Route::put('commercial/professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateProfessional']);
-Route::get('get-type/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'getType']);
-Route::get('modal-order-line/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'showModal']);
+Route::get('commercial', [App\Http\Controllers\Commercial\CommercialController::class,'index'])->middleware('can:commercial');
+Route::get('commercial/professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createProfessional'])->middleware('can:commercial');
+Route::post('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeProfessional'])->middleware('can:commercial');
+Route::get('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'professionals'])->middleware('can:commercial');
+Route::get('commercial/order-professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createOrder'])->middleware('can:commercial');
+Route::post('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeOrder'])->middleware('can:commercial');
+Route::get('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'orders'])->middleware('can:commercial');
+Route::get('commercial/order-professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editOrder'])->middleware('can:commercial');
+Route::put('commercial/order-professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateOrder'])->middleware('can:commercial');
+Route::get('commercial/professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editProfessional'])->middleware('can:commercial');
+Route::put('commercial/professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateProfessional'])->middleware('can:commercial');
+Route::get('get-type/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'getType'])->middleware('can:commercial');
+Route::get('modal-order-line/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'showModal'])->middleware('can:commercial');
+Route::resource('commercial/visits',VisitController::class)->middleware('can:commercial');
 });
 
 //labo route
-Route::get('labo', [App\Http\Controllers\Labo\LaboController::class,'index']);
-Route::get('labo/productions/create', [App\Http\Controllers\Labo\LaboController::class,'createProduction']);
-Route::post('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'storeProduction']);
-Route::get('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'productions']);
-Route::get('labo/productions/edit/{id}', [App\Http\Controllers\Labo\LaboController::class,'editProduction']);
-Route::put('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction']);
-Route::get('modal-production-line/{id}', [App\Http\Controllers\Labo\LaboController::class,'showModalProduction']);
-
-
+Route::middleware('LaboAuth')->group(function () {
+Route::get('labo', [App\Http\Controllers\Labo\LaboController::class,'index'])->middleware('can:labo');
+Route::get('labo/productions/create', [App\Http\Controllers\Labo\LaboController::class,'createProduction'])->middleware('can:labo');
+Route::post('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'storeProduction'])->middleware('can:labo');
+Route::get('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'productions'])->middleware('can:labo');
+Route::get('labo/productions/edit/{id}', [App\Http\Controllers\Labo\LaboController::class,'editProduction'])->middleware('can:labo');
+Route::put('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction'])->middleware('can:labo');
+Route::get('modal-production-line/{id}', [App\Http\Controllers\Labo\LaboController::class,'showModalProduction'])->middleware('can:labo');
+});
+//admin route
+Route::middleware('AdminAuth')->group(function () {
+Route::get('admin', [App\Http\Controllers\Admin\AdminController::class,'index'])->middleware('can:admin');
+Route::get('admin/adv', [App\Http\Controllers\Admin\AdminController::class,'advOrders'])->middleware('can:admin');
+Route::get('admin/commercial', [App\Http\Controllers\Admin\AdminController::class,'commercial'])->middleware('can:admin');
+Route::get('admin/production', [App\Http\Controllers\Admin\AdminController::class,'production'])->middleware('can:admin');
+});
 //
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
 
