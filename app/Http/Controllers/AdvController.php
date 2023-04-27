@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Particularorder;
 use App\Models\Professionalorder;
 use App\Models\Stock;
+use App\Models\Visit;
 
 class AdvController extends Controller
 {
@@ -16,6 +17,7 @@ class AdvController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index(){
         $orders_professional = Professionalorder::limit(10)->orderBy('created_at','desc')->get();
         $orders_particular = Particularorder::limit(10)->orderBy('created_at','desc')->get();
@@ -26,5 +28,16 @@ class AdvController extends Controller
                         ->orWhere('type', 'sortie')
                         ->get();
         return view('adv.dashboard-adv',compact('orders_professional','orders_particular','resultats'));
+    }
+
+    public function commercial(){
+        $orders = Professionalorder::where('commercial_id','!=',Null)->orderBy('created_at','desc')->get();
+        $visits = Visit::orderBy('created_at','desc')->get();
+        $nbr_visit = Visit::count();
+        $count_satisfaction = Visit::where('price_feedback',0)->orWhere('price_feedback',1)->count();
+        $satisfaction_price = ( $count_satisfaction *100)/ $nbr_visit;
+        $count_cp = Visit::where('cp',1)->count();
+        $cp = ( $count_cp *100)/ $nbr_visit;
+        return view('adv.commercial',compact('orders','visits','nbr_visit','satisfaction_price','cp'));
     }
 }

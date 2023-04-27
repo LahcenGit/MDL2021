@@ -193,7 +193,9 @@ Route::middleware('auth')->group(function () {
     Route::post('adv/add-order-particular', [App\Http\Controllers\Adv\ParticularController::class, 'storeOrder'])->middleware('can:adv');
     Route::get('/get-phone/{id}', [App\Http\Controllers\Adv\ParticularController::class, 'getInformations'])->middleware('can:adv');
     Route::get('/adv/particulars', [App\Http\Controllers\Adv\ParticularController::class, 'index'])->middleware('can:adv');
+    Route::get('/adv/commercial', [App\Http\Controllers\AdvController::class, 'commercial'])->middleware('can:adv');
     Route::resource('adv', AdvController::class)->middleware('can:adv');
+    
 });
 
 
@@ -288,7 +290,7 @@ Route::get('home-dashboard', function () {
 
 //commercial route
 Route::middleware('CommercialAuth')->group(function () {
-Route::get('commercial', [App\Http\Controllers\Commercial\CommercialController::class,'index'])->middleware('can:commercial');
+Route::get('commercial', [App\Http\Controllers\commercial\CommercialController::class,'index'])->middleware('can:commercial');
 Route::get('commercial/professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createProfessional'])->middleware('can:commercial');
 Route::post('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeProfessional'])->middleware('can:commercial');
 Route::get('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'professionals'])->middleware('can:commercial');

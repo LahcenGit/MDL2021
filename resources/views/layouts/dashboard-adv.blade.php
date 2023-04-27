@@ -155,6 +155,14 @@
             </div>
           </li>
 
+          <li class="nav-item nav-category">Commercial</li>
+          <li class="nav-item">
+            <a href="{{ asset('adv/commercial') }}" class="nav-link">
+              <i class="link-icon" data-feather="box"></i>
+              <span class="link-title">Commercial</span>
+            </a>
+          </li>
+
           <li class="nav-item nav-category">Setting</li>
           <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">

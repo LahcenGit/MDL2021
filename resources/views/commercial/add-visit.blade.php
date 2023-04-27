@@ -66,6 +66,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div id="particular-info">
                             <div class="row mb-3">
                             <div class="col-md-6">
@@ -80,12 +81,15 @@
                              </div>
                         </div>
 
-                        <div class="form-check">
-                            <label class="form-label">connaissance du produit*:</label>
-                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" checked name="cp">
-                            <label class="form-check-label" for="flexCheckChecked">
-                              Oui ?
-                            </label>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">connaissance du produit*:</label>
+                                <select class="js-example-basic-single form-select"  data-width="100%"  name="cp">
+                                    <option  disabled selected>selectionner...</option>
+                                    <option value="oui">oui</option>
+                                    <option value="non">non</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="row mb-3">
