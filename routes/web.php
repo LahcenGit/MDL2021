@@ -195,7 +195,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/adv/particulars', [App\Http\Controllers\Adv\ParticularController::class, 'index'])->middleware('can:adv');
     Route::get('/adv/commercial', [App\Http\Controllers\AdvController::class, 'commercial'])->middleware('can:adv');
     Route::resource('adv', AdvController::class)->middleware('can:adv');
-    
+
 });
 
 
@@ -271,8 +271,8 @@ Route::middleware('professionalParticularAuth')->group(function () {
        return view('particulier.success-order');
     });
 
-    //added fees to wilaya 
-    
+    //added fees to wilaya
+
     Route::get('/app-particular/wilaya-coast/{name}/{total}', [App\Http\Controllers\Particular\AppParticularController::class, 'wilayaCost'])->middleware('can:particular');
 
 });
@@ -292,17 +292,17 @@ Route::get('home-dashboard', function () {
 Route::middleware('CommercialAuth')->group(function () {
 Route::get('commercial', [App\Http\Controllers\commercial\CommercialController::class,'index'])->middleware('can:commercial');
 Route::get('commercial/professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createProfessional'])->middleware('can:commercial');
-Route::post('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeProfessional'])->middleware('can:commercial');
-Route::get('commercial/professionals', [App\Http\Controllers\Commercial\CommercialController::class,'professionals'])->middleware('can:commercial');
-Route::get('commercial/order-professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createOrder'])->middleware('can:commercial');
-Route::post('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'storeOrder'])->middleware('can:commercial');
-Route::get('commercial/order-professionals', [App\Http\Controllers\Commercial\CommercialController::class,'orders'])->middleware('can:commercial');
-Route::get('commercial/order-professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editOrder'])->middleware('can:commercial');
-Route::put('commercial/order-professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateOrder'])->middleware('can:commercial');
-Route::get('commercial/professionals/edit/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'editProfessional'])->middleware('can:commercial');
-Route::put('commercial/professionals/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'updateProfessional'])->middleware('can:commercial');
-Route::get('get-type/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'getType'])->middleware('can:commercial');
-Route::get('modal-order-line/{id}', [App\Http\Controllers\Commercial\CommercialController::class,'showModal'])->middleware('can:commercial');
+Route::post('commercial/professionals', [App\Http\Controllers\commercial\CommercialController::class,'storeProfessional'])->middleware('can:commercial');
+Route::get('commercial/professionals', [App\Http\Controllers\commercial\CommercialController::class,'professionals'])->middleware('can:commercial');
+Route::get('commercial/order-professionals/create', [App\Http\Controllers\commercial\CommercialController::class,'createOrder'])->middleware('can:commercial');
+Route::post('commercial/order-professionals', [App\Http\Controllers\commercial\CommercialController::class,'storeOrder'])->middleware('can:commercial');
+Route::get('commercial/order-professionals', [App\Http\Controllers\commercial\CommercialController::class,'orders'])->middleware('can:commercial');
+Route::get('commercial/order-professionals/edit/{id}', [App\Http\Controllers\commercial\CommercialController::class,'editOrder'])->middleware('can:commercial');
+Route::put('commercial/order-professionals/{id}', [App\Http\Controllers\commercial\CommercialController::class,'updateOrder'])->middleware('can:commercial');
+Route::get('commercial/professionals/edit/{id}', [App\Http\Controllers\commercial\CommercialController::class,'editProfessional'])->middleware('can:commercial');
+Route::put('commercial/professionals/{id}', [App\Http\Controllers\commercial\CommercialController::class,'updateProfessional'])->middleware('can:commercial');
+Route::get('get-type/{id}', [App\Http\Controllers\commercial\CommercialController::class,'getType'])->middleware('can:commercial');
+Route::get('modal-order-line/{id}', [App\Http\Controllers\commercial\CommercialController::class,'showModal'])->middleware('can:commercial');
 Route::resource('commercial/visits',VisitController::class)->middleware('can:commercial');
 });
 

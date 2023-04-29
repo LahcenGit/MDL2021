@@ -47,7 +47,7 @@
 	<div class="main-wrapper">
 
 		<!-- partial:partials/_sidebar.html -->
-		<nav class="sidebar">
+	<nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
             MDL<span>Adv</span>

@@ -66,7 +66,7 @@
                                 <label class="form-label">Type*:</label>
                                 <select class="form-select" name="type"  class="form-control input-default " id="exampleFormControlSelect1" required>
                                     <option value="" disabled selected>Type: </option>
-                                    <option value="Pizzeria" @if($professional->type == 'Orika') selected @endif>Pizzeria</option>
+                                    <option value="Pizzeria" @if($professional->type == 'Pizzeria') selected @endif>Pizzeria</option>
                                     <option value="Grossiste" @if($professional->type == 'Grossiste') selected @endif>Grossiste</option>
                                     <option value="Superette" @if($professional->type == 'Superette') selected @endif>Supérette</option>
                                     <option value="Orika" @if($professional->type == 'Orika') selected @endif>Autre</option>

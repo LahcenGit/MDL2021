@@ -86,8 +86,8 @@
                                 <label class="form-label">connaissance du produit*:</label>
                                 <select class="js-example-basic-single form-select"  data-width="100%"  name="cp">
                                     <option  disabled selected>selectionner...</option>
-                                    <option value="oui">oui</option>
-                                    <option value="non">non</option>
+                                    <option value="1">oui</option>
+                                    <option value="0">non</option>
                                 </select>
                             </div>
                         </div>

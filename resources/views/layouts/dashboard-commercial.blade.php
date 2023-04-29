@@ -1,141 +1,139 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title>La maison du lait </title>
+        <title>La maison du lait </title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
-    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="{{asset('/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 
-    <!-- End fonts -->
+        <!-- End fonts -->
 
-    <!-- core:css -->
-    <link rel="stylesheet" href="{{asset('/assets/vendors/core/core.css')}}">
-    <!-- endinject -->
+        <!-- core:css -->
+        <link rel="stylesheet" href="{{asset('/assets/vendors/core/core.css')}}">
+        <!-- endinject -->
 
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('/assets/vendors/simplemde/simplemde.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/vendors/dropify/dist/dropify.min.css') }}">
-    <!-- End plugin css for this page -->
+        <!-- Plugin css for this page -->
+        <link rel="stylesheet" href="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('/assets/vendors/simplemde/simplemde.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/assets/vendors/dropify/dist/dropify.min.css') }}">
+        <!-- End plugin css for this page -->
 
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{asset('/assets/fonts/feather-font/css/iconfont.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
+        <!-- inject:css -->
+        <link rel="stylesheet" href="{{asset('/assets/fonts/feather-font/css/iconfont.css')}}">
+        <link rel="stylesheet" href="{{asset('/assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
 
-    <link rel="stylesheet" href="{{asset('/assets/vendors/select2/select2.min.css')}}">
-    <!-- endinject -->
+        <link rel="stylesheet" href="{{asset('/assets/vendors/select2/select2.min.css')}}">
+        <!-- endinject -->
 
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
-    <!-- End layout styles -->
+        <!-- Layout styles -->
+        <link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
+        <!-- End layout styles -->
 
-    <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
-    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-</head>
+        <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
+        <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+    </head>
 <body>
 	<div class="main-wrapper">
 
 		<!-- partial:partials/_sidebar.html -->
-		<nav class="sidebar">
-      <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-            MDL<span>Commercial</span>
-        </a>
-        <div class="sidebar-toggler not-active">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div class="sidebar-body">
-        <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
-          <li class="nav-item">
-            <a href="{{url('/commercial')}}" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">Professionnels</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Professionnels</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="emails">
-              <ul class="nav sub-menu">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+              <a href="#" class="sidebar-brand">
+                  MDL<span>Commercial</span>
+              </a>
+              <div class="sidebar-toggler not-active">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="sidebar-body">
+              <ul class="nav">
+                <li class="nav-item nav-category">Main</li>
                 <li class="nav-item">
-                  <a href="{{ asset('commercial/professionals/create') }}" class="nav-link">Ajouter</a>
+                  <a href="{{url('commercial')}}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Dashboard</span>
+                  </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ asset('commercial/professionals') }}" class="nav-link">Tous</a>
+                <li class="nav-item nav-category">Professionnels</li>
+                <li class="nav-item {{ active_class(['commercial/professionals/*','commercial/professionals']) }}">
+                  <a class="nav-link" data-bs-toggle="collapse" href="#professionals" role="button" aria-expanded="{{ is_active_route(['commercial/professionals/*','commercial/professionals']) }}" aria-controls="professionals">
+                    <i class="link-icon" data-feather="users"></i>
+                    <span class="link-title">Professionnels</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                  </a>
+                  <div class="collapse {{ show_class(['commercial/professionals/*','commercial/professionals']) }}" id="professionals">
+                    <ul class="nav sub-menu">
+                      <li class="nav-item">
+                        <a href="{{ asset('commercial/professionals/create') }}" class="nav-link {{ active_class(['commercial/professionals/create']) }}">Ajouter</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ asset('commercial/professionals') }}" class="nav-link {{ active_class(['commercial/professionals']) }}">Tous</a>
+                      </li>
+
+
+                    </ul>
+                  </div>
                 </li>
 
+                <li class="nav-item nav-category">Commandes</li>
+                <li class="nav-item {{ active_class(['commercial/order-professionals/*','commercial/order-professionals']) }}">
+                  <a class="nav-link" data-bs-toggle="collapse" href="#commandesPaticular" role="button" aria-expanded="{{ is_active_route(['commercial/order-professionals/*','commercial/order-professionals']) }}" aria-controls="ordersparticulier">
+                    <i class="link-icon" data-feather="command"></i>
+                    <span class="link-title">Commandes</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                  </a>
+                  <div class="collapse {{ show_class(['commercial/order-professionals/*','commercial/order-professionals']) }}" id="commandesPaticular">
+                    <ul class="nav sub-menu">
+                      <li class="nav-item">
+                        <a href="{{url('commercial/order-professionals/create')}}" class="nav-link {{ active_class(['commercial/order-professionals/create']) }}">Ajouter</a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{url('commercial/order-professionals')}}" class="nav-link {{ active_class(['commercial/order-professionals']) }}">Liste commandes</a>
+                        </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item nav-category">Visites</li>
+                <li class="nav-item {{ active_class(['commercial/visits/*','commercial/visits']) }}">
+                  <a class="nav-link" data-bs-toggle="collapse" href="#visit" role="button" aria-expanded="{{ is_active_route(['commercial/visits/*','commercial/visits']) }}" aria-controls="visit">
+                    <i class="link-icon" data-feather="command"></i>
+                    <span class="link-title">Visites</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                  </a>
+                  <div class="collapse {{ show_class(['commercial/visits/*','commercial/visits']) }}" id="visit">
+                    <ul class="nav sub-menu">
+                      <li class="nav-item">
+                        <a href="{{url('commercial/visits/create')}}" class="nav-link {{ active_class(['commercial/visits/create']) }}">Ajouter</a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{url('commercial/visits')}}" class="nav-link {{ active_class(['commercial/visits']) }}">Toutes le visites</a>
+                        </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item nav-category">Setting</li>
+                <li class="nav-item">
+                  <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
+                    <i class="link-icon" data-feather="settings"></i>
+                    <span class="link-title">Setting</span>
+                  </a>
+                </li>
               </ul>
             </div>
-          </li>
-         <li class="nav-item nav-category">Commandes</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-                <i class="link-icon" data-feather="command"></i>
-              <span class="link-title">Commandes</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="uiComponents">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/order-professionals/create') }}" class="nav-link">Ajouter</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/order-professionals') }}" class="nav-link">Tous</a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-item nav-category">Visites</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#visit" role="button" aria-expanded="false" aria-controls="visit">
-                <i class="link-icon" data-feather="visit"></i>
-              <span class="link-title">Visites</span>
-              <i class="link-arrow" data-feather="chevron-down"></i>
-            </a>
-            <div class="collapse" id="visit">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/visits/create') }}" class="nav-link">Ajouter</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ asset('commercial/visits') }}" class="nav-link">Tous</a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-item nav-category">Setting</li>
-          <li class="nav-item">
-            <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
-              <i class="link-icon" data-feather="settings"></i>
-              <span class="link-title">Setting</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+          </nav>
 
 		<!-- partial -->
 
@@ -245,6 +243,38 @@
 
 	<!-- core:js -->
 
+    <script>
+
+        $(document).ready(function(){
+        $('#images').drop_uploader({
+            uploader_text: 'Drop files to upload, or',
+            browse_text: 'Browse',
+            only_one_error_text: 'Only one file allowed',
+            not_allowed_error_text: 'File type is not allowed',
+            big_file_before_error_text: 'Files, bigger than',
+            big_file_after_error_text: 'is not allowed',
+            allowed_before_error_text: 'Only',
+            allowed_after_error_text: 'files allowed',
+            browse_css_class: 'button button-primary',
+            browse_css_selector: 'file_browse',
+            uploader_icon: '',
+            file_icon: '',
+            progress_color: '#4a90e2',
+            time_show_errors: 5,
+            layout: 'thumbnails',
+            method: 'normal',
+            chunk_size: 1000000,
+            concurrent_uploads: 5,
+            show_percentage: true,
+            existing_files: false,
+            existing_files_removable: true,
+            send_existing_files: false,
+            url: 'ajax_upload.php',
+            delete_url: 'ajax_delete.php',
+        });
+    });
+
+    </script>
 
 	<script src="{{asset('/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
@@ -279,6 +309,7 @@
     <script src="{{asset('/assets/js/datepicker.js')}}"></script>
     <script src="{{asset('/assets/js/select2.js')}}"></script>
     <script src="{{asset('/assets/js/dropify.js') }}"></script>
+    <script src="{{ asset('/assets/js/tinymce.js') }}"></script>
     <script src="{{ asset('/assets/js/tinymce.js') }}"></script>
 
 	<!-- End custom js for this page -->
