@@ -33,7 +33,7 @@ class ProfessionalorderController extends Controller
     public function store(Request $request){
         if($request->check == 1){
             $user = new User();
-            $user->type = 'professionnel';
+            $user->type = 'professional';
             $user->name = $request['name'];
             $user->email = $request['email'];
             $user->password = Hash::make($request['password']);

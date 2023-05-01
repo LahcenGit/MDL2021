@@ -19,7 +19,15 @@ class AdminController extends Controller
     public function advOrders(){
         $professional_orders = Professionalorder::orderBy('created_at','desc')->get();
         $particulars_orders = Particularorder::orderBy('created_at','desc')->get();
-        return view('admin.adv',compact('professional_orders','particulars_orders'));
+        $revenu_pro = Professionalorder::where('status',3)->sum('total');
+        $revenu_particular = Particularorder::where('status',3)->sum('total');
+        $nbr_order_pro = Professionalorder::count();
+        $nbr_order_particular = Particularorder::count();
+        $nbr_order =  $nbr_order_pro  + $nbr_order_particular;
+        $nbr_order_pro_en_attente =  Professionalorder::where('status',1)->count();
+        $nbr_order_particular_en_attente =  Particularorder::where('status',1)->count();
+        $nbr_order_en_attent =  $nbr_order_pro_en_attente + $nbr_order_particular_en_attente ;
+        return view('admin.adv',compact('professional_orders','particulars_orders','revenu_pro','revenu_particular','nbr_order','nbr_order_en_attent'));
     }
     public function commercial(){
         $orders = Professionalorder::where('commercial_id','!=',Null)->orderBy('created_at','desc')->get();

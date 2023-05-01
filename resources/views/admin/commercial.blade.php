@@ -3,8 +3,8 @@
 <div class="page-content">
 <nav class="page-breadcrumb">
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Commandes</li>
+    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Délégué Commercial</li>
 </ol>
 </nav>
 @include('flash-message')

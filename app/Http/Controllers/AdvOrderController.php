@@ -190,7 +190,7 @@ class AdvOrderController extends Controller
     public function orderDetailProfessional($id){
         $order = Professionalorder::find($id);
         $orderlines = Professionalorderline::where('professionalorder_id',$id)->get();
-        return view('orders.order-detail',compact('order','orderlines'));
+        return view('adv.order-professional-detail',compact('order','orderlines'));
 
     }
 

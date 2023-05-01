@@ -38,7 +38,9 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$professional->name}}</td>
                     <td>{{$professional->email}}</td>
+                    @if($professional->professional->phone)
                     <td>{{$professional->professional->phone}}</td>
+                    @endif
                     <td>{{$professional->professional->entreprise}}</td>
                     <td>{{$professional->professional->adresse}}</td>
                     <td>{{$professional->professional->wilaya}}</td>

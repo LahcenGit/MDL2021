@@ -35,7 +35,7 @@ class CommercialController extends Controller
     public function storeProfessional(Request $request){
         $user = new User();
         $user->name = $request->name;
-        $user->type = 'professionnel';
+        $user->type = 'professional';
         $user->save();
         $professional = new Professionnel();
         $professional->user_id = $user->id;

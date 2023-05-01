@@ -19,13 +19,13 @@ class ProfessionalController extends Controller
     }
 
     public function index(){
-        $professionals = User::where('type','professionnel')->orderBy('created_at','desc')->get();
+        $professionals = User::where('type','professional')->orderBy('created_at','desc')->get();
         return view('adv.professionals',compact('professionals'));
     }
 
     public function store(Request $request){
         $user = new User;
-        $user->type = 'professionnel';
+        $user->type = 'professional';
         $user->name = $request['name'];
         $user->email = $request['email'];
         $user->password = Hash::make($request['password']);
@@ -58,7 +58,7 @@ class ProfessionalController extends Controller
     public function update(Request $request , $id){
         $professional = Professionnel::find($id);
         $user = User::find($professional->user_id);
-        $user->type = 'professionnel';
+        $user->type = 'professional';
         $user->name = $request['name'];
         $user->email = $request['email'];
         if($request->password){
