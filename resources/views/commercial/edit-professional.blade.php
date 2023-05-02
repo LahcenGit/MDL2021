@@ -30,7 +30,7 @@
                         <div class="row mb-3">
                             <div class="col-md-8">
                                 <label class="form-label">Téléphone*:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('phone') is-invalid @enderror" name="phone" value="{{$professional->phone}}" placeholder="Téléphone" required />
+                                <input class="form-control mb-4 mb-md-0  input-default @error('phone') is-invalid @enderror" name="phone" value="{{$professional->phone}}" placeholder="Téléphone"  />
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

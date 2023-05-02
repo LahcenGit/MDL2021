@@ -32,9 +32,9 @@
                       @if ($order->status == 1 )
                       <td><span class="badge bg-warning">En attente</span></td>
                       @elseif($order->status == 2)
-                      <td><span class="badge bg-success">Validé</span></td>
+                      <td><span class="badge bg-primary">Validé</span></td>
                       @elseif($order->status == 3)
-                      <td><span class="badge bg-primary">Livré</span></td>
+                      <td><span class="badge bg-succes">Livré</span></td>
                       @else
                       <td><span class="badge bg-danger">Annulé</span></td>
                       @endif

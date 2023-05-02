@@ -52,7 +52,11 @@
                         {{method_field('DELETE')}}
                         <div class="d-flex">
                             <a href="{{ asset('adv/professionals/'.$professional->professional->id.'/edit') }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
+                            @if($professional->professional->gps)
+                            <a href="{{$professional->professional->gps}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
+                            @endif
                             <button style="background-color: #ffffff; border-color:#ffffff" onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
+
                         </div>
                     </form>
                     </td>

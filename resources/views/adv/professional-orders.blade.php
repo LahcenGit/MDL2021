@@ -60,6 +60,7 @@
                 <div class="d-flex">
                     <a href="{{url('adv/order-professional-detail/'.$order->id)}}" class="show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
                     <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                    <a href="{{$order->professional->gps}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
                 </div>
               </form>
             </td>

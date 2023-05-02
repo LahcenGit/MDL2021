@@ -96,6 +96,7 @@
                             <th>Nom complet</th>
                             <th>Téléphone</th>
                             <th>Wilaya</th>
+                            <th>Lancé par </th>
                             <th>Total</th>
                             <th>Statut</th>
                             <th>Date</th>
@@ -109,6 +110,11 @@
                             <td>{{$professional_order->professional->user->name}}</td>
                             <td>{{$professional_order->professional->phone}}</td>
                             <td>{{$professional_order->professional->wilaya}}</td>
+                            @if($professional_order->commercial_id)
+                            <td>Commercial</td>
+                            @else
+                            <td>ADV</td>
+                            @endif
                             <td><b>{{number_format($professional_order->total)}}</b> Da</td>
                             @if ($professional_order->status == 1 )
                             <td><span class="badge bg-warning">En attente</span></td>
