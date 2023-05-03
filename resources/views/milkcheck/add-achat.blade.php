@@ -4,8 +4,8 @@
 <style>
     .price-calculator{
       font-family: 'Orbitron', sans-serif;
-      font-size:25px; 
-      color:#16B4B7; 
+      font-size:25px;
+      color:#16B4B7;
       font-weight : bold;
 	  pointer-events: none;
 	  height: 50px;
@@ -27,7 +27,7 @@
 
     @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
-       Svp ! Corrigez les erreurs suivantes : 
+       Svp ! Corrigez les erreurs suivantes :
        <div class="mb-2"></div>
     <div class="error">
         <ul class="ml-2">
@@ -45,12 +45,12 @@
                     <h6 class="card-title">Ajouter Achat - {{$collector->name}}</h6>
                     <p class="text-muted mb-3">Veuillez remplir tous les champs s'il vous plait!</p>
                     <form class="forms-sample" method="POST" action="{{url('/milkcheck/achats')}}" enctype="multipart/form-data">
-                        @csrf 
+                        @csrf
 
                         <input type="hidden" name="collector" value="{{$collector->id}}">
 
                         <label for="exampleFormControlSelect1" class="form-label">La liste des eleveurs </label>
-                       
+
                         <div class=" col-lg-8 col-12 mb-3">
 
                             <table class="table table-bordered">
@@ -81,13 +81,13 @@
                                   @endforeach
                                 </tbody>
                               </table>
-                            
+
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Déstination *</label>
 								<select class="form-select" name="destination" class="form-control input-default @error('destination') is-invalid @enderror" id="exampleFormControlSelect1" required>
-                                  
+
                                     <option value="fromage" @if (old('destination') == "fromage") selected @endif>Frommage</option>
                                     <option value="lait" @if (old('destination') == "lait") selected @endif>Lait</option>
                                     @error('destination')
@@ -96,12 +96,12 @@
                                 </span>
                                @enderror
                                 </select>
-                               
+
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Date</label>
 								<input class="form-select" name="date" type="date" class="form-control input-default">
-                              
+
                             </div>
                         </div>
                             <div class="row mb-3">
@@ -114,7 +114,7 @@
                                     </span>
                                    @enderror
                                 </div>
-                                
+
                                 <div class="col-md-1">
                                     <label class="form-label">D *:</label>
                                     <input class="form-control densite mb-4 mb-md-0 input-default @error('qteD') is-invalid @enderror" value="{{old('qteD')}}" id="inputD" name="qteD" placeholder="0" required/>
@@ -151,7 +151,7 @@
                                     </span>
                                    @enderror
                                 </div>
-                       
+
                                 <div class="col-md-1">
                                     <label class="form-label">W *:</label>
                                     <input class="form-control mb-4 mb-md-0 input-default @error('qteW') is-invalid @enderror" value="{{old('qteW')}}" name="qteW" placeholder="0" required />
@@ -204,9 +204,9 @@
                             <button class="btn btn-warning price-action" type="button">Calculer prix d'achat</button>
                             <button class="btn btn-secondary price-reset" type="button">Réinitialiser</button>
                              <br>
-                            <input class="price-calculator mt-3" value="{{old('qteFP')}}" name="price_achat" placeholder="50 Da" /> <br>
+                            <input class="price-calculator mt-3" value="{{old('qteFP')}}" name="price_achat" placeholder="70 Da" /> <br>
 
-                        
+
                         <button class="btn btn-primary mt-3" type="submit">Ajouter l'achat</button>
                     </form>
                 </div>
@@ -216,7 +216,7 @@
 </div>
 @endsection
 @push('select-vendeur-scripts')
-    
+
 <script>
 	$.ajaxSetup({
 	headers: {
@@ -231,36 +231,36 @@
         d =   $( ".densite" ).val();
         a =   $( ".acidite" ).val();
 
-        price = 50 ; 
+        price = 70 ;
 
         if (f>=28 && p>=2.8){
-           
-            price = price + 6 ; 
+
+            $( ".price-calculator" ).val(72);
         }
 
         if (d>=1028 && a<=19){
-            price = price + 6; 
+            $( ".price-calculator" ).val(72);
         }
 
-        $( ".price-calculator" ).val(price);
-        
+
+
     });
 
 
     $(".price-reset").click(function () {
 
-        $( ".price-calculator" ).val(50);
-        
+        $( ".price-calculator" ).val(70);
+
     });
 
 
 
-</script> 
+</script>
 
 
 @endpush
 @push('input-scripts')
-    
+
 
 <script>
     $.ajaxSetup({
@@ -268,7 +268,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
 });
-    
+
 
 
   $('inputF').on('change', function(){

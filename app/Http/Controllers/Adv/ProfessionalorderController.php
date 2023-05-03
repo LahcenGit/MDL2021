@@ -351,7 +351,7 @@ class ProfessionalorderController extends Controller
                 $stock->product_id = $orderline->product_id;
                 $stock->qte = $orderline->qte;
                 $stock->type = 'sortie';
-                $stock->save();
+                $order->stocks()->save($stock);
             }
         }
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Professionalorder extends Model
 {
@@ -15,5 +16,10 @@ class Professionalorder extends Model
     public function professionalorderlines()
     {
         return $this->hasMany(Professionalorderline::class);
+    }
+
+    public function stocks(): MorphMany
+    {
+        return $this->morphMany(Stock::class, 'stocktable');
     }
 }

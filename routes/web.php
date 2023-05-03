@@ -315,6 +315,7 @@ Route::get('labo/productions', [App\Http\Controllers\Labo\LaboController::class,
 Route::get('labo/productions/edit/{id}', [App\Http\Controllers\Labo\LaboController::class,'editProduction'])->middleware('can:labo');
 Route::put('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction'])->middleware('can:labo');
 Route::get('modal-production-line/{id}', [App\Http\Controllers\Labo\LaboController::class,'showModalProduction'])->middleware('can:labo');
+Route::delete('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'destroy'])->middleware('can:labo');
 });
 //admin route
 Route::middleware('AdminAuth')->group(function () {

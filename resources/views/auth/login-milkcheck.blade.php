@@ -65,7 +65,7 @@ License: For each use you must have a valid license purchased only from above li
                     <form class="forms-sample">
                       <div class="mb-3">
                         <label for="userEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="userEmail" placeholder="Email">
+                        <input type="email" class="form-control  @error('email') is-invalid @enderror" name="username" value="{{ old('email') }}" id="userEmail" placeholder="Email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
