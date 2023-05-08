@@ -37,18 +37,18 @@
             <td><b> {{$achat->qte}} L </b></td>
             <td> <b class="text-primary"> {{$achat->price}} Da </b></td>
             <td>{{$achat->created_at}}</td>
-            
+
             <td>
               <form action="{{url('milkcheck/achats/'.$achat->id)}}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="{{url('milkcheck/achats/'.$achat->id.'/edit')}}" class="btn btn-secondary" style="margin-right: 3px;"><i class="mdi mdi-border-color"></i></a>
-                    <a href="#" data-id="{{$achat->id}}" class="btn  btn-primary  show-achat" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>
-                    <a href="{{url('milkcheck/achat-ticket/'.$achat->id)}}"  data-id="{{$achat->id}}" class="btn btn-warning" style="margin-right: 3px;"><i class="mdi mdi-printer"></i></a>
-                    <button class="btn btn-danger" onclick="return confirm('Vous voulez vraiment supprimer?')" style="margin-right: 3px;"><i class="mdi mdi-delete "></i></button>
+                    <a href="{{url('milkcheck/achats/'.$achat->id.'/edit')}}" class=" btn-xs sharp " style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                    <a href="#" data-id="{{$achat->id}}" class=" btn-xs sharp show-achat" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                    <a href="{{url('milkcheck/achat-ticket/'.$achat->id)}}"  data-id="{{$achat->id}}"class=" btn-xs sharp " style="margin-right: 3px;" ><i data-feather="printer"></i></a>
+                    <button  onclick="return confirm('Vous voulez vraiment supprimer?')"class=" btn-xs sharp " style="margin-right: 3px;"><i data-feather="trash"></i></button>
                 </div>
-              </form>	
+              </form>
             </td>
           </tr>
          @endforeach
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-</div>   
+</div>
 <div id="modal-achat">
 
 </div>
@@ -77,9 +77,9 @@
   }
 });
 $(".show-achat").click(function() {
-  
+
   var id = $(this).data('id');
- 
+
   $.ajax({
     url: '/show-achat/' + id,
     type: "GET",
@@ -88,14 +88,14 @@ $(".show-achat").click(function() {
       $("#exampleModal").modal('show');
     }
   });
-  
+
 });
 
 
 $(".ticket").click(function() {
-  
+
   var id = $(this).data('id');
- 
+
   $.ajax({
     url: '/ticket/' + id,
     type: "GET",
@@ -103,8 +103,8 @@ $(".ticket").click(function() {
      alert('success ! ticket imprimé ');
     }
   });
-  
+
 });
 
-</script>  
+</script>
 @endpush

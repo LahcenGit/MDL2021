@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-labo')
+@extends('layouts.milkcheck')
 
 @section('content')
 <div class="page-content">
@@ -31,11 +31,11 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$production->created_at->format('Y-m-d')}}</td>
                         <td>
-                        <form action="{{url('labo/productions/'.$production->id)}}" method="post">
+                        <form action="{{url('milkcheck/productions/'.$production->id)}}" method="post">
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
                             <div class="d-flex">
-                                <a href="{{ asset('labo/productions/edit/'.$production->id) }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
+                                <a href="{{ asset('milkcheck/productions/edit/'.$production->id) }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
                                 <a href="#" data-id="{{ $production->id }}" class=" btn-xs sharp mr-1 show-productionline"><i data-feather="eye"></i></a>
                                 <button style="background-color: #ffffff; border-color:#ffffff" onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
                             </div>

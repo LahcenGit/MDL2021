@@ -40,7 +40,7 @@ License: For each use you must have a valid license purchased only from above li
 	<link rel="stylesheet" href="{{asset('/assets/vendors/select2/select2.min.css')}}">
 	<!-- endinject -->
 
-  <!-- Layout styles -->  
+  <!-- Layout styles -->
 	<link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
   <!-- End layout styles -->
 
@@ -74,7 +74,7 @@ License: For each use you must have a valid license purchased only from above li
               <span class="link-title">Vue d'enssemble</span>
             </a>
           </li>
-          
+
           <li class="nav-item nav-category">Components</li>
 
           <li class="nav-item  {{ active_class(['milkcheck/collectors/*','milkcheck/collectors']) }}">
@@ -147,8 +147,8 @@ License: For each use you must have a valid license purchased only from above li
                 <li class="nav-item">
                   <a href="{{url('milkcheck/accords/breeders')}}" class="nav-link {{ active_class(['milkcheck/accords/breeders']) }}">Eleveurs</a>
                 </li>
-               
-                
+
+
               </ul>
             </div>
           </li>
@@ -171,13 +171,87 @@ License: For each use you must have a valid license purchased only from above li
               </ul>
             </div>
           </li>
-   
+
+          <li class="nav-item nav-category">Transformation lait</li>
+          <li class="nav-item {{ active_class(['milkcheck/transformatiob-milk/*','milkcheck/transformatiob-milk']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#transformation" role="button" aria-expanded="{{ is_active_route(['milkcheck/transformatiob-milk/*','milkcheck/transformatiob-milk']) }}" aria-controls="transformation">
+              <i class="link-icon" data-feather="dollar-sign"></i>
+              <span class="link-title">Transformation lait</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+
+            <div class="collapse {{ show_class(['milkcheck/transformatiob-milk/*','milkcheck/transformatiob-milk']) }}" id="transformation">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/transformation-milk/create')}}" class="nav-link {{ active_class(['milkcheck/transformation-milk/create']) }}">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/transformation-milk')}}" class="nav-link {{ active_class(['milkcheck/transformation-milk']) }}">Tous</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item nav-category">Fabrication produit</li>
+          <li class="nav-item {{ active_class(['milkcheck/product-fabrication/*','milkcheck/product-fabrication']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#fabrication" role="button" aria-expanded="{{ is_active_route(['milkcheck/product-fabrication/*','milkcheck/product-fabrication']) }}" aria-controls="fabrication">
+              <i class="link-icon" data-feather="dollar-sign"></i>
+              <span class="link-title">Fabrication produit</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+
+            <div class="collapse {{ show_class(['milkcheck/product-fabrication/*','milkcheck/product-fabrication']) }}" id="fabrication">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/product-fabrication/create')}}" class="nav-link {{ active_class(['milkcheck/product-fabrication/create']) }}">Crème brute</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/product-fabrication')}}" class="nav-link {{ active_class(['milkcheck/product-fabrication']) }}">Tous</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item nav-category">Productions</li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+              <i class="link-icon" data-feather="disc"></i>
+              <span class="link-title">Productions</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="emails">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ asset('milkcheck/productions/create') }}" class="nav-link">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ asset('milkcheck/productions') }}" class="nav-link">Tous</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
           <li class="nav-item nav-category">Rapport</li>
           <li class="nav-item {{ active_class(['milkcheck/report']) }}">
             <a href="{{url('/milkcheck/report')}}" class="nav-link {{ active_class(['milkcheck/report']) }}">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Rapport</span>
             </a>
+          </li>
+
+          <li class="nav-item {{ active_class(['milkcheck/generate-fiche-payment']) }}">
+            <a href="{{url('/milkcheck/generate-fiche-payment')}}" class="nav-link {{ active_class(['milkcheck/generate-fiche-payment']) }}">
+                <i class="link-icon" data-feather="box"></i>
+                <span class="link-title">Fiche paiement</span>
+              </a>
+          </li>
+
+          <li class="nav-item {{ active_class(['milkcheck/generate-fiche-soutien']) }}">
+            <a href="{{url('/milkcheck/generate-fiche-soutien')}}" class="nav-link {{ active_class(['milkcheck/generate-fiche-soutien']) }}">
+                <i class="link-icon" data-feather="box"></i>
+                <span class="link-title">Soutien agricole</span>
+            </a>
+
           </li>
 
           <li class="nav-item nav-category">Setting</li>
@@ -194,15 +268,15 @@ License: For each use you must have a valid license purchased only from above li
               <span class="link-title">Paramètres</span>
             </a>
           </li>
-          
+
         </ul>
       </div>
     </nav>
-    
+
 		<!-- partial -->
-	
+
 		<div class="page-wrapper">
-					
+
 			<!-- partial:partials/_navbar.html -->
 			<nav class="navbar">
 				<a href="#" class="sidebar-toggler">
@@ -219,22 +293,22 @@ License: For each use you must have a valid license purchased only from above li
 					</form>
 					<ul class="navbar-nav">
 						<li class="nav-item dropdown">
-						
-							<div class="dropdown-menu" aria-labelledby="languageDropdown">
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
-							</div>
-            </li>
+
+					<div class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
+                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
+                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
+                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
+                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
+				   </div>
+                 </li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i data-feather="grid"></i>
 							</a>
-							
+
 						</li>
-					
+
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i data-feather="bell"></i>
@@ -247,18 +321,18 @@ License: For each use you must have a valid license purchased only from above li
 									<p>Notifications</p>
 									<a href="javascript:;" class="text-muted">Clear all</a>
 								</div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-											<i class="icon-sm text-white" data-feather="gift"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-											<p>Fonctionnalité  </p>
-											<p class="tx-12 text-muted">en développement</p>
-                    </div>	
-                  </a>
-                
-                </div>
+                            <div class="p-1">
+                            <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
+                                <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
+                                                        <i class="icon-sm text-white" data-feather="gift"></i>
+                                </div>
+                                <div class="flex-grow-1 me-2">
+                                    <p>Fonctionnalité  </p>
+                                    <p class="tx-12 text-muted">en développement</p>
+                                </div>
+                            </a>
+
+                            </div>
 								<div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
 									<a href="javascript:;">View all</a>
 								</div>
@@ -277,19 +351,19 @@ License: For each use you must have a valid license purchased only from above li
 										<p class="tx-16 fw-bolder">{{Auth::user()->name}}</p>
 										<p class="tx-12 text-muted">{{Auth::user()->type}}</p>
 									</div>
-								</div>
-                <ul class="list-unstyled p-1">
-                  <li class="dropdown-item py-2">
-                    <a href="{{route('logout')}}" class="text-body ms-0" onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();">
-                      <i class="me-2 icon-md" data-feather="log-out"></i>
-                      <span>Déconnecter</span>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                       </form>
-                    </a>
-                  </li>
-                </ul>
+                                 </div>
+                                <ul class="list-unstyled p-1">
+                                <li class="dropdown-item py-2">
+                                    <a href="{{route('logout')}}" class="text-body ms-0" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    <i class="me-2 icon-md" data-feather="log-out"></i>
+                                    <span>Déconnecter</span>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    </a>
+                                </li>
+                                </ul>
 							</div>
 						</li>
 					</ul>
@@ -304,11 +378,11 @@ License: For each use you must have a valid license purchased only from above li
 				<p class="text-muted">MilkCheck V1.0 <i class="mb-1 text-zahra ms-1 icon-sm" data-feather="heart"></i></p>
 			</footer>
 			<!-- partial -->
-		
+
 		</div>
 	</div>
 
-  
+
 
 	<!-- core:js -->
 	<script src="{{asset('/assets/vendors/core/core.js')}}"></script>
@@ -336,14 +410,14 @@ License: For each use you must have a valid license purchased only from above li
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-	
+
 
 	<!-- Custom js for this page -->
   <script src="{{asset('/assets/js/dashboard-light.js')}}"></script>
   <script src="{{asset('/assets/js/datepicker.js')}}"></script>
   <script src="{{asset('/assets/js/select2.js')}}"></script>
 	<!-- End custom js for this page -->
-  
+
   @stack('select-vendeur-scripts')
   @stack('input-scripts')
   @stack('dataf-scripts')
@@ -353,7 +427,13 @@ License: For each use you must have a valid license purchased only from above li
   @stack('report-scripts')
   @stack('report-detail-scripts')
   @stack('achat-ticket-scripts')
+  @stack('select-destination-scripts')
+  @stack('order-detail-scripts')
+  @stack('order-ticket-scripts')
+  @stack('modal-orderline-scripts')
 
+  @stack('check-product')
+  @stack('modal-productionline-scripts')
 
   <script>
 
@@ -370,8 +450,8 @@ License: For each use you must have a valid license purchased only from above li
         $('.date').prop('required',false);
       }
     });
-  
+
   </script>
- 
+
 </body>
-</html>    
+</html>

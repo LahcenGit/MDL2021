@@ -56,7 +56,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2 col-md-6 col-xl-5">
-                    <h3  style="color: #6FB53E;"class="mb-2">{{ $nbr_order }} </h3>
+                    <h3  style="color: #6FB53E;"class="mb-2">{{ $nbr_order_pro }} </h3>
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2 col-md-6 col-xl-5">
-                    <h3  style="color: #6FB53E;"class="mb-2">{{ $nbr_order_en_attent }} </h3>
+                    <h3  style="color: #6FB53E;"class="mb-2">{{ $nbr_order_pro_en_attente }} </h3>
                   </div>
                 </div>
               </div>

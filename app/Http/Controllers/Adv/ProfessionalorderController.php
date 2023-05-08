@@ -20,7 +20,7 @@ class ProfessionalorderController extends Controller
 {
     //
     public function create(){
-        $professionals = Professionnel::all();
+        $professionals = Professionnel::orderBy('created_at','desc')->get();
         $wilayas = Wilaya::all();
         $products = Produit::orderBy('flag','asc')->get();
         return view('adv.add-order-professional',compact('wilayas','professionals','products'));

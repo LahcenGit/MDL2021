@@ -56,13 +56,13 @@ class ReportController extends Controller
                                         ->get();
             }
 
-          
+
             foreach($lineachats as $lineachat){
                 $i++;
-                $qteglobal = $qteglobal + $lineachat->qte; 
-                $price = $price + $lineachat->price; 
+                $qteglobal = $qteglobal + $lineachat->qte;
+                $price = $price + $lineachat->price;
             }
-    
+
             $pricemoy = $price/$i;
             if($request->date=="p"){
                 return view('milkcheck.report-custom-date-breeder',compact('lineachats','datedebut','datefin','breeder','pricemoy','qteglobal'));
@@ -72,7 +72,7 @@ class ReportController extends Controller
             }
         }
 
-       
+
 
         if($request->type == "collector"){
 
@@ -83,7 +83,7 @@ class ReportController extends Controller
 
                 $date = Carbon::now()->format('M-Y');
                 $collector = Collector::find($request->id);
-               
+
                 $achats = Achat::whereMonth('created_at', Carbon::now()->month)
                              ->where('collector_id',$request->id)
                              ->get();
@@ -95,7 +95,7 @@ class ReportController extends Controller
 
                 $date = Carbon::now()->format('M-Y');
                 $collector = Collector::find($request->id);
-               
+
                 $achats = Achat::whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SATURDAY),Carbon::now()->endOfWeek(Carbon::FRIDAY)])
                              ->where('collector_id',$request->id)
                              ->get();
@@ -109,20 +109,20 @@ class ReportController extends Controller
 
                 $datedebut = $request->datedebut ;
                 $datefin = $request->datefin;
-               
+
                 $achats = Achat::whereDate('created_at','>=', $request->datedebut)
                              ->whereDate('created_at','<=' ,$request->datefin )
                              ->where('collector_id',$request->id)
                              ->get();
                 $list = array();
             }
-       
+
             foreach($achats as $achat){
                 array_push($list, $achat->id);
             }
             $lineachats = Lineachat::whereIn('achat_id',$list)
-                                     
-                                     ->groupBy('breeder_id')  
+
+                                     ->groupBy('breeder_id')
                                      ->groupBy('price')
                                      ->selectRaw('price')
                                      ->selectRaw('breeder_id')
@@ -132,10 +132,10 @@ class ReportController extends Controller
             // dd($lineachats);
             foreach($lineachats as $lineachat){
                 $i++;
-                $qteglobal = $qteglobal + $lineachat->qte; 
-                $price = $price + $lineachat->price; 
+                $qteglobal = $qteglobal + $lineachat->qte;
+                $price = $price + $lineachat->price;
             }
-          
+
             $pricemoy = $price/$i;
 
             if($request->date=="p"){
@@ -145,11 +145,11 @@ class ReportController extends Controller
             elseif($request->date=="m"){
                 return view('milkcheck.report-detail-collector',compact('lineachats','date','collector','pricemoy','qteglobal'));
             }
-             
-             
+
+
          }
-       
-       
+
+
 
     }
 
@@ -161,5 +161,57 @@ class ReportController extends Controller
         return view('milkcheck.achat-ticket',compact('achat','date','analyse'));
 
     }
-   
+
+    public function generateFiche(){
+        $breeders = Breeder::orderBy('created_at','desc')->get();
+        return view('milkcheck.generate-fiche-payment',compact('breeders'));
+    }
+    public function fichePayment(Request $request){
+
+    if($request->type == 'breeder'){
+
+        $breeder = Breeder::find($request->id);
+        $stat = Lineachat::selectRaw('sum(qte) as sum_qte')->selectRaw('avg(price) as price')->where('breeder_id',$request->id)->whereMonth('created_at',$request->date)->whereYear('created_at',$request->year)->first();
+        $date = Carbon::createFromFormat('m', $request->date)->locale('fr');
+        $month = $date->format('F');
+        $total = $stat->sum_qte * number_format($stat->price ,2);
+
+        return view('milkcheck.fiche-payment-breeder',compact('breeder','stat','month','total'));
+    }
+    else{
+        $collector = Collector::find($request->id);
+        $stat = Achat::selectRaw('sum(qte) as sum_qte')->where('collector_id',$request->id)->whereMonth('created_at',$request->date)->whereYear('created_at',$request->year)->first();
+        $date = Carbon::createFromFormat('m', $request->date)->locale('fr');
+        $month = $date->format('F');
+        $total = $stat->sum_qte * 5;
+        $pu = 5;
+        return view('milkcheck.fiche-payment-collector',compact('collector','stat','month','total','pu'));
+    }
+
+    }
+
+    public function generateFicheSoutien(){
+        $breeders = Breeder::orderBy('created_at','desc')->get();
+        return view('milkcheck.generate-fiche-soutien',compact('breeders'));
+    }
+
+    public function ficheSoutienBreeder(Request $request){
+        $breeder = Breeder::find($request->breeder);
+        $stat = Lineachat::selectRaw('sum(qte) as sum_qte')->where('breeder_id',$request->breeder)->whereMonth('created_at',$request->date)->whereYear('created_at',$request->year)->first();
+        $date = Carbon::createFromFormat('m', $request->date)->locale('fr');
+        $month = $date->format('F');
+        if($breeder->agrement_type == 'A'){
+            $total = $stat->sum_qte * 14;
+            $pu = 14;
+
+        }
+        if($breeder->agrement_type == 'IS'){
+            $total = $stat->sum_qte * 12;
+            $pu = 12;
+
+        }
+
+        return view('milkcheck.fiche-soutien-breeder',compact('breeder','stat','month','total','pu'));
+       }
+
 }

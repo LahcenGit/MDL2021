@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Achat extends Model
@@ -14,7 +15,7 @@ class Achat extends Model
 
     protected $cascadeDeletes = ['analyse','lineachats'];
     protected $dates = ['deleted_at'];
-    
+
     public function collector()
     {
         return $this->belongsTo(Collector::class,'collector_id');
@@ -29,5 +30,10 @@ class Achat extends Model
     public function lineachats()
     {
         return $this->hasMany(Lineachat::class,'achat_id');
+    }
+
+    public function stocklaits(): MorphMany
+    {
+        return $this->morphMany(Stocklait::class, 'stocklaitable');
     }
 }

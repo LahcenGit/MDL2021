@@ -84,12 +84,12 @@
 
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="exampleFormControlSelect1" class="form-label">Déstination *</label>
 								<select class="form-select" name="destination" class="form-control input-default @error('destination') is-invalid @enderror" id="exampleFormControlSelect1" required>
 
-                                    <option value="fromage" @if (old('destination') == "fromage") selected @endif>Frommage</option>
-                                    <option value="lait" @if (old('destination') == "lait") selected @endif>Lait</option>
+                                    <option value="fromage" @if (old('destination') == "fromage") selected @endif>Atelier Frommage</option>
+                                    <option value="lait" @if (old('destination') == "lait") selected @endif>Atelier Lait</option>
                                     @error('destination')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -98,7 +98,7 @@
                                 </select>
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="exampleFormControlSelect1" class="form-label">Date</label>
 								<input class="form-select" name="date" type="date" class="form-control input-default">
 
@@ -204,7 +204,7 @@
                             <button class="btn btn-warning price-action" type="button">Calculer prix d'achat</button>
                             <button class="btn btn-secondary price-reset" type="button">Réinitialiser</button>
                              <br>
-                            <input class="price-calculator mt-3" value="{{old('qteFP')}}" name="price_achat" placeholder="70 Da" /> <br>
+                            <input class="price-calculator mt-3"  name="price_achat" placeholder="70 Da" /> <br>
 
 
                         <button class="btn btn-primary mt-3" type="submit">Ajouter l'achat</button>
@@ -235,11 +235,11 @@
 
         if (f>=28 && p>=2.8){
 
-            $( ".price-calculator" ).val(72);
+            $( ".price-calculator" ).val(72 );
         }
 
         if (d>=1028 && a<=19){
-            $( ".price-calculator" ).val(72);
+            $( ".price-calculator" ).val(72 );
         }
 
 
@@ -249,7 +249,7 @@
 
     $(".price-reset").click(function () {
 
-        $( ".price-calculator" ).val(70);
+        $( ".price-calculator" ).val(70 );
 
     });
 

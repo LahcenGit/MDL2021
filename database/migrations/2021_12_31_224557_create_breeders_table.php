@@ -25,6 +25,8 @@ class CreateBreedersTable extends Migration
             $table->string('expiration_date')->nullable();
             $table->string('delivry_date')->nullable();
             $table->string('balance')->nullable();
+            $table->string('banque')->nullable();
+            $table->string('n_compte')->nullable();
             $table->string('slug')->nullable();
             $table->string('flug')->nullable();
             $table->foreign('collector_id')->references('id')->on('collectors')->onDelete('cascade');

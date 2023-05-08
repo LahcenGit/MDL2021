@@ -32,6 +32,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Particular\ProfilParticularController;
 use App\Http\Controllers\professional\ProfilProfessionalController;
 use App\Http\Controllers\commercial\CommercialController;
+use App\Http\Controllers\TransformationlaitController;
+use App\Http\Controllers\ProductfabricationController;
 use App\Models\Citie;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
@@ -144,6 +146,8 @@ Route::middleware('milkcheckAuth')->group(function () {
     //show achat detail page
     Route::get('/milkcheck/achats/create/{id}',[App\Http\Controllers\AchatController::class, 'createAchat'])->middleware('can:milkcheck');
     Route::resource('milkcheck/breeders', BreederController::class)->middleware('can:milkcheck');
+    Route::resource('milkcheck/transformation-milk', TransformationlaitController::class)->middleware('can:milkcheck');
+    Route::resource('milkcheck/product-fabrication', ProductfabricationController::class)->middleware('can:milkcheck');
 
 
 
@@ -167,6 +171,18 @@ Route::middleware('milkcheckAuth')->group(function () {
      Route::get('/milkcheck/get-type/{type}',[App\Http\Controllers\ReportController::class, 'getType'])->middleware('can:milkcheck');
      Route::post('/milkcheck/report-detail',[App\Http\Controllers\ReportController::class, 'reportDetail'])->middleware('can:milkcheck');
      Route::get('/milkcheck/achat-ticket/{id}', [App\Http\Controllers\ReportController::class, 'achatTicket'])->middleware('can:milkcheck');
+     Route::get('/milkcheck/generate-fiche-payment',[App\Http\Controllers\ReportController::class, 'generateFiche'])->middleware('can:milkcheck');
+     Route::post('/milkcheck/generate-fiche-payment',[App\Http\Controllers\ReportController::class, 'fichePayment'])->middleware('can:milkcheck');
+     Route::get('/milkcheck/generate-fiche-soutien',[App\Http\Controllers\ReportController::class, 'generateFicheSoutien'])->middleware('can:milkcheck');
+     Route::post('/milkcheck/generate-fiche-soutien',[App\Http\Controllers\ReportController::class, 'ficheSoutienBreeder'])->middleware('can:milkcheck');
+
+     Route::get('milkcheck/productions/create', [App\Http\Controllers\Labo\LaboController::class,'createProduction'])->middleware('can:milkcheck');
+     Route::post('milkcheck/productions', [App\Http\Controllers\Labo\LaboController::class,'storeProduction'])->middleware('can:milkcheck');
+     Route::get('milkcheck/productions', [App\Http\Controllers\Labo\LaboController::class,'productions'])->middleware('can:milkcheck');
+     Route::get('milkcheck/productions/edit/{id}', [App\Http\Controllers\Labo\LaboController::class,'editProduction'])->middleware('can:milkcheck');
+     Route::put('milkcheck/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction'])->middleware('can:milkcheck');
+     Route::get('modal-production-line/{id}', [App\Http\Controllers\Labo\LaboController::class,'showModalProduction'])->middleware('can:milkcheck');
+     Route::delete('milkcheck/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'destroy'])->middleware('can:milkcheck');
 });
 
 
@@ -304,18 +320,13 @@ Route::put('commercial/professionals/{id}', [App\Http\Controllers\commercial\Com
 Route::get('get-type/{id}', [App\Http\Controllers\commercial\CommercialController::class,'getType'])->middleware('can:commercial');
 Route::get('modal-order-line/{id}', [App\Http\Controllers\commercial\CommercialController::class,'showModal'])->middleware('can:commercial');
 Route::resource('commercial/visits',VisitController::class)->middleware('can:commercial');
+Route::get('commercial/order-professional-detail/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'orderDetailProfessional'])->middleware('can:commercial');
 });
 
 //labo route
 Route::middleware('LaboAuth')->group(function () {
 Route::get('labo', [App\Http\Controllers\Labo\LaboController::class,'index'])->middleware('can:labo');
-Route::get('labo/productions/create', [App\Http\Controllers\Labo\LaboController::class,'createProduction'])->middleware('can:labo');
-Route::post('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'storeProduction'])->middleware('can:labo');
-Route::get('labo/productions', [App\Http\Controllers\Labo\LaboController::class,'productions'])->middleware('can:labo');
-Route::get('labo/productions/edit/{id}', [App\Http\Controllers\Labo\LaboController::class,'editProduction'])->middleware('can:labo');
-Route::put('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction'])->middleware('can:labo');
-Route::get('modal-production-line/{id}', [App\Http\Controllers\Labo\LaboController::class,'showModalProduction'])->middleware('can:labo');
-Route::delete('labo/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'destroy'])->middleware('can:labo');
+
 });
 //admin route
 Route::middleware('AdminAuth')->group(function () {

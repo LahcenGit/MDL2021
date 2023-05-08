@@ -52,7 +52,7 @@ class LaboController extends Controller
             $production->stocks()->save($stock);
 
         }
-       return redirect('labo/productions');
+       return redirect('milkcheck/productions');
     }
 
     public function productions(){
@@ -77,6 +77,9 @@ class LaboController extends Controller
         foreach($productionlines as $productionline){
             $productionline->delete();
         }
+        foreach($production->stocks as $stock){
+            $stock->delete();
+        }
 
         for($i=0 ; $i<count($request->productlines); $i++){
             $productionline = new Productionline();
@@ -84,6 +87,12 @@ class LaboController extends Controller
             $productionline->product_id = $request->productlines[$i];
             $productionline->qte = $request->production_qtes[$i];
             $productionline->save();
+
+            $stock = new Stock();
+            $stock->product_id = $request->productlines[$i];
+            $stock->qte = $request->production_qtes[$i];
+            $stock->type = 'Entre';
+            $production->stocks()->save($stock);
         }
         for($i=0 ; $i<count($request->products); $i++){
             $productionline = new Productionline();
@@ -91,8 +100,14 @@ class LaboController extends Controller
             $productionline->product_id = $request->products[$i];
             $productionline->qte = $request->qtes[$i];
             $productionline->save();
+
+            $stock = new Stock();
+            $stock->product_id = $request->products[$i];
+            $stock->qte = $request->qtes[$i];
+            $stock->type = 'Entre';
+            $production->stocks()->save($stock);
         }
-       return redirect('labo/productions');
+       return redirect('milkcheck/productions');
     }
     public function showModalProduction($id){
         $productionlines = Productionline::where('production_id',$id)->get();
@@ -109,7 +124,7 @@ class LaboController extends Controller
             $stock->delete();
         }
         $production->delete();
-        return redirect('labo/productions');
+        return redirect('milkcheck/productions');
     }
 
 }

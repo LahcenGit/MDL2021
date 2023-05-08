@@ -14,7 +14,7 @@
 
     @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
-       Svp ! Corrigez les erreurs suivantes : 
+       Svp ! Corrigez les erreurs suivantes :
        <div class="mb-2"></div>
     <div class="error">
         <ul class="ml-2">
@@ -51,7 +51,7 @@
                     </div>
 
                     <h5 class="text-center"> Doit : SARL la maison du lait - Remchi </h5> <br>
-                  
+
                     <table class="table table-striped mb-4">
                         <thead>
                             <tr >
@@ -64,7 +64,7 @@
                         <tbody>
                             <tr style="height: 150px;">
 
-                                <td>Laivraison du lait de vache Wilaay de Tlemcen - <B>{{$date}}</B></td>
+                                <td>Laivraison du lait de vache Wilaya de Tlemcen - <B>{{$date}}</B></td>
                                 <td>{{$qteglobal}} L</td>
                                 <td>{{$pricemoy}} Da</td>
                                 <td>{{$pricemoy * $qteglobal}}</td>
@@ -97,11 +97,11 @@
 </div>
 @endsection
 @push('report-detail-scripts')
-    
+
 <script>
 $('.printMe').click(function(){
     $('#printable').printThis();
 });
-</script> 
+</script>
 
 @endpush

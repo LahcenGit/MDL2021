@@ -591,5 +591,11 @@ class CommercialController extends Controller
         }
         return redirect('commercial/order-professionals');
     }
+    public function orderDetailProfessional($id){
+        $order = Professionalorder::find($id);
+        $orderlines = Professionalorderline::where('professionalorder_id',$id)->get();
+        return view('commercial.order-professional-detail',compact('order','orderlines'));
+
+    }
 
 }

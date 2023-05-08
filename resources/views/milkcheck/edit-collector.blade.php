@@ -46,8 +46,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">N° De Télephone(optionnel):</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('telephone') is-invalid @enderror " name="telephone" value="{{$collector->phone}}" placeholder="+2130776443231" />
-                                @error('telephone')
+                                <input class="form-control mb-4 mb-md-0  input-default @error('phone') is-invalid @enderror " name="phone" value="{{$collector->phone}}" placeholder="+2130776443231" />
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -59,14 +59,14 @@
                             <div class="col-md-3">
                                 <label for="exampleFormControlSelect1" class="form-label">Type * : </label>
                                 <select class="js-example-basic-single  form-select" name="type" class="form-control input-default @error('collector') is-invalid @enderror" id="exampleFormControlSelect1" required>
-                                        <option value="A" >Agrément</option>
-                                        <option value="IS" >Identification Sanitaire</option>
-                                        <option value="" >Ancun</option>
+                                        <option value="A" @if($collector->agrement_type == 'A') selected @endif >Agrément</option>
+                                        <option value="IS"@if($collector->agrement_type == 'IS') selected @endif >Identification Sanitaire</option>
+                                        <option value="Ac" @if($collector->agrement_type == 'Ac') selected @endif>Aucun</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">N° d'agrément *:</label>
-                                <input class="form-control mb-4 mb-md-0 input-default @error('n_agrement') is-invalid @enderror" name="numero" value="{{$collector->n_agrement}}" placeholder="13681" required/>
+                                <input class="form-control mb-4 mb-md-0 input-default @error('n_agrement') is-invalid @enderror" name="n_agrement" value="{{$collector->n_agrement}}" placeholder="13681" required/>
                                 @error('n_agrement')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -77,9 +77,30 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-3">
+                                <label class="form-label">N° compte bancaire :</label>
+                                <input class="form-control mb-4 mb-md-0 input-default @error('n_compte') is-invalid @enderror" name="n_compte" value="{{$collector->n_compte}}" placeholder="0035558888999112250" />
+                                @error('n_compte')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                               @enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">La banque :</label>
+                                <input class="form-control mb-4 mb-md-0 input-default @error('banque') is-invalid @enderror" name="banque" value="{{$collector->banque}}" placeholder="BADR" />
+                                @error('banque')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                               @enderror
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
                                 <label class="form-label">Date d'éxpédition *:</label>
-                                <input class="form-control mb-4 mb-md-0 input-default @error('date_expedition') is-invalid @enderror" name="date_expedition" type="date" value="{{$collector->delivry_date}}" data-inputmask="'alias': 'currency'" required/>
-                                @error('date_expedition')
+                                <input class="form-control mb-4 mb-md-0 input-default @error('delivry_date') is-invalid @enderror" name="delivry_date" type="date" value="{{$collector->delivry_date}}" data-inputmask="'alias': 'currency'" required/>
+                                @error('delivry_date')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -88,8 +109,8 @@
 
                             <div class="col-md-3">
                                 <label class="form-label">Date d'éxpiration *:</label>
-                                <input class="form-control mb-4 mb-md-0 input-default @error('date_expiration') is-invalid @enderror" name="date_expiration" type="date" value="{{$collector->expiration_date}}" data-inputmask="'alias': 'currency'" required/>
-                                @error('date_expiration')
+                                <input class="form-control mb-4 mb-md-0 input-default @error('expiration_date') is-invalid @enderror" name="expiration_date" type="date" value="{{$collector->expiration_date}}" data-inputmask="'alias': 'currency'" required/>
+                                @error('expiration_date')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

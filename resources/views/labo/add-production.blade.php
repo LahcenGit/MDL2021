@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-labo')
+@extends('layouts.milkcheck')
 @section('content')
 <div class="page-content">
 
@@ -12,7 +12,7 @@
         <div class="col-md-8 grid-margin">
             <div class="card">
                 <div class="card-body">
-                  <form class="forms-sample" method="POST" action="{{url('/labo/productions')}}" enctype="multipart/form-data">
+                  <form class="forms-sample" method="POST" action="{{url('/milkcheck/productions')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <div class="col-md-6">
