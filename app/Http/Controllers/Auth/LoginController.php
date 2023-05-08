@@ -68,12 +68,14 @@ class LoginController extends Controller
             else if(auth::user()->type == 'admin') {
                     return redirect('/admin/adv');
                 }
-            else{
+            else if(auth::user()->type == 'milkcheck') {
+
                 return redirect('/milkcheck');
             }
          }
 
          else{
+
             return  redirect()->back()->with('error','Mot de passe ou adresse e-mail incorrects');
            }
      }

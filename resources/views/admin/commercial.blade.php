@@ -144,7 +144,7 @@
                             <td><b>{{number_format($order->total)}}</b> Da</td>
                             @if ($order->status == 1 )
                             <td><span class="badge bg-warning">En attente</span></td>
-                            @elseif($orders->status == 2)
+                            @elseif($order->status == 2)
                             <td><span class="badge bg-primary">Validé</span></td>
                             @elseif($order->status == 3)
                             <td><span class="badge bg-success">Livré</span></td>

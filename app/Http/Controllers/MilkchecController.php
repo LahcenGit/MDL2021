@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Achat;
 use App\Models\Analyse;
 use App\Models\Lineachat;
+use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +25,7 @@ class MilkchecController extends Controller
                        ->selectRaw('sum(qte) as qt')
                        ->whereMonth('created_at', Carbon::now()->month)
                        ->first();
-        
+
         $achat = Achat::whereMonth('created_at', Carbon::now()->month)
                         ->count();
 
@@ -32,9 +33,9 @@ class MilkchecController extends Controller
         $achats = Achat::with('collector')
                          ->whereMonth('created_at', Carbon::now()->month)
                          ->limit(5)
-                         ->get(); 
+                         ->get();
 
-       
+
         $top_breeders = Lineachat::whereMonth('lineachats.created_at', Carbon::now()->month)
                            ->join('analyses','analyses.achat_id', '=', 'lineachats.achat_id')
                            ->selectRaw('breeder_id')
@@ -54,9 +55,13 @@ class MilkchecController extends Controller
                               ->orderBy('qte','desc')
                               ->limit(5)
                               ->get();
-                   
-        
-        return view('milkcheck.milkcheck',compact('lait','fromage','achat','randement','achats','top_breeders','top_qte_breeders'));
+
+        $resultats = Stock::selectRaw('product_id, SUM(CASE WHEN type = "Entre" THEN qte ELSE 0 END) as entree , SUM(CASE WHEN type = "sortie" THEN qte ELSE 0 END) as sortie ,  SUM(CASE WHEN type = "Entre" THEN qte ELSE 0 END) - SUM(CASE WHEN type = "sortie" THEN qte ELSE 0 END) as stock')
+                              ->groupBy('product_id')
+                              ->where('type', 'Entre')
+                              ->orWhere('type', 'sortie')
+                              ->get();
+        return view('milkcheck.milkcheck',compact('lait','fromage','achat','randement','achats','top_breeders','top_qte_breeders','resultats'));
     }
 
 
@@ -65,7 +70,7 @@ class MilkchecController extends Controller
 
     public function dataf(){
 
-       
+
 
         $analyses = Analyse::
                     whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SATURDAY),Carbon::now()->endOfWeek(Carbon::THURSDAY)])
@@ -82,7 +87,7 @@ class MilkchecController extends Controller
 
     public function datad(){
 
-       
+
 
         $analyses = Analyse::
                     whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SATURDAY),Carbon::now()->endOfWeek(Carbon::THURSDAY)])
@@ -98,7 +103,7 @@ class MilkchecController extends Controller
     }
     public function datap(){
 
-       
+
 
         $analyses = Analyse::
                     whereBetween('created_at', [Carbon::now()->startOfWeek(Carbon::SATURDAY),Carbon::now()->endOfWeek(Carbon::THURSDAY)])

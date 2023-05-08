@@ -13,7 +13,7 @@ class PaiementMilkcheckController extends Controller
 
     public function indexEtat(){
 
-        $breeders = Breeder::all();
+        $breeders = Breeder::orderBy('created_at','desc')->get();
         return view('milkcheck.etat-paiements',compact('breeders'));
     }
 
@@ -25,7 +25,7 @@ class PaiementMilkcheckController extends Controller
         $price = 0 ;
 
         $breeder = Breeder::find($id);
-      
+
         $date = Carbon::now()->format('M-Y');
 
         $lineachats = Lineachat::whereMonth('created_at', Carbon::now()->month)
@@ -34,8 +34,8 @@ class PaiementMilkcheckController extends Controller
 
         foreach($lineachats as $lineachat){
             $i++;
-            $qteglobal = $qteglobal + $lineachat->qte; 
-            $price = $price + $lineachat->price; 
+            $qteglobal = $qteglobal + $lineachat->qte;
+            $price = $price + $lineachat->price;
         }
 
         $pricemoy = $price/$i;
@@ -44,7 +44,7 @@ class PaiementMilkcheckController extends Controller
 
 
 
-        //calcule le bon total on le divise sur deux partie 
+        //calcule le bon total on le divise sur deux partie
 
         $total = $pricemoy * $qteglobal;
         $total_part1 = (int)$total;
@@ -55,7 +55,7 @@ class PaiementMilkcheckController extends Controller
         else{
             $total_part2 = ($total - $total_part1)*10;
         }
-        
+
         $total_part2 = (int)($total_part2);
 
         $total_part1 = (string)$total_part1;
@@ -66,7 +66,7 @@ class PaiementMilkcheckController extends Controller
         $total_part2 = $letter->format($total_part2);
 
 
-       
+
 
         return view('milkcheck.etat-breeder',compact('lineachats','breeder','date','price','qteglobal','pricemoy','total_part1','total_part2'));
     }

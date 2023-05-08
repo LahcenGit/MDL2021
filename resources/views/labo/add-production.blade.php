@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-labo')
+@extends('layouts.milkcheck')
 @section('content')
 <div class="page-content">
 
@@ -12,8 +12,15 @@
         <div class="col-md-8 grid-margin">
             <div class="card">
                 <div class="card-body">
-                  <form class="forms-sample" method="POST" action="{{url('/labo/productions')}}" enctype="multipart/form-data">
+                  <form class="forms-sample" method="POST" action="{{url('/milkcheck/productions')}}" enctype="multipart/form-data">
                         @csrf
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Date*:</label>
+                                <input class="form-control mb-4 mb-md-0  input-default " type="date" name="date" value="{{$date->format('Y-m-d')}}"   />
+
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <label class="form-label">Produits*:</label>
                             @foreach($products->split($products->count()/2) as $row)
@@ -27,7 +34,7 @@
                                             </label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-control mb-4 mb-md-0 input-default" type="number" min="0" placeholder="Qte." name="qtes[]" disabled/>
+                                            <input class="form-control mb-4 mb-md-0 input-default" type="text"  placeholder="Qte." name="qtes[]" disabled/>
                                         </div>
                                     </div>
                                     @endforeach

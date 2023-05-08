@@ -10,6 +10,7 @@ use App\Models\Professionalorder;
 use App\Models\Professionalorderline;
 use App\Models\Professionnel;
 use App\Models\Stock;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LaboController extends Controller
@@ -26,11 +27,14 @@ class LaboController extends Controller
 
     public function createProduction(){
      $products = Produit::orderBy('flag','asc')->get();
-     return view('labo.add-production',compact('products'));
+     $date = Carbon::now();
+
+     return view('labo.add-production',compact('products','date'));
     }
 
     public function storeProduction(Request $request){
         $production = new Production();
+        $production->created_at = $request->date;
         $production->save();
         for($i=0 ; $i<count($request->products); $i++){
             //store production
@@ -45,10 +49,10 @@ class LaboController extends Controller
             $stock->product_id = $request->products[$i];
             $stock->qte = $request->qtes[$i];
             $stock->type = 'Entre';
-            $stock->save();
+            $production->stocks()->save($stock);
 
         }
-       return redirect('labo/productions');
+       return redirect('milkcheck/productions');
     }
 
     public function productions(){
@@ -68,9 +72,13 @@ class LaboController extends Controller
 
     public function updateProduction(Request $request ,$id){
         $production = Production::find($id);
+        $production->created_at = $request->date;
         $productionlines = Productionline::where('production_id',$id)->get();
         foreach($productionlines as $productionline){
             $productionline->delete();
+        }
+        foreach($production->stocks as $stock){
+            $stock->delete();
         }
 
         for($i=0 ; $i<count($request->productlines); $i++){
@@ -79,6 +87,12 @@ class LaboController extends Controller
             $productionline->product_id = $request->productlines[$i];
             $productionline->qte = $request->production_qtes[$i];
             $productionline->save();
+
+            $stock = new Stock();
+            $stock->product_id = $request->productlines[$i];
+            $stock->qte = $request->production_qtes[$i];
+            $stock->type = 'Entre';
+            $production->stocks()->save($stock);
         }
         for($i=0 ; $i<count($request->products); $i++){
             $productionline = new Productionline();
@@ -86,12 +100,31 @@ class LaboController extends Controller
             $productionline->product_id = $request->products[$i];
             $productionline->qte = $request->qtes[$i];
             $productionline->save();
+
+            $stock = new Stock();
+            $stock->product_id = $request->products[$i];
+            $stock->qte = $request->qtes[$i];
+            $stock->type = 'Entre';
+            $production->stocks()->save($stock);
         }
-       return redirect('labo/productions');
+       return redirect('milkcheck/productions');
     }
     public function showModalProduction($id){
         $productionlines = Productionline::where('production_id',$id)->get();
         return view('labo.modal-productionlines',compact('productionlines'));
+    }
+
+    public function destroy($id){
+        $production = Production::find($id);
+        $productionlines = Productionline::where('production_id',$id)->get();
+        foreach($productionlines as $productionline){
+            $productionline->delete();
+        }
+        foreach($production->stocks as $stock){
+            $stock->delete();
+        }
+        $production->delete();
+        return redirect('milkcheck/productions');
     }
 
 }

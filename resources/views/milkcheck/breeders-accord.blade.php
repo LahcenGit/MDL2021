@@ -41,18 +41,18 @@
               @if ($breeder->check() < 15 &&  $breeder->check()>0)
               <td><span class="badge bg-warning">Reste {{$breeder->check()}} jours </span></td>
               @endif
-            <td>{{$breeder->phone}}</td> 
+            <td>{{$breeder->phone}}</td>
             <td>{{$breeder->n_agrement}}</td>
             <td>{{$breeder->delivry_date}}</td>
             <td>{{$breeder->expiration_date}}</td>
-            
+
             <td>
               <form action="{{url('milkcheck/breeders/'.$breeder->id)}}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                  <a href="{{url('milkcheck/breeders/'.$breeder->id.'/edit')}}" class="btn btn-secondary shadow btn-xs sharp "><i class="mdi mdi-border-color"></i></a>
-                </div>	
+                  <a href="{{url('milkcheck/breeders/'.$breeder->id.'/edit')}}" class=" btn-xs sharp "><i data-feather="edit"></i></a>
+                </div>
             </td>
           </tr>
          @endforeach
@@ -64,5 +64,5 @@
         </div>
     </div>
 
-</div>   
+</div>
 @endsection

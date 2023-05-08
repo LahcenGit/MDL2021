@@ -20,7 +20,7 @@ class ProfessionalorderController extends Controller
 {
     //
     public function create(){
-        $professionals = Professionnel::all();
+        $professionals = Professionnel::orderBy('created_at','desc')->get();
         $wilayas = Wilaya::all();
         $products = Produit::orderBy('flag','asc')->get();
         return view('adv.add-order-professional',compact('wilayas','professionals','products'));
@@ -351,7 +351,7 @@ class ProfessionalorderController extends Controller
                 $stock->product_id = $orderline->product_id;
                 $stock->qte = $orderline->qte;
                 $stock->type = 'sortie';
-                $stock->save();
+                $order->stocks()->save($stock);
             }
         }
 

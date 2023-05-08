@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-labo')
+@extends('layouts.milkcheck')
 @section('content')
 <div class="page-content">
 
@@ -12,26 +12,31 @@
         <div class="col-md-8 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <form class="forms-sample" method="POST" action="{{url('/labo/productions/'.$production->id)}}" enctype="multipart/form-data">
+                    <form class="forms-sample" method="POST" action="{{url('/milkcheck/productions/'.$production->id)}}" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                          @csrf
+                         <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Date*:</label>
+                                <input class="form-control mb-4 mb-md-0  input-default " type="date" name="date" value="{{$production->created_at->format('Y-m-d')}}"   />
+
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <label class="form-label">Produits*:</label>
-                            @foreach($productionlines->split($productionlines->count()/2) as $line)
+                            @foreach($productionlines as $line)
                                 <div class="col-md-6">
-                                    @foreach ($line as $production)
-                                    <div class="row mb-3">
+                                   <div class="row mb-3">
                                         <div class="col-md-9">
-                                         <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $production->product->id }}" name="productlines[]" checked>
+                                         <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $line->product->id }}" name="productlines[]" checked>
                                             <label class="form-check-label" for="checkDefault">
-                                            {{$production->product->designation}}
+                                            {{$line->product->soft_name}} {{ $line->product->capacity }}
                                             </label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-control mb-4 mb-md-0 input-default" type="number" min="0" value="{{ $production->qte }}" name="production_qtes[]" />
+                                            <input class="form-control mb-4 mb-md-0 input-default" type="text"  value="{{ $line->qte }}" name="production_qtes[]" />
                                         </div>
                                     </div>
-                                    @endforeach
                                 </div>
                             @endforeach
                             <label class="form-label">Produits*:</label>
@@ -42,11 +47,11 @@
                                         <div class="col-md-9">
                                          <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->id }}" name="products[]">
                                             <label class="form-check-label" for="checkDefault">
-                                            {{$product->designation}}
+                                                {{$product->soft_name}} {{ $product->capacity }}
                                             </label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-control mb-4 mb-md-0 input-default" type="number" min="0" placeholder="Qte." name="qtes[]" disabled/>
+                                            <input class="form-control mb-4 mb-md-0 input-default" type="text"  placeholder="Qte." name="qtes[]" disabled/>
                                         </div>
                                     </div>
                                     @endforeach

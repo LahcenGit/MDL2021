@@ -14,7 +14,7 @@
 
     @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
-       Svp ! Corrigez les erreurs suivantes : 
+       Svp ! Corrigez les erreurs suivantes :
        <div class="mb-2"></div>
     <div class="error">
         <ul class="ml-2">
@@ -26,7 +26,7 @@
     </div>
     @endif
     <div class="row">
-        <div class="col-md-12 grid-margin">
+        <div class="col-md-6 grid-margin">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Génerer un rapport</h6>
@@ -46,7 +46,7 @@
                             <div class="col-md-6 mt-3">
                                 <label for="exampleFormControlSelect1" class="form-label">Nom *</label>
 								<select class="form-select select-collector" name="id"  class="form-control input-default  " >
-                              
+
                                </select>
                             </div>
 
@@ -54,7 +54,7 @@
                                 <label class="form-label">Date :</label>
                                 <select class="form-select  select-date" name="date">
                                     <option value="m" >Mois Actuel</option>
-                                    
+
                                     <option value="p" >Personnalisée</option>
                                 </select>
                             </div>
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
 
-                        <button style="width: 300px;" class=" mt-3 btn btn-primary " type="submit">Générer !</button>
+                        <button style="width: 150;" class=" mt-3 btn btn-primary " type="submit">Générer !</button>
                     </form>
                 </div>
             </div>
@@ -78,7 +78,7 @@
 </div>
 @endsection
 @push('report-scripts')
-    
+
 <script>
 
     if($('.select-date').val() == 'p'){
@@ -109,7 +109,7 @@
         id= $( ".select-collector" ).val();
         window.location.replace('/milkcheck/achats/create/'+ id);
 
-        
+
     });
 
 	$( ".select-type" ).change(function() {
@@ -123,7 +123,7 @@
 			success: function (lignes) {
                 $.each(lignes, function(i, ligne) {
                     data = data + '<option value="'+ ligne.id +'">' +ligne.name+'</option>';
-                
+
                 });
                     $('.select-collector').html("");
                     $('.select-collector').append(data);
@@ -132,6 +132,6 @@
     });
 });
 
-</script> 
+</script>
 
 @endpush

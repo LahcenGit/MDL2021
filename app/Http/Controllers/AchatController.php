@@ -6,6 +6,7 @@ use App\Models\Achat;
 use App\Models\Analyse;
 use App\Models\Collector;
 use App\Models\Lineachat;
+use App\Models\Stocklait;
 use App\Models\Vendeur;
 use Illuminate\Http\Request;
 
@@ -20,13 +21,13 @@ class AchatController extends Controller
 
         $this->authorize("achat.viewAny");
         $achats = Achat::get()->reverse();
-       
-        return view('milkcheck.achats',compact('achats'));        
+
+        return view('milkcheck.achats',compact('achats'));
     }
     public function create(){
          $this->authorize("achat.create");
         $collectors = Collector::all();
-        
+
         return view('milkcheck.add-achat-stepone',compact('collectors'));
     }
 
@@ -63,19 +64,25 @@ class AchatController extends Controller
         }
 
         $achat = new Achat();
+
         $achat->collector_id = $request->collector;
         $achat->qte =$totalachat;
         $achat->price =  $request->price_achat;
         $achat->total = $totalachat * $request->price_achat ;
         $achat->destination = $request->destination;
-        
+
         if($request->date){
             $achat->created_at = $request->date;
         }
         $achat->save();
-
+        if($request->destination == 'lait'){
+            $stock = new Stocklait();
+            $stock->qte = $totalachat;
+            $stock->type = "Entree";
+            $achat->stocklaits()->save($stock);
+        }
         foreach($breeders as $breeder){
-            
+
                 $line_achat = new Lineachat();
                 $line_achat->achat_id = $achat->id;
                 $line_achat->breeder_id = $breeder->id;
@@ -83,8 +90,8 @@ class AchatController extends Controller
                 $line_achat->price = $request->price_achat;
                 $line_achat->total =  $request[$breeder->id.'qte'] * $request->price_achat ;
                 $line_achat->save();
-            
-           
+
+
         }
 
         $analyse = new Analyse();
@@ -104,7 +111,7 @@ class AchatController extends Controller
     }
     public function edit($id){
         $achat = Achat::find($id);
-       
+
         $this->authorize("achat.update",$achat);
         $lineachats = $achat->lineachats;
         $analyse = Analyse::where('achat_id',$id)->first();
@@ -143,10 +150,18 @@ class AchatController extends Controller
         $achat->total =  $totalachat * $request->price_achat;
         $achat->created_at = $request->date;
         $achat->save();
-
+        foreach($achat->stocklaits as $stock){
+            $stock->delete();
+        }
+        if($request->destination == 'lait'){
+            $stock = new Stocklait();
+            $stock->qte = $totalachat;
+            $stock->type = "Entree";
+            $achat->stocklaits()->save($stock);
+        }
 
         foreach($breeders as $breeder){
-            
+
             $lineachat = Lineachat::where('achat_id',$achat->id)->where('breeder_id',$breeder->id)->first();
             $lineachat->achat_id = $achat->id;
             $lineachat->breeder_id = $breeder->id;
@@ -171,20 +186,20 @@ class AchatController extends Controller
         $analyse->fp =$request->qteFP;
         $analyse->a = $request->qteA;
         $analyse->save();
-        return redirect('milkcheck/achats')->with('success',"L'achat a été modifie avec succès");
+        return redirect('milkcheck/achats');
     }
 
     public function destroy($id){
         $achat = Achat::find($id);
         $this->authorize("achat.delete",$achat);
         $achat->delete();
-        return redirect('milkcheck/achats')->with('success','Achat supprimé :)');
+        return redirect('milkcheck/achats');
     }
 
     public function showAchat($id){
         $achat = Achat::find($id);
         $analyse = $achat->analyse;
-        
+
         return view('milkcheck.modal-achat',compact('analyse','achat'));
     }
 

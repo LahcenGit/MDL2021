@@ -20,8 +20,8 @@
                     <form action="{{url('milkcheck/breeders/'.$breeder->id)}}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                         @csrf
-                       
-                       
+
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label">Nom complet *:</label>
@@ -32,7 +32,7 @@
                                 </span>
                                @enderror
                             </div>
-                            
+
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-3">
@@ -46,17 +46,25 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">N° De Télephone(optionnel):</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('telephone') is-invalid @enderror " name="telephone" value="{{$breeder->phone}}" placeholder="+2130776443231"/>
-                                @error('telephone')
+                                <input class="form-control mb-4 mb-md-0  input-default @error('phone') is-invalid @enderror " name="phone" value="{{$breeder->phone}}" placeholder="+2130776443231"/>
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                @enderror
                             </div>
-                            
+
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-6"> 
+                            <div class="col-md-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Type * : </label>
+                                <select class="js-example-basic-single  form-select" name="type" class="form-control input-default" id="exampleFormControlSelect1" required>
+                                        <option value="A" @if($breeder->agrement_type == "A")selected @endif >Agrément</option>
+                                        <option value="IS"@if($breeder->agrement_type == "IS")selected @endif >Identification Sanitaire</option>
+                                        <option value="Ac" @if($breeder->agrement_type == "Ac")selected @endif>Aucun</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
                                 <label class="form-label">N° d'agrément *:</label>
                                 <input class="form-control mb-4 mb-md-0 input-default @error('n_agrement') is-invalid @enderror" name="n_agrement" value="{{$breeder->n_agrement}}" placeholder="13681" required/>
                                 @error('n_agrement')
@@ -65,7 +73,28 @@
                                 </span>
                                @enderror
                             </div>
-                            
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <label class="form-label">N° compte bancaire :</label>
+                                <input class="form-control mb-4 mb-md-0 input-default @error('n_compte') is-invalid @enderror" name="n_compte" value="{{$breeder->n_compte}}" placeholder="0035558888999112250" />
+                                @error('n_compte')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                               @enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">La banque :</label>
+                                <input class="form-control mb-4 mb-md-0 input-default @error('banque') is-invalid @enderror" name="banque" value="{{$breeder->banque}}" placeholder="BADR" />
+                                @error('banque')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                               @enderror
+                            </div>
+
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-3">
@@ -87,17 +116,17 @@
                                 </span>
                                @enderror
                             </div>
-                            
+
                         </div>
 
                         <div class="row mb-3">
 
-                     
-                            
+
+
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Collecteur *</label>
 								<select class="js-example-basic-single  form-select" name="collector" class="form-control input-default @error('collector') is-invalid @enderror" id="exampleFormControlSelect1" required>
-                                   
+
                                     @foreach ($collectors as $collector)
                                         <option value="{{$collector->id}}" @if ($breeder->collector_id == $collector->id) selected @endif>{{$collector->name}}</option>
                                     @endforeach
@@ -107,7 +136,7 @@
                                   </span>
                                    @enderror
                                 </select>
-                               
+
                             </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Modifier</button>

@@ -14,51 +14,8 @@
                 <div class="card-body">
                   <form class="forms-sample" method="POST" action="{{url('adv/add-order-particular')}}" enctype="multipart/form-data">
                         @csrf
-                        <div class="row mb-3">
-                            <div class="col-md-9">
-                             <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" name="check" value="1">
-                                <label class="form-check-label" for="checkDefault">
-                                Nouveau Client ?
-                                </label>
-                            </div>
-                        </div>
-                        <div id="add-particular" style="display: none">
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Nom complet*:</label>
-                                    <input class="form-control mb-4 mb-md-0  input-default " name="name"  value="{{old('name')}}" placeholder="name"  />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Téléphone*:</label>
-                                    <input class="form-control mb-4 mb-md-0  input-default " name="new_phone"  value="{{old('name')}}" placeholder="name"  />
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Wilaya:</label>
-                                    <select class="form-select" name="new_wilaya"  class="form-control input-default " id="exampleFormControlSelect1" >
-                                        <option value="" disabled selected>La wilaya: </option>
-                                        @foreach($wilayas as $wilaya)
-                                        <option value="{{ $wilaya->name }}" @if(old('wilaya') == $wilaya->name) selected @endif>{{ $wilaya->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Adresse:</label>
-                                    <input class="form-control mb-4 mb-md-0  input-default " name="new_address"  value="{{old('address')}}" placeholder="adresse" />
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Email*:</label>
-                                    <input class="form-control mb-4 mb-md-0  input-default " name="email"  value="{{old('email')}}" placeholder="email"  />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Mot de passe*:</label>
-                                    <input type="password" class="form-control mb-4 mb-md-0  input-default " name="password"  placeholder="mot de passe"  />
-                                </div>
-                            </div>
-                        </div>
+
+
                         <div id="particular-info">
                             <div class="row mb-3">
                             <div class="col-md-6">

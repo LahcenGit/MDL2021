@@ -61,7 +61,8 @@
                     @if($order->status == 1)
                     <a href="{{ asset('commercial/order-professionals/edit/'.$order->id) }}" data-id="{{ $order->id }}" class=" btn-xs sharp "><i data-feather="edit"></i></a>
                     @endif
-                    <a href="#" data-id="{{ $order->id }}" class="btn-xs sharp show-orderline"><i data-feather="eye"></i></a>
+                    <a href="{{url('commercial/order-professional-detail/'.$order->id)}}" class="btn-xs sharp show-orderline"><i data-feather="eye"></i></a>
+                    <a href="{{$order->professional->gps}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
                 </div>
               </form>
             </td>

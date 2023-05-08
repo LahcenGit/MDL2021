@@ -37,7 +37,7 @@
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <h6 class="card-title mb-0">Déstination Lait</h6>
-                 
+
                 </div>
                 <div class="row">
                   <div class="col-6 col-md-12 col-xl-5">
@@ -52,7 +52,7 @@
                       </p>
                     </div>
                   </div>
-                 
+
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <h6 class="card-title mb-0">Déstination Fromage</h6>
-                  
+
                 </div>
                 <div class="row">
                   <div class="col-6 col-md-12 col-xl-5">
@@ -77,18 +77,18 @@
                       </p>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="col-md-3 col-6 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <h6 class="card-title mb-0">Nombre d'achat</h6>
-                  
+
                 </div>
                 <div class="row">
                   <div class="col-6 col-xs-12 col-xl-5">
@@ -99,7 +99,7 @@
                       </p>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <h6 class="card-title mb-0">Randement Lait Fromage</h6>
-                 
+
                 </div>
                 <div class="row">
                   <div class="col-6 col-md-12 col-xl-5">
@@ -121,11 +121,30 @@
                       </p>
                     </div>
                   </div>
-                 
+
                 </div>
               </div>
             </div>
           </div>
+
+          @foreach($resultats as $resultat)
+          <div class="col-md-3 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline">
+                  <h6 class="card-title mb-0">{{ $resultat->product->soft_name }} {{ $resultat->product->capacity }}</h6>
+                  <div class="dropdown mb-2">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3 col-md-6 col-xl-5">
+                    <h3  style="color: #6FB53E;"class="mb-2">{{ $resultat->stock }} </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
         </div>
       </div>
     </div> <!-- row -->
@@ -144,8 +163,8 @@
       <div class="col-lg-4  grid-margin stretch-card">
         <div class="card overflow-hidden">
           <div class="card-body">
-            
-           
+
+
             <div>
               <canvas id="myChart2"></canvas>
             </div>
@@ -156,8 +175,8 @@
       <div class="col-lg-4  grid-margin stretch-card">
         <div class="card overflow-hidden">
           <div class="card-body">
-            
-           
+
+
             <div>
               <canvas id="myChart3"></canvas>
             </div>
@@ -165,7 +184,7 @@
         </div>
       </div>
     </div> <!-- row -->
-    
+
 
      <!-- row -->
 
@@ -188,11 +207,11 @@
                   <td><p class="text-muted tx-12">{{$top_breeder->qte}} L</p></td>
                 </tr>
                 @endforeach
-             
+
               </tbody>
             </table>
-         
-            
+
+
           </div>
         </div>
       </div>
@@ -212,14 +231,14 @@
                   <td><p class="text-muted tx-12">{{$top_qte_breeder->qte}} L</p></td>
                 </tr>
                 @endforeach
-             
+
               </tbody>
             </table>
-    
+
           </div>
         </div>
       </div>
-      
+
     </div> <!-- row -->
 
 
@@ -228,7 +247,7 @@
         <div class="card">
           <div class="card-body">
             <h6 class="card-title">La table des achats</h6>
-            
+
             <div class="table-responsive">
                 <table class="table">
                   <thead>
@@ -254,7 +273,7 @@
                  @endforeach
                   </tbody>
                 </table>
-               
+
             </div>
             <div>
               <div class="row">
@@ -311,12 +330,12 @@
               data,
               options: {}
               };
-            
+
             var myChart = new Chart(
               document.getElementById('myChart'),
               config
             );
-     
+
       }
   });
 
@@ -361,12 +380,12 @@
               data,
               options: {}
               };
-            
+
             var myChart = new Chart(
               document.getElementById('myChart2'),
               config
             );
-     
+
       }
   });
 
@@ -411,12 +430,12 @@
               data,
               options: {}
               };
-            
+
             var myChart = new Chart(
               document.getElementById('myChart3'),
               config
             );
-     
+
       }
   });
 
@@ -431,9 +450,9 @@
   }
 });
 $(".show-achat").click(function() {
-  
+
   var id = $(this).data('id');
- 
+
   $.ajax({
     url: '/show-achat/' + id,
     type: "GET",
@@ -442,8 +461,8 @@ $(".show-achat").click(function() {
       $("#exampleModal").modal('show');
     }
   });
-  
+
 });
 
-</script>  
+</script>
 @endpush

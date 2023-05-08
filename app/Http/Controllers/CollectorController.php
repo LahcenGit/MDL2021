@@ -23,7 +23,7 @@ class CollectorController extends Controller
             'delivry_date' => 'required',
             'expiration_date' => 'required',
         ]);
-        
+
 
         $user = new User();
         $user->email = null;
@@ -40,6 +40,8 @@ class CollectorController extends Controller
         $collector->n_agrement = $request->n_agrement;
         $collector->delivry_date = $request->delivry_date;
         $collector->expiration_date = $request->expiration_date;
+        $collector->n_compte = $request->n_compte;
+        $collector->banque = $request->banque;
         $collector->save();
 
         return redirect('milkcheck/collectors');
@@ -48,18 +50,21 @@ class CollectorController extends Controller
 
         public function edit($id){
             $collector = Collector::find($id);
-            return view('milkcheck.edit-collector',compact('collector'));            
+            return view('milkcheck.edit-collector',compact('collector'));
         }
 
 
         public function update(Request $request,$id){
             $collector = Collector::find($id);
             $collector->name = $request->name;
-            $collector->phone = $request->telephone;
+            $collector->agrement_type = $request->type;
             $collector->email = $request->email;
-            $collector->n_agrement = $request->numero;
-            $collector->delivry_date = $request->date_expedition;
-            $collector->expiration_date = $request->date_expiration;
+            $collector->phone = $request->phone;
+            $collector->n_agrement = $request->n_agrement;
+            $collector->delivry_date = $request->delivry_date;
+            $collector->expiration_date = $request->expiration_date;
+            $collector->n_compte = $request->n_compte;
+            $collector->banque = $request->banque;
             $collector->save();
                return redirect('milkcheck/collectors');
         }

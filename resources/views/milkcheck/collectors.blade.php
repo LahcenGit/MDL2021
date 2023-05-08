@@ -40,9 +40,9 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                  <a href="{{url('milkcheck/collectors/'.$collector->id.'/edit')}}" class="btn btn-secondary shadow btn-xs sharp " style="margin-right: 3px;"><i class="mdi mdi-border-color"></i></a>
-                  <button type="submit" onclick="return confirm('Vous voulez vraiment supprimer?')" class="btn btn-danger shadow btn-xs sharp" ><i class="mdi mdi-delete "></i></button>
-                </div>	
+                  <a href="{{url('milkcheck/collectors/'.$collector->id.'/edit')}}" class="btn-xs sharp " style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                  <button type="submit" onclick="return confirm('Vous voulez vraiment supprimer?')" class=" btn-xs sharp" ><i data-feather="trash"></i></button>
+                </div>
               </form>
             </td>
           </tr>
@@ -55,5 +55,5 @@
         </div>
     </div>
 
-</div>   
+</div>
 @endsection
