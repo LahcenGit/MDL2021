@@ -64,7 +64,7 @@
                                         @if ($breeder->check() < 15 &&  $breeder->check()>0)
                                         <td><span class="badge bg-warning">Reste {{$breeder->check()}} jours </span></td>
                                         @endif
-                                        <td style="width: 200px;"> <input class="form-control  input-default" type="number" name="{{$breeder->id.'qte'}}" placeholder="0" required/></td>
+                                        <td style="width: 200px;"> <input class="form-control  input-default" type="number" name="{{$breeder->id.'qte'}}" value="{{ old($breeder->id.'qte') }}" placeholder="0" required/></td>
                                     </tr>
                                   @endforeach
                                 </tbody>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="exampleFormControlSelect1" class="form-label">Date</label>
-								<input class="form-select" name="date" type="date" class="form-control input-default">
+								<input class="form-select" name="date" value="{{ $date }}" type="date" class="form-control input-default">
 
                             </div>
                         </div>
@@ -187,21 +187,20 @@
                                    @enderror
                                 </div>
                             </div>
-
-
                             <button class="btn btn-warning price-action" type="button">Calculer prix d'achat</button>
                             <button class="btn btn-secondary price-reset" type="button">Réinitialiser</button>
                              <br>
-                            <input class="price-calculator mt-3"  name="price_achat"  /> <br>
-                            @error('price_achat')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                           @enderror
-
-
-
-                        <button id="achat-submit" class="btn btn-primary mt-3" type="submit">Ajouter l'achat</button>
+                             <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <input class="price-calculator mt-3 @error('price_achat') is-invalid @enderror"  name="price_achat"  /> <br>
+                                        @error('price_achat')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                             </div>
+                            <button id="achat-submit" class="btn btn-primary mt-3" type="submit">Ajouter l'achat</button>
                     </form>
                 </div>
             </div>

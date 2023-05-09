@@ -8,6 +8,7 @@ use App\Models\Collector;
 use App\Models\Lineachat;
 use App\Models\Stocklait;
 use App\Models\Vendeur;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AchatController extends Controller
@@ -35,9 +36,10 @@ class AchatController extends Controller
     public function createAchat($id){
         $this->authorize("achat.create");
         $collector = Collector::find($id);
-
         $breeders = $collector->breeders;
-        return view('milkcheck.add-achat',compact('collector','breeders'));
+        $date = Carbon::now()->format('Y-m-d');
+
+        return view('milkcheck.add-achat',compact('collector','breeders','date'));
     }
     public function store(Request $request){
 
@@ -54,7 +56,11 @@ class AchatController extends Controller
             'qteT' => 'required',
             'qteFP' => 'required',
             'qteA' => 'required',
-        ]);
+        ],
+        [
+            'price_achat.required' =>"Veuillez calculer le prix d'achat d'abord",
+        ]
+    );
 
         $totalachat = 0;
         $collector = Collector::find($request->collector);
