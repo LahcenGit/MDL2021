@@ -202,7 +202,7 @@
                 <tr>
                   <th scope="row">{{$loop->iteration}}</th>
                   <td><h6 class="text-body mb-2">{{$top_breeder->breeder->name}}</h6>
-                     <p class="text-muted tx-13">F={{$top_breeder->fat}}, D={{$top_breeder->densite}}, P={{$top_breeder->p}}</p>
+                     <p class="text-muted tx-13">F={{number_format($top_breeder->fat ,2)}}, D={{number_format($top_breeder->densite,2)}}, P={{number_format($top_breeder->p ,2)}}</p>
                   </td>
                   <td><p class="text-muted tx-12">{{$top_breeder->qte}} L</p></td>
                 </tr>
