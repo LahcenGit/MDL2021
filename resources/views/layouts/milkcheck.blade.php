@@ -75,11 +75,11 @@ License: For each use you must have a valid license purchased only from above li
             </a>
           </li>
 
-          <li class="nav-item nav-category">Components</li>
+          <li class="nav-item nav-category">collaborateur</li>
 
           <li class="nav-item  {{ active_class(['milkcheck/collectors/*','milkcheck/collectors']) }}">
             <a class="nav-link"  data-bs-toggle="collapse" href="#collecteurs" role="button" aria-expanded="{{ is_active_route(['milkcheck/collectors/*','milkcheck/collectors']) }}" aria-controls="collecteurs">
-              <i class="link-icon" data-feather="pie-chart"></i>
+              <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Collecteurs</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -98,7 +98,7 @@ License: For each use you must have a valid license purchased only from above li
 
           <li class="nav-item  {{ active_class(['milkcheck/breeders/*','milkcheck/breeders']) }}">
             <a class="nav-link"  data-bs-toggle="collapse" href="#eleveurs" role="button" aria-expanded="{{ is_active_route(['milkcheck/breeders/*','milkcheck/breeders']) }}" aria-controls="eleveurs">
-              <i class="link-icon" data-feather="pie-chart"></i>
+              <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Eleveurs</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -117,7 +117,7 @@ License: For each use you must have a valid license purchased only from above li
 
           <li class="nav-item {{ active_class(['milkcheck/achats/*','milkcheck/achats']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#achats" role="button" aria-expanded="{{ is_active_route(['milkcheck/achats/*','milkcheck/achats']) }}" aria-controls="achats">
-              <i class="link-icon" data-feather="anchor"></i>
+              <i class="link-icon" data-feather="shopping-cart"></i>
               <span class="link-title">Achats</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -135,7 +135,7 @@ License: For each use you must have a valid license purchased only from above li
 
           <li class="nav-item {{ active_class(['milkcheck/agrements/*','milkcheck/agrements']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#agrements" role="button" aria-expanded="{{ is_active_route(['milkcheck/agrements/*','milkcheck/agrements']) }}" aria-controls="agrements">
-              <i class="link-icon" data-feather="mail"></i>
+              <i class="link-icon" data-feather="file-text"></i>
               <span class="link-title">Agrements</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -166,7 +166,7 @@ License: For each use you must have a valid license purchased only from above li
                   <a href="{{url('milkcheck/paiements/etat')}}" class="nav-link {{ active_class(['milkcheck/paiements/etat']) }}">Etat paiement</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/paiements/transfer')}}" class="nav-link {{ active_class(['milkcheck/paiements/transfer']) }}">Virements</a>
+                  <a href="#" class="nav-link {{ active_class(['milkcheck/paiements/transfer']) }}">Virements</a>
                 </li>
               </ul>
             </div>
@@ -175,7 +175,7 @@ License: For each use you must have a valid license purchased only from above li
           <li class="nav-item nav-category">Transformation lait</li>
           <li class="nav-item {{ active_class(['milkcheck/transformatiob-milk/*','milkcheck/transformatiob-milk']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#transformation" role="button" aria-expanded="{{ is_active_route(['milkcheck/transformatiob-milk/*','milkcheck/transformatiob-milk']) }}" aria-controls="transformation">
-              <i class="link-icon" data-feather="dollar-sign"></i>
+              <i class="link-icon" data-feather="aperture"></i>
               <span class="link-title">Transformation lait</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -195,7 +195,7 @@ License: For each use you must have a valid license purchased only from above li
           <li class="nav-item nav-category">Fabrication produit</li>
           <li class="nav-item {{ active_class(['milkcheck/product-fabrication/*','milkcheck/product-fabrication']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#fabrication" role="button" aria-expanded="{{ is_active_route(['milkcheck/product-fabrication/*','milkcheck/product-fabrication']) }}" aria-controls="fabrication">
-              <i class="link-icon" data-feather="dollar-sign"></i>
+              <i class="link-icon" data-feather="star"></i>
               <span class="link-title">Fabrication produit</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
@@ -234,26 +234,26 @@ License: For each use you must have a valid license purchased only from above li
           <li class="nav-item nav-category">Rapport</li>
           <li class="nav-item {{ active_class(['milkcheck/report']) }}">
             <a href="{{url('/milkcheck/report')}}" class="nav-link {{ active_class(['milkcheck/report']) }}">
-              <i class="link-icon" data-feather="box"></i>
+              <i class="link-icon" data-feather="file"></i>
               <span class="link-title">Rapport</span>
             </a>
           </li>
 
           <li class="nav-item {{ active_class(['milkcheck/generate-fiche-payment']) }}">
             <a href="{{url('/milkcheck/generate-fiche-payment')}}" class="nav-link {{ active_class(['milkcheck/generate-fiche-payment']) }}">
-                <i class="link-icon" data-feather="box"></i>
+                <i class="link-icon" data-feather="file"></i>
                 <span class="link-title">Fiche paiement</span>
               </a>
           </li>
 
           <li class="nav-item {{ active_class(['milkcheck/generate-fiche-soutien']) }}">
             <a href="{{url('/milkcheck/generate-fiche-soutien')}}" class="nav-link {{ active_class(['milkcheck/generate-fiche-soutien']) }}">
-                <i class="link-icon" data-feather="box"></i>
+                <i class="link-icon" data-feather="file"></i>
                 <span class="link-title">Soutien agricole</span>
             </a>
 
           </li>
-
+         {{--
           <li class="nav-item nav-category">Setting</li>
           <li class="nav-item {{ active_class(['milkcheck/profil']) }}">
             <a href="{{url('/milkcheck/profil')}}" class="nav-link {{ active_class(['milkcheck/profil']) }}">
@@ -268,7 +268,7 @@ License: For each use you must have a valid license purchased only from above li
               <span class="link-title">Paramètres</span>
             </a>
           </li>
-
+        --}}
         </ul>
       </div>
     </nav>

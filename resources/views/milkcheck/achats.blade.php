@@ -1,5 +1,11 @@
 @extends('layouts.milkcheck')
 @section('content')
+<style>
+    .btn{
+        padding: 0.4rem 0.4rem !important;
+    }
+
+</style>
 <div class="page-content">
 
     <nav class="page-breadcrumb">
@@ -43,10 +49,10 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="{{url('milkcheck/achats/'.$achat->id.'/edit')}}" class=" btn-xs sharp " style="margin-right: 3px;"><i data-feather="edit"></i></a>
-                    <a href="#" data-id="{{$achat->id}}" class=" btn-xs sharp show-achat" style="margin-right: 3px;"><i data-feather="eye"></i></a>
-                    <a href="{{url('milkcheck/achat-ticket/'.$achat->id)}}"  data-id="{{$achat->id}}"class=" btn-xs sharp " style="margin-right: 3px;" ><i data-feather="printer"></i></a>
-                    <button  onclick="return confirm('Vous voulez vraiment supprimer?')"class=" btn-xs sharp " style="margin-right: 3px;"><i data-feather="trash"></i></button>
+                    <a href="{{url('milkcheck/achats/'.$achat->id.'/edit')}}" class="btn btn-outline-success" style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                    <a href="#" data-id="{{$achat->id}}"  class="btn btn-outline-primary show-achat" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                    <a href="{{url('milkcheck/achat-ticket/'.$achat->id)}}"  data-id="{{$achat->id}}"class="btn btn-outline-warning" style="margin-right: 3px;" ><i data-feather="printer"></i></a>
+                    <button  onclick="return confirm('Vous voulez vraiment supprimer?')"class="btn btn-outline-danger" style="margin-right: 3px;"><i data-feather="trash"></i></button>
                 </div>
               </form>
             </td>

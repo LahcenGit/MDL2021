@@ -3,8 +3,8 @@
 <style>
     .price-calculator{
       font-family: 'Orbitron', sans-serif;
-      font-size:25px; 
-      color:#16B4B7; 
+      font-size:25px;
+      color:#16B4B7;
       font-weight : bold;
 	  pointer-events: none;
 	  height: 50px;
@@ -24,7 +24,7 @@
 
     @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
-       Svp ! Corrigez les erreurs suivantes : 
+       Svp ! Corrigez les erreurs suivantes :
        <div class="mb-2"></div>
     <div class="error">
         <ul class="ml-2">
@@ -48,7 +48,7 @@
                         <input type="hidden" name="collector" value="{{$achat->collector_id}}">
 
                         <label for="exampleFormControlSelect1" class="form-label">La liste des eleveurs </label>
-                       
+
                         <div class=" col-lg-8 col-12 mb-3">
 
                             <table class="table table-bordered">
@@ -79,10 +79,10 @@
                                   @endforeach
                                 </tbody>
                               </table>
-                            
+
                         </div>
-                      
-                     
+
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Déstination</label>
@@ -96,15 +96,15 @@
                                 </span>
                                @enderror
                                 </select>
-                               
+
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleFormControlSelect1" class="form-label">Date</label>
                                 <input class="form-select" value="{{$achat->created_at->format('Y-m-d')}}" name="date" type="date" class="form-control input-default">
-                              
+
                             </div>
                         </div>
-                          
+
 
                             <div class="row mb-3">
                                 <div class="col-md-1">
@@ -116,7 +116,7 @@
                                     </span>
                                    @enderror
                                 </div>
-                                
+
                                 <div class="col-md-1">
                                     <label class="form-label">D:</label>
                                     <input class="form-control densite mb-4 mb-md-0 input-default @error('qteD') is-invalid @enderror" value="{{$analyse->d}}" id="inputD" name="qteD" placeholder="0" />
@@ -144,7 +144,7 @@
                                     </span>
                                    @enderror
                                 </div>
-                       
+
                                 <div class="col-md-1">
                                     <label class="form-label">P:</label>
                                     <input class="form-control protine mb-4 mb-md-0 input-default @error('qteP') is-invalid @enderror" value="{{$analyse->p}}" name="qteP" placeholder="0" />
@@ -205,7 +205,7 @@
                             <button class="btn btn-secondary price-reset" type="button">Réinitialiser</button>
                              <br>
                             <input class="price-calculator mt-3" value="{{$achat->price}}" name="price_achat" /> <br>
-                        
+
                         <button class="btn btn-primary" type="submit">Mettre a jour l'achats</button>
                     </form>
                 </div>
@@ -216,7 +216,7 @@
 @endsection
 
 @push('select-vendeur-scripts')
-    
+
 <script>
 	$.ajaxSetup({
 	headers: {
@@ -231,30 +231,30 @@
         d =   $( ".densite" ).val();
         a =   $( ".acidite" ).val();
 
-        price = 50 ; 
+        price = 70 ;
 
-        if (f>28 && p>2.8){
-           
-            price = price + 2 ; 
+        if (f>=28 && p>=2.8){
+
+            $( ".price-calculator" ).val(72 );
         }
 
-        if (d>1028 && a<18){
-            price = price + 2 ; 
+        if (d>=1028 && a<=19){
+            $( ".price-calculator" ).val(72 );
         }
 
-        $( ".price-calculator" ).val(price);
-        
+
+
     });
+
 
 
     $(".price-reset").click(function () {
 
-        $( ".price-calculator" ).val(50);
-        
-    });
+        $( ".price-calculator" ).val(70 );
 
+    });
 	$( ".select-vendeur" ).change(function() {
-         	
+
 
         $( "#agrement" ).removeClass( "is-invalid" );
         $( "#agrement" ).removeClass( "is-valid" );
@@ -269,7 +269,7 @@
 
 			success: function (res) {
                 $( "#agrement" ).val(res);
-	          
+
 				if(res < d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()){
                     $( "#agrement" ).addClass( "is-invalid" );
                 }
@@ -281,5 +281,5 @@
 		});
 });
 
-</script> 
+</script>
 @endpush

@@ -43,6 +43,7 @@ class AchatController extends Controller
 
         $request->validate([
             'destination' => 'required',
+            'price_achat' =>'required',
             'qteF' => 'required',
             'qteD' => 'required',
             'qteC' => 'required',
