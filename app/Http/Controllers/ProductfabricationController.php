@@ -23,4 +23,16 @@ class ProductfabricationController extends Controller
         $fabrication->save();
         return redirect('milkcheck/product-fabrication');
     }
+    public function edit($id){
+        $fabrication = Productfabrication::find($id);
+        return view('milkcheck.edit-fabrication-product',compact('fabrication'));
+    }
+    public function update(Request $request , $id){
+        $fabrication = Productfabrication::find($id);
+        $fabrication->designation = 'Crème brute';
+        $fabrication->qte = $request->qte;
+        $fabrication->type = 1;
+        $fabrication->save();
+        return redirect('milkcheck/product-fabrication');
+    }
 }
