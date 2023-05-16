@@ -17,7 +17,7 @@
                     <form class="forms-sample" method="POST" action="{{url('adv/professionals')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
-                            <div class="col-md-12">
+                            <div class="col-md-8">
                                 <label class="form-label">Nom Complet*:</label>
                                 <input class="form-control mb-4 mb-md-0  input-default @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" placeholder="Nom complet" required />
                                 @error('name')
@@ -26,74 +26,26 @@
                                 </span>
                                @enderror
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Position GPS:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('gps') is-invalid @enderror" name="gps" value="{{old('gps')}}" placeholder="position gps"  />
-                                @error('gps')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
-                            </div>
 
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Entreprise*:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('entreprise') is-invalid @enderror" name="entreprise" value="{{old('entreprise')}}" placeholder="Entreprise"required />
-                                @error('entreprise')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Type*:</label>
-                                <select class="form-select" name="type"  class="form-control input-default " id="exampleFormControlSelect1" required>
-                                    <option value=""disabled selected>selectionner le type</option>
-                                    <option value="Pizzeria" @if (  old('type') == 'Pizzeria' ) selected @endif >Pizzeria</option>
-                                    <option value="Grossiste" @if (  old('type')== 'Grossiste' ) selected @endif >Grossiste</option>
-                                    <option value="Superette" @if (  old('type')== 'Superette' ) selected @endif >Supérette</option>
-                                    <option value="Orika" @if (  old('type') == 'Orika' ) selected @endif >Autre</option>
-                                </select>
-                            </div>
 
-                        </div>
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">NIF*:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('NIF') is-invalid @enderror" name="NIF" value="{{old('NIF')}}" placeholder="NIF"required />
-                                @error('NIF')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">RC*:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('RC') is-invalid @enderror" name="RC" value="{{old('RC')}}" placeholder="RC"required />
-                                    @error('RC')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                            </div>
-
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <label class="form-label">Téléphone*:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('phone') is-invalid @enderror" name="phone" value="{{old('phone')}}" placeholder="Téléphone" required />
+                                <input class="form-control mb-4 mb-md-0  input-default @error('phone') is-invalid @enderror" name="phone" value="{{old('phone')}}" placeholder="Téléphone"  />
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                @enderror
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Fax:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('fax') is-invalid @enderror" name="fax" value="{{old('fax')}}" placeholder="Fax" />
-                                @error('fax')
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-8">
+                                <label class="form-label">Position GPS(optionnel):</label>
+                                <input class="form-control mb-4 mb-md-0  input-default @error('position_gps') is-invalid @enderror" name="position_gps" value="{{old('position_gps')}}" placeholder="position gps" />
+                                @error('position_gps')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -101,43 +53,26 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Wilayas*:</label>
-                                <select class="form-select" name="wilaya"  class="form-control input-default " id="exampleFormControlSelect1">
-                                    <option value=""disabled selected>La wilaya:</option>
+                            <div class="col-md-8">
+                                <label class="form-label">Wilaya*:</label>
+                                <select class="form-select" name="wilaya"  class="form-control input-default " id="exampleFormControlSelect1" required>
+                                    <option value="" disabled selected>La wilaya: </option>
                                     @foreach($wilayas as $wilaya)
-                                    <option value="{{ $wilaya->name }}">{{ $wilaya->name }}</option>
+                                    <option value="{{ $wilaya->name }}" @if(old('wilaya')== $wilaya->name) selected @endif>{{ $wilaya->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Adresse*:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('adresse') is-invalid @enderror" name="adresse" value="{{old('adresse')}}" placeholder="Adresse" required/>
-                                    @error('adresse')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                            </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Email*:</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('email') is-invalid @enderror" name="email" value="{{old('email')}}" placeholder="Email" required />
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Mot de passe:</label>
-                                <input type="password" class="form-control mb-4 mb-md-0  input-default @error('password') is-invalid @enderror" name="password" value="{{old('password')}}" placeholder="mot de passe" />
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
+                            <div class="col-md-8">
+                                <label class="form-label">Type*:</label>
+                                <select class="form-select" name="type"  class="form-control input-default " id="exampleFormControlSelect1" required>
+                                    <option value="" disabled selected>Type: </option>
+                                    <option value="Pizzeria" @if(old('type')== 'Pizzeria') selected @endif>Pizzeria</option>
+                                    <option value="Grossiste" @if(old('type')== 'Grossiste') selected @endif>Grossiste</option>
+                                    <option value="Superette" @if(old('type')== 'Superette') selected @endif>Supérette</option>
+                                    <option value="Orika" @if(old('type')== 'Orika') selected @endif>Autre</option>
+                                </select>
                             </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Ajouter</button>

@@ -307,7 +307,7 @@ Route::get('home-dashboard', function () {
 //commercial route
 Route::middleware('CommercialAuth')->group(function () {
 Route::get('commercial', [App\Http\Controllers\commercial\CommercialController::class,'index'])->middleware('can:commercial');
-Route::get('commercial/professionals/create', [App\Http\Controllers\Commercial\CommercialController::class,'createProfessional'])->middleware('can:commercial');
+Route::get('commercial/professionals/create', [App\Http\Controllers\commercial\CommercialController::class,'createProfessional'])->middleware('can:commercial');
 Route::post('commercial/professionals', [App\Http\Controllers\commercial\CommercialController::class,'storeProfessional'])->middleware('can:commercial');
 Route::get('commercial/professionals', [App\Http\Controllers\commercial\CommercialController::class,'professionals'])->middleware('can:commercial');
 Route::get('commercial/order-professionals/create', [App\Http\Controllers\commercial\CommercialController::class,'createOrder'])->middleware('can:commercial');

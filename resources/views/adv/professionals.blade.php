@@ -22,13 +22,8 @@
           <tr>
             <th>#</th>
             <th>Nom</th>
-            <th>Email</th>
             <th>Téléphone</th>
-            <th>Entreprise</th>
-            <th>Adresse</th>
             <th>Wilaya</th>
-            <th>RC</th>
-            <th>NIF</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -37,15 +32,8 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$professional->name}}</td>
-                    <td>{{$professional->email}}</td>
-                    @if($professional->professional->phone)
                     <td>{{$professional->professional->phone}}</td>
-                    @endif
-                    <td>{{$professional->professional->entreprise}}</td>
-                    <td>{{$professional->professional->adresse}}</td>
                     <td>{{$professional->professional->wilaya}}</td>
-                    <td>{{$professional->professional->RC}}</td>
-                    <td>{{$professional->professional->NIF}}</td>
                     <td>
                     <form action="{{url('adv/professionals/'.$professional->professional->id)}}" method="post">
                         {{csrf_field()}}

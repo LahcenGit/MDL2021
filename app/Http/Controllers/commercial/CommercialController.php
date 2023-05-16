@@ -51,7 +51,7 @@ class CommercialController extends Controller
         return redirect('/commercial/professionals');
     }
     public function professionals(){
-        $professionals = Professionnel::orderBy('created_at','desc')->get();
+        $professionals = Professionnel::where('commercial_id','!=',NULL)->orderBy('created_at','desc')->get();
         return view('commercial.professionals',compact('professionals'));
     }
 
