@@ -293,6 +293,9 @@ if (navigator.geolocation) {
 }
 
 
+
+
+
 		$(document).ready( function () {
          $('#myTable').DataTable({
 				language: {
