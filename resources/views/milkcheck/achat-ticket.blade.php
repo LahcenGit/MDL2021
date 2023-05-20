@@ -14,7 +14,7 @@
 
     @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
-       Svp ! Corrigez les erreurs suivantes : 
+       Svp ! Corrigez les erreurs suivantes :
        <div class="mb-2"></div>
     <div class="error">
         <ul class="ml-2">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="text-center">  
+                    <div class="text-center">
                         <span style=" font-size: 22px !important;">Collecteur : <b>{{$achat->collector->name}}</b>  <br>
                         Date : <b> {{$date}}</b></span>
 
@@ -86,28 +86,44 @@
                                 <tr>
                                 <th >F</th>
                                 <th >D</th>
-                                <th >C</th>
-                                <th >S</th>
                                 <th >P</th>
-                                <th >W</th>
-                                <th >L</th>
-                                <th >T</th>
-                                <th >FP</th>
                                 <th >AC</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                <td class="table-analyse">{{$analyse->f}}</td>
-                                <td class="table-analyse">{{$analyse->d}}</td>
-                                <td class="table-analyse">{{$analyse->c}}</td>
-                                <td class="table-analyse">{{$analyse->s}}</td>
-                                <td class="table-analyse">{{$analyse->p}}</td>
-                                <td class="table-analyse">{{$analyse->w}}</td>
-                                <td class="table-analyse">{{$analyse->l}}</td>
-                                <td class="table-analyse">{{$analyse->t}}</td>
-                                <td class="table-analyse">{{$analyse->fp}}</td>
-                                <td class="table-analyse">{{$analyse->a}}</td>
+                                <td class="table-analyse">{{number_format($analyse->f,1,'.','')}}</td>
+                                <td class="table-analyse">{{number_format($analyse->d, 1,'.','')}}</td>
+                                <td class="table-analyse">{{number_format($analyse->p,1,'.','')}}</td>
+                                <td class="table-analyse">{{number_format($analyse->a,1,'.','')}}</td>
+                                </tr>
+                            </tbody>
+                         </table>
+                    </div>
+                    <div class="mt-3 ">
+                        <table >
+                            <thead>
+                                <tr>
+
+                                <th >C</th>
+                                <th >S</th>
+
+                                <th >W</th>
+                                <th >L</th>
+                                <th >T</th>
+                                <th >FP</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                <td class="table-analyse">{{number_format($analyse->c,1,'.','')}}</td>
+                                <td class="table-analyse">{{number_format($analyse->s,1,'.','')}}</td>
+                                <td class="table-analyse">{{number_format($analyse->w,1,'.','')}}</td>
+                                <td class="table-analyse">{{number_format($analyse->l,1,'.','')}}</td>
+                                <td class="table-analyse">{{number_format($analyse->t,1,'.','')}}</td>
+                                <td class="table-analyse">{{number_format($analyse->fp,1,'.','')}}</td>
                                 </tr>
                             </tbody>
                          </table>
@@ -119,7 +135,7 @@
                     <div class="mt-3 d-flex justify-content-center mt-4">
                        <b class="d-flex justify-content-center" style=" font-size: 22px !important;">Merci pour votre service !</b>
                     </div>
-                      
+
                 </div>
             </div>
         </div>
@@ -127,11 +143,11 @@
 </div>
 @endsection
 @push('achat-ticket-scripts')
-    
+
 <script>
 $('.printMe').click(function(){
     $('#printable').printThis();
 });
-</script> 
+</script>
 
 @endpush

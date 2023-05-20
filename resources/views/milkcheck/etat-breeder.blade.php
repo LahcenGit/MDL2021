@@ -44,9 +44,9 @@
 
                     <div class="d-flex justify-content-between mb-2">
                         <div>
-                            <h2> Facture N°: 147-mdl</h2> <br>
-                             MR. : <b>{{$breeder->name}}</b>  | {{$date}}<br>
-                            I.S. : <b>{{$breeder->n_agrement}}</b>  <br>
+                            <h2> Facture N°: ...</h2> <br>
+                             MR. : <b>{{$breeder->name}}</b>  | {{$month}} {{ $year }}<br>
+                            @if($breeder->agrement_type == 'IS')I.S. @elseif($breeder->agrement_type == 'A') A.S. @endif : <b>{{$breeder->n_agrement}}</b> | Date d'éxpiration : <b>{{ $breeder->expiration_date }}</b> <br>
                         </div>
                     </div>
 
@@ -64,7 +64,7 @@
                         <tbody>
                             <tr style="height: 150px;">
 
-                                <td>Laivraison du lait de vache Wilaya de Tlemcen - <B>{{$date}}</B></td>
+                                <td>Laivraison du lait de vache Wilaya de Tlemcen - <B>{{$month}} {{ $year }}</B></td>
                                 <td>{{$qteglobal}} L</td>
                                 <td>{{$pricemoy}} Da</td>
                                 <td>{{$pricemoy * $qteglobal}}</td>

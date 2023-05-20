@@ -1,5 +1,11 @@
 @extends('layouts.milkcheck')
 @section('content')
+<style>
+    .btn{
+        padding: 0.4rem 0.4rem !important;
+    }
+
+</style>
 <div class="page-content">
 
     <nav class="page-breadcrumb">
@@ -51,7 +57,7 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                  <a href="{{url('milkcheck/breeders/'.$breeder->id.'/edit')}}" class=" btn-xs sharp "><i data-feather="edit"></i></a>
+                  <a href="{{url('milkcheck/breeders/'.$breeder->id.'/edit')}}"  class="btn btn-outline-primary"><i data-feather="edit"></i></a>
                 </div>
             </td>
           </tr>

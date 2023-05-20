@@ -58,4 +58,13 @@ class TransformationlaitController extends Controller
         $transformation->stocklaits()->save($stock);
         return redirect('milkcheck/transformation-milk');
     }
+    public function destroy($id){
+        $transformation = Transformationlait::find($id);
+        foreach($transformation->stocklaits as $stock){
+            $stock->delete();
+        }
+        $transformation->delete();
+        return redirect('milkcheck/transformation-milk');
+
+    }
 }

@@ -26,7 +26,8 @@ class PaiementMilkcheckController extends Controller
 
         $breeder = Breeder::find($id);
 
-        $date = Carbon::now()->format('M-Y');
+        $year = Carbon::now()->format('Y');
+        $month = Carbon::now()->translatedFormat('F');
 
         $lineachats = Lineachat::whereMonth('created_at', Carbon::now()->month)
         ->where('breeder_id',$id)
@@ -68,6 +69,6 @@ class PaiementMilkcheckController extends Controller
 
 
 
-        return view('milkcheck.etat-breeder',compact('lineachats','breeder','date','price','qteglobal','pricemoy','total_part1','total_part2'));
+        return view('milkcheck.etat-breeder',compact('lineachats','breeder','year','month','price','qteglobal','pricemoy','total_part1','total_part2'));
     }
 }

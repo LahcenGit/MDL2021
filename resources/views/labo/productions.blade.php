@@ -1,6 +1,12 @@
 @extends('layouts.milkcheck')
 
 @section('content')
+<style>
+    .btn{
+        padding: 0.4rem 0.4rem !important;
+    }
+
+</style>
 <div class="page-content">
 
     <nav class="page-breadcrumb">
@@ -35,9 +41,9 @@
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
                             <div class="d-flex">
-                                <a href="{{ asset('milkcheck/productions/edit/'.$production->id) }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
-                                <a href="#" data-id="{{ $production->id }}" class=" btn-xs sharp mr-1 show-productionline"><i data-feather="eye"></i></a>
-                                <button style="background-color: #ffffff; border-color:#ffffff" onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
+                                <a href="{{ asset('milkcheck/productions/edit/'.$production->id) }}" class="btn btn-outline-warning" style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                                <a href="#" data-id="{{ $production->id }}" class="btn btn-outline-primary show-productionline" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                                <button  onclick="return confirm('Vous voulez vraiment supprimer?')" class="btn btn-outline-danger"><i data-feather="trash"></i></button>
                             </div>
                         </form>
                         </td>

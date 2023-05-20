@@ -182,7 +182,7 @@ class ReportController extends Controller
         $collector = Collector::find($request->id);
         $stat = Achat::selectRaw('sum(qte) as sum_qte')->where('collector_id',$request->id)->whereMonth('created_at',$request->date)->whereYear('created_at',$request->year)->first();
         $date = Carbon::createFromFormat('m', $request->date)->locale('fr');
-        $month = $date->format('F');
+        $month = $date->translatedFormat('F');
         $total = $stat->sum_qte * 5;
         $pu = 5;
         return view('milkcheck.fiche-payment-collector',compact('collector','stat','month','total','pu'));
@@ -199,7 +199,7 @@ class ReportController extends Controller
         $breeder = Breeder::find($request->breeder);
         $stat = Lineachat::selectRaw('sum(qte) as sum_qte')->where('breeder_id',$request->breeder)->whereMonth('created_at',$request->date)->whereYear('created_at',$request->year)->first();
         $date = Carbon::createFromFormat('m', $request->date)->locale('fr');
-        $month = $date->format('F');
+        $month = $date->translatedFormat('F');
         if($breeder->agrement_type == 'A'){
             $total = $stat->sum_qte * 14;
             $pu = 14;

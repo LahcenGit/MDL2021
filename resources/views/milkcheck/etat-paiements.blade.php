@@ -1,5 +1,11 @@
 @extends('layouts.milkcheck')
 @section('content')
+<style>
+    .btn{
+        padding: 0.4rem 0.4rem !important;
+    }
+
+</style>
 <div class="page-content">
 
     <nav class="page-breadcrumb">
@@ -41,8 +47,8 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                  <a href="{{url('milkcheck/paiements/etat/'.$breeder->id)}}" class="btn btn-danger shadow btn-xs sharp " style="margin-right: 3px;"><i class="mdi mdi-file-export"></i></a>
-                </div>	
+                  <a href="{{url('milkcheck/paiements/etat/'.$breeder->id)}}" class="btn btn-outline-primary" style="margin-right: 3px;"><i data-feather="file-text"></i></a>
+                </div>
               </form>
             </td>
           </tr>
@@ -55,5 +61,5 @@
         </div>
     </div>
 
-</div>   
+</div>
 @endsection

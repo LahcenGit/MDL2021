@@ -25,19 +25,7 @@
     </nav>
 
 
-    @if (count($errors) > 0)
-    <div class="alert alert-danger" role="alert">
-       Svp ! Corrigez les erreurs suivantes :
-       <div class="mb-2"></div>
-    <div class="error">
-        <ul class="ml-2">
-            @foreach ($errors->all() as $error)
-                <li style="font-weight:100; ">- {{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    </div>
-    @endif
+
     <div class="row">
         <div class="col-md-12 grid-margin">
             <div class="card">
@@ -76,7 +64,7 @@
                                         @if ($breeder->check() < 15 &&  $breeder->check()>0)
                                         <td><span class="badge bg-warning">Reste {{$breeder->check()}} jours </span></td>
                                         @endif
-                                        <td style="width: 200px;"> <input class="form-control  input-default" type="number" name="{{$breeder->id.'qte'}}" placeholder="0" required/></td>
+                                        <td style="width: 200px;"> <input class="form-control  input-default" type="number" name="{{$breeder->id.'qte'}}" value="{{ old($breeder->id.'qte') }}" placeholder="0" required/></td>
                                     </tr>
                                   @endforeach
                                 </tbody>
@@ -100,7 +88,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="exampleFormControlSelect1" class="form-label">Date</label>
-								<input class="form-select" name="date" type="date" class="form-control input-default">
+								<input class="form-select" name="date" value="{{ $date }}" type="date" class="form-control input-default">
 
                             </div>
                         </div>
@@ -199,15 +187,20 @@
                                    @enderror
                                 </div>
                             </div>
-
-
                             <button class="btn btn-warning price-action" type="button">Calculer prix d'achat</button>
                             <button class="btn btn-secondary price-reset" type="button">Réinitialiser</button>
                              <br>
-                            <input class="price-calculator mt-3"  name="price_achat" placeholder="70 Da" /> <br>
-
-
-                        <button class="btn btn-primary mt-3" type="submit">Ajouter l'achat</button>
+                             <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <input class="price-calculator mt-3 @error('price_achat') is-invalid @enderror"  name="price_achat"  /> <br>
+                                        @error('price_achat')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                             </div>
+                            <button id="achat-submit" class="btn btn-primary mt-3" type="submit">Ajouter l'achat</button>
                     </form>
                 </div>
             </div>
@@ -218,6 +211,9 @@
 @push('select-vendeur-scripts')
 
 <script>
+
+
+
 	$.ajaxSetup({
 	headers: {
 		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -233,15 +229,16 @@
 
         price = 70 ;
 
+        $( ".price-calculator" ).val(price);
+
         if (f>=28 && p>=2.8){
 
-            $( ".price-calculator" ).val(72 );
+            $( ".price-calculator" ).val(72);
         }
 
         if (d>=1028 && a<=19){
-            $( ".price-calculator" ).val(72 );
+            $( ".price-calculator" ).val(72);
         }
-
 
 
     });
@@ -249,7 +246,7 @@
 
     $(".price-reset").click(function () {
 
-        $( ".price-calculator" ).val(70 );
+        $( ".price-calculator" ).val(70);
 
     });
 
