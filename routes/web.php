@@ -229,6 +229,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::get('/gps', [App\Http\Controllers\GoogleMapsController::class, 'obtenirItineraire']);
+
+
 
 
 //orders
