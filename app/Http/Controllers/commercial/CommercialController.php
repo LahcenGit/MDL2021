@@ -43,7 +43,8 @@ class CommercialController extends Controller
         $professional->phone = $request->phone;
         $professional->wilaya = $request->wilaya;
         $professional->type = $request->type;
-        $professional->gps = $request->position_gps;
+        $professional->latitude = $request->latitude;
+        $professional->longitude = $request->longitude;
         $professional->save();
         $cart = new Cart();
         $cart->professional_id = $professional->id;
@@ -397,7 +398,8 @@ class CommercialController extends Controller
         $professional->phone = $request->phone;
         $professional->wilaya = $request->wilaya;
         $professional->type = $request->type;
-        $professional->gps = $request->position_gps;
+        $professional->latitude = $request->latitude;
+        $professional->longitude = $request->longitude;
         $professional->save();
         return redirect('/commercial/professionals');
     }
@@ -597,5 +599,13 @@ class CommercialController extends Controller
         return view('commercial.order-professional-detail',compact('order','orderlines'));
 
     }
+
+
+    public function obtenirItineraire($latitudeArrivee, $longitudeArrivee)
+        {
+            $url = 'https://www.google.com/maps/dir//' . $latitudeArrivee . ',' . $longitudeArrivee;
+
+            return redirect()->away($url);
+        }
 
 }

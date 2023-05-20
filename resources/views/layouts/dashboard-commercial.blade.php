@@ -315,5 +315,6 @@
 	<!-- End custom js for this page -->
 @stack('select-professional')
 @stack('modal-orderline-scripts')
+@stack('position-script')
 </body>
 </html>

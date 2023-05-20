@@ -9,7 +9,7 @@
         </ol>
     </nav>
     <div class="row d-flex ">
-        <div class="col-md-6 grid-margin">
+        <div class="col-md-9 grid-margin">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Détails professionels</h6>
@@ -40,14 +40,18 @@
 
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-8">
-                                <label class="form-label">Position GPS(optionnel):</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('position_gps') is-invalid @enderror" name="position_gps" value="{{$professional->gps}}" placeholder="position gps" />
-                                @error('position_gps')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
+                            <div class="col-md-3">
+                                <label class="form-label">Latitude(optionnel):</label>
+                                <input class="form-control mb-4 mb-md-0  input-default " name="latitude" id="latitude" value="{{ $professional->latitude }}" placeholder="latitude" />
+
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Longitude(optionnel):</label>
+                                <input class="form-control mb-4 mb-md-0  input-default" name="longitude" id="longitude" value="{{$professional->longitude}}" placeholder="longitude" />
+
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <button class="btn btn-primary capter-position" type="button">Capter</button>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -81,3 +85,23 @@
     </div>
 </div>
 @endsection
+@push('position-script')
+
+<script>
+
+    $(".capter-position").click(function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                $('#latitude').val(latitude);
+                $('#longitude').val(longitude);
+                // Envoyez les coordonnées à votre application Laravel via une requête AJAX ou un formulaire
+            });
+            } else {
+            alert('La géolocalisation n\'est pas prise en charge par ce navigateur.');
+            }
+    });
+
+</script>
+@endpush

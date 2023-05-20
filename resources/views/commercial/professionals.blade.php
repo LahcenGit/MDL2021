@@ -44,7 +44,7 @@
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     <a href="{{ asset('commercial/professionals/edit/'.$professional->id) }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
-                    <a href="{{$professional->gps}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
+                    <a href="{{asset('redirect-position/'.$professional->latitude.'/'.$professional->longitude)}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
                 </div>
               </form>
             </td>
