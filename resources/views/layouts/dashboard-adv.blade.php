@@ -358,7 +358,7 @@
     @stack('modal-orderline-scripts')
     @stack('select-particular')
     @stack('select-professional')
-
+    @stack('modal-delivry-scripts')
 
 </body>
 </html>

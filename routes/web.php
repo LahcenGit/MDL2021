@@ -32,6 +32,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Particular\ProfilParticularController;
 use App\Http\Controllers\professional\ProfilProfessionalController;
 use App\Http\Controllers\commercial\CommercialController;
+use App\Http\Controllers\Delivry\DelivryorderController;
 use App\Http\Controllers\TransformationlaitController;
 use App\Http\Controllers\ProductfabricationController;
 use App\Models\Citie;
@@ -113,6 +114,16 @@ Route::get('/adv/login', function () {
     }
     else{
         return view('auth.login-adv');
+    }
+
+});
+Route::get('/delivry/login', function () {
+
+    if(Auth::check()){
+        return redirect('/delivry');
+    }
+    else{
+        return view('auth.login-delivry');
     }
 
 });
@@ -210,6 +221,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/get-phone/{id}', [App\Http\Controllers\Adv\ParticularController::class, 'getInformations'])->middleware('can:adv');
     Route::get('/adv/particulars', [App\Http\Controllers\Adv\ParticularController::class, 'index'])->middleware('can:adv');
     Route::get('/adv/commercial', [App\Http\Controllers\AdvController::class, 'commercial'])->middleware('can:adv');
+    Route::get('/show-modal-delivry/{id}', [App\Http\Controllers\AdvController::class, 'showModal'])->middleware('can:adv');
+    Route::post('/store-delivry-order', [App\Http\Controllers\AdvController::class, 'storeDelivryOrder'])->middleware('can:adv');
     Route::resource('adv', AdvController::class)->middleware('can:adv');
 
 });
@@ -340,6 +353,10 @@ Route::get('admin/commercial', [App\Http\Controllers\Admin\AdminController::clas
 Route::get('admin/production', [App\Http\Controllers\Admin\AdminController::class,'production'])->middleware('can:admin');
 });
 //
+
+//livreur route
+Route::resource('delivry',DelivryorderController::class);
+
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
 
 Route::get('/receipt/{id}', [App\Http\Controllers\printerController::class, 'receipt']);

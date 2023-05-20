@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Delivryorder;
 use App\Models\Particulier;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Particularorder;
 use App\Models\Professionalorder;
 use App\Models\Stock;
+use App\Models\User;
 use App\Models\Visit;
 
 class AdvController extends Controller
@@ -39,5 +41,21 @@ class AdvController extends Controller
         $count_cp = Visit::where('cp',1)->count();
         $cp = ( $count_cp *100)/ $nbr_visit;
         return view('adv.commercial',compact('orders','visits','nbr_visit','satisfaction_price','cp'));
+    }
+
+    public function showModal($id){
+        $order = Professionalorder::find($id);
+        $delivries = User::where('type','livreur')->get();
+        return view('adv.modal-add-delivry',compact('order','delivries'));
+    }
+
+    public function storeDelivryOrder(Request $request){
+        $delivry_order = new Delivryorder();
+        $delivry_order->user_id = $request->delivry;
+        $delivry_order->professionalorder_id = $request->order;
+        $delivry_order->status = 0;
+        $delivry_order->save();
+        return $delivry_order;
+
     }
 }

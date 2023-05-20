@@ -60,6 +60,7 @@
                 <div class="d-flex">
                     <a href="{{url('adv/order-professional-detail/'.$order->id)}}" class="show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
                     <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                    <a href="#"  style="margin-right: 3px;" class="add-delivry" data-id="{{ $order->id }}"><i data-feather="plus"></i></a>
                     <a href="{{$order->professional->gps}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
                 </div>
               </form>
@@ -75,10 +76,59 @@
     </div>
 
 </div>
-<div id="modal-orderline">
+<div id="modal-add-delivry">
 
 </div>
 @endsection
+
+@push('modal-delivry-scripts')
+<script>
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(".add-delivry").click(function() {
+
+  var id = $(this).data('id');
+  $.ajax({
+    url: '/show-modal-delivry/' + id,
+    type: "GET",
+    success: function (res) {
+      $('#modal-add-delivry').html(res);
+      $("#showModalD").modal('show');
+    }
+  });
+
+});
+$("#modal-add-delivry").on('click','#submit',function(e){
+
+   e.preventDefault();
+   let delivry = $('#delivry').val();
+   let order = $('#order').val();
+   $.ajax({
+
+     type:"POST",
+     url: "/store-delivry-order",
+     data:{
+       "_token": "{{ csrf_token() }}",
+       delivry:delivry,
+       order:order,
+      },
+
+     success:function(response){
+
+       $('#showModalD').modal('hide');
+
+       console.log(response);
+       location.reload();
+     },
+
+     });
+
+});
+</script>
+@endpush
 
 @push('modal-orderline-scripts')
 <script>

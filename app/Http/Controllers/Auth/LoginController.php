@@ -72,6 +72,10 @@ class LoginController extends Controller
 
                 return redirect('/milkcheck');
             }
+            else if(auth::user()->type == 'livreur') {
+
+                return redirect('/delivry');
+            }
          }
 
          else{
