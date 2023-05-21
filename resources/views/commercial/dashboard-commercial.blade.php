@@ -9,7 +9,7 @@
                 <h6 class="card-title mb-0">Dernières commandes</h6><br>
 
              </div>
-             <p class="mt-3"><b>{{ $order_en_attente }} </b>En attente(s) , <b>{{ $order_valide }} </b>Validé(s) , <b>{{ $order_livre }} </b>Livré(s) , <b>{{ $order_annuler }} </b>Annulé(s)</p>
+             <p class="mt-3"><b>{{ $order_en_attente }} </b>En attente(s) , <b>{{ $order_valide }} </b>Validé(s) , <b>{{ $order_livre }} </b>Livré(s) ,<b>{{ $order_livraison }}</b> En cours de livraison,<b>{{ $order_annuler }} </b>Annulé(s)</p>
               <div class="table-responsive mt-3">
                 <table class="table ">
                   <thead>
@@ -34,7 +34,9 @@
                       @elseif($order->status == 2)
                       <td><span class="badge bg-primary">Validé</span></td>
                       @elseif($order->status == 3)
-                      <td><span class="badge bg-succes">Livré</span></td>
+                      <td><span class="badge bg-info">Livraison...</span></td>
+                      @elseif($order->status == 4)
+                      <td><span class="badge bg-success">Livré</span></td>
                       @else
                       <td><span class="badge bg-danger">Annulé</span></td>
                       @endif

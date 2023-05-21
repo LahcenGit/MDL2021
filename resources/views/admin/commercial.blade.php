@@ -39,7 +39,7 @@
                 </div>
                 <div class="row">
                   <div class="col-3 col-md-6 col-xl-5">
-                    <h3  style="color: #6FB53E;"class="mb-2">{{ $satisfaction_price }} %</h3>
+                    <h3  style="color: #6FB53E;"class="mb-2">{{ number_format($satisfaction_price ,2) }} %</h3>
                   </div>
                 </div>
               </div>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="row">
                   <div class="col-3 col-md-6 col-xl-5">
-                    <h3  style="color: #6FB53E;"class="mb-2">{{ $cp }} %</h3>
+                    <h3  style="color: #6FB53E;"class="mb-2">{{ number_format($cp ,2) }} %</h3>
                   </div>
                 </div>
               </div>
@@ -146,9 +146,9 @@
                             <td><span class="badge bg-warning">En attente</span></td>
                             @elseif($order->status == 2)
                             <td><span class="badge bg-primary">Validé</span></td>
-                            @elseif($professional_order->status == 3)
-                            <td><span class="badge bg-success">Livraison...</span></td>
-                            @elseif($professional_order->status == 4)
+                            @elseif($order->status == 3)
+                            <td><span class="badge bg-info">Livraison...</span></td>
+                            @elseif($order->status == 4)
                             <td><span class="badge bg-success">Livré</span></td>
                             @else
                             <td><span class="badge bg-danger">Annulé</span></td>
