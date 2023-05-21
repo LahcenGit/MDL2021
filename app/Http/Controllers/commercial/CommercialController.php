@@ -169,23 +169,19 @@ class CommercialController extends Controller
 
                     }
                     else if($tarification->price_one != NULL && $tarification->price_two != NULL){
-                    if($request->qtes[$i] >= 100){
+                    if($request->qtes[$i] < 100){
                             $orderline->total = $request->qtes[$i] * $tarification->price_one;
                             $orderline->pu = $tarification->price_one;
                             $total = $total + $request->qtes[$i] * $tarification->price_one;
 
                         }
-                        else if($request->qtes[$i] > 300) {
+                        else if($request->qtes[$i]  >= 100) {
                             $orderline->total = $request->qte[$i] * $tarification->price_two;
                             $orderline->pu = $tarification->price_two;
                             $total = $total + $request->qte[$i] * $tarification->price_two;
 
                         }
-                        else if($request->qtes[$i] < 100){
-                            $orderline->total = $request->qte[$i] * 1400;
-                            $orderline->pu = 1400;
-                            $total = $total + $request->qte[$i] * 1400;
-                        }
+                       
 
                 }
                 }
