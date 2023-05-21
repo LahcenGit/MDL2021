@@ -45,7 +45,9 @@
             @elseif($order->status == 2)
             <td><span class="badge bg-primary">Validé</span></td>
             @elseif($order->status == 3)
-            <td><span class="badge bg-success">Livré</span></td>
+            <td><span class="badge bg-info">livraison...</span></td>
+            @elseif($order->status == 4)
+            <td><span class="badge bg-success">livré</span></td>
             @else
             <td><span class="badge bg-danger">Annulé</span></td>
 
@@ -60,7 +62,9 @@
                 <div class="d-flex">
                     <a href="{{url('adv/order-professional-detail/'.$order->id)}}" class="show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
                     <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
-                    <a href="#"  style="margin-right: 3px;" class="add-delivry" data-id="{{ $order->id }}"><i data-feather="plus"></i></a>
+                    @if($order->status != 3 && $order->status != 4)
+                     <a href="#"  style="margin-right: 3px;" class="add-delivry" data-id="{{ $order->id }}"><i data-feather="truck"></i></a>
+                    @endif
                     <a href="{{$order->professional->gps}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
                 </div>
               </form>

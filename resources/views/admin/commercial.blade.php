@@ -146,7 +146,9 @@
                             <td><span class="badge bg-warning">En attente</span></td>
                             @elseif($order->status == 2)
                             <td><span class="badge bg-primary">Validé</span></td>
-                            @elseif($order->status == 3)
+                            @elseif($professional_order->status == 3)
+                            <td><span class="badge bg-success">Livraison...</span></td>
+                            @elseif($professional_order->status == 4)
                             <td><span class="badge bg-success">Livré</span></td>
                             @else
                             <td><span class="badge bg-danger">Annulé</span></td>

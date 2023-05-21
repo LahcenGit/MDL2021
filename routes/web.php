@@ -242,7 +242,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/gps', [App\Http\Controllers\GoogleMapsController::class, 'obtenirItineraire']);
+
+
+Route::get('/tracking-professional/{id}/{latitute}/{longitude}', [App\Http\Controllers\GoogleMapsController::class, 'obtenirItineraire']);
 
 
 
@@ -356,6 +358,8 @@ Route::get('admin/production', [App\Http\Controllers\Admin\AdminController::clas
 
 //livreur route
 Route::resource('delivry',DelivryorderController::class);
+Route::get('/confirm-delivery/{id}', [App\Http\Controllers\Delivry\DelivryorderController::class, 'confirmDelivery']);
+
 
 Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'ticketPos']);
 

@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function advOrders(){
         $professional_orders = Professionalorder::orderBy('created_at','desc')->get();
         $particulars_orders = Particularorder::orderBy('created_at','desc')->get();
-        $revenu_pro = Professionalorder::where('status',3)->sum('total');
+        $revenu_pro = Professionalorder::where('status',4)->sum('total');
         $revenu_particular = Particularorder::where('status',3)->sum('total');
         $nbr_order_pro = Professionalorder::count();
 

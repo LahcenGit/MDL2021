@@ -44,174 +44,50 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
-<style>
-    .navbar {
-  width: calc(100% - 240px);
-  height: 60px;
-  background: #fff;
-  border-bottom: 1px solid #e9ecef;
+    <style>
+        #loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
   display: flex;
   align-items: center;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  left: 0!important;
-  z-index: 978;
-  box-shadow: 3px 0 10px 0 rgba(183, 192, 206, 0.2);
-  transition: width 0.1s ease, left 0.1s ease;
+  justify-content: center;
 }
 
-.main-wrapper .page-wrapper {
-  min-height: 100vh;
-  background: #f9fafb;
-  width: calc(100% - 240px);
-  margin-left: 0!important;
-  display: flex;
-  flex-direction: column;
-  -webkit-transition: margin 0.1s ease, width 0.1s ease;
-  transition: margin 0.1s ease, width 0.1s ease;
+#loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
-</style>
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+    </style>
+
+
 <body>
-	<div class="main-wrapper">
-      <div class="page-wrapper">
 
-			<!-- partial:partials/_navbar.html -->
-        <nav class="navbar">
-				<a href="#" class="sidebar-toggler">
-					<i data-feather="menu"></i>
-				</a>
-				<div class="navbar-content">
-					<form class="search-form">
-						<div class="input-group">
-                            <div class="input-group-text">
-                                <i data-feather="search"></i>
-                            </div>
-							<input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
-						</div>
-					</form>
-					<ul class="navbar-nav">
-						<li class="nav-item dropdown">
+    
 
-                        <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
-                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
-                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
-                        <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
-						</div>
-                         </li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i data-feather="grid"></i>
-							</a>
 
-						</li>
-
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i data-feather="bell"></i>
-								<div class="indicator">
-									<div class="circle"></div>
-								</div>
-							</a>
-							<div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
-								<div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-									<p>Notifications</p>
-									<a href="javascript:;" class="text-muted">Clear all</a>
-								</div>
-                        <div class="p-1">
-                        <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                            <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                                                    <i class="icon-sm text-white" data-feather="gift"></i>
-                            </div>
-                            <div class="flex-grow-1 me-2">
-                                <p>Fonctionnalité  </p>
-                                <p class="tx-12 text-muted">en développement</p>
-                            </div>
-                        </a>
-
-                        </div>
-                            <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                                <a href="javascript:;">View all</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="wd-30 ht-30 rounded-circle" src="{{url('assets/zahra-profile.png')}}" alt="profile">
-                        </a>
-                        <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
-                            <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
-                                <div class="mb-3">
-                                    <img class="wd-80 ht-80 rounded-circle" src="{{url('assets/zahra-profile-80.png')}}" alt="">
-                                </div>
-                                <div class="text-center">
-                                    <p class="tx-16 fw-bolder">{{--Auth::user()->name--}}</p>
-                                    <p class="tx-12 text-muted">{{--Auth::user()->type--}}</p>
-                                </div>
-                                        </div>
-                            <ul class="list-unstyled p-1">
-                            <li class="dropdown-item py-2">
-                                <a href="{{route('logout')}}" class="text-body ms-0" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                <i class="me-2 icon-md" data-feather="log-out"></i>
-                                <span>Déconnecter</span>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                                </a>
-                            </li>
-                            </ul>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</nav>
+	
             @yield('content')
 
-            <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
-				<p class="text-muted mb-1 mb-md-0">Copyright © 2022 <a href="#" target="_blank">MDL TEAM</a>.</p>
-			</footer>
-			<!-- partial -->
 
-		</div>
-	</div>
+
+            
+
 
 	<!-- core:js -->
-
-    <script>
-
-        $(document).ready(function(){
-        $('#images').drop_uploader({
-            uploader_text: 'Drop files to upload, or',
-            browse_text: 'Browse',
-            only_one_error_text: 'Only one file allowed',
-            not_allowed_error_text: 'File type is not allowed',
-            big_file_before_error_text: 'Files, bigger than',
-            big_file_after_error_text: 'is not allowed',
-            allowed_before_error_text: 'Only',
-            allowed_after_error_text: 'files allowed',
-            browse_css_class: 'button button-primary',
-            browse_css_selector: 'file_browse',
-            uploader_icon: '',
-            file_icon: '',
-            progress_color: '#4a90e2',
-            time_show_errors: 5,
-            layout: 'thumbnails',
-            method: 'normal',
-            chunk_size: 1000000,
-            concurrent_uploads: 5,
-            show_percentage: true,
-            existing_files: false,
-            existing_files_removable: true,
-            send_existing_files: false,
-            url: 'ajax_upload.php',
-            delete_url: 'ajax_delete.php',
-        });
-    });
-
-    </script>
 
 	<script src="{{asset('/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
@@ -250,5 +126,6 @@
     <script src="{{ asset('/assets/js/tinymce.js') }}"></script>
 
 	<!-- End custom js for this page -->
-
+    
+    @stack('deliver-position-script')
 </html>

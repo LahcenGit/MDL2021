@@ -55,6 +55,9 @@ class AdvController extends Controller
         $delivry_order->professionalorder_id = $request->order;
         $delivry_order->status = 0;
         $delivry_order->save();
+        $order = Professionalorder::find($request->order);
+        $order->status = 3;
+        $order->save();
         return $delivry_order;
 
     }

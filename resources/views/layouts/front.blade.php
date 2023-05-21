@@ -281,17 +281,6 @@
 	<script src="https://cdn.datatables.net/plug-ins/1.10.21/i18n/French.json"></script>
 	<script>
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    console.log(latitude + '/' + longitude);
-    // Envoyez les coordonnées à votre application Laravel via une requête AJAX ou un formulaire
-  });
-} else {
-  console.log('La géolocalisation n\'est pas prise en charge par ce navigateur.');
-}
-
 
 
 
