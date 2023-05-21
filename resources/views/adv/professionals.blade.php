@@ -1,6 +1,12 @@
 @extends('layouts.dashboard-adv')
 
 @section('content')
+<style>
+    .btn{
+        padding: 0.4rem 0.4rem !important;
+    }
+
+</style>
 <div class="page-content">
 
     <nav class="page-breadcrumb">
@@ -39,11 +45,11 @@
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
                         <div class="d-flex">
-                            <a href="{{ asset('adv/professionals/'.$professional->professional->id.'/edit') }}" class=" btn-xs sharp mr-1 "><i data-feather="edit"></i></a>
-                            @if($professional->professional->gps)
-                            <a href="{{$professional->professional->gps}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
+                            <a href="{{ asset('adv/professionals/'.$professional->professional->id.'/edit') }}" class="btn btn-outline-warning" style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                            @if($professional->professional->latitude)
+                            <a href="{{asset('redirect-position/'.$professional->professional->latitude.'/'.$professional->professional->longitude)}}"class="btn btn-outline-success"style="margin-right: 3px;" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
                             @endif
-                            <button style="background-color: #ffffff; border-color:#ffffff" onclick="return confirm('Vous voulez vraiment supprimer?')"><i data-feather="trash"></i></button>
+                            <button  onclick="return confirm('Vous voulez vraiment supprimer?')" class="btn btn-outline-danger"style="margin-right: 3px;"><i data-feather="trash"></i></button>
 
                         </div>
                     </form>

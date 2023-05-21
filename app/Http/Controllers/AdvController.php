@@ -61,4 +61,17 @@ class AdvController extends Controller
         return $delivry_order;
 
     }
+
+    public function deliveryOrders(){
+        $orders = Delivryorder::orderBy('created_at','desc')->get();
+        return view('adv.delivery-orders',compact('orders'));
+    }
+    public function deleteDeliveryOrder($id){
+        $delivery_order = Delivryorder::find($id);
+        $order = Professionalorder::find($delivery_order->professionalorder_id);
+        $order->status = 1;
+        $order->save();
+        $delivery_order->delete();
+        return redirect('adv/delivery-orders');
+    }
 }

@@ -42,15 +42,18 @@
 
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-8">
-                                <label class="form-label">Position GPS(optionnel):</label>
-                                <input class="form-control mb-4 mb-md-0  input-default @error('position_gps') is-invalid @enderror" name="position_gps" value="{{old('position_gps')}}" placeholder="position gps" />
-                                @error('position_gps')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                               @enderror
+                            <div class="col-md-4">
+                                <label class="form-label">Latitude(optionnel):</label>
+                                <input class="form-control mb-4 mb-md-0  input-default " name="latitude" id="latitude" value="{{old('latitude')}}" placeholder="latitude" />
+
                             </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Longitude(optionnel):</label>
+                                <input class="form-control mb-4 mb-md-0  input-default" name="longitude" id="longitude" value="{{old('longitude')}}" placeholder="longitude" />
+
+                            </div>
+
+
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8">

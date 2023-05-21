@@ -25,10 +25,8 @@ class VisitController extends Controller
     }
 
     public function store(Request $request){
-        dd($request->check );
 
-        
-        if($request->check == 1){
+     if($request->check == 1){
             $user = new User();
             $user->name = $request->name;
             $user->type = 'professional';

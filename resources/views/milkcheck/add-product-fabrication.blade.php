@@ -20,7 +20,10 @@
                                 <label class="form-label">Qte crème brute :</label>
                                 <input class="form-control mb-4 mb-md-0 input-default " placeholder="Qte." name="qte"/>
                             </div>
-
+                            <div class="mt-3 col-md-6">
+                                <label class="form-label label">Date :</label>
+                                <input type="date" class="form-control mb-4 mb-md-0 input-default " value="{{ $date }}" name="date"/>
+                            </div>
                         </div>
                          <button style="width: 150;" class=" mt-3 btn btn-primary " type="submit">Ajouter</button>
                     </form>

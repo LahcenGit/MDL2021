@@ -223,6 +223,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/adv/commercial', [App\Http\Controllers\AdvController::class, 'commercial'])->middleware('can:adv');
     Route::get('/show-modal-delivry/{id}', [App\Http\Controllers\AdvController::class, 'showModal'])->middleware('can:adv');
     Route::post('/store-delivry-order', [App\Http\Controllers\AdvController::class, 'storeDelivryOrder'])->middleware('can:adv');
+    Route::get('adv/delivery-orders', [App\Http\Controllers\AdvController::class, 'deliveryOrders'])->middleware('can:adv');
+    Route::delete('adv/delivery-orders/{id}', [App\Http\Controllers\AdvController::class, 'deleteDeliveryOrder'])->middleware('can:adv');
     Route::resource('adv', AdvController::class)->middleware('can:adv');
 
 });
@@ -339,9 +341,10 @@ Route::get('get-type/{id}', [App\Http\Controllers\commercial\CommercialControlle
 Route::get('modal-order-line/{id}', [App\Http\Controllers\commercial\CommercialController::class,'showModal'])->middleware('can:commercial');
 Route::resource('commercial/visits',VisitController::class)->middleware('can:commercial');
 Route::get('commercial/order-professional-detail/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'orderDetailProfessional'])->middleware('can:commercial');
-Route::get('redirect-position/{latitude}/{longitude}', [App\Http\Controllers\commercial\CommercialController::class, 'obtenirItineraire'])->middleware('can:commercial');
+
 });
 
+Route::get('redirect-position/{latitude}/{longitude}', [App\Http\Controllers\commercial\CommercialController::class, 'obtenirItineraire']);
 //labo route
 Route::middleware('LaboAuth')->group(function () {
 Route::get('labo', [App\Http\Controllers\Labo\LaboController::class,'index'])->middleware('can:labo');
