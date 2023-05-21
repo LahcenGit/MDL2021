@@ -226,7 +226,7 @@ class CommercialController extends Controller
         return redirect('commercial/order-professionals');
     }
     public function orders(){
-     $orders = Professionalorder::orderBy('created_at','desc')->get();
+    $orders = Professionalorder::where('commercial_id','!=', NULL)->orderBy('created_at','desc')->get();
      return view('commercial.orders',compact('orders'));
     }
 
