@@ -1,5 +1,11 @@
 @extends('layouts.dashboard-adv')
 @section('content')
+<style>
+    .btn{
+        padding: 0.4rem 0.4rem !important;
+    }
+
+</style>
 <div class="page-content">
 
     <nav class="page-breadcrumb">
@@ -60,12 +66,14 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
-                    <a href="{{url('adv/order-professional-detail/'.$order->id)}}" class="show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
-                    <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                    <a href="{{url('adv/order-professional-detail/'.$order->id)}}" class="btn btn-outline-success show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                    <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}" class="btn btn-outline-warning"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
                     @if($order->status != 3 && $order->status != 4)
-                     <a href="#"  style="margin-right: 3px;" class="add-delivry" data-id="{{ $order->id }}"><i data-feather="truck"></i></a>
+                     <a href="#"  style="margin-right: 3px;" class="btn btn-outline-primary add-delivry" data-id="{{ $order->id }}"><i data-feather="truck"></i></a>
                     @endif
-                    <a href="{{$order->professional->gps}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
+                    @if($order->professional->latitude)
+                    <a href="{{asset('redirect-position/'.$order->professional->latitude.'/'.$order->professional->longitude)}}"class="btn btn-outline-secondary " target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
+                    @endif
                 </div>
               </form>
             </td>

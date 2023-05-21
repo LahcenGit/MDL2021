@@ -1,5 +1,11 @@
 @extends('layouts.dashboard-adv')
 @section('content')
+<style>
+    .btn{
+        padding: 0.4rem 0.4rem !important;
+    }
+
+</style>
 <div class="page-content">
 
     <nav class="page-breadcrumb">
@@ -58,8 +64,8 @@
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     {{--<a href="#" class="btn  btn-secondary show-orderline" data-id="{{ $order->id }}" style="margin-right: 3px;"><i class="mdi mdi-eye"></i></a>--}}
-                    <a href="{{url('adv/order-detail/'.$order->id)}}" class="show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
-                    <a href="{{url('adv/particular-orders/'.$order->id.'/edit')}}"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                    <a href="{{url('adv/order-detail/'.$order->id)}}" class="btn btn-outline-success show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                    <a href="{{url('adv/particular-orders/'.$order->id.'/edit')}}"class="btn btn-outline-warning "  style="margin-right: 3px;"><i data-feather="edit"></i></a>
 
                 </div>
               </form>

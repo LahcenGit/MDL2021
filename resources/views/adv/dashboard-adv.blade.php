@@ -67,6 +67,8 @@
                     @elseif($order_professional->status == 2)
                     <td><span class="badge bg-primary">Validé</span></td>
                     @elseif($order_professional->status == 3)
+                    <td><span class="badge bg-info">Livraison...</span></td>
+                    @elseif($order_professional->status == 4)
                     <td><span class="badge bg-success">Livré</span></td>
                     @else
                     <td><span class="badge bg-danger">Annulé</span></td>

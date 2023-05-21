@@ -12,4 +12,9 @@ class Delivryorder extends Model
     {
         return $this->belongsTo(Professionalorder::class,'professionalorder_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

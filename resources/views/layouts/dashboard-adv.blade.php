@@ -138,7 +138,7 @@
           </li>
 
           <li class="nav-item {{ active_class(['adv/professional-orders/*','adv/professional-orders']) }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#commandesPro" role="button" aria-expanded="{{ is_active_route(['adv/professional-orders/*','dashboard-admin/professional-orders']) }}" aria-controls="ordersprofessional">
+            <a class="nav-link" data-bs-toggle="collapse" href="#commandesPro" role="button" aria-expanded="{{ is_active_route(['adv/professional-orders/*','adv/professional-orders']) }}" aria-controls="ordersprofessional">
               <i class="link-icon" data-feather="command"></i>
               <span class="link-title">Professionnels</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
@@ -150,6 +150,22 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{url('adv/professional-orders')}}" class="nav-link {{ active_class(['adv/professional-orders']) }}">Liste commandes</a>
+                  </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item {{ active_class(['adv/delivery-orders/*','adv/delivery-orders']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#commandesDel" role="button" aria-expanded="{{ is_active_route(['adv/delivery-orders/*','adv/delivery-orders']) }}" aria-controls="ordersprofessional">
+              <i class="link-icon" data-feather="command"></i>
+              <span class="link-title">Livreurs</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse {{ show_class(['adv/delivery-orders/*','adv/delivery-orders']) }}" id="commandesDel">
+              <ul class="nav sub-menu">
+
+                <li class="nav-item">
+                    <a href="{{url('adv/delivery-orders')}}" class="nav-link {{ active_class(['adv/delivery-orders']) }}">Liste commandes</a>
                   </li>
               </ul>
             </div>

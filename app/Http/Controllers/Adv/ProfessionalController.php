@@ -40,7 +40,8 @@ class ProfessionalController extends Controller
         $professional->RC = $request['RC'];
         $professional->NIF = $request['NIF'];
         $professional->type = $request['type'];
-        $professional->gps = $request['gps'];
+        $professional->longitude = $request['longitude'];
+        $professional->latitude = $request['latitude'];
         $user->professional()->save($professional);
         $cart = new Cart();
         $cart->professional_id = $professional->id;
@@ -74,6 +75,8 @@ class ProfessionalController extends Controller
         $professional->RC = $request['RC'];
         $professional->NIF = $request['NIF'];
         $professional->type = $request['type'];
+        $professional->longitude = $request['longitude'];
+        $professional->latitude = $request['latitude'];
         $user->professional()->save($professional);
         return redirect('adv/professionals');
 

@@ -32,6 +32,10 @@
                                 <label class="form-label label">Résultat Lben :</label>
                                 <input  class="form-control mb-4 mb-md-0 input-default " value="{{ $transformation->result }}" name="result"placeholder="Qte."/>
                             </div>
+                            <div class="mt-3 col-md-2">
+                                <label class="form-label label">Date :</label>
+                                <input type="date" class="form-control mb-4 mb-md-0 input-default " value="{{ $transformation->created_at->format('Y-m-d') }}" name="date"/>
+                            </div>
                         </div>
                          <button style="width: 150px;" class=" mt-3 btn btn-primary " type="submit">Enregistrer</button>
                     </form>
