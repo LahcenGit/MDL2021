@@ -30,23 +30,23 @@
                         </div>
                         <div class="row mb-3">
                             <label class="form-label">Produits de la commande:</label>
-                            @foreach($orderlines->split($orderlines->count()/2) as $row)
-                                <div class="col-md-6">
-                                    @foreach ($row as $product)
-                                    <div class="row mb-3">
-                                        <div class="col-md-9">
-                                         <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->product->id }}" name="products_order[]"checked>
-                                            <label class="form-check-label" for="checkDefault">
-                                                {{$product->product->soft_name}} {{ $product->product->capacity }}
-                                            </label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-control mb-4 mb-md-0 input-default" type="number" min="0" value="{{ $product->qte }}" name="qtes_order[]" />
-                                        </div>
+                            @foreach($orderlines as $product)
+                            <div class="col-md-6">
+
+                                <div class="row mb-3">
+                                    <div class="col-md-9">
+                                     <input type="checkbox" class="form-check-input big-checkbox" id="checkDefault" value="{{ $product->product->id }}" name="products_order[]"checked>
+                                        <label class="form-check-label" for="checkDefault">
+                                            {{$product->product->soft_name}} {{ $product->product->capacity }}
+                                        </label>
                                     </div>
-                                    @endforeach
+                                    <div class="col-md-3">
+                                        <input class="form-control mb-4 mb-md-0 input-default" type="number" min="0" value="{{ $product->qte }}" name="qtes_order[]" />
+                                    </div>
                                 </div>
-                            @endforeach
+
+                            </div>
+                        @endforeach
                         </div>
                         <div class="row mb-3">
                             <label class="form-label">Produits*:</label>
