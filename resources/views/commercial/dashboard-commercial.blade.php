@@ -2,6 +2,26 @@
 @section('content')
 <div class="page-content">
     <div class="row">
+        <div class="col-12 col-xl-12 stretch-card">
+            <div class="row flex-grow-1">
+              <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                      <h6 class="card-title mb-0">Revenu professionnel  </h6>
+                      <div class="dropdown mb-2">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-2 col-md-6 col-xl-5">
+                        <h3  style="color: #6FB53E;"class="mb-2">{{ number_format($revenu_pro) }} Da</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
       <div class="col-lg-7 col-xl-12 stretch-card">
           <div class="card">
             <div class="card-body">

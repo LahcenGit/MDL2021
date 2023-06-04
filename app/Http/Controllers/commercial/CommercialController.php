@@ -26,7 +26,11 @@ class CommercialController extends Controller
         $order_livraison = Professionalorder::where('status',3)->count();
         $order_livre= Professionalorder::where('status',4)->count();
         $order_annuler= Professionalorder::where('status',5)->count();
-        return view('commercial.dashboard-commercial',compact('orders','order_en_attente','order_valide','order_annuler','order_livre','order_livraison'));
+
+        $revenu_pro = Professionalorder::where('status',4)->where('commercial_id','!=',NULL)->sum('total');
+        $revenu_pro_adv = Professionalorder::where('status',4)->where('commercial_id',NULL)->sum('total');
+
+        return view('commercial.dashboard-commercial',compact('orders','order_en_attente','order_valide','order_annuler','order_livre','order_livraison','revenu_pro'));
     }
     public function createProfessional(){
         $wilayas = Wilaya::all();
