@@ -422,4 +422,16 @@ class CommercialController extends Controller
             return redirect()->away($url);
         }
 
+    public function editStatus($id){
+      $order = Professionalorder::find($id);
+      return view('commercial.modal-edit-status',compact('order'));
+    }
+
+    public function updateStatus(Request $request){
+        $order = Professionalorder::find($request->order);
+        $order->status = $request->status;
+        $order->save();
+        return true;
+    }
+
 }

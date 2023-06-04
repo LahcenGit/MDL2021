@@ -64,6 +64,7 @@
                     <a href="{{ asset('commercial/order-professionals/edit/'.$order->id) }}" data-id="{{ $order->id }}" class=" btn-xs sharp "><i data-feather="edit"></i></a>
                     @endif
                     <a href="{{url('commercial/order-professional-detail/'.$order->id)}}" class="btn-xs sharp show-orderline"><i data-feather="eye"></i></a>
+                    <a href="#" data-id="{{ $order->id }}" class=" btn-xs sharp edit-status"><i data-feather="edit-2"></i></a>
                     <a href="{{asset('redirect-position/'.$order->professional->latitude.'/'.$order->professional->longitude)}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
                 </div>
               </form>
@@ -80,6 +81,8 @@
 
 </div>
 <div id="modal-orderline">
+</div>
+<div id="modal-edit-status">
 </div>
 @endsection
 @push('modal-orderline-scripts')
@@ -104,5 +107,46 @@ $(".show-orderline").click(function() {
 
 });
 
+
+$(".edit-status").click(function() {
+
+var id = $(this).data('id');
+
+$.ajax({
+  url: '/edit-status/' + id,
+  type: "GET",
+  success: function (res) {
+    $('#modal-edit-status').html(res);
+    $("#modalStatus").modal('show');
+  }
+});
+
+});
+
+$("#modal-edit-status").on('click','#save',function(e){
+
+        e.preventDefault();
+        let status = $('#status').val();
+        let order = $('#order').val();
+      $.ajax({
+
+          type:"POST",
+          url: "/update-status",
+          data:{
+            "_token": "{{ csrf_token() }}",
+            status:status,
+            order:order,
+
+           },
+
+          success:function(response){
+           $('#modalStatus').modal('hide');
+
+            console.log(response);
+            location.reload();
+          }
+});
+
+   });
 </script>
 @endpush

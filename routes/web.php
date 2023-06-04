@@ -341,6 +341,8 @@ Route::get('get-type/{id}', [App\Http\Controllers\commercial\CommercialControlle
 Route::get('modal-order-line/{id}', [App\Http\Controllers\commercial\CommercialController::class,'showModal'])->middleware('can:commercial');
 Route::resource('commercial/visits',VisitController::class)->middleware('can:commercial');
 Route::get('commercial/order-professional-detail/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'orderDetailProfessional'])->middleware('can:commercial');
+Route::get('edit-status/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'editStatus'])->middleware('can:commercial');
+Route::post('update-status', [App\Http\Controllers\commercial\CommercialController::class, 'updateStatus'])->middleware('can:commercial');
 
 });
 
