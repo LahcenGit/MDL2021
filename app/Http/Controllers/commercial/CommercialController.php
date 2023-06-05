@@ -20,7 +20,7 @@ class CommercialController extends Controller
     //
 
     public function index(){
-        $orders = Professionalorder::orderBy('created_at','desc')->limit(10)->get();
+        $orders = Professionalorder::where('commercial_id','!=',NULL)->orderBy('created_at','desc')->limit(10)->get();
         $order_en_attente = Professionalorder::where('status',1)->count();
         $order_valide = Professionalorder::where('status',2)->count();
         $order_livraison = Professionalorder::where('status',3)->count();
