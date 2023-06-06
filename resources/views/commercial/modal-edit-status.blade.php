@@ -14,8 +14,8 @@
                             <option value="1" @if ($order->status == 1) selected @endif > En attente</option>
                             <option value="2" @if ($order->status == 2) selected @endif > Validé</option>
                             <option value="3" @if ($order->status == 3) selected @endif > Livraison...</option>
-                            <option value="3" @if ($order->status == 4) selected @endif > Livré</option>
-                            <option value="4" @if ($order->status == 5) selected @endif > Annulé</option>
+                            <option value="4" @if ($order->status == 4) selected @endif > Livré</option>
+                            <option value="5" @if ($order->status == 5) selected @endif > Annulé</option>
                         </select>
                         <input type="hidden" value="{{ $order->id }}" id="order">
                     </div>
