@@ -38,7 +38,9 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
     <!-- End layout styles -->
-
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{{ asset('/assets/vendors/morris.js/morris.css') }}">
+    <!-- End plugin css for this page -->
     <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -244,8 +246,11 @@
     <script src="{{asset('/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
     <script src="{{ asset('/assets/vendors/tinymce/tinymce.min.js') }}"></script>
+    <!-- Plugin js for this page -->
+    <script src="{{ asset('/assets/vendors/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendors/morris.js/morris.min.js') }}"></script>
+    <!-- End plugin js for this page -->
 
-	<!-- End plugin js for this page -->
      <!-- inject:js -->
     <script src="{{asset('/assets/vendors/feather-icons/feather.min.js')}}"></script>
     <script src="{{asset('/assets/js/template.js')}}"></script>

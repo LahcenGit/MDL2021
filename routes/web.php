@@ -35,6 +35,7 @@ use App\Http\Controllers\commercial\CommercialController;
 use App\Http\Controllers\Delivry\DelivryorderController;
 use App\Http\Controllers\TransformationlaitController;
 use App\Http\Controllers\ProductfabricationController;
+use App\Http\Controllers\Admin\StatistiqueController;
 use App\Models\Citie;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
@@ -324,6 +325,8 @@ Route::get('home-dashboard', function () {
 
 
 
+
+
 //commercial route
 Route::middleware('CommercialAuth')->group(function () {
 Route::get('commercial', [App\Http\Controllers\commercial\CommercialController::class,'index'])->middleware('can:commercial');
@@ -358,6 +361,7 @@ Route::get('admin', [App\Http\Controllers\Admin\AdminController::class,'index'])
 Route::get('admin/adv', [App\Http\Controllers\Admin\AdminController::class,'advOrders'])->middleware('can:admin');
 Route::get('admin/commercial', [App\Http\Controllers\Admin\AdminController::class,'commercial'])->middleware('can:admin');
 Route::get('admin/production', [App\Http\Controllers\Admin\AdminController::class,'production'])->middleware('can:admin');
+Route::resource('admin/statistiques',StatistiqueController::class);
 });
 //
 
