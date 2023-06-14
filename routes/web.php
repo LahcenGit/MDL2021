@@ -362,6 +362,7 @@ Route::get('admin/adv', [App\Http\Controllers\Admin\AdminController::class,'advO
 Route::get('admin/commercial', [App\Http\Controllers\Admin\AdminController::class,'commercial'])->middleware('can:admin');
 Route::get('admin/production', [App\Http\Controllers\Admin\AdminController::class,'production'])->middleware('can:admin');
 Route::resource('admin/statistiques',StatistiqueController::class);
+Route::get('/get-data', [App\Http\Controllers\Admin\StatistiqueController::class,'getData'])->middleware('can:admin');
 });
 //
 

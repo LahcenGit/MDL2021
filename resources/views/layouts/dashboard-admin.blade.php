@@ -250,7 +250,9 @@
     <script src="{{ asset('/assets/vendors/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('/assets/vendors/morris.js/morris.min.js') }}"></script>
     <!-- End plugin js for this page -->
-
+	<!-- Custom js for this page -->
+    <script src="{{ asset('/assets/js/morrisjs-light.js') }}"></script>
+	<!-- End custom js for this page -->
      <!-- inject:js -->
     <script src="{{asset('/assets/vendors/feather-icons/feather.min.js')}}"></script>
     <script src="{{asset('/assets/js/template.js')}}"></script>
@@ -275,7 +277,7 @@
     @stack('modal-orderline-scripts')
     @stack('select-particular')
     @stack('select-professional')
-
+    @stack('morrisLine-script')
 
 </body>
 </html>
