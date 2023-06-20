@@ -65,7 +65,7 @@ class CommercialController extends Controller
     public function createOrder(){
         $professionals = Professionnel::orderBy('created_at','desc')->get();
         $wilayas = Wilaya::all();
-        $products = Produit::orderBy('flag','asc')->get();
+        $products = Produit::orderBy('flag','asc')->where('categorie_id',1)->orWhere('categorie_id',2)->get();
         return view('commercial.add-order',compact('professionals','wilayas','products'));
     }
 
@@ -242,7 +242,7 @@ class CommercialController extends Controller
         foreach($orderlines as $orderline){
             array_push($array , $orderline->product_id);
         }
-        $products = Produit::whereNotIn('id',$array)->orderBy('flag','asc')->get();
+        $products = Produit::whereNotIn('id',$array)->where('categorie_id',1)->orWhere('categorie_id',2)->orderBy('flag','asc')->get();
         return view('commercial.edit-order-professional',compact('order','professionals','products','orderlines'));
     }
 

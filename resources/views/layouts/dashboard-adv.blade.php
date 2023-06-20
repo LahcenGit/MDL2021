@@ -154,6 +154,21 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item {{ active_class(['adv/ice-cream-orders/*','adv/ice-cream-orders']) }}">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ice-cream" role="button" aria-expanded="{{ is_active_route(['adv/ice-cream-orders/*','adv/ice-cream-orders']) }}" aria-controls="ordersprofessional">
+              <i class="link-icon" data-feather="command"></i>
+              <span class="link-title">Glaces</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse {{ show_class(['aadv/ice-cream-orders/*','adv/ice-cream-orders']) }}" id="ice-cream">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('adv/ice-cream-orders/create')}}" class="nav-link {{ active_class(['adv/ice-cream-orders/create']) }}">Ajouter</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
 
           <li class="nav-item {{ active_class(['adv/delivery-orders/*','adv/delivery-orders']) }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#commandesDel" role="button" aria-expanded="{{ is_active_route(['adv/delivery-orders/*','adv/delivery-orders']) }}" aria-controls="ordersprofessional">
@@ -375,6 +390,6 @@
     @stack('select-particular')
     @stack('select-professional')
     @stack('modal-delivry-scripts')
-
+    @stack('edit-status-script')
 </body>
 </html>

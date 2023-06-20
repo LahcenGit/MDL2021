@@ -22,10 +22,12 @@ use App\Http\Controllers\Adv\ProfessionalorderController;
 use App\Http\Controllers\Adv\ProfessionalController;
 use App\Http\Controllers\Adv\ParticularController;
 use App\Http\Controllers\Adv\OrderparticularController;
+use App\Http\Controllers\Adv\IcecreamorderController;
 use App\Http\Controllers\professional\CheckoutController;
 use App\Http\Controllers\Particular\ParticularorderController;
 use App\Http\Controllers\Particular\ParticularcheckoutController;
 use App\Http\Controllers\commercial\VisitController;
+use App\Http\Controllers\commercial\IcecreamController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommentController;
@@ -226,6 +228,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/store-delivry-order', [App\Http\Controllers\AdvController::class, 'storeDelivryOrder'])->middleware('can:adv');
     Route::get('adv/delivery-orders', [App\Http\Controllers\AdvController::class, 'deliveryOrders'])->middleware('can:adv');
     Route::delete('adv/delivery-orders/{id}', [App\Http\Controllers\AdvController::class, 'deleteDeliveryOrder'])->middleware('can:adv');
+    Route::resource('adv/ice-cream-orders',IcecreamorderController::class)->middleware('can:adv');
+    Route::get('adv/edit-status/{id}', [App\Http\Controllers\Adv\ProfessionalorderController::class, 'editStatus'])->middleware('can:adv');
+    Route::post('adv/update-status', [App\Http\Controllers\Adv\ProfessionalorderController::class, 'updateStatus'])->middleware('can:adv');
     Route::resource('adv', AdvController::class)->middleware('can:adv');
 
 });
@@ -343,6 +348,7 @@ Route::put('commercial/professionals/{id}', [App\Http\Controllers\commercial\Com
 Route::get('get-type/{id}', [App\Http\Controllers\commercial\CommercialController::class,'getType'])->middleware('can:commercial');
 Route::get('modal-order-line/{id}', [App\Http\Controllers\commercial\CommercialController::class,'showModal'])->middleware('can:commercial');
 Route::resource('commercial/visits',VisitController::class)->middleware('can:commercial');
+Route::resource('commercial/ice-cream-orders',IcecreamController::class)->middleware('can:commercial');
 Route::get('commercial/order-professional-detail/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'orderDetailProfessional'])->middleware('can:commercial');
 Route::get('edit-status/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'editStatus'])->middleware('can:commercial');
 Route::post('update-status', [App\Http\Controllers\commercial\CommercialController::class, 'updateStatus'])->middleware('can:commercial');

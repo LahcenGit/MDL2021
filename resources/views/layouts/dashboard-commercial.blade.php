@@ -101,6 +101,9 @@
                         <a href="{{url('commercial/order-professionals/create')}}" class="nav-link {{ active_class(['commercial/order-professionals/create']) }}">Ajouter</a>
                       </li>
                       <li class="nav-item">
+                        <a href="{{url('commercial/ice-cream-orders/create')}}" class="nav-link {{ active_class(['commercial/ice-cream-orders/create']) }}">Les glaces</a>
+                      </li>
+                      <li class="nav-item">
                           <a href="{{url('commercial/order-professionals')}}" class="nav-link {{ active_class(['commercial/order-professionals']) }}">Liste commandes</a>
                         </li>
                     </ul>

@@ -67,6 +67,7 @@
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     <a href="{{url('adv/order-professional-detail/'.$order->id)}}" class="btn btn-outline-success show-order" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                    <a href="#" data-id="{{ $order->id }}" class="btn btn-outline-primary edit-status" style="margin-right: 3px;"><i data-feather="edit-2"></i></a>
                     <a href="{{url('adv/professional-orders/'.$order->id.'/edit')}}" class="btn btn-outline-warning"  style="margin-right: 3px;"><i data-feather="edit"></i></a>
                     @if($order->status != 3 && $order->status != 4)
                      <a href="#"  style="margin-right: 3px;" class="btn btn-outline-primary add-delivry" data-id="{{ $order->id }}"><i data-feather="truck"></i></a>
@@ -74,6 +75,7 @@
                     @if($order->professional->latitude)
                     <a href="{{asset('redirect-position/'.$order->professional->latitude.'/'.$order->professional->longitude)}}"class="btn btn-outline-secondary " target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
                     @endif
+
                 </div>
               </form>
             </td>
@@ -89,6 +91,9 @@
 
 </div>
 <div id="modal-add-delivry">
+
+</div>
+<div id="modal-edit-status">
 
 </div>
 @endsection
@@ -162,6 +167,52 @@ $(".show-orderline").click(function() {
   });
 
 });
+
+</script>
+@endpush
+@push('edit-status-script')
+
+<script>
+$(".edit-status").click(function() {
+
+var id = $(this).data('id');
+
+$.ajax({
+  url: '/adv/edit-status/' + id,
+  type: "GET",
+  success: function (res) {
+    $('#modal-edit-status').html(res);
+    $("#modalStatusOrder").modal('show');
+  }
+});
+
+});
+
+$("#modal-edit-status").on('click','#save',function(e){
+
+        e.preventDefault();
+        let status = $('#status').val();
+        let order = $('#order').val();
+      $.ajax({
+
+          type:"POST",
+          url: "/adv/update-status",
+          data:{
+            "_token": "{{ csrf_token() }}",
+            status:status,
+            order:order,
+
+           },
+
+          success:function(response){
+           $('#modalStatus').modal('hide');
+
+            console.log(response);
+            location.reload();
+          }
+});
+
+   });
 
 </script>
 @endpush

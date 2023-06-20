@@ -22,7 +22,7 @@ class ProfessionalorderController extends Controller
     public function create(){
         $professionals = Professionnel::orderBy('created_at','desc')->get();
         $wilayas = Wilaya::all();
-        $products = Produit::orderBy('flag','asc')->get();
+        $products = Produit::orderBy('flag','asc')->where('categorie_id',1)->orWhere('categorie_id',2)->get();
         return view('adv.add-order-professional',compact('wilayas','professionals','products'));
     }
     public function index(){
@@ -197,7 +197,7 @@ class ProfessionalorderController extends Controller
         foreach($orderlines as $orderline){
             array_push($array , $orderline->product_id);
         }
-        $products = Produit::whereNotIn('id',$array)->orderBy('flag','asc')->get();
+        $products = Produit::whereNotIn('id',$array)->where('categorie_id',1)->orWhere('categorie_id',2)->orderBy('flag','asc')->get();
         return view('adv.edit-professional-order',compact('order','products','professionals','orderlines'));
     }
     public function update($id , Request $request){
@@ -338,4 +338,15 @@ class ProfessionalorderController extends Controller
         $orderlines = Professionalorderline::where('professionalorder_id',$id)->get();
         return view('adv.modal-detail-professional-order',compact('orderlines'));
     }
+    public function editStatus($id){
+        $order = Professionalorder::find($id);
+        return view('adv.modal-edit-status',compact('order'));
+      }
+
+      public function updateStatus(Request $request){
+          $order = Professionalorder::find($request->order);
+          $order->status = $request->status;
+          $order->save();
+          return true;
+      }
 }

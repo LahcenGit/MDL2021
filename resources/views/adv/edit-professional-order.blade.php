@@ -68,19 +68,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-8">
-                                <label for="exampleFormControlSelect1" class="form-label">Statut</label>
-								<select class="form-select" name="status"  class="form-control input-default " id="exampleFormControlSelect1">
-                                    <option>select</option>
-                                    <option value="1" @if ($order->status == 1) selected @endif > En attente</option>
-                                    <option value="2" @if ($order->status == 2) selected @endif > Validé</option>
-                                    <option value="3" @if ($order->status == 3) selected @endif > Livré</option>
-                                    <option value="4" @if ($order->status == 4) selected @endif > Annulé</option>
-                                </select>
 
-                            </div>
-                         </div>
                         <button class="btn btn-primary" type="submit">Enregistrer</button>
                     </form>
                 </div>
