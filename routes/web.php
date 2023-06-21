@@ -38,6 +38,8 @@ use App\Http\Controllers\Delivry\DelivryorderController;
 use App\Http\Controllers\TransformationlaitController;
 use App\Http\Controllers\ProductfabricationController;
 use App\Http\Controllers\Admin\StatistiqueController;
+use App\Http\Controllers\WorkerController;
+use App\Http\Controllers\TacheController;
 use App\Models\Citie;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
@@ -163,7 +165,8 @@ Route::middleware('milkcheckAuth')->group(function () {
     Route::resource('milkcheck/transformation-milk', TransformationlaitController::class)->middleware('can:milkcheck');
     Route::resource('milkcheck/product-fabrication', ProductfabricationController::class)->middleware('can:milkcheck');
 
-
+    Route::resource('milkcheck/workers', WorkerController::class)->middleware('can:milkcheck');
+    Route::resource('milkcheck/taches', TacheController::class)->middleware('can:milkcheck');
 
     //paiements
 
