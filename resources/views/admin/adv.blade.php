@@ -28,7 +28,22 @@
             </div>
           </div>
         </div>
-
+        <div class="col-md-3 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline">
+                  <h6 class="card-title mb-0">Revenu glace  </h6>
+                  <div class="dropdown mb-2">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-2 col-md-6 col-xl-5">
+                    <h3  style="color: #6FB53E;"class="mb-2">{{ number_format($totalCategoryOrder) }} Da</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <div class="col-md-3 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
@@ -62,22 +77,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-baseline">
-                  <h6 class="card-title mb-0">Total commandes en attentes </h6>
-                  <div class="dropdown mb-2">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2 col-md-6 col-xl-5">
-                    <h3  style="color: #6FB53E;"class="mb-2">{{ $nbr_order_pro_en_attente }} </h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
     </div>
 </div>

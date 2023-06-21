@@ -24,8 +24,13 @@ class AdminController extends Controller
         $nbr_order_pro = Professionalorder::count();
 
         $nbr_order_pro_en_attente =  Professionalorder::where('status',1)->count();
+        $totalCategoryOrder = Professionalorder::join('professionalorderlines', 'professionalorders.id', '=', 'professionalorderlines.professionalorder_id')
+                                                ->join('produits', 'professionalorderlines.product_id', '=', 'produits.id')
+                                                ->join('categories', 'produits.categorie_id', '=', 'categories.id')
+                                                ->where('categories.id', 3)
+                                                ->sum('professionalorderlines.total');
 
-        return view('admin.adv',compact('professional_orders','particulars_orders','revenu_pro','revenu_particular','nbr_order_pro','nbr_order_pro_en_attente'));
+        return view('admin.adv',compact('professional_orders','particulars_orders','revenu_pro','revenu_particular','nbr_order_pro','nbr_order_pro_en_attente','totalCategoryOrder'));
     }
     public function commercial(){
         $orders = Professionalorder::where('commercial_id','!=',Null)->orderBy('created_at','desc')->get();
