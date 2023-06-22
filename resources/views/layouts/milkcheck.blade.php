@@ -43,7 +43,7 @@ License: For each use you must have a valid license purchased only from above li
   <!-- Layout styles -->
 	<link rel="stylesheet" href="{{asset('/assets/css/demo1/style.css')}}">
   <!-- End layout styles -->
-
+  <link rel="stylesheet" href="{{ asset('/assets/vendors/sweetalert2/sweetalert2.min.css') }}">
   <link rel="shortcut icon" href="{{asset('/assets/zahra-profile.png')}}" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -417,6 +417,9 @@ License: For each use you must have a valid license purchased only from above li
   <script src="{{asset('/assets/js/datepicker.js')}}"></script>
   <script src="{{asset('/assets/js/select2.js')}}"></script>
 	<!-- End custom js for this page -->
+  <script src="{{ asset('/assets/vendors/sweetalert2/sweetalert2.min.js') }}"></script>
+  <script src="{{ asset('/assets/js/sweet-alert.js') }}"></script>
+
 
   @stack('select-vendeur-scripts')
   @stack('input-scripts')
@@ -431,7 +434,7 @@ License: For each use you must have a valid license purchased only from above li
   @stack('order-detail-scripts')
   @stack('order-ticket-scripts')
   @stack('modal-orderline-scripts')
-
+  @stack('modal-note-scripts')
   @stack('check-product')
   @stack('modal-productionline-scripts')
 

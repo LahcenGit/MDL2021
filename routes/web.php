@@ -166,9 +166,13 @@ Route::middleware('milkcheckAuth')->group(function () {
     Route::resource('milkcheck/transformation-milk', TransformationlaitController::class)->middleware('can:milkcheck');
     Route::resource('milkcheck/product-fabrication', ProductfabricationController::class)->middleware('can:milkcheck');
 
+    //worker-tache
     Route::resource('milkcheck/workers', WorkerController::class)->middleware('can:milkcheck');
     Route::resource('milkcheck/taches', TacheController::class)->middleware('can:milkcheck');
     Route::resource('milkcheck/worker-taches', WorkertacheController::class)->middleware('can:milkcheck');
+    Route::get('/modal-add-note/{id}',[App\Http\Controllers\WorkertacheController::class, 'showModal'])->middleware('can:milkcheck');
+    Route::post('/store-note',[App\Http\Controllers\WorkertacheController::class, 'storeNote'])->middleware('can:milkcheck');
+    Route::get('/update-note',[App\Http\Controllers\WorkertacheController::class, 'updateNote'])->middleware('can:milkcheck');
 
     //paiements
 
