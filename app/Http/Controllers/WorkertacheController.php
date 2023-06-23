@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Historiquenote;
 use App\Models\Tache;
 use App\Models\Worker;
 use App\Models\Workertache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WorkertacheController extends Controller
 {
@@ -45,11 +47,24 @@ class WorkertacheController extends Controller
     }
 
     public function updateNote(){
+        $workers = Worker::all();
+        foreach($workers as $worker){
+            $result = DB::table('workertaches')
+                        ->select(DB::raw('COUNT(*) as total_lignes'), DB::raw('SUM(note) as somme_note'))
+                        ->where('worker_id',$worker->id)
+                        ->first();
+            $note = $result->somme_note/$result->total_lignes;
+            $historique = new Historiquenote();
+            $historique->worker_id = $worker->id;
+            $historique->note = $note;
+            $historique->save();
+        }
         $taches = Workertache::all();
         foreach($taches as $tache){
             $tache->note = 0;
             $tache->save();
         }
+
         return redirect('milkcheck/workers');
     }
 }

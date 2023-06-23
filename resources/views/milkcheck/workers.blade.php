@@ -6,7 +6,7 @@
         <li class="breadcrumb-item"><a href="#">Milkcheck</a></li>
         <li class="breadcrumb-item active" aria-current="page">Employés</li>
     </ol>
-    <a href="{{ asset('/update-note') }}" type="button"  onclick="return confirm('Vous voulez vraiment supprimer?')" class="btn btn-primary mt-3 " >Reinitialiser les notations</a>
+    <a href="{{ asset('/update-note') }}" type="button"  onclick="return confirm('Vous voulez vraiment reinitialiser les notations ?')" class="btn btn-primary mt-3 " >Reinitialiser les notations</a>
 </nav>
 @include('flash-message')
 <div class="row">
