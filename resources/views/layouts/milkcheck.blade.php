@@ -231,6 +231,47 @@ License: For each use you must have a valid license purchased only from above li
               </ul>
             </div>
           </li>
+          <li class="nav-item nav-category">Employés</li>
+
+          <li class="nav-item  {{ active_class(['milkcheck/workers/*','milkcheck/workers']) }}">
+            <a class="nav-link"  data-bs-toggle="collapse" href="#workers" role="button" aria-expanded="{{ is_active_route(['milkcheck/workers/*','milkcheck/workers']) }}" aria-controls="workers">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Employés</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse {{ show_class(['milkcheck/workers/*','milkcheck/workers']) }} " id="workers">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/workers/create')}}" class="nav-link {{ active_class(['milkcheck/workers/create']) }}">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/workers')}}" class="nav-link {{ active_class(['milkcheck/workers']) }}">Tous</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('milkcheck/worker-taches/create')}}" class="nav-link {{ active_class(['milkcheck/worker-taches']) }}">Employé taches</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item  {{ active_class(['milkcheck/taches/*','milkcheck/taches']) }}">
+            <a class="nav-link"  data-bs-toggle="collapse" href="#taches" role="button" aria-expanded="{{ is_active_route(['milkcheck/taches/*','milkcheck/taches']) }}" aria-controls="taches">
+              <i class="link-icon" data-feather="file-text"></i>
+              <span class="link-title">Taches</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse {{ show_class(['milkcheck/taches/*','milkcheck/taches']) }} " id="taches">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/taches/create')}}" class="nav-link {{ active_class(['milkcheck/taches/create']) }}">Ajouter</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/taches')}}" class="nav-link {{ active_class(['milkcheck/taches']) }}">Toutes</a>
+                </li>
+              </ul>
+            </div>
+          </li>
           <li class="nav-item nav-category">Rapport</li>
           <li class="nav-item {{ active_class(['milkcheck/report']) }}">
             <a href="{{url('/milkcheck/report')}}" class="nav-link {{ active_class(['milkcheck/report']) }}">

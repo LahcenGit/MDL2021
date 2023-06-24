@@ -11,7 +11,13 @@ class Worker extends Model
     public function calculateNote(){
         $count =  Workertache::where('worker_id',$this->id)->count();
         $sum = Workertache::where('worker_id',$this->id)->sum('note');
-        $note = $sum/$count;
+        if($count == 0){
+            $note = 0;
+        }
+        else{
+            $note = $sum/$count;
+        }
+
         return $note;
     }
 }

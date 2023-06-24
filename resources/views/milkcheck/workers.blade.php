@@ -36,12 +36,12 @@
                         <td>{{$worker->phone}}</td>
                         <td id="td-worker-{{$worker->id}}">{{$worker->calculateNote()}}</td>
                         <td>
-                        <form action="{{url('milkcheck/workers/'.$worker->id)}}" method="post">
+                        <form action="#" method="post">
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
                             <div class="d-flex">
                                 <a href="#" class="btn btn-outline-success add-note" data-id="{{ $worker->id }}" style="margin-right: 3px;"><i data-feather="plus"></i></a>
-                            <a href="{{url('milkcheck/vendeurs/'.$worker->id.'/edit')}}" class="btn btn-outline-primary" style="margin-right: 3px;"><i data-feather="edit"></i></a>
+                            <a href="#" class="btn btn-outline-primary" style="margin-right: 3px;"><i data-feather="edit"></i></a>
                             <button type="submit" onclick="return confirm('Vous voulez vraiment supprimer?')" class="btn btn-outline-danger" style="margin-right: 3px;" ><i data-feather="trash"></i></button>
                             </div>
                         </form>
