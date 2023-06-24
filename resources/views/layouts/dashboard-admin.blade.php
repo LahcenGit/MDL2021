@@ -72,15 +72,22 @@
           <li class="nav-item nav-category">Commercial</li>
           <li class="nav-item">
             <a href="{{ asset('admin/commercial') }}" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
+              <i class="link-icon" data-feather="command"></i>
               <span class="link-title">Commercial</span>
             </a>
           </li>
           <li class="nav-item nav-category">Production</li>
           <li class="nav-item">
             <a href="{{ asset('admin/production') }}" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
+              <i class="link-icon" data-feather="disc"></i>
               <span class="link-title">Production</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Employés</li>
+          <li class="nav-item">
+            <a href="{{ asset('admin/workers') }}" class="nav-link">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Employé</span>
             </a>
           </li>
 

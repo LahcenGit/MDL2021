@@ -7,6 +7,7 @@ use App\Models\Particularorder;
 use App\Models\Productionline;
 use App\Models\Professionalorder;
 use App\Models\Visit;
+use App\Models\Worker;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -45,5 +46,9 @@ class AdminController extends Controller
     public function production(){
         $productionlines = Productionline::orderBy('created_at','desc')->get();
         return view('admin.labo',compact('productionlines'));
+    }
+    public function workers(){
+        $workers = Worker::all();
+        return view('admin.workers',compact('workers'));
     }
 }
