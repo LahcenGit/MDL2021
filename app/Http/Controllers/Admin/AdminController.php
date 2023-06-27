@@ -29,6 +29,7 @@ class AdminController extends Controller
                                                 ->join('produits', 'professionalorderlines.product_id', '=', 'produits.id')
                                                 ->join('categories', 'produits.categorie_id', '=', 'categories.id')
                                                 ->where('categories.id', 3)
+                                                ->where('status',4)
                                                 ->sum('professionalorderlines.total');
 
         return view('admin.adv',compact('professional_orders','particulars_orders','revenu_pro','revenu_particular','nbr_order_pro','nbr_order_pro_en_attente','totalCategoryOrder'));

@@ -361,6 +361,7 @@ Route::resource('commercial/ice-cream-orders',IcecreamController::class)->middle
 Route::get('commercial/order-professional-detail/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'orderDetailProfessional'])->middleware('can:commercial');
 Route::get('edit-status/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'editStatus'])->middleware('can:commercial');
 Route::post('update-status', [App\Http\Controllers\commercial\CommercialController::class, 'updateStatus'])->middleware('can:commercial');
+Route::delete('delete-order/{id}', [App\Http\Controllers\commercial\CommercialController::class, 'deleteOrder'])->middleware('can:commercial');
 
 });
 

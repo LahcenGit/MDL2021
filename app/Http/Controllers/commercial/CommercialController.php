@@ -438,4 +438,10 @@ class CommercialController extends Controller
         return true;
     }
 
+    public function deleteOrder($id){
+     $order = Professionalorder::find($id);
+     $order->delete();
+     return redirect('commercial/order-professionals');
+    }
+
 }

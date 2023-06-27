@@ -56,16 +56,17 @@
             @endif
             <td>{{$order->created_at->format('d-m-Y  H:i')}}</td>
             <td>
-              <form action="" method="post">
+              <form action="{{ asset('delete-order/'.$order->id) }}" method="post">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <div class="d-flex">
                     @if($order->status == 1)
-                    <a href="{{ asset('commercial/order-professionals/edit/'.$order->id) }}" data-id="{{ $order->id }}" class=" btn-xs sharp "><i data-feather="edit"></i></a>
+                    <a href="{{ asset('commercial/order-professionals/edit/'.$order->id) }}" data-id="{{ $order->id }}" class="btn btn-outline-warning" style="margin-right: 3px;"><i data-feather="edit"></i></a>
                     @endif
-                    <a href="{{url('commercial/order-professional-detail/'.$order->id)}}" class="btn-xs sharp show-orderline"><i data-feather="eye"></i></a>
-                    <a href="#" data-id="{{ $order->id }}" class=" btn-xs sharp edit-status"><i data-feather="edit-2"></i></a>
-                    <a href="{{asset('redirect-position/'.$order->professional->latitude.'/'.$order->professional->longitude)}}" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
+                    <a href="{{url('commercial/order-professional-detail/'.$order->id)}}" class="btn btn-outline-primary show-orderline" style="margin-right: 3px;"><i data-feather="eye"></i></a>
+                    <a href="#" data-id="{{ $order->id }}" class=" btn btn-outline-warning edit-status" style="margin-right: 3px;"><i data-feather="edit-2"></i></a>
+                    <a href="{{asset('redirect-position/'.$order->professional->latitude.'/'.$order->professional->longitude)}}" class="btn btn-outline-primary" target="_blank" style="margin-right: 3px;"><i data-feather="map-pin"></i></a>
+                    <button  onclick="return confirm('Vous voulez vraiment supprimer?')" class="btn btn-outline-danger"style="margin-right: 3px;"><i data-feather="trash"></i></button>
                 </div>
               </form>
             </td>
