@@ -6,7 +6,9 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Line chart</h6>
-                    <div id="morrisLine"></div>
+                    <div>
+                      <canvas id="myChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,59 +45,54 @@
 @push('morrisLine-script')
 <script>
 
-      $.ajax({
+
+$.ajax({
       url: '/get-data' ,
       type: "GET",
       async: false,
       success: function (result) {
-        var data = [];
-        var xLabels = [];
-        for (var month in result) {
-        data.push({
-          y: month,
-          a: result[month]
-        });
+        var x1 = []; // Tableau pour les premières valeurs (1, 3, 5)
+        var x2 = []; // Tableau pour les deuxièmes valeurs (2, 4, 6)
+
+        for (var i = 0; i < result.length; i++) {
+            x1.push(data[i][0]); // Ajoute la première valeur dans x1
+            x2.push(data[i][1]); // Ajoute la deuxième valeur dans x2
+        }
+
+        alert(result[5]);
+
+
       }
-        config = {
-                data: data,
-                xkey: 'y',
-                ykeys: ['a'],
-                labels: ['Total Quantité'],
-                parseTime: true,
-                xLabelFormat: function(x) {
-                return getMonthName(x.x);
-                },
 
-                fillOpacity: 0.6,
-                hideHover: 'auto',
-                behaveLikeLine: true,
-                resize: true,
-                pointFillColors:['#ffffff'],
-                pointStrokeColors: ['black'],
-                lineColors:['red']
-        };
 
-        config.element = 'morrisLine';
-        Morris.Line(config);
-        Morris.Donut({
-        element: 'pie-chart',
-        data: [
-            {label: "Friends", value: 30},
-            {label: "Allies", value: 15},
-            {label: "Enemies", value: 45},
-            {label: "Neutral", value: 10}
-          ]
-        });
-}
-});
-function getMonthName(month) {
-  var monthNames = [
-    'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-    'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-  ];
 
-  return monthNames[month - 1] || '';
-}
 
+      
+
+
+    });
+
+
+
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: x1,
+      datasets: [{
+        label: '# of Votes',
+        data: x2,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 </script>
 @endpush

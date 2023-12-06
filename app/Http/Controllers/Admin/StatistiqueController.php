@@ -21,6 +21,9 @@ class StatistiqueController extends Controller
             ->orderByDesc('total_quantity')
             ->limit(5)
             ->get();
+
+
+            
          return view('admin.statistiques',compact('professionals'));
     }
 
@@ -31,6 +34,8 @@ class StatistiqueController extends Controller
         ->orderBy('month', 'asc')
         ->pluck('sumQte', 'month')
         ->toArray();
+
+        
 
     // Ajouter les mois manquants avec une quantité de 0
     $allMonths = range(1, 12);

@@ -58,6 +58,8 @@
                            <select id="wilaya-select" class="form-control @error('wilaya') is-invalid @enderror" name="wilaya" placeholder="Wilaya" required>
                                  <option value="" disabled selected>La wilaya: </option>
                                 <option value="Alger" @if(old('wilaya')== 'Alger') selected @endif>Alger</option>
+                                <option value="Blida" @if(old('wilaya')== 'Blida') selected @endif>Blida</option>
+                                <option value="Tipaza" @if(old('wilaya')== 'Tipaza') selected @endif>Tipaza</option>
                                 <option value="Oran" @if(old('wilaya')== 'Oran') selected @endif>Oran</option>
                                 <option value="Sba" @if(old('wilaya')== 'Sba') selected @endif>Sidi Bel Abbès</option>
                             </select>

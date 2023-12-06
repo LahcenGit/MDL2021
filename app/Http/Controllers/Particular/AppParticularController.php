@@ -38,6 +38,22 @@ class AppParticularController extends Controller
                 'coast' => $coast
             ]);
         }
+        if($name == "Blida"){
+            $total = number_format($total+500,2);
+            $coast = 600;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
+        if($name == "Tipaza"){
+            $total = number_format($total+500,2);
+            $coast = 800;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
         if($name == "Oran"){
             $total = number_format($total+300,2);
             $coast = 300;
