@@ -46,7 +46,7 @@ use App\Http\Controllers\TacheController;
 use App\Http\Controllers\lpc\ClientController;
 use App\Http\Controllers\lpc\VenteController;
 use App\Http\Controllers\lpc\ProductionController;
-
+use App\Http\Controllers\LPC\StockController;
 use App\Models\Citie;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
@@ -218,7 +218,9 @@ Route::middleware('milkcheckAuth')->group(function () {
      Route::resource('milkcheck/lpc/clients', ClientController::class)->middleware('can:milkcheck');
      Route::resource('milkcheck/lpc/productions', ProductionController::class)->middleware('can:milkcheck');
      Route::resource('milkcheck/lpc/ventes', VenteController::class)->middleware('can:milkcheck');
-
+     Route::resource('milkcheck/lpc/stocks', StockController::class)->middleware('can:milkcheck');
+     Route::get('modal-add-stock-init', [App\Http\Controllers\LPC\StockController::class,'showModalAddStockInit'])->middleware('can:milkcheck');
+     Route::post('store-stock-initial', [App\Http\Controllers\LPC\StockController::class,'storestockInitial'])->middleware('can:milkcheck');
 
 });
 

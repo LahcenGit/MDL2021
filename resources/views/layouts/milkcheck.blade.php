@@ -28,7 +28,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!-- core:css -->
 	<link rel="stylesheet" href="{{asset('/assets/vendors/core/core.css')}}">
 	<!-- endinject -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 	<!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
 	<!-- End plugin css for this page -->
@@ -95,7 +95,7 @@ License: For each use you must have a valid license purchased only from above li
                   <a href="{{url('milkcheck/lpc/ventes')}}" class="nav-link {{ active_class(['milkcheck/lpc/ventes']) }}">Ventes</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/lpc/stock')}}" class="nav-link {{ active_class(['milkcheck/lpc/stock']) }}">Stock</a>
+                  <a href="{{url('milkcheck/lpc/stocks')}}" class="nav-link {{ active_class(['milkcheck/lpc/stocks']) }}">Stock</a>
                 </li>
                 <li class="nav-item">
                   <a href="{{url('milkcheck/lpc/rapport')}}" class="nav-link {{ active_class(['milkcheck/lpc/rapport']) }}">Rapports</a>
@@ -481,7 +481,7 @@ License: For each use you must have a valid license purchased only from above li
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 	<!-- Custom js for this page -->
   <script src="{{asset('/assets/js/dashboard-light.js')}}"></script>
@@ -509,7 +509,7 @@ License: For each use you must have a valid license purchased only from above li
   @stack('check-product')
   @stack('modal-productionline-scripts')
   @stack('add-lpc-production')
-
+  @stack('add-stock-init')
   <script>
 
     if($('.select-date').val() == 'p'){
