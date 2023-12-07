@@ -41,6 +41,12 @@ use App\Http\Controllers\Admin\StatistiqueController;
 use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\WorkertacheController;
 use App\Http\Controllers\TacheController;
+//lpc
+
+use App\Http\Controllers\lpc\ClientController;
+use App\Http\Controllers\lpc\VenteController;
+use App\Http\Controllers\lpc\ProductionController;
+
 use App\Models\Citie;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
@@ -206,6 +212,14 @@ Route::middleware('milkcheckAuth')->group(function () {
      Route::put('milkcheck/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'updateProduction'])->middleware('can:milkcheck');
      Route::get('modal-production-line/{id}', [App\Http\Controllers\Labo\LaboController::class,'showModalProduction'])->middleware('can:milkcheck');
      Route::delete('milkcheck/productions/{id}', [App\Http\Controllers\Labo\LaboController::class,'destroy'])->middleware('can:milkcheck');
+
+
+     //lpc
+     Route::resource('milkcheck/lpc/clients', ClientController::class)->middleware('can:milkcheck');
+     Route::resource('milkcheck/lpc/productions', ProductionController::class)->middleware('can:milkcheck');
+     Route::resource('milkcheck/lpc/ventes', VenteController::class)->middleware('can:milkcheck');
+
+
 });
 
 

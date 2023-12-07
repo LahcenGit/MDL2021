@@ -75,6 +75,36 @@ License: For each use you must have a valid license purchased only from above li
             </a>
           </li>
 
+          <li class="nav-item nav-category">LPC</li>
+
+          <li class="nav-item  {{ active_class(['milkcheck/lpc/*','milkcheck/lpc']) }}">
+            <a class="nav-link"  data-bs-toggle="collapse" href="#lpc" role="button" aria-expanded="{{ is_active_route(['milkcheck/lpc/*','milkcheck/lpc']) }}" aria-controls="lpc">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Gestion LPC</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse {{ show_class(['milkcheck/lpc/*','milkcheck/lpc']) }} " id="lpc">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/lpc/clients')}}" class="nav-link {{ active_class(['milkcheck/lpc/clients']) }}">clients</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/lpc/productions')}}" class="nav-link {{ active_class(['milkcheck/lpc/productions']) }}">Productions</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/lpc/ventes')}}" class="nav-link {{ active_class(['milkcheck/lpc/ventes']) }}">Ventes</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/lpc/stock')}}" class="nav-link {{ active_class(['milkcheck/lpc/stock']) }}">Stock</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('milkcheck/lpc/rapport')}}" class="nav-link {{ active_class(['milkcheck/lpc/rapport']) }}">Rapports</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
           <li class="nav-item nav-category">collaborateur</li>
 
           <li class="nav-item  {{ active_class(['milkcheck/collectors/*','milkcheck/collectors']) }}">
@@ -478,6 +508,7 @@ License: For each use you must have a valid license purchased only from above li
   @stack('modal-note-scripts')
   @stack('check-product')
   @stack('modal-productionline-scripts')
+  @stack('add-lpc-production')
 
   <script>
 
