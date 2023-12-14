@@ -22,6 +22,7 @@
                     <p class="text-muted mb-3">Vous trouvez ici  les stocks LPC.</p>
                     <div class="d-flex flex-row-reverse">
                     <a href="#" type="button" class="btn btn-primary mb-3 add-stock-init">Stock initial</a>
+                    <a href="#" type="button" class="btn btn-primary mb-3 add-entree">Entrée</a>
                 </div>
                 <div class="table-responsive">
                     <table id="dataTableExample" class="table">
@@ -65,7 +66,10 @@
   </div>
 </div>
 <div id="modal-add-stock-init"></div>
+<div id="show-modal-add-entree"></div>
 @endsection
+
+
 @push('add-stock-init')
 <script>
 $(".add-stock-init").click(function() {
@@ -80,7 +84,7 @@ $.ajax({
 });
 </script>
 <script>
-    // Event listener for form submission inside the modal with the ID 'modal-add-brand'
+    // Event listener for form submission inside the modal with the ID 'modal-add-stock-initial'
     $("#modal-add-stock-init").on('submit', '#formAddStockInitial', function(e){
         e.preventDefault();
         // Disable the submit button and show a loading indicator
@@ -120,6 +124,67 @@ $.ajax({
                 complete: function () {
                     // Regardless of success or failure, hide the loading indicator and enable input fields and the submit button
                     $('#modal-add-stock-initial input').prop('disabled', false);
+                    $('#submit-btn').prop('disabled', false);
+                }
+            });
+        }, 2000); // Pause of 2 seconds before making the AJAX request
+    });
+    </script>
+@endpush
+
+@push('add-entree')
+<script>
+$(".add-entree").click(function() {
+$.ajax({
+  url: '/modal-add-entree',
+  type: "GET",
+  success: function (res) {
+    $('#show-modal-add-entree').html(res);
+    $("#modal-add-entree").modal('show');
+  }
+});
+});
+</script>
+<script>
+   $("#show-modal-add-entree").on('submit', '#formAddEntree', function(e){
+      e.preventDefault();
+        // Disable the submit button and show a loading indicator
+        $('#submit-btn').prop('disabled', true);
+        // Create a FormData object from the form
+        var formData = new FormData(this);
+
+        // Disable all input fields inside the modal with the ID 'modal-add-stock-initial'
+        $('#show-modal-add-entree input').prop('disabled', true);
+
+        // Set a timeout of 2 seconds before making the AJAX request
+        setTimeout(function() {
+            // AJAX request configuration
+            $.ajax({
+                url: '/store-entree',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // If the AJAX request is successful
+                    if (response.success) {
+                        console.log(response);
+
+                        // Set up a handler for when the modal is hidden
+                        $('#modal-add-entree').on('hidden.bs.modal', function (e) {
+                            // Show a success message using toastr
+                            toastr.success('Success', 'Stock ajoutée avec succés!');
+
+                            // Reload the page after a delay of 3 seconds
+                            setTimeout(function() {
+                                location.reload();
+                            }, 3000);
+                        }).modal('hide');
+                    }
+                },
+                complete: function () {
+                    // Regardless of success or failure, hide the loading indicator and enable input fields and the submit button
+                    $('#show-modal-add-entree input').prop('disabled', false);
                     $('#submit-btn').prop('disabled', false);
                 }
             });

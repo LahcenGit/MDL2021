@@ -17,6 +17,9 @@ class StockController extends Controller
     public function showModalAddStockInit(){
         return view('lpc.modal-add-stock-intitial');
     }
+    public function showModalAddEntree(){
+        return view('lpc.modal-add-entree');
+    }
 
     public function storestockInitial(Request $request){
         Lpc_stock::create([
@@ -25,6 +28,17 @@ class StockController extends Controller
             'film' => $request->film,
             'type' => 0,
             'initial' => 1,
+         ]);
+         return response()->json(['success' => true, 'message' => 'Form processed successfully']);
+    }
+
+    public function storeEntree(Request $request){
+        Lpc_stock::create([
+            'PDL0' => $request->PDL0,
+            'PDL26' => $request->PDL26,
+            'film' => $request->film,
+            'type' => 1,
+            'initial' => 0,
          ]);
          return response()->json(['success' => true, 'message' => 'Form processed successfully']);
     }

@@ -220,7 +220,11 @@ Route::middleware('milkcheckAuth')->group(function () {
      Route::resource('milkcheck/lpc/ventes', VenteController::class)->middleware('can:milkcheck');
      Route::resource('milkcheck/lpc/stocks', StockController::class)->middleware('can:milkcheck');
      Route::get('modal-add-stock-init', [App\Http\Controllers\LPC\StockController::class,'showModalAddStockInit'])->middleware('can:milkcheck');
+     Route::get('modal-add-entree', [App\Http\Controllers\LPC\StockController::class,'showModalAddEntree'])->middleware('can:milkcheck');
      Route::post('store-stock-initial', [App\Http\Controllers\LPC\StockController::class,'storestockInitial'])->middleware('can:milkcheck');
+     Route::post('store-entree', [App\Http\Controllers\LPC\StockController::class,'storeEntree'])->middleware('can:milkcheck');
+     Route::get('/milkcheck/lpc/repport', [App\Http\Controllers\LPC\ReportController::class,'index'])->middleware('can:milkcheck');
+     Route::post('/milkcheck/lpc/generate-repport', [App\Http\Controllers\LPC\ReportController::class,'generateRepport'])->middleware('can:milkcheck');
 
 });
 

@@ -98,7 +98,7 @@ License: For each use you must have a valid license purchased only from above li
                   <a href="{{url('milkcheck/lpc/stocks')}}" class="nav-link {{ active_class(['milkcheck/lpc/stocks']) }}">Stock</a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('milkcheck/lpc/rapport')}}" class="nav-link {{ active_class(['milkcheck/lpc/rapport']) }}">Rapports</a>
+                  <a href="{{url('milkcheck/lpc/repport')}}" class="nav-link {{ active_class(['milkcheck/lpc/repport']) }}">Rapports</a>
                 </li>
               </ul>
             </div>
@@ -458,7 +458,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!-- core:js -->
 	<script src="{{asset('/assets/vendors/core/core.js')}}"></script>
 	<!-- endinject -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<!-- Plugin js for this page -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="{{asset('/assets/vendors/datatables.net/jquery.dataTables.js')}}"></script>
@@ -481,7 +481,7 @@ License: For each use you must have a valid license purchased only from above li
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
 	<!-- Custom js for this page -->
   <script src="{{asset('/assets/js/dashboard-light.js')}}"></script>
@@ -510,6 +510,7 @@ License: For each use you must have a valid license purchased only from above li
   @stack('modal-productionline-scripts')
   @stack('add-lpc-production')
   @stack('add-stock-init')
+  @stack('add-entree')
   <script>
 
     if($('.select-date').val() == 'p'){
