@@ -8,6 +8,7 @@ use App\Models\Particularorder;
 use App\Models\Particularorderline;
 use App\Models\Professionalorder;
 use App\Models\Professionalorderline;
+use App\Models\Ramadanpack;
 use Illuminate\Http\Request;
 
 class AdvOrderController extends Controller
@@ -217,5 +218,28 @@ class AdvOrderController extends Controller
         $order->save();
         return redirect('/adv/orders');
 
+    }
+
+
+    public function orderRamadanPacks(){
+        $orders = Ramadanpack::orderBy('created_at','desc')->get();
+        return view('adv.packs-ramadan',compact('orders'));
+    }
+
+    public function detailOrderPackRamadan($id){
+        $order = Ramadanpack::find($id);
+        return view('adv.detail-order-pack-ramadan',compact('order'));
+    }
+
+    public function editStatus($id){
+        $order = Ramadanpack::find($id);
+        return view('adv.edit-status-order-pack-ramadan',compact('order'));
+    }
+
+    public function updateStatus($id , Request $request){
+        $order = Ramadanpack::find($id);
+        $order->status = $request->status;
+        $order->save();
+        return redirect('adv/orders-pack-ramadan');
     }
 }

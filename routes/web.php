@@ -46,7 +46,8 @@ use App\Http\Controllers\TacheController;
 use App\Http\Controllers\lpc\ClientController;
 use App\Http\Controllers\lpc\VenteController;
 use App\Http\Controllers\lpc\ProductionController;
-use App\Http\Controllers\LPC\StockController;
+use App\Http\Controllers\lpc\StockController;
+use App\Http\Controllers\RamadanPackController;
 use App\Models\Citie;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
@@ -219,12 +220,12 @@ Route::middleware('milkcheckAuth')->group(function () {
      Route::resource('milkcheck/lpc/productions', ProductionController::class)->middleware('can:milkcheck');
      Route::resource('milkcheck/lpc/ventes', VenteController::class)->middleware('can:milkcheck');
      Route::resource('milkcheck/lpc/stocks', StockController::class)->middleware('can:milkcheck');
-     Route::get('modal-add-stock-init', [App\Http\Controllers\LPC\StockController::class,'showModalAddStockInit'])->middleware('can:milkcheck');
-     Route::get('modal-add-entree', [App\Http\Controllers\LPC\StockController::class,'showModalAddEntree'])->middleware('can:milkcheck');
-     Route::post('store-stock-initial', [App\Http\Controllers\LPC\StockController::class,'storestockInitial'])->middleware('can:milkcheck');
-     Route::post('store-entree', [App\Http\Controllers\LPC\StockController::class,'storeEntree'])->middleware('can:milkcheck');
-     Route::get('/milkcheck/lpc/repport', [App\Http\Controllers\LPC\ReportController::class,'index'])->middleware('can:milkcheck');
-     Route::post('/milkcheck/lpc/generate-repport', [App\Http\Controllers\LPC\ReportController::class,'generateRepport'])->middleware('can:milkcheck');
+     Route::get('modal-add-stock-init', [App\Http\Controllers\lpc\StockController::class,'showModalAddStockInit'])->middleware('can:milkcheck');
+     Route::get('modal-add-entree', [App\Http\Controllers\lpc\StockController::class,'showModalAddEntree'])->middleware('can:milkcheck');
+     Route::post('store-stock-initial', [App\Http\Controllers\lpc\StockController::class,'storestockInitial'])->middleware('can:milkcheck');
+     Route::post('store-entree', [App\Http\Controllers\lpc\StockController::class,'storeEntree'])->middleware('can:milkcheck');
+     Route::get('/milkcheck/lpc/repport', [App\Http\Controllers\lpc\ReportController::class,'index'])->middleware('can:milkcheck');
+     Route::post('/milkcheck/lpc/generate-repport', [App\Http\Controllers\lpc\ReportController::class,'generateRepport'])->middleware('can:milkcheck');
 
 });
 
@@ -260,10 +261,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('adv/ice-cream-orders',IcecreamorderController::class)->middleware('can:adv');
     Route::get('adv/edit-status/{id}', [App\Http\Controllers\Adv\ProfessionalorderController::class, 'editStatus'])->middleware('can:adv');
     Route::post('adv/update-status', [App\Http\Controllers\Adv\ProfessionalorderController::class, 'updateStatus'])->middleware('can:adv');
+
+    // pack ramadan route
+    Route::get('adv/orders-pack-ramadan', [App\Http\Controllers\AdvOrderController::class, 'orderRamadanPacks'])->middleware('can:adv');
+    Route::get('adv/order-pack-ramadan-detail/{id}', [App\Http\Controllers\AdvOrderController::class, 'detailOrderPackRamadan'])->middleware('can:adv');
+    Route::get('adv/edit-status-order-pack-ramadan/{id}', [App\Http\Controllers\AdvOrderController::class, 'editStatus'])->middleware('can:adv');
+    Route::put('adv/edit-status-order-pack-ramadan/{id}', [App\Http\Controllers\AdvOrderController::class, 'updateStatus'])->middleware('can:adv');
     Route::resource('adv', AdvController::class)->middleware('can:adv');
 
 });
-
+Route::resource('adv/ramadan-packs',RamadanPackController::class);
 
 Route::get('statistique', [App\Http\Controllers\EleveurController::class, 'statistique']);
 Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achats']);
@@ -314,13 +321,13 @@ Route::get('/register-professional', function () {
 
 // Dashboard app professionnal
 Route::middleware('professionalParticularAuth')->group(function () {
-    Route::resource('/app-professional/order-professional', OrderProfessionalController::class)->middleware('can:professional');
-    Route::resource('/app-professional/checkout', CheckoutController::class)->middleware('can:professional');
-    Route::get('/app-professional/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder'])->middleware('can:professional');
+    Route::resource('/app-professional/order-professional', OrderProfessionalController::class);
+    Route::resource('/app-professional/checkout', CheckoutController::class);
+    Route::get('/app-professional/success-order', [App\Http\Controllers\professional\CheckoutController::class, 'successOrder']);
     Route::get('/script', [App\Http\Controllers\professional\OrderProfessionalController::class, 'script']);
     Route::get('/app-professional', [App\Http\Controllers\professional\AppProfessionalController::class, 'index']);
-    Route::resource('/app-professional/profil', ProfilProfessionalController::class)->middleware('can:professional');
-    Route::get('/app-professional/order-lines/{id}', [App\Http\Controllers\professional\AppProfessionalController::class, 'orderLines'])->middleware('can:professional');
+    Route::resource('/app-professional/profil', ProfilProfessionalController::class);
+    Route::get('/app-professional/order-lines/{id}', [App\Http\Controllers\professional\AppProfessionalController::class, 'orderLines']);
 });
 
 
@@ -412,9 +419,7 @@ Route::get('/ticket/{id}', [App\Http\Controllers\printerController::class, 'tick
 
 Route::get('/receipt/{id}', [App\Http\Controllers\printerController::class, 'receipt']);
 
-use App\Http\Controllers\PhotoCommentController;
 
-Route::resource('photos.comments', PhotoCommentController::class);
 
 //front route
 Route::get('/product/{slug}', [App\Http\Controllers\FrontController::class, 'detailProduct']);

@@ -39,7 +39,7 @@ class AppParticularController extends Controller
             ]);
         }
         if($name == "Blida"){
-            $total = number_format($total+500,2);
+            $total = number_format($total+600,2);
             $coast = 600;
             return response()->json([
                 'total' => $total,
@@ -47,7 +47,7 @@ class AppParticularController extends Controller
             ]);
         }
         if($name == "Tipaza"){
-            $total = number_format($total+500,2);
+            $total = number_format($total+800,2);
             $coast = 800;
             return response()->json([
                 'total' => $total,
