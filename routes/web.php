@@ -269,9 +269,13 @@ Route::middleware('auth')->group(function () {
     Route::put('adv/edit-status-order-pack-ramadan/{id}', [App\Http\Controllers\AdvOrderController::class, 'updateStatus'])->middleware('can:adv');
     Route::resource('adv', AdvController::class)->middleware('can:adv');
 
+
+
 });
 
-
+Route::get('/success-order-pack', function () {
+    return view('success-order-pack-ramadan');
+});
 Route::resource('pack-ramadan',RamadanPackController::class);
 Route::get('/wilaya-coast/{name}/{total}', [App\Http\Controllers\RamadanPackController::class, 'wilayaCost']);
 

@@ -54,9 +54,10 @@
                 </div>
                 <div class="col-md-4 det-desc">
                     <div class="productdata">
-                        <form action="" method="post">
-                            <input type="email" class="form-control" name="name" style="margin-top: 5px;" placeholder="Nom complet" required>
-                            <input type="email" class="form-control" name="phone" style="margin-top: 5px;" placeholder="N° Tel" required>
+                        <form action="{{ asset('/pack-ramadan') }}" method="post">
+                            @csrf
+                            <input type="text" class="form-control" name="name" style="margin-top: 5px;" placeholder="Nom complet" required>
+                            <input type="text" class="form-control" name="phone" style="margin-top: 5px;" placeholder="N° Tel" required>
                             <select class="form-control" id="wilaya-select" name="wilaya" style="margin-top: 5px;" placeholder="Wilaya" required="">
                                 <option value="" disabled="" selected="">La wilaya: </option>
                                 <option value="Tlemcen">Tlemcen</option>
@@ -66,9 +67,9 @@
                                 <option value="Blida">Blida</option>
                                 <option value="Tipaza">Tipaza</option>
                             </select>
-                           
-                            <input type="email" class="form-control" name="adress" style="margin-top: 5px;"  placeholder="Votre adresse" required>
-                            <textarea id="story"class="form-control" style="margin-top: 5px;" name="story">
+
+                            <input type="text" class="form-control" name="address" style="margin-top: 5px;"  placeholder="Votre adresse" required>
+                            <textarea id="story"class="form-control" style="margin-top: 5px;" name="remarque">
                                 Une remarque ...
                             </textarea>
                             <div class="infospan"  style="margin-top: 10px;">Total : <span  style=" padding: 0px !important; font-size:20px;">2.000 Da</span></div>
@@ -76,17 +77,17 @@
                             <div class="infospan" >Total : <span  style="padding: 0px !important; font-size:20px;" id="final-total">2.000 </span>Da</div>
                         <button type="submit" class="btn btn-default btn-red btn-lg"  style="margin-top: 10px;font-size:15px">Commander votre pack</button>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
 
-            
-            
+
+
             <div class="spacer"></div>
         </div><!--Main content-->
 
-        
+
     </div>
 </div>
 
@@ -101,9 +102,9 @@ $.ajaxSetup({
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
 	});
-          
+
 	$("#wilaya-select").change(function() {
-      
+
             var name = $(this).val();
             var total = 2000;
              $.ajax({
