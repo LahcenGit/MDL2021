@@ -57,7 +57,7 @@
                         <form action="{{ asset('/pack-ramadan') }}" method="post">
                             @csrf
                             <input type="text" class="form-control" name="name" style="margin-top: 5px;" placeholder="Nom complet" required>
-                            <input type="text" class="form-control" name="phone" style="margin-top: 5px;" placeholder="N° Tel" required>
+                            <input type="text" class="form-control" name="phone" style="margin-top: 5px;" placeholder="N° Tel" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                             <select class="form-control" id="wilaya-select" name="wilaya" style="margin-top: 5px;" placeholder="Wilaya" required="">
                                 <option value="" disabled="" selected="">La wilaya: </option>
                                 <option value="Tlemcen">Tlemcen</option>
