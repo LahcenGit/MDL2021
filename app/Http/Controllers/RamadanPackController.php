@@ -9,6 +9,10 @@ class RamadanPackController extends Controller
 {
     //
 
+    public function index(){
+        return view('pack-ramadan');
+    }
+
     public function store(Request $request){
         $date = Carbon::now()->format('y');
         $validator = Validator::make($request->all(), [
@@ -52,6 +56,59 @@ class RamadanPackController extends Controller
         }
 
         Ramadanpack::create($attributes);
+    }
+
+
+
+    public function wilayaCost($name,$total){
+        if($name == "Tlemcen"){
+            $total = number_format($total+0,2);
+            $coast = 0;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
+        if($name == "Alger"){
+            $total = number_format($total+500,2);
+            $coast = 500;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
+        if($name == "Blida"){
+            $total = number_format($total+600,2);
+            $coast = 600;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
+        if($name == "Tipaza"){
+            $total = number_format($total+800,2);
+            $coast = 800;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
+        if($name == "Oran"){
+            $total = number_format($total+300,2);
+            $coast = 300;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
+        if($name == "Sba"){
+            $total = number_format($total+200,2);
+            $coast = 200;
+            return response()->json([
+                'total' => $total,
+                'coast' => $coast
+            ]);
+        }
     }
 
 

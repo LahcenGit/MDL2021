@@ -270,7 +270,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('adv', AdvController::class)->middleware('can:adv');
 
 });
-Route::resource('adv/ramadan-packs',RamadanPackController::class);
+
+
+Route::resource('pack-ramadan',RamadanPackController::class);
+Route::get('/wilaya-coast/{name}/{total}', [App\Http\Controllers\RamadanPackController::class, 'wilayaCost']);
 
 Route::get('statistique', [App\Http\Controllers\EleveurController::class, 'statistique']);
 Route::get('print-achat', [App\Http\Controllers\PrinterController::class, 'achats']);

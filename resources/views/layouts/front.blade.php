@@ -313,6 +313,7 @@
     @stack('contact-scripts')
     @stack('comment-scripts')
 	@stack('checkout-particular')
+	@stack('checkout-ramadan')
 	</div>
   </body>
 </html>
