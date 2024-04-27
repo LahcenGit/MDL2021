@@ -285,6 +285,6 @@
     @stack('select-particular')
     @stack('select-professional')
     @stack('morrisLine-script')
-
+    @stack('select-month-script')
 </body>
 </html>
