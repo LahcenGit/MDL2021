@@ -77,6 +77,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Date</th>
                                 <th>Client</th>
                                 <th>C.P ?</th>
                                 <th>Avis prix</th>
@@ -89,6 +90,7 @@
                                 @foreach($visits as $visit)
                                 <tr>
                                 <td>{{$loop->iteration}}</td>
+                                <td>{{$visit->created_at->format('d-m-Y')}}</td>
                                 <td>{{$visit->professional->user->name}}</td>
                                 <td>@if($visit->cp == 1)Oui @else Non @endif</td>
                                 <td>@if($visit->price_feedback == 0)Meilleur prix @elseif($visit->price_feedback == 1) Bon prix @else Prix elevé @endif</td>

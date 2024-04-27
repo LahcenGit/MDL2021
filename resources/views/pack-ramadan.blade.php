@@ -67,13 +67,11 @@
                                 <option value="Tipaza">Tipaza</option>
                             </select>
                            
-                            <input type="email" class="form-control" name="adress" style="margin-top: 5px;"  placeholder="Votre adresse" required>
-                            <textarea id="story"class="form-control" style="margin-top: 5px;" name="story">
-                                Une remarque ...
-                            </textarea>
+                            <input type="text" class="form-control" name="address" style="margin-top: 5px;"  placeholder="Votre adresse" required>
+                            <textarea id="story"class="form-control" style="margin-top: 5px;" name="story" placeholder="Une remarque..."></textarea>
                             <div class="infospan"  style="margin-top: 10px;">Total : <span  style=" padding: 0px !important; font-size:20px;">2.000 Da</span></div>
-                            <div class="infospan" >Livraison : <span  style="padding: 0px !important" id="delivery-cost">0 </span> Da</div>
-                            <div class="infospan" >Total : <span  style="padding: 0px !important; font-size:20px;" id="final-total">2.000 </span>Da</div>
+                            <div class="infospan" >Livraison : <span  style="padding: 0px !important" id="delivery-cost">0 </span> </div>
+                            <div class="infospan" >Total : <span  style="padding: 0px !important; font-size:20px;" id="final-total">2.000 </span></div>
                         <button type="submit" class="btn btn-default btn-red btn-lg"  style="margin-top: 10px;font-size:15px">Commander votre pack</button>
                         </form>
                         

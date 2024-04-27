@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Particularorder;
 use App\Models\Productionline;
 use App\Models\Professionalorder;
+use App\Models\Ramadanpack;
 use App\Models\Visit;
 use App\Models\Worker;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class AdminController extends Controller
     }
 
     public function advOrders(){
+        $ramdan_orders = Ramadanpack::orderBy('created_at','desc')->get();
         $professional_orders = Professionalorder::orderBy('created_at','desc')->get();
         $particulars_orders = Particularorder::orderBy('created_at','desc')->get();
         $revenu_pro = Professionalorder::where('status',4)->sum('total');
@@ -32,7 +34,7 @@ class AdminController extends Controller
                                                 ->where('status',4)
                                                 ->sum('professionalorderlines.total');
 
-        return view('admin.adv',compact('professional_orders','particulars_orders','revenu_pro','revenu_particular','nbr_order_pro','nbr_order_pro_en_attente','totalCategoryOrder'));
+        return view('admin.adv',compact('ramdan_orders','professional_orders','particulars_orders','revenu_pro','revenu_particular','nbr_order_pro','nbr_order_pro_en_attente','totalCategoryOrder'));
     }
     public function commercial(){
         $orders = Professionalorder::where('commercial_id','!=',Null)->orderBy('created_at','desc')->get();
