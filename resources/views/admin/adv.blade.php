@@ -29,6 +29,9 @@
     </div>
 </div>
 <div class="row">
+    <p>Revenu total adv <b style="color: red">{{ number_format($revenu_total_adv) }} Da</b>&nbsp; Revenu total commercial <b style="color: red">{{ number_format($revenu_total_commercial) }} Da</b></p>
+</div>
+<div class="row">
     <div class="col-12 col-xl-12 stretch-card">
       <div class="row flex-grow-1">
         <div class="col-md-3 grid-margin stretch-card">
@@ -57,7 +60,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2 col-md-6 col-xl-5">
-                    <h5 style="color: #6FB53E;"class="mb-2">{{ number_format($revenu_pro) }} Da</h5>
+                    <h5 style="color: #6FB53E;"class="mb-2" id="revenu-adv">{{ number_format($revenu_adv) }} Da</h5>
                   </div>
                 </div>
               </div>
@@ -73,7 +76,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2 col-md-6 col-xl-5">
-                    <h5 style="color: #6FB53E;"class="mb-2">{{ number_format($revenu_pro) }} Da</h5>
+                    <h5 style="color: #6FB53E;"class="mb-2" id="revenu-commercial">{{ number_format($revenu_commercial) }} Da</h5>
                   </div>
                 </div>
               </div>
@@ -89,7 +92,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2 col-md-6 col-xl-5">
-                    <h5 style="color: #6FB53E;"class="mb-2">{{ number_format($revenu_pro) }} Da</h5>
+                    <h5 style="color: #6FB53E;"class="mb-2" id="revenu-commercial_2">{{ number_format($revenu_commercial_2) }} Da</h5>
                   </div>
                 </div>
               </div>
@@ -105,7 +108,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2 col-md-6 col-xl-5">
-                    <h5 style="color: #6FB53E;"class="mb-2">{{ number_format($totalCategoryOrder) }} Da</h5>
+                    <h5 style="color: #6FB53E;"class="mb-2" id="revenu-glace">{{ number_format($totalCategoryOrder) }} Da</h5>
                   </div>
                 </div>
               </div>
@@ -121,7 +124,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2 col-md-6 col-xl-5">
-                    <h5 style="color: #6FB53E;"class="mb-2">{{ number_format($revenu_particular) }} Da</h5>
+                    <h5 style="color: #6FB53E;"class="mb-2" id="revenu-particular">{{ number_format($revenu_particular) }} Da</h5>
                   </div>
                 </div>
               </div>
@@ -138,7 +141,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2 col-md-6 col-xl-5">
-                    <h5 style="color: #6FB53E;"class="mb-2">{{ number_format($nbr_order_pro) }} Da</h5>
+                    <h5 style="color: #6FB53E;"class="mb-2" id="nbr_order_pro">{{ number_format($nbr_order_pro) }} Da</h5>
                   </div>
                 </div>
               </div>
@@ -266,13 +269,13 @@
                 type: 'GET',
                 data: { month: selectedMonth },
                 success: function(response) {
-                $('#revenu-pro').text(response.revenu_pro);
-                $('#revenu-adv').text(response.revenu_adv);
-                $('#revenu-commercial').text(response.revenu_commercial);
-                $('#revenu-commercial-2').text(response.revenu_commercial_2);
-                $('#revenu-particular').text(response.revenu_particular);
-                $('#nbr-order-pro').text(response.nbr_order_pro);
-                $('#revenu-glace').text(response.nbr_order_pro);
+                $('#revenu-pro').text(response.revenu_pro+' Da');
+                $('#revenu-adv').text(response.revenu_adv+' Da');
+                $('#revenu-commercial').text(response.revenu_commercial+' Da' );
+                $('#revenu-commercial-2').text(response.revenu_commercial_2+' Da');
+                $('#revenu-particular').text(response.revenu_particular+' Da');
+                $('#nbr-order-pro').text(response.nbr_order_pro+' Da');
+                $('#revenu-glace').text(response.nbr_order_pro+' Da');
                 },
                 error: function(xhr, status, error) {
 

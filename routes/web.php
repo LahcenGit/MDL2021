@@ -414,6 +414,7 @@ Route::get('admin/production', [App\Http\Controllers\Admin\AdminController::clas
 Route::get('admin/workers', [App\Http\Controllers\Admin\AdminController::class,'workers'])->middleware('can:admin');
 Route::resource('admin/statistiques',StatistiqueController::class);
 Route::get('/get-data', [App\Http\Controllers\Admin\StatistiqueController::class,'getData'])->middleware('can:admin');
+Route::get('/update-data', [App\Http\Controllers\Admin\AdminController::class,'updateData']);
 });
 //
 

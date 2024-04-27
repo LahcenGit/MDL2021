@@ -25,11 +25,34 @@ class AdminController extends Controller
 
         $particulars_orders = Particularorder::orderBy('created_at', 'desc')
                                                ->get();
-
+        $revenu_total_adv = Professionalorder::where('status', 4)
+                                               ->where('commercial_id',NULL)
+                                               ->sum('total');
+        $revenu_total_commercial = Professionalorder::where('status', 4)
+        ->where('commercial_id',148)
+        ->sum('total');
         $revenu_pro = Professionalorder::where('status', 4)
             ->whereYear('created_at', $current_year)
             ->whereMonth('created_at', $current_month)
             ->sum('total');
+
+        $revenu_adv = Professionalorder::where('status', 4)
+            ->whereYear('created_at', $current_year)
+            ->whereMonth('created_at', $current_month)
+            ->where('commercial_id',NULL)
+            ->sum('total');
+
+        $revenu_commercial = Professionalorder::where('status', 4)
+            ->whereYear('created_at', $current_year)
+            ->whereMonth('created_at', $current_month)
+            ->where('commercial_id',148)
+            ->sum('total');
+        $revenu_commercial_2 = Professionalorder::where('status', 4)
+            ->whereYear('created_at', $current_year)
+            ->whereMonth('created_at', $current_month)
+            ->where('commercial_id',0)
+            ->sum('total');
+
 
         $revenu_particular = Particularorder::where('status', 3)
             ->whereYear('created_at', $current_year)
@@ -38,10 +61,6 @@ class AdminController extends Controller
 
         $nbr_order_pro = Professionalorder::whereYear('created_at', $current_year)
             ->whereMonth('created_at', $current_month)
-            ->count();
-
-        $nbr_order_pro_en_attente = Professionalorder::where('status', 1)
-            ->whereYear('created_at', $current_year)
             ->count();
 
         $totalCategoryOrder = Professionalorder::join('professionalorderlines', 'professionalorders.id', '=', 'professionalorderlines.professionalorder_id')
@@ -53,7 +72,7 @@ class AdminController extends Controller
             ->whereMonth('professionalorders.created_at', $current_month)
             ->sum('professionalorderlines.total');
 
-        return view('admin.adv',compact('professional_orders','particulars_orders','revenu_pro','revenu_particular','nbr_order_pro','nbr_order_pro_en_attente','totalCategoryOrder','current_month'));
+        return view('admin.adv',compact('professional_orders','particulars_orders','revenu_pro','revenu_particular','nbr_order_pro','totalCategoryOrder','current_month','revenu_adv','revenu_commercial','revenu_commercial_2','revenu_total_adv','revenu_total_commercial'));
     }
     public function commercial(){
         $orders = Professionalorder::where('commercial_id','!=',Null)->orderBy('created_at','desc')->get();
@@ -108,11 +127,6 @@ class AdminController extends Controller
         $nbr_order_pro = Professionalorder::whereYear('created_at', $current_year)
             ->whereMonth('created_at', $current_month)
             ->count();
-
-        $nbr_order_pro_en_attente = Professionalorder::where('status', 1)
-            ->whereYear('created_at', $current_year)
-            ->count();
-
         $totalCategoryOrder = Professionalorder::join('professionalorderlines', 'professionalorders.id', '=', 'professionalorderlines.professionalorder_id')
             ->join('produits', 'professionalorderlines.product_id', '=', 'produits.id')
             ->join('categories', 'produits.categorie_id', '=', 'categories.id')
@@ -123,14 +137,13 @@ class AdminController extends Controller
             ->sum('professionalorderlines.total');
 
         return response()->json([
-            'revenu_pro' => $revenu_pro,
-            'revenu_particular' => $revenu_particular,
-            'revenu_adv' => $revenu_adv,
-            'revenu_commercial' => $revenu_commercial,
-            'revenu_commercial_2' => $revenu_commercial_2,
-            'nbr_order_pro' => $nbr_order_pro,
-            'nbr_order_pro_en_attente' => $nbr_order_pro_en_attente,
-            'totalCategoryOrder' => $totalCategoryOrder,
+            'revenu_pro' => number_format($revenu_pro),
+            'revenu_particular' => number_format($revenu_particular),
+            'revenu_adv' => number_format($revenu_adv),
+            'revenu_commercial' => number_format($revenu_commercial),
+            'revenu_commercial_2' =>number_format( $revenu_commercial_2),
+            'nbr_order_pro' => number_format( $nbr_order_pro),
+            'totalCategoryOrder' => number_format($totalCategoryOrder),
         ]);
     }
 }
