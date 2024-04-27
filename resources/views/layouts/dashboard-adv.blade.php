@@ -132,7 +132,10 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{url('adv/particular-orders')}}" class="nav-link {{ active_class(['adv/particular-orders']) }}">Liste commandes</a>
-                  </li>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('adv/orders-pack-ramadan')}}" class="nav-link {{ active_class(['adv/orders-pack-ramadan']) }}">Pack ramadan</a>
+                </li>
               </ul>
             </div>
           </li>
